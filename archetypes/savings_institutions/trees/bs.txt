@@ -1,0 +1,429 @@
+savings_institutions — BS
+Types: [total], [group], [line_item]; * = review
+
+├── Total Assets [total]
+│   concept: us-gaap:Assets
+│   ├── Cash, Due from Banks and Bank Deposits [group]
+│   │   ├── Cash And Due From Banks [line_item]
+│   │   │   concept: us-gaap:CashAndDueFromBanks
+│   │   ├── Cash And Cash Equivalents At Carrying Value [line_item]
+│   │   │   concept: us-gaap:CashAndCashEquivalentsAtCarryingValue
+│   │   ├── Cash [line_item]
+│   │   │   concept: us-gaap:Cash
+│   │   ├── Cash Equivalents At Carrying Value [line_item]
+│   │   │   concept: us-gaap:CashEquivalentsAtCarryingValue
+│   │   ├── Interest Bearing Deposits In Banks [line_item]
+│   │   │   concept: us-gaap:InterestBearingDepositsInBanks
+│   │   ├── Certificates Of Deposit At Carrying Value [line_item]
+│   │   │   concept: us-gaap:CertificatesOfDepositAtCarryingValue
+│   │   └── Due from Banks [line_item]
+│   │       concept: us-gaap:DueFromBanks
+│   ├── Interbank Placements and Reverse Repos [group]
+│   │   └── Federal Funds Sold [line_item]
+│   │       concept: us-gaap:FederalFundsSold
+│   ├── Investment Securities and Trading Assets [group]
+│   │   ├── Investment and Securities Totals [group]
+│   │   │   ├── Investments [line_item]
+│   │   │   │   concept: us-gaap:Investments
+│   │   │   ├── Marketable Securities [line_item]
+│   │   │   │   concept: us-gaap:MarketableSecurities
+│   │   │   └── Combined AFS and HTM Debt Securities [line_item] *
+│   │   │       concept: us-gaap:DebtSecuritiesAvailableForSaleAndHeldToMaturity
+│   │   ├── Trading Securities [group]
+│   │   │   └── Trading Securities [line_item]
+│   │   │       concept: us-gaap:TradingSecurities
+│   │   ├── Available-for-Sale Debt Securities [group]
+│   │   │   ├── Available For Sale Securities Debt Securities [line_item]
+│   │   │   │   concept: us-gaap:AvailableForSaleSecuritiesDebtSecurities
+│   │   │   └── Debt Securities Available For Sale Excluding Accrued Interest [line_item]
+│   │   │       concept: us-gaap:DebtSecuritiesAvailableForSaleExcludingAccruedInterest
+│   │   ├── Held-to-Maturity Debt Securities [group]
+│   │   │   ├── Held To Maturity Securities [line_item]
+│   │   │   │   concept: us-gaap:HeldToMaturitySecurities
+│   │   │   ├── HTM Debt Securities after Allowance, Excluding Accrued Interest [line_item]
+│   │   │   │   concept: us-gaap:DebtSecuritiesHeldToMaturityExcludingAccruedInterestAfterAllowanceForCreditLoss
+│   │   │   └── HTM Debt Securities — Amortized Cost after Allowance [line_item]
+│   │   │       concept: us-gaap:DebtSecuritiesHeldToMaturityAmortizedCostAfterAllowanceForCreditLoss
+│   │   ├── Equity Securities [group]
+│   │   │   ├── Equity Securities FV-NI [line_item]
+│   │   │   │   concept: us-gaap:EquitySecuritiesFvNi
+│   │   │   └── Equity Securities FV-NI Current And Noncurrent [line_item]
+│   │   │       concept: us-gaap:EquitySecuritiesFvNiCurrentAndNoncurrent
+│   │   └── Other Investments and Restricted Bank Stock [group]
+│   │       ├── Other Investments [line_item]
+│   │       │   concept: us-gaap:OtherInvestments
+│   │       ├── Other Investments And Securities At Cost [line_item]
+│   │       │   concept: us-gaap:OtherInvestmentsAndSecuritiesAtCost
+│   │       ├── Federal Home Loan Bank Stock [line_item]
+│   │       │   concept: us-gaap:FederalHomeLoanBankStock
+│   │       ├── Federal Reserve Bank Stock [line_item]
+│   │       │   concept: us-gaap:FederalReserveBankStock
+│   │       ├── Federal Home Loan Bank Stock And Federal Reserve Bank Stock [line_item]
+│   │       │   concept: us-gaap:FederalHomeLoanBankStockAndFederalReserveBankStock
+│   │       ├── Restricted Investments [line_item]
+│   │       │   concept: us-gaap:RestrictedInvestments
+│   │       └── Short-Term Investments [line_item] *
+│   │           concept: us-gaap:ShortTermInvestments
+│   ├── Loans and Leases, Net [group]
+│   │   ├── Net Loan Balances [group]
+│   │   │   ├── Loans after Credit Allowance, Excluding Accrued Interest [line_item]
+│   │   │   │   concept: us-gaap:FinancingReceivableExcludingAccruedInterestAfterAllowanceForCreditLoss
+│   │   │   └── Notes Receivable Net [line_item]
+│   │   │       concept: us-gaap:NotesReceivableNet
+│   │   ├── Gross Loans and Carrying-Value Adjustments [group]
+│   │   │   ├── Gross Loan Measurements [group]
+│   │   │   │   ├── Notes Receivable Gross [line_item]
+│   │   │   │   │   concept: us-gaap:NotesReceivableGross
+│   │   │   │   ├── Loans before Credit Allowance, Excluding Accrued Interest [line_item]
+│   │   │   │   │   concept: us-gaap:FinancingReceivableExcludingAccruedInterestBeforeAllowanceForCreditLoss
+│   │   │   │   ├── Loans before Allowance, Fees and Loans in Process, Excluding Interest [line_item]
+│   │   │   │   │   concept: us-gaap:FinancingReceivableExcludingAccruedInterestBeforeAllowanceForCreditLossFeeAndLoanInProcess
+│   │   │   │   └── Loans before Credit Allowance and Fees [line_item]
+│   │   │   │       concept: us-gaap:FinancingReceivableBeforeAllowanceForCreditLossAndFee
+│   │   │   ├── Loan Product Details [group]
+│   │   │   │   └── Real Estate Mortgage Loans [line_item] *
+│   │   │   │       concept: us-gaap:MortgageLoansOnRealEstate
+│   │   │   └── Loan Carrying Adjustments [group]
+│   │   │       ├── Unamortized Loan Commitment / Origination Fees and Premiums / Discounts [line_item]
+│   │   │       │   concept: us-gaap:FinancingReceivableUnamortizedLoanCommitmentOriginationFeeAndPremiumDiscount
+│   │   │       ├── Unamortized Loan Fees / Costs [line_item]
+│   │   │       │   concept: us-gaap:FinancingReceivableUnamortizedLoanFeeCost
+│   │   │       └── Unamortized Loan Purchase Premium / Discount [line_item] *
+│   │   │           concept: us-gaap:FinancingReceivableUnamortizedPurchasePremiumDiscount
+│   │   └── Loan Credit Loss Allowances [group]
+│   │       ├── Loan Credit Loss Allowance [line_item]
+│   │       │   concept: us-gaap:FinancingReceivableAllowanceForCreditLosses
+│   │       └── Loan Credit Loss Allowance, Excluding Accrued Interest [line_item]
+│   │           concept: us-gaap:FinancingReceivableAllowanceForCreditLossExcludingAccruedInterest
+│   └── Other Asset Categories [group]
+│       ├── Loans Held for Sale [group]
+│       │   ├── Loans Receivable Held For Sale Net Not Part Of Disposal Group [line_item]
+│       │   │   concept: us-gaap:LoansReceivableHeldForSaleNetNotPartOfDisposalGroup
+│       │   └── Loans Receivable Held For Sale Amount [line_item]
+│       │       concept: us-gaap:LoansReceivableHeldForSaleAmount
+│       ├── Investments in Unconsolidated Entities [group]
+│       │   └── Equity Method Investments [line_item]
+│       │       concept: us-gaap:EquityMethodInvestments
+│       ├── Real Estate and Foreclosed Assets [group]
+│       │   ├── Other Real Estate [line_item]
+│       │   │   concept: us-gaap:OtherRealEstate
+│       │   ├── Other Real Estate And Foreclosed Assets [line_item]
+│       │   │   concept: us-gaap:OtherRealEstateAndForeclosedAssets
+│       │   ├── Real Estate Acquired Through Foreclosure [line_item]
+│       │   │   concept: us-gaap:RealEstateAcquiredThroughForeclosure
+│       │   └── Foreclosed Assets [line_item]
+│       │       concept: us-gaap:ForeclosedAssets
+│       ├── Property, Equipment and Lease Assets [group]
+│       │   ├── Property Plant And Equipment Net [line_item]
+│       │   │   concept: us-gaap:PropertyPlantAndEquipmentNet
+│       │   ├── Operating Lease Right Of Use Asset [line_item]
+│       │   │   concept: us-gaap:OperatingLeaseRightOfUseAsset
+│       │   └── Finance Lease Right Of Use Asset [line_item]
+│       │       concept: us-gaap:FinanceLeaseRightOfUseAsset
+│       ├── Interest and Other Receivables [group]
+│       │   ├── Interest Receivable [line_item]
+│       │   │   concept: us-gaap:InterestReceivable
+│       │   ├── Accrued Investment Income Receivable [line_item]
+│       │   │   concept: us-gaap:AccruedInvestmentIncomeReceivable
+│       │   ├── Accounts Receivable Net [line_item]
+│       │   │   concept: us-gaap:AccountsReceivableNet
+│       │   └── Allowance For Doubtful Accounts Receivable [line_item]
+│       │       concept: us-gaap:AllowanceForDoubtfulAccountsReceivable
+│       ├── Deferred Tax Assets [group]
+│       │   ├── Deferred Income Tax Assets Net [line_item]
+│       │   │   concept: us-gaap:DeferredIncomeTaxAssetsNet
+│       │   └── Deferred Tax Asset Valuation Allowance [line_item] *
+│       │       concept: us-gaap:DeferredTaxAssetsValuationAllowance
+│       ├── Goodwill and Intangible Assets [group]
+│       │   ├── Goodwill [line_item]
+│       │   │   concept: us-gaap:Goodwill
+│       │   ├── Finite Lived Intangible Assets Net [line_item]
+│       │   │   concept: us-gaap:FiniteLivedIntangibleAssetsNet
+│       │   ├── Intangible Assets Net Excluding Goodwill [line_item]
+│       │   │   concept: us-gaap:IntangibleAssetsNetExcludingGoodwill
+│       │   ├── Other Intangible Assets Net [line_item]
+│       │   │   concept: us-gaap:OtherIntangibleAssetsNet
+│       │   └── Intangible Assets Net Including Goodwill [line_item]
+│       │       concept: us-gaap:IntangibleAssetsNetIncludingGoodwill
+│       ├── Servicing Assets [group]
+│       │   ├── Servicing Asset [line_item]
+│       │   │   concept: us-gaap:ServicingAsset
+│       │   ├── Servicing Asset At Fair Value Amount [line_item]
+│       │   │   concept: us-gaap:ServicingAssetAtFairValueAmount
+│       │   └── Servicing Asset At Amortized Value [line_item]
+│       │       concept: us-gaap:ServicingAssetAtAmortizedValue
+│       ├── Bank-Owned Life Insurance [group]
+│       │   ├── Bank Owned Life Insurance [line_item]
+│       │   │   concept: us-gaap:BankOwnedLifeInsurance
+│       │   └── Cash Surrender Value Of Life Insurance [line_item]
+│       │       concept: us-gaap:CashSurrenderValueOfLifeInsurance
+│       ├── Derivative Assets [group]
+│       │   └── Derivative Assets [line_item]
+│       │       concept: us-gaap:DerivativeAssets
+│       ├── Other Assets and Prepayments [group]
+│       │   ├── Other Assets [line_item]
+│       │   │   concept: us-gaap:OtherAssets
+│       │   ├── Prepaid Expense Current And Noncurrent [line_item]
+│       │   │   concept: us-gaap:PrepaidExpenseCurrentAndNoncurrent
+│       │   ├── Interest Receivable And Other Assets [line_item] *
+│       │   │   concept: us-gaap:InterestReceivableAndOtherAssets
+│       │   ├── Income Tax Receivable [line_item]
+│       │   │   concept: us-gaap:IncomeTaxReceivable
+│       │   └── Prepaid Expenses and Other Assets [line_item] *
+│       │       concept: us-gaap:PrepaidExpenseAndOtherAssets
+│       └── Assets Held for Sale and Disposal Groups [group]
+│           ├── Assets Of Disposal Group Including Discontinued Operation [line_item]
+│           │   concept: us-gaap:AssetsOfDisposalGroupIncludingDiscontinuedOperation
+│           └── Assets Held For Sale Not Part Of Disposal Group [line_item]
+│               concept: us-gaap:AssetsHeldForSaleNotPartOfDisposalGroup
+├── Total Liabilities [total]
+│   concept: us-gaap:Liabilities
+│   ├── Total Deposits [total]
+│   │   concept: us-gaap:Deposits
+│   │   ├── Interest-Bearing and Noninterest-Bearing Deposits [group]
+│   │   │   ├── Interest Bearing Deposit Liabilities [line_item]
+│   │   │   │   concept: us-gaap:InterestBearingDepositLiabilities
+│   │   │   ├── Noninterest Bearing Deposit Liabilities [line_item]
+│   │   │   │   concept: us-gaap:NoninterestBearingDepositLiabilities
+│   │   │   ├── Interest Bearing Deposit Liabilities Domestic [line_item]
+│   │   │   │   concept: us-gaap:InterestBearingDepositLiabilitiesDomestic
+│   │   │   ├── Noninterest Bearing Deposit Liabilities Domestic [line_item]
+│   │   │   │   concept: us-gaap:NoninterestBearingDepositLiabilitiesDomestic
+│   │   │   └── Domestic Deposits [line_item] *
+│   │   │       concept: us-gaap:DepositsDomestic
+│   │   ├── Demand and Checking Deposits [group]
+│   │   │   ├── Demand Deposit Accounts [line_item]
+│   │   │   │   concept: us-gaap:DemandDepositAccounts
+│   │   │   ├── Interest Bearing Domestic Deposit Demand [line_item]
+│   │   │   │   concept: us-gaap:InterestBearingDomesticDepositDemand
+│   │   │   ├── Interest Bearing Domestic Deposit Checking [line_item]
+│   │   │   │   concept: us-gaap:InterestBearingDomesticDepositChecking
+│   │   │   └── NOW Deposits [line_item]
+│   │   │       concept: us-gaap:DepositsNegotiableOrderOfWithdrawalNOW
+│   │   ├── Savings, Money Market and Time Deposits [group]
+│   │   │   ├── Deposits Savings Deposits [line_item]
+│   │   │   │   concept: us-gaap:DepositsSavingsDeposits
+│   │   │   ├── Deposits Money Market Deposits [line_item]
+│   │   │   │   concept: us-gaap:DepositsMoneyMarketDeposits
+│   │   │   ├── Money-Market and NOW Deposits [line_item]
+│   │   │   │   concept: us-gaap:DepositsMoneyMarketDepositsAndNegotiableOrderOfWithdrawalNOW
+│   │   │   ├── Time Deposits [line_item]
+│   │   │   │   concept: us-gaap:TimeDeposits
+│   │   │   ├── Domestic Interest-Bearing Certificates of Deposit [line_item]
+│   │   │   │   concept: us-gaap:InterestBearingDomesticDepositCertificatesOfDeposits
+│   │   │   └── Other Domestic Interest-Bearing Time Deposits [line_item]
+│   │   │       concept: us-gaap:InterestBearingDomesticDepositOtherTimeDeposit
+│   │   └── Deposit Size and Brokered Deposit Details [group]
+│   │       ├── Time Deposits of $100,000 or More [line_item]
+│   │       │   concept: us-gaap:TimeDeposits100000OrMore
+│   │       ├── Time Deposits below $100,000 [line_item]
+│   │       │   concept: us-gaap:TimeDepositsLessThan100000
+│   │       ├── Time Deposits At Or Above FDIC Insurance Limit [line_item]
+│   │       │   concept: us-gaap:TimeDepositsAtOrAboveFDICInsuranceLimit
+│   │       ├── Domestic Interest-Bearing Brokered Deposits [line_item]
+│   │       │   concept: us-gaap:InterestBearingDomesticDepositBrokered
+│   │       └── Uninsured US Time Deposits above Insurance Limit [line_item] *
+│   │           concept: us-gaap:TimeDepositLiabilityAboveUsInsuranceLimit
+│   ├── Borrowings [group]
+│   │   ├── Short-Term Borrowings [group]
+│   │   │   ├── Short Term Borrowings [line_item]
+│   │   │   │   concept: us-gaap:ShortTermBorrowings
+│   │   │   ├── Other Short Term Borrowings [line_item]
+│   │   │   │   concept: us-gaap:OtherShortTermBorrowings
+│   │   │   └── Federal Funds Purchased [line_item]
+│   │   │       concept: us-gaap:FederalFundsPurchased
+│   │   ├── Long-Term Debt [group]
+│   │   │   ├── Long Term Debt [line_item]
+│   │   │   │   concept: us-gaap:LongTermDebt
+│   │   │   └── Other Long Term Debt [line_item]
+│   │   │       concept: us-gaap:OtherLongTermDebt
+│   │   ├── Federal Home Loan Bank Advances [group]
+│   │   │   ├── Advances From Federal Home Loan Banks [line_item]
+│   │   │   │   concept: us-gaap:AdvancesFromFederalHomeLoanBanks
+│   │   │   └── Federal Home Loan Bank Advances Long Term [line_item]
+│   │   │       concept: us-gaap:FederalHomeLoanBankAdvancesLongTerm
+│   │   ├── Subordinated Debt [group]
+│   │   │   ├── Subordinated Debt [line_item]
+│   │   │   │   concept: us-gaap:SubordinatedDebt
+│   │   │   └── Junior Subordinated Notes [line_item]
+│   │   │       concept: us-gaap:JuniorSubordinatedNotes
+│   │   ├── Other Debt and Combined Borrowing Balances [group]
+│   │   │   ├── Other Borrowings [line_item]
+│   │   │   │   concept: us-gaap:OtherBorrowings
+│   │   │   ├── Secured Debt [line_item]
+│   │   │   │   concept: us-gaap:SecuredDebt
+│   │   │   ├── Debt Longterm And Shortterm Combined Amount [line_item]
+│   │   │   │   concept: us-gaap:DebtLongtermAndShorttermCombinedAmount
+│   │   │   ├── Debt And Capital Lease Obligations [line_item] *
+│   │   │   │   concept: us-gaap:DebtAndCapitalLeaseObligations
+│   │   │   └── Drawn Line-of-Credit Obligations [line_item]
+│   │   │       concept: us-gaap:LineOfCredit
+│   │   ├── Lease Liabilities [group]
+│   │   │   ├── Operating Lease Liability [line_item]
+│   │   │   │   concept: us-gaap:OperatingLeaseLiability
+│   │   │   └── Finance Lease Liability [line_item]
+│   │   │       concept: us-gaap:FinanceLeaseLiability
+│   │   └── Repurchase Agreement Borrowings [group]
+│   │       └── Securities Sold Under Agreements To Repurchase [line_item]
+│   │           concept: us-gaap:SecuritiesSoldUnderAgreementsToRepurchase
+│   ├── Provisions and Other Liabilities [group]
+│   │   ├── Off Balance Sheet Credit Loss Liability [line_item]
+│   │   │   concept: us-gaap:OffBalanceSheetCreditLossLiability
+│   │   ├── Pension and Other Postretirement Plan Liabilities [line_item]
+│   │   │   concept: us-gaap:PensionAndOtherPostretirementDefinedBenefitPlansLiabilitiesCurrentAndNoncurrent
+│   │   ├── Deferred Compensation Liability Current And Noncurrent [line_item]
+│   │   │   concept: us-gaap:DeferredCompensationLiabilityCurrentAndNoncurrent
+│   │   ├── Current Deferred Compensation Liability [line_item] *
+│   │   │   concept: us-gaap:DeferredCompensationLiabilityCurrent
+│   │   └── Defined Benefit Pension Liabilities [line_item] *
+│   │       concept: us-gaap:DefinedBenefitPensionPlanCurrentAndNoncurrentLiabilities
+│   ├── Deferred Tax Liabilities [group]
+│   │   └── Deferred Income Tax Liabilities Net [line_item]
+│   │       concept: us-gaap:DeferredIncomeTaxLiabilitiesNet
+│   ├── Other Liabilities [group]
+│   │   ├── Other Liabilities [line_item]
+│   │   │   concept: us-gaap:OtherLiabilities
+│   │   ├── Accrued Liabilities And Other Liabilities [line_item]
+│   │   │   concept: us-gaap:AccruedLiabilitiesAndOtherLiabilities
+│   │   ├── Accounts Payable And Accrued Liabilities Current And Noncurrent [line_item]
+│   │   │   concept: us-gaap:AccountsPayableAndAccruedLiabilitiesCurrentAndNoncurrent
+│   │   ├── Interest Payable Current And Noncurrent [line_item]
+│   │   │   concept: us-gaap:InterestPayableCurrentAndNoncurrent
+│   │   ├── Borrower Advances for Taxes and Insurance [line_item]
+│   │   │   concept: us-gaap:AdvancePaymentsByBorrowersForTaxesAndInsurance
+│   │   └── Accounts Payable and Other Accrued Liabilities [line_item]
+│   │       concept: us-gaap:AccountsPayableAndOtherAccruedLiabilities
+│   ├── Derivative Liabilities [group]
+│   │   └── Derivative Liabilities [line_item]
+│   │       concept: us-gaap:DerivativeLiabilities
+│   └── Disposal Group Liabilities [group]
+│       └── Liabilities Of Disposal Group Including Discontinued Operation [line_item]
+│           concept: us-gaap:LiabilitiesOfDisposalGroupIncludingDiscontinuedOperation
+├── Total Equity Including Noncontrolling Interest [total]
+│   concept: us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
+│   ├── Shareholders' Equity [total]
+│   │   concept: us-gaap:StockholdersEquity
+│   │   ├── Common Equity [group]
+│   │   │   ├── Common Stock [group]
+│   │   │   │   ├── Common Stock Value [line_item]
+│   │   │   │   │   concept: us-gaap:CommonStockValue
+│   │   │   │   └── Common Stock Value Outstanding [line_item]
+│   │   │   │       concept: us-gaap:CommonStockValueOutstanding
+│   │   │   ├── Additional Paid-in Capital [group]
+│   │   │   │   ├── Additional Paid In Capital [line_item]
+│   │   │   │   │   concept: us-gaap:AdditionalPaidInCapital
+│   │   │   │   └── Additional Paid In Capital Common Stock [line_item]
+│   │   │   │       concept: us-gaap:AdditionalPaidInCapitalCommonStock
+│   │   │   ├── Retained Earnings [group]
+│   │   │   │   └── Retained Earnings Accumulated Deficit [line_item]
+│   │   │   │       concept: us-gaap:RetainedEarningsAccumulatedDeficit
+│   │   │   ├── Accumulated Other Comprehensive Income (Loss) [total]
+│   │   │   │   concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax
+│   │   │   │   ├── AOCI — AFS Securities, Net of Tax [line_item]
+│   │   │   │   │   concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax
+│   │   │   │   └── AOCI — Pension and Postretirement Plans, Net of Tax [line_item]
+│   │   │   │       concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossDefinedBenefitPensionAndOtherPostretirementPlansNetOfTax
+│   │   │   ├── Treasury Stock [group]
+│   │   │   │   ├── Treasury Stock Value [line_item]
+│   │   │   │   │   concept: us-gaap:TreasuryStockValue
+│   │   │   │   └── Treasury Stock Common Value [line_item]
+│   │   │   │       concept: us-gaap:TreasuryStockCommonValue
+│   │   │   └── ESOP, Trust Stock and Deferred Compensation Equity [group]
+│   │   │       ├── Unearned ESOP Shares — Amount [line_item] *
+│   │   │       │   concept: us-gaap:UnearnedESOPShares
+│   │   │       ├── Common Stock Held in Trust [line_item] *
+│   │   │       │   concept: us-gaap:CommonStockHeldInTrust
+│   │   │       └── Unearned Deferred Compensation Equity [line_item] *
+│   │   │           concept: us-gaap:DeferredCompensationEquity
+│   │   └── Preferred Stock, Carrying Value [group]
+│   │       ├── Preferred Stock Value [line_item] *
+│   │       │   concept: us-gaap:PreferredStockValue
+│   │       └── Preferred Stock Value Outstanding [line_item] *
+│   │           concept: us-gaap:PreferredStockValueOutstanding
+│   └── Minority Interest [line_item]
+│       concept: us-gaap:MinorityInterest
+├── Liabilities And Stockholders Equity [total]
+│   concept: us-gaap:LiabilitiesAndStockholdersEquity
+└── Supplementary Disclosures [group]
+    ├── Fair Value Disclosures [group]
+    │   ├── Held To Maturity Securities Fair Value [line_item] *
+    │   │   concept: us-gaap:HeldToMaturitySecuritiesFairValue
+    │   ├── Loans Held For Sale Fair Value Disclosure [line_item] *
+    │   │   concept: us-gaap:LoansHeldForSaleFairValueDisclosure
+    │   ├── Loans Receivable Fair Value Disclosure [line_item] *
+    │   │   concept: us-gaap:LoansReceivableFairValueDisclosure
+    │   └── AFS Mortgage-Backed Securities — Fair Value Disclosure [line_item] *
+    │       concept: us-gaap:MortgageBackedSecuritiesAvailableForSaleFairValueDisclosure
+    ├── Securities Amortized Cost, Allowances and Restricted Balances [group]
+    │   ├── AFS Amortized-Cost Measurements [group]
+    │   │   ├── Available For Sale Debt Securities Amortized Cost Basis [line_item] *
+    │   │   │   concept: us-gaap:AvailableForSaleDebtSecuritiesAmortizedCostBasis
+    │   │   ├── AFS Debt — Cost before Allowance, Excluding Accrued Interest [line_item] *
+    │   │   │   concept: us-gaap:DebtSecuritiesAvailableForSaleAmortizedCostExcludingAccruedInterestBeforeAllowanceForCreditLoss
+    │   │   ├── AFS Debt — Cost after Allowance, Excluding Accrued Interest [line_item] *
+    │   │   │   concept: us-gaap:DebtSecuritiesAvailableForSaleAmortizedCostExcludingAccruedInterestAfterAllowanceForCreditLoss
+    │   │   └── AFS Debt Securities — Amortized Cost after Allowance [line_item] *
+    │   │       concept: us-gaap:DebtSecuritiesAvailableForSaleAmortizedCostAfterAllowanceForCreditLoss
+    │   ├── AFS Credit Loss Allowances [group]
+    │   │   ├── Debt Securities Available For Sale Allowance For Credit Loss [line_item] *
+    │   │   │   concept: us-gaap:DebtSecuritiesAvailableForSaleAllowanceForCreditLoss
+    │   │   └── AFS Debt — Credit Allowance, Excluding Accrued Interest [line_item] *
+    │   │       concept: us-gaap:DebtSecuritiesAvailableForSaleAmortizedCostAllowanceForCreditLossExcludingAccruedInterest
+    │   ├── HTM Before-Allowance Measurements [group]
+    │   │   └── HTM Debt before Allowance, Excluding Accrued Interest [line_item] *
+    │   │       concept: us-gaap:DebtSecuritiesHeldToMaturityExcludingAccruedInterestBeforeAllowanceForCreditLoss
+    │   └── HTM Credit Loss Allowances [group]
+    │       ├── Debt Securities Held To Maturity Allowance For Credit Loss [line_item] *
+    │       │   concept: us-gaap:DebtSecuritiesHeldToMaturityAllowanceForCreditLoss
+    │       └── HTM Debt — Credit Allowance, Excluding Accrued Interest [line_item] *
+    │           concept: us-gaap:DebtSecuritiesHeldToMaturityAllowanceForCreditLossExcludingAccruedInterest
+    ├── Combined Cash and Federal Funds Sold [group]
+    │   └── Cash Cash Equivalents And Federal Funds Sold [line_item] *
+    │       concept: us-gaap:CashCashEquivalentsAndFederalFundsSold
+    ├── Asset Gross Balances and Accumulated Depreciation [group]
+    │   ├── PP&E — Accumulated Depreciation, Depletion and Amortization [line_item] *
+    │   │   concept: us-gaap:AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment
+    │   ├── Core-Deposit Intangibles before Amortization [line_item] *
+    │   │   concept: us-gaap:FiniteLivedCoreDepositsGross
+    │   └── Accumulated Amortization of Finite-Lived Intangibles [line_item] *
+    │       concept: us-gaap:FiniteLivedIntangibleAssetsAccumulatedAmortization
+    ├── Debt Terms, Branch Advances and Financing Costs [group]
+    │   ├── FHLB Advances by Branch [line_item] *
+    │   │   concept: us-gaap:FederalHomeLoanBankAdvancesBranchOfFHLBBankAmountOfAdvancesByBranch
+    │   ├── FHLB Advances — Contractual Maturities within One Year [line_item] *
+    │   │   concept: us-gaap:FederalHomeLoanBankAdvancesMaturitiesSummaryDueWithinOneYearOfBalanceSheetDate
+    │   └── Collateral Pledged for FHLB Advances [line_item] *
+    │       concept: us-gaap:FederalHomeLoanBankAdvancesGeneralDebtObligationsDisclosuresCollateralPledged1
+    ├── Share Counts, Par Values and Preferred Stock Terms [group]
+    │   ├── Equity and ESOP Share Counts [group]
+    │   │   ├── Common Stock Shares Authorized [line_item] *
+    │   │   │   concept: us-gaap:CommonStockSharesAuthorized
+    │   │   ├── Common Stock Shares Issued [line_item] *
+    │   │   │   concept: us-gaap:CommonStockSharesIssued
+    │   │   ├── Common Stock Shares Outstanding [line_item] *
+    │   │   │   concept: us-gaap:CommonStockSharesOutstanding
+    │   │   ├── Preferred Stock Shares Authorized [line_item] *
+    │   │   │   concept: us-gaap:PreferredStockSharesAuthorized
+    │   │   ├── Preferred Stock Shares Issued [line_item] *
+    │   │   │   concept: us-gaap:PreferredStockSharesIssued
+    │   │   ├── Preferred Stock Shares Outstanding [line_item] *
+    │   │   │   concept: us-gaap:PreferredStockSharesOutstanding
+    │   │   ├── Treasury Stock Common Shares [line_item] *
+    │   │   │   concept: us-gaap:TreasuryStockCommonShares
+    │   │   └── ESOP Suspense Shares [line_item] *
+    │   │       concept: us-gaap:EmployeeStockOwnershipPlanESOPNumberOfSuspenseShares
+    │   └── Equity Per-Share Terms [group]
+    │       ├── Common Stock Par Or Stated Value Per Share [line_item] *
+    │       │   concept: us-gaap:CommonStockParOrStatedValuePerShare
+    │       ├── Preferred Stock Par Or Stated Value Per Share [line_item] *
+    │       │   concept: us-gaap:PreferredStockParOrStatedValuePerShare
+    │       ├── Preferred Stock Liquidation Preference [line_item] *
+    │       │   concept: us-gaap:PreferredStockLiquidationPreference
+    │       └── Common Stock No Par Value [line_item] *
+    │           concept: us-gaap:CommonStockNoParValue
+    ├── Commitments and Contingencies [group]
+    │   └── Commitments And Contingencies [line_item] *
+    │       concept: us-gaap:CommitmentsAndContingencies
+    └── Share-Based Compensation Disclosures [group]
+        └── Nonvested Non-Option Equity Award Shares [line_item] *
+            concept: us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber

@@ -1,0 +1,3563 @@
+NORMALIZATION MAPS
+==================
+
+Company CIK/SIC -> industry profile -> archetype concept/node -> API field
+Company overrides take precedence over SIC assignments.
+Classification is separate from source selection, calculations and approval.
+Tree nesting never means automatically sum all children.
+
+Industry trees:
+  archetypes/banks/trees/bs.txt
+  archetypes/banks/trees/is.txt
+  archetypes/banks/trees/cf.txt
+  archetypes/electric_utilities/trees/bs.txt
+  archetypes/electric_utilities/trees/is.txt
+  archetypes/electric_utilities/trees/cf.txt
+  archetypes/general_corporate/trees/bs.txt
+  archetypes/general_corporate/trees/is.txt
+  archetypes/general_corporate/trees/cf.txt
+  archetypes/life_insurance/trees/bs.txt
+  archetypes/life_insurance/trees/is.txt
+  archetypes/life_insurance/trees/cf.txt
+  archetypes/oil_and_gas_extraction/trees/bs.txt
+  archetypes/oil_and_gas_extraction/trees/is.txt
+  archetypes/oil_and_gas_extraction/trees/cf.txt
+  archetypes/personal_credit_institutions/trees/bs.txt
+  archetypes/personal_credit_institutions/trees/is.txt
+  archetypes/personal_credit_institutions/trees/cf.txt
+  archetypes/reit/trees/bs.txt
+  archetypes/reit/trees/is.txt
+  archetypes/reit/trees/cf.txt
+  archetypes/savings_institutions/trees/bs.txt
+  archetypes/savings_institutions/trees/is.txt
+  archetypes/savings_institutions/trees/cf.txt
+
+API FIELDS AND RULES
+====================
+
+IS
+  revenue: Total consolidated revenue under the approved industry-specific presentation. For banks and applicable lenders, revenue is measured as net interest income before credit-loss provisions plus total noninterest income.
+    banks:
+      1. banks_reported_revenue [direct]
+         concept: us-gaap:Revenues
+      2. banks_calculated_revenue [calculation]
+      3. banks_combined_interest_revenue [calculation]
+    electric_utilities:
+      1. electric_utilities_reported_revenue [direct]
+         concept: us-gaap:Revenues
+      2. electric_utilities_reported_operating_revenue [direct]
+         concept: us-gaap:RegulatedAndUnregulatedOperatingRevenue
+      3. electric_utilities_calculated_operating_revenue [calculation]
+      4. electric_utilities_customer_revenue_excluding_tax [direct]
+         concept: us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
+      5. electric_utilities_customer_revenue_including_tax [direct]
+         concept: us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax
+      6. electric_utilities_legacy_net_sales [direct]
+         concept: us-gaap:SalesRevenueNet
+      7. electric_utilities_electric_revenue [direct]
+         concept: us-gaap:ElectricUtilityRevenue
+    general_corporate:
+      1. general_corporate_reported_revenue [direct]
+         concept: us-gaap:Revenues
+      2. general_corporate_customer_revenue_excluding_tax [direct]
+         concept: us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
+      3. general_corporate_customer_revenue_including_tax [direct]
+         concept: us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax
+      4. general_corporate_legacy_net_sales [direct]
+         concept: us-gaap:SalesRevenueNet
+    life_insurance:
+      1. life_insurance_reported_revenue [direct]
+         concept: us-gaap:Revenues
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_reported_revenue [direct]
+         concept: us-gaap:Revenues
+      2. oil_and_gas_extraction_customer_revenue_excluding_tax [direct]
+         concept: us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
+      3. oil_and_gas_extraction_calculated_revenue [calculation]
+      4. oil_and_gas_extraction_customer_revenue_including_tax [direct]
+         concept: us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax
+      5. oil_and_gas_extraction_legacy_net_sales [direct]
+         concept: us-gaap:SalesRevenueNet
+    personal_credit_institutions:
+      1. personal_credit_institutions_reported_net_revenue [direct]
+         concept: us-gaap:RevenuesNetOfInterestExpense
+      2. personal_credit_institutions_reported_revenue [direct]
+         concept: us-gaap:Revenues
+      3. personal_credit_institutions_calculated_revenue [calculation]
+      4. personal_credit_institutions_combined_interest_revenue [calculation]
+    reit:
+      1. reit_reported_revenue [direct]
+         concept: us-gaap:Revenues
+      2. reit_customer_revenue_excluding_tax [direct]
+         concept: us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
+      3. reit_customer_revenue_including_tax [direct]
+         concept: us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax
+      4. reit_legacy_net_sales [direct]
+         concept: us-gaap:SalesRevenueNet
+    savings_institutions:
+      1. savings_institutions_reported_revenue [direct]
+         concept: us-gaap:Revenues
+      2. savings_institutions_calculated_revenue [calculation]
+      3. savings_institutions_combined_interest_revenue [calculation]
+  costOfRevenue: Total cost of revenue corresponding to the full scope of the selected consolidated revenue, on the issuer-approved cost-of-sales basis. Excludes selling, general and administrative expenses and other costs outside that basis; depreciation, depletion and amortization treatment must be explicit.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_cost_of_revenue [direct]
+         concept: us-gaap:CostOfRevenue
+      2. electric_utilities_cost_of_goods_and_services_sold [direct]
+         concept: us-gaap:CostOfGoodsAndServicesSold
+    general_corporate:
+      1. general_corporate_cost_of_revenue [direct]
+         concept: us-gaap:CostOfRevenue
+      2. general_corporate_cost_of_goods_and_services_sold [direct]
+         concept: us-gaap:CostOfGoodsAndServicesSold
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_cost_of_revenue [direct]
+         concept: us-gaap:CostOfRevenue
+      2. oil_and_gas_extraction_cost_of_goods_and_services_sold [direct]
+         concept: us-gaap:CostOfGoodsAndServicesSold
+    personal_credit_institutions:
+      1. personal_credit_institutions_cost_of_goods_and_services_sold [direct]
+         concept: us-gaap:CostOfGoodsAndServicesSold
+    reit:
+      1. reit_cost_of_revenue [direct]
+         concept: us-gaap:CostOfRevenue
+      2. reit_cost_of_goods_and_services_sold [direct]
+         concept: us-gaap:CostOfGoodsAndServicesSold
+    savings_institutions:
+      No enabled structural candidate rules
+  grossProfit: Consolidated gross profit or loss on the approved issuer cost-of-sales basis. Prefer a matching reported gross-profit total; otherwise subtract resolved costOfRevenue from resolved revenue only when scope and accounting basis are compatible.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_reported_gross_profit [direct]
+         concept: us-gaap:GrossProfit
+      2. electric_utilities_calculated_gross_profit [calculation]
+         expression: revenue - costOfRevenue
+    general_corporate:
+      1. general_corporate_reported_gross_profit [direct]
+         concept: us-gaap:GrossProfit
+      2. general_corporate_calculated_gross_profit [calculation]
+         expression: revenue - costOfRevenue
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_reported_gross_profit [direct]
+         concept: us-gaap:GrossProfit
+      2. oil_and_gas_extraction_calculated_gross_profit [calculation]
+         expression: revenue - costOfRevenue
+    personal_credit_institutions:
+      1. personal_credit_institutions_reported_gross_profit [direct]
+         concept: us-gaap:GrossProfit
+      2. personal_credit_institutions_calculated_gross_profit [calculation]
+         expression: revenue - costOfRevenue
+    reit:
+      1. reit_reported_gross_profit [direct]
+         concept: us-gaap:GrossProfit
+      2. reit_calculated_gross_profit [calculation]
+         expression: revenue - costOfRevenue
+    savings_institutions:
+      No enabled structural candidate rules
+  researchAndDevelopmentExpenses: Consolidated research and development expense recognized in earnings for the period. Excludes capitalized development expenditures and amounts outside the approved R&D scope; acquired in-process R&D treatment must be explicit.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_reported_research_and_development [direct]
+         concept: us-gaap:ResearchAndDevelopmentExpense
+    general_corporate:
+      1. general_corporate_reported_research_and_development [direct]
+         concept: us-gaap:ResearchAndDevelopmentExpense
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_reported_research_and_development [direct]
+         concept: us-gaap:ResearchAndDevelopmentExpense
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  generalAndAdministrativeExpenses: Total consolidated general and administrative expense recognized in earnings for the period, excluding selling and marketing expense. A combined SG&A total or an other-G&A residual is not interchangeable with this measure.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_reported_general_and_administrative [direct]
+         concept: us-gaap:GeneralAndAdministrativeExpense
+    general_corporate:
+      1. general_corporate_reported_general_and_administrative [direct]
+         concept: us-gaap:GeneralAndAdministrativeExpense
+    life_insurance:
+      1. life_insurance_reported_general_and_administrative [direct]
+         concept: us-gaap:GeneralAndAdministrativeExpense
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_reported_general_and_administrative [direct]
+         concept: us-gaap:GeneralAndAdministrativeExpense
+    personal_credit_institutions:
+      1. personal_credit_institutions_reported_general_and_administrative [direct]
+         concept: us-gaap:GeneralAndAdministrativeExpense
+    reit:
+      1. reit_reported_general_and_administrative [direct]
+         concept: us-gaap:GeneralAndAdministrativeExpense
+    savings_institutions:
+      No enabled structural candidate rules
+  sellingAndMarketingExpenses: Total consolidated selling and marketing expense recognized in earnings for the period, excluding general and administrative expense. Advertising-only, marketing-only and combined SG&A measures are not automatically equivalent to this total.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      No enabled structural candidate rules
+    general_corporate:
+      1. general_corporate_reported_selling_and_marketing [direct]
+         concept: us-gaap:SellingAndMarketingExpense
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      No enabled structural candidate rules
+    personal_credit_institutions:
+      1. personal_credit_institutions_reported_selling_and_marketing [direct]
+         concept: us-gaap:SellingAndMarketingExpense
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  sellingGeneralAndAdministrativeExpenses: Total consolidated selling, general and administrative expense recognized in earnings for the period. Prefer the reported combined total; otherwise sum compatible resolved G&A and selling/marketing totals only when they fully cover SG&A without overlap.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_reported_selling_general_and_administrative [direct]
+         concept: us-gaap:SellingGeneralAndAdministrativeExpense
+    general_corporate:
+      1. general_corporate_reported_selling_general_and_administrative [direct]
+         concept: us-gaap:SellingGeneralAndAdministrativeExpense
+      2. general_corporate_calculated_selling_general_and_administrative [calculation]
+         expression: generalAndAdministrativeExpenses + sellingAndMarketingExpenses
+    life_insurance:
+      1. life_insurance_reported_selling_general_and_administrative [direct]
+         concept: us-gaap:SellingGeneralAndAdministrativeExpense
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_reported_selling_general_and_administrative [direct]
+         concept: us-gaap:SellingGeneralAndAdministrativeExpense
+    personal_credit_institutions:
+      1. personal_credit_institutions_calculated_selling_general_and_administrative [calculation]
+         expression: generalAndAdministrativeExpenses + sellingAndMarketingExpenses
+    reit:
+      1. reit_reported_selling_general_and_administrative [direct]
+         concept: us-gaap:SellingGeneralAndAdministrativeExpense
+    savings_institutions:
+      1. savings_institutions_reported_selling_general_and_administrative [direct]
+         concept: us-gaap:SellingGeneralAndAdministrativeExpense
+  otherExpenses: Other operating expense excluding cost of revenue, R&D and SG&A.
+    banks:
+      1. banks_otherExpenses_reported_1 [direct]
+         concept: us-gaap:OtherCostAndExpenseOperating
+    electric_utilities:
+      1. electric_utilities_otherExpenses_reported_1 [direct]
+         concept: us-gaap:OtherCostAndExpenseOperating
+    general_corporate:
+      1. general_corporate_otherExpenses_reported_1 [direct]
+         concept: us-gaap:OtherCostAndExpenseOperating
+    life_insurance:
+      1. life_insurance_otherExpenses_reported_1 [direct]
+         concept: us-gaap:OtherCostAndExpenseOperating
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_otherExpenses_reported_1 [direct]
+         concept: us-gaap:OtherCostAndExpenseOperating
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_otherExpenses_reported_1 [direct]
+         concept: us-gaap:OtherCostAndExpenseOperating
+    savings_institutions:
+      1. savings_institutions_otherExpenses_reported_1 [direct]
+         concept: us-gaap:OtherCostAndExpenseOperating
+  operatingExpenses: Operating expenses excluding cost of revenue.
+    banks:
+      1. banks_operatingExpenses_reported_1 [direct]
+         concept: us-gaap:OperatingExpenses
+    electric_utilities:
+      1. electric_utilities_operatingExpenses_reported_1 [direct]
+         concept: us-gaap:OperatingExpenses
+    general_corporate:
+      1. general_corporate_operatingExpenses_reported_1 [direct]
+         concept: us-gaap:OperatingExpenses
+    life_insurance:
+      1. life_insurance_operatingExpenses_reported_1 [direct]
+         concept: us-gaap:OperatingExpenses
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_operatingExpenses_reported_1 [direct]
+         concept: us-gaap:OperatingExpenses
+    personal_credit_institutions:
+      1. personal_credit_institutions_operatingExpenses_reported_1 [direct]
+         concept: us-gaap:OperatingExpenses
+    reit:
+      1. reit_operatingExpenses_reported_1 [direct]
+         concept: us-gaap:OperatingExpenses
+    savings_institutions:
+      1. savings_institutions_operatingExpenses_reported_1 [direct]
+         concept: us-gaap:OperatingExpenses
+  costAndExpenses: Cost of revenue plus operating expenses; excludes nonoperating expense.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_costAndExpenses_reported_1 [direct]
+         concept: us-gaap:CostsAndExpenses
+      2. electric_utilities_costAndExpenses_calculated [calculation]
+         expression: costOfRevenue + operatingExpenses
+    general_corporate:
+      1. general_corporate_costAndExpenses_reported_1 [direct]
+         concept: us-gaap:CostsAndExpenses
+      2. general_corporate_costAndExpenses_calculated [calculation]
+         expression: costOfRevenue + operatingExpenses
+    life_insurance:
+      1. life_insurance_costAndExpenses_reported_1 [direct]
+         concept: us-gaap:CostsAndExpenses
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_costAndExpenses_reported_1 [direct]
+         concept: us-gaap:CostsAndExpenses
+      2. oil_and_gas_extraction_costAndExpenses_calculated [calculation]
+         expression: costOfRevenue + operatingExpenses
+    personal_credit_institutions:
+      1. personal_credit_institutions_costAndExpenses_reported_1 [direct]
+         concept: us-gaap:CostsAndExpenses
+      2. personal_credit_institutions_costAndExpenses_calculated [calculation]
+         expression: costOfRevenue + operatingExpenses
+    reit:
+      1. reit_costAndExpenses_reported_1 [direct]
+         concept: us-gaap:CostsAndExpenses
+      2. reit_costAndExpenses_calculated [calculation]
+         expression: costOfRevenue + operatingExpenses
+    savings_institutions:
+      No enabled structural candidate rules
+  netInterestIncome: Interest income less interest expense; operating for lenders, nonoperating for other issuers.
+    banks:
+      1. banks_netInterestIncome_reported_1 [direct]
+         concept: us-gaap:InterestIncomeExpenseNet
+      2. banks_netInterestIncome_calculated [calculation]
+         expression: interestIncome - interestExpense
+    electric_utilities:
+      1. electric_utilities_netInterestIncome_reported_1 [direct]
+         concept: us-gaap:InterestIncomeExpenseNonoperatingNet
+      2. electric_utilities_netInterestIncome_reported_2 [direct]
+         concept: us-gaap:InterestIncomeExpenseNet
+      3. electric_utilities_netInterestIncome_calculated [calculation]
+         expression: interestIncome - interestExpense
+    general_corporate:
+      1. general_corporate_netInterestIncome_reported_1 [direct]
+         concept: us-gaap:InterestIncomeExpenseNonoperatingNet
+      2. general_corporate_netInterestIncome_reported_2 [direct]
+         concept: us-gaap:InterestIncomeExpenseNet
+      3. general_corporate_netInterestIncome_calculated [calculation]
+         expression: interestIncome - interestExpense
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netInterestIncome_reported_1 [direct]
+         concept: us-gaap:InterestIncomeExpenseNonoperatingNet
+      2. oil_and_gas_extraction_netInterestIncome_reported_2 [direct]
+         concept: us-gaap:InterestIncomeExpenseNet
+      3. oil_and_gas_extraction_netInterestIncome_calculated [calculation]
+         expression: interestIncome - interestExpense
+    personal_credit_institutions:
+      1. personal_credit_institutions_netInterestIncome_reported_1 [direct]
+         concept: us-gaap:InterestIncomeExpenseNet
+      2. personal_credit_institutions_netInterestIncome_reported_2 [direct]
+         concept: us-gaap:InterestIncomeExpenseNonoperatingNet
+      3. personal_credit_institutions_netInterestIncome_calculated [calculation]
+         expression: interestIncome - interestExpense
+    reit:
+      1. reit_netInterestIncome_reported_1 [direct]
+         concept: us-gaap:InterestIncomeExpenseNonoperatingNet
+      2. reit_netInterestIncome_reported_2 [direct]
+         concept: us-gaap:InterestIncomeExpenseNet
+      3. reit_netInterestIncome_calculated [calculation]
+         expression: interestIncome - interestExpense
+    savings_institutions:
+      1. savings_institutions_netInterestIncome_reported_1 [direct]
+         concept: us-gaap:InterestIncomeExpenseNet
+      2. savings_institutions_netInterestIncome_calculated [calculation]
+         expression: interestIncome - interestExpense
+  interestIncome: Interest-only income on the selected operating/nonoperating basis; excludes dividends.
+    banks:
+      1. banks_interestIncome_reported_1 [direct]
+         concept: us-gaap:InterestIncomeOperating
+      2. banks_interestIncome_reported_2 [direct]
+         concept: us-gaap:InvestmentIncomeInterest
+    electric_utilities:
+      1. electric_utilities_interestIncome_reported_1 [direct]
+         concept: us-gaap:InvestmentIncomeInterest
+    general_corporate:
+      1. general_corporate_interestIncome_reported_1 [direct]
+         concept: us-gaap:InvestmentIncomeInterest
+      2. general_corporate_interestIncome_reported_2 [direct]
+         concept: us-gaap:InterestIncomeOperating
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_interestIncome_reported_1 [direct]
+         concept: us-gaap:InvestmentIncomeInterest
+      2. oil_and_gas_extraction_interestIncome_reported_2 [direct]
+         concept: us-gaap:InterestIncomeOperating
+    personal_credit_institutions:
+      1. personal_credit_institutions_interestIncome_reported_1 [direct]
+         concept: us-gaap:InterestIncomeOperating
+      2. personal_credit_institutions_interestIncome_reported_2 [direct]
+         concept: us-gaap:InvestmentIncomeInterest
+    reit:
+      1. reit_interestIncome_reported_1 [direct]
+         concept: us-gaap:InvestmentIncomeInterest
+      2. reit_interestIncome_reported_2 [direct]
+         concept: us-gaap:InterestIncomeOperating
+    savings_institutions:
+      1. savings_institutions_interestIncome_reported_1 [direct]
+         concept: us-gaap:InterestIncomeOperating
+  interestExpense: Interest expense on the same basis as interestIncome.
+    banks:
+      1. banks_interestExpense_reported_1 [direct]
+         concept: us-gaap:InterestExpense
+      2. banks_interestExpense_reported_2 [direct]
+         concept: us-gaap:InterestExpenseOperating
+    electric_utilities:
+      1. electric_utilities_interestExpense_reported_1 [direct]
+         concept: us-gaap:InterestExpenseNonoperating
+      2. electric_utilities_interestExpense_reported_2 [direct]
+         concept: us-gaap:InterestExpense
+    general_corporate:
+      1. general_corporate_interestExpense_reported_1 [direct]
+         concept: us-gaap:InterestExpenseNonoperating
+      2. general_corporate_interestExpense_reported_2 [direct]
+         concept: us-gaap:InterestExpense
+    life_insurance:
+      1. life_insurance_interestExpense_reported_1 [direct]
+         concept: us-gaap:InterestExpenseNonoperating
+      2. life_insurance_interestExpense_reported_2 [direct]
+         concept: us-gaap:InterestExpense
+      3. life_insurance_interestExpense_reported_3 [direct]
+         concept: us-gaap:InterestExpenseOperating
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_interestExpense_reported_1 [direct]
+         concept: us-gaap:InterestExpenseNonoperating
+      2. oil_and_gas_extraction_interestExpense_reported_2 [direct]
+         concept: us-gaap:InterestExpense
+    personal_credit_institutions:
+      1. personal_credit_institutions_interestExpense_reported_1 [direct]
+         concept: us-gaap:InterestExpense
+      2. personal_credit_institutions_interestExpense_reported_2 [direct]
+         concept: us-gaap:InterestExpenseOperating
+    reit:
+      1. reit_interestExpense_reported_1 [direct]
+         concept: us-gaap:InterestExpenseNonoperating
+      2. reit_interestExpense_reported_2 [direct]
+         concept: us-gaap:InterestExpense
+      3. reit_interestExpense_reported_3 [direct]
+         concept: us-gaap:InterestExpenseOperating
+    savings_institutions:
+      1. savings_institutions_interestExpense_reported_1 [direct]
+         concept: us-gaap:InterestExpense
+      2. savings_institutions_interestExpense_reported_2 [direct]
+         concept: us-gaap:InterestExpenseOperating
+  depreciationAndAmortization: Total depreciation and amortization recognized in continuing-operation earnings, excluding depletion and accretion.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_depreciationAndAmortization_reported_1 [direct]
+         concept: us-gaap:DepreciationAndAmortization
+    general_corporate:
+      1. general_corporate_depreciationAndAmortization_reported_1 [direct]
+         concept: us-gaap:DepreciationAndAmortization
+      2. general_corporate_depreciationAndAmortization_dd_and_a_reviewed_is [direct]
+         concept: us-gaap:DepreciationDepletionAndAmortization
+         sign multiplier: 1
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_depreciationAndAmortization_reported_1 [direct]
+         concept: us-gaap:DepreciationAndAmortization
+    personal_credit_institutions:
+      1. personal_credit_institutions_depreciationAndAmortization_reported_1 [direct]
+         concept: us-gaap:DepreciationAndAmortization
+    reit:
+      1. reit_depreciationAndAmortization_reported_1 [direct]
+         concept: us-gaap:DepreciationAndAmortization
+    savings_institutions:
+      No enabled structural candidate rules
+  ebitda: Continuing-operation pretax income plus nonoperating net interest expense and matching D&A. No adjusted EBITDA.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_ebitda_calculated [calculation]
+         expression: ebit + depreciationAndAmortization
+    general_corporate:
+      1. general_corporate_ebitda_calculated [calculation]
+         expression: ebit + depreciationAndAmortization
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_ebitda_calculated [calculation]
+         expression: ebit + depreciationAndAmortization
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_ebitda_calculated [calculation]
+         expression: ebit + depreciationAndAmortization
+    savings_institutions:
+      No enabled structural candidate rules
+  ebit: Continuing-operation pretax income plus nonoperating net interest expense; may differ from operatingIncome.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_ebit_calculated [calculation]
+         expression: incomeBeforeTax - netInterestIncome
+    general_corporate:
+      1. general_corporate_ebit_calculated [calculation]
+         expression: incomeBeforeTax - netInterestIncome
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_ebit_calculated [calculation]
+         expression: incomeBeforeTax - netInterestIncome
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_ebit_calculated [calculation]
+         expression: incomeBeforeTax - netInterestIncome
+    savings_institutions:
+      No enabled structural candidate rules
+  nonOperatingIncomeExcludingInterest: Net nonoperating income excluding the matching net interest contribution.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_nonOperatingIncomeExcludingInterest_reported_1 [direct]
+         concept: us-gaap:OtherNonoperatingIncomeExpense
+      2. electric_utilities_nonOperatingIncomeExcludingInterest_calculated [calculation]
+         expression: totalOtherIncomeExpensesNet - netInterestIncome
+    general_corporate:
+      1. general_corporate_nonOperatingIncomeExcludingInterest_reported_1 [direct]
+         concept: us-gaap:OtherNonoperatingIncomeExpense
+      2. general_corporate_nonOperatingIncomeExcludingInterest_calculated [calculation]
+         expression: totalOtherIncomeExpensesNet - netInterestIncome
+    life_insurance:
+      1. life_insurance_nonOperatingIncomeExcludingInterest_reported_1 [direct]
+         concept: us-gaap:OtherNonoperatingIncomeExpense
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_nonOperatingIncomeExcludingInterest_reported_1 [direct]
+         concept: us-gaap:OtherNonoperatingIncomeExpense
+      2. oil_and_gas_extraction_nonOperatingIncomeExcludingInterest_calculated [calculation]
+         expression: totalOtherIncomeExpensesNet - netInterestIncome
+    personal_credit_institutions:
+      1. personal_credit_institutions_nonOperatingIncomeExcludingInterest_reported_1 [direct]
+         concept: us-gaap:OtherNonoperatingIncomeExpense
+    reit:
+      1. reit_nonOperatingIncomeExcludingInterest_reported_1 [direct]
+         concept: us-gaap:OtherNonoperatingIncomeExpense
+      2. reit_nonOperatingIncomeExcludingInterest_calculated [calculation]
+         expression: totalOtherIncomeExpensesNet - netInterestIncome
+    savings_institutions:
+      No enabled structural candidate rules
+  operatingIncome: Reported operating profit or loss.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_operatingIncome_reported_1 [direct]
+         concept: us-gaap:OperatingIncomeLoss
+    general_corporate:
+      1. general_corporate_operatingIncome_reported_1 [direct]
+         concept: us-gaap:OperatingIncomeLoss
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_operatingIncome_reported_1 [direct]
+         concept: us-gaap:OperatingIncomeLoss
+    personal_credit_institutions:
+      1. personal_credit_institutions_operatingIncome_reported_1 [direct]
+         concept: us-gaap:OperatingIncomeLoss
+    reit:
+      1. reit_operatingIncome_reported_1 [direct]
+         concept: us-gaap:OperatingIncomeLoss
+    savings_institutions:
+      No enabled structural candidate rules
+  totalOtherIncomeExpensesNet: Net nonoperating contribution to pretax income; income positive.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_totalOtherIncomeExpensesNet_reported_1 [direct]
+         concept: us-gaap:NonoperatingIncomeExpense
+    general_corporate:
+      1. general_corporate_totalOtherIncomeExpensesNet_reported_1 [direct]
+         concept: us-gaap:NonoperatingIncomeExpense
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalOtherIncomeExpensesNet_reported_1 [direct]
+         concept: us-gaap:NonoperatingIncomeExpense
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_totalOtherIncomeExpensesNet_reported_1 [direct]
+         concept: us-gaap:NonoperatingIncomeExpense
+    savings_institutions:
+      No enabled structural candidate rules
+  incomeBeforeTax: Consolidated continuing-operation pretax income including equity-method earnings and noncontrolling interests; excludes discontinued operations.
+    banks:
+      1. banks_incomeBeforeTax_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+    electric_utilities:
+      1. electric_utilities_incomeBeforeTax_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+    general_corporate:
+      1. general_corporate_incomeBeforeTax_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+    life_insurance:
+      1. life_insurance_incomeBeforeTax_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_incomeBeforeTax_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+    personal_credit_institutions:
+      1. personal_credit_institutions_incomeBeforeTax_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+    reit:
+      1. reit_incomeBeforeTax_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+    savings_institutions:
+      1. savings_institutions_incomeBeforeTax_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+  incomeTaxExpense: Total tax expense/benefit on continuing operations, including current and deferred tax.
+    banks:
+      1. banks_incomeTaxExpense_reported_1 [direct]
+         concept: us-gaap:IncomeTaxExpenseBenefit
+    electric_utilities:
+      1. electric_utilities_incomeTaxExpense_reported_1 [direct]
+         concept: us-gaap:IncomeTaxExpenseBenefit
+    general_corporate:
+      1. general_corporate_incomeTaxExpense_reported_1 [direct]
+         concept: us-gaap:IncomeTaxExpenseBenefit
+    life_insurance:
+      1. life_insurance_incomeTaxExpense_reported_1 [direct]
+         concept: us-gaap:IncomeTaxExpenseBenefit
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_incomeTaxExpense_reported_1 [direct]
+         concept: us-gaap:IncomeTaxExpenseBenefit
+    personal_credit_institutions:
+      1. personal_credit_institutions_incomeTaxExpense_reported_1 [direct]
+         concept: us-gaap:IncomeTaxExpenseBenefit
+    reit:
+      1. reit_incomeTaxExpense_reported_1 [direct]
+         concept: us-gaap:IncomeTaxExpenseBenefit
+    savings_institutions:
+      1. savings_institutions_incomeTaxExpense_reported_1 [direct]
+         concept: us-gaap:IncomeTaxExpenseBenefit
+  netIncomeFromContinuingOperations: After-tax continuing-operation income attributable to the parent.
+    banks:
+      1. banks_netIncomeFromContinuingOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperations
+    electric_utilities:
+      1. electric_utilities_netIncomeFromContinuingOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperations
+    general_corporate:
+      1. general_corporate_netIncomeFromContinuingOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperations
+    life_insurance:
+      1. life_insurance_netIncomeFromContinuingOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperations
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netIncomeFromContinuingOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperations
+    personal_credit_institutions:
+      1. personal_credit_institutions_netIncomeFromContinuingOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperations
+    reit:
+      1. reit_netIncomeFromContinuingOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperations
+    savings_institutions:
+      1. savings_institutions_netIncomeFromContinuingOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromContinuingOperations
+  netIncomeFromDiscontinuedOperations: After-tax discontinued-operation income attributable to the parent.
+    banks:
+      1. banks_netIncomeFromDiscontinuedOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity
+    electric_utilities:
+      1. electric_utilities_netIncomeFromDiscontinuedOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity
+    general_corporate:
+      1. general_corporate_netIncomeFromDiscontinuedOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity
+    life_insurance:
+      1. life_insurance_netIncomeFromDiscontinuedOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity
+    oil_and_gas_extraction:
+      No enabled structural candidate rules
+    personal_credit_institutions:
+      1. personal_credit_institutions_netIncomeFromDiscontinuedOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity
+    reit:
+      1. reit_netIncomeFromDiscontinuedOperations_reported_1 [direct]
+         concept: us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity
+    savings_institutions:
+      No enabled structural candidate rules
+  otherAdjustmentsToNetIncome: Signed bridge: parent netIncome minus parent continuing and discontinued income. Not a residual expense bucket.
+    banks:
+      1. banks_otherAdjustmentsToNetIncome_calculated [calculation]
+         expression: netIncome - netIncomeFromContinuingOperations - netIncomeFromDiscontinuedOperations
+    electric_utilities:
+      1. electric_utilities_otherAdjustmentsToNetIncome_calculated [calculation]
+         expression: netIncome - netIncomeFromContinuingOperations - netIncomeFromDiscontinuedOperations
+    general_corporate:
+      1. general_corporate_otherAdjustmentsToNetIncome_calculated [calculation]
+         expression: netIncome - netIncomeFromContinuingOperations - netIncomeFromDiscontinuedOperations
+    life_insurance:
+      1. life_insurance_otherAdjustmentsToNetIncome_calculated [calculation]
+         expression: netIncome - netIncomeFromContinuingOperations - netIncomeFromDiscontinuedOperations
+    oil_and_gas_extraction:
+      No enabled structural candidate rules
+    personal_credit_institutions:
+      1. personal_credit_institutions_otherAdjustmentsToNetIncome_calculated [calculation]
+         expression: netIncome - netIncomeFromContinuingOperations - netIncomeFromDiscontinuedOperations
+    reit:
+      1. reit_otherAdjustmentsToNetIncome_calculated [calculation]
+         expression: netIncome - netIncomeFromContinuingOperations - netIncomeFromDiscontinuedOperations
+    savings_institutions:
+      No enabled structural candidate rules
+  netIncome: Net income attributable to the parent, before preferred/common-shareholder allocations.
+    banks:
+      1. banks_netIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+    electric_utilities:
+      1. electric_utilities_netIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+    general_corporate:
+      1. general_corporate_netIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+    life_insurance:
+      1. life_insurance_netIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+    personal_credit_institutions:
+      1. personal_credit_institutions_netIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+    reit:
+      1. reit_netIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+    savings_institutions:
+      1. savings_institutions_netIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+  netIncomeDeductions: Net deductions from parent net income to basic common-shareholder income, including all relevant allocations.
+    banks:
+      1. banks_netIncomeDeductions_calculated [calculation]
+         expression: netIncome - bottomLineNetIncome
+    electric_utilities:
+      1. electric_utilities_netIncomeDeductions_calculated [calculation]
+         expression: netIncome - bottomLineNetIncome
+    general_corporate:
+      1. general_corporate_netIncomeDeductions_calculated [calculation]
+         expression: netIncome - bottomLineNetIncome
+    life_insurance:
+      1. life_insurance_netIncomeDeductions_calculated [calculation]
+         expression: netIncome - bottomLineNetIncome
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netIncomeDeductions_calculated [calculation]
+         expression: netIncome - bottomLineNetIncome
+    personal_credit_institutions:
+      1. personal_credit_institutions_netIncomeDeductions_calculated [calculation]
+         expression: netIncome - bottomLineNetIncome
+    reit:
+      1. reit_netIncomeDeductions_calculated [calculation]
+         expression: netIncome - bottomLineNetIncome
+    savings_institutions:
+      1. savings_institutions_netIncomeDeductions_calculated [calculation]
+         expression: netIncome - bottomLineNetIncome
+  bottomLineNetIncome: Net income available to common shareholders, basic EPS numerator.
+    banks:
+      1. banks_bottomLineNetIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLossAvailableToCommonStockholdersBasic
+    electric_utilities:
+      1. electric_utilities_bottomLineNetIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLossAvailableToCommonStockholdersBasic
+    general_corporate:
+      1. general_corporate_bottomLineNetIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLossAvailableToCommonStockholdersBasic
+    life_insurance:
+      1. life_insurance_bottomLineNetIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLossAvailableToCommonStockholdersBasic
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_bottomLineNetIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLossAvailableToCommonStockholdersBasic
+    personal_credit_institutions:
+      1. personal_credit_institutions_bottomLineNetIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLossAvailableToCommonStockholdersBasic
+    reit:
+      1. reit_bottomLineNetIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLossAvailableToCommonStockholdersBasic
+    savings_institutions:
+      1. savings_institutions_bottomLineNetIncome_reported_1 [direct]
+         concept: us-gaap:NetIncomeLossAvailableToCommonStockholdersBasic
+  eps: Reported basic earnings per common share.
+    banks:
+      1. banks_eps_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareBasic
+    electric_utilities:
+      1. electric_utilities_eps_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareBasic
+    general_corporate:
+      1. general_corporate_eps_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareBasic
+    life_insurance:
+      1. life_insurance_eps_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareBasic
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_eps_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareBasic
+    personal_credit_institutions:
+      1. personal_credit_institutions_eps_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareBasic
+    reit:
+      1. reit_eps_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareBasic
+    savings_institutions:
+      1. savings_institutions_eps_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareBasic
+  epsDiluted: Reported diluted earnings per common share.
+    banks:
+      1. banks_epsDiluted_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareDiluted
+    electric_utilities:
+      1. electric_utilities_epsDiluted_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareDiluted
+    general_corporate:
+      1. general_corporate_epsDiluted_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareDiluted
+    life_insurance:
+      1. life_insurance_epsDiluted_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareDiluted
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_epsDiluted_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareDiluted
+    personal_credit_institutions:
+      1. personal_credit_institutions_epsDiluted_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareDiluted
+    reit:
+      1. reit_epsDiluted_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareDiluted
+    savings_institutions:
+      1. savings_institutions_epsDiluted_reported_1 [direct]
+         concept: us-gaap:EarningsPerShareDiluted
+  weightedAverageShsOut: Weighted-average common shares outstanding, basic; not period-end or shares issued.
+    banks:
+      1. banks_weightedAverageShsOut_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfSharesOutstandingBasic
+    electric_utilities:
+      1. electric_utilities_weightedAverageShsOut_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfSharesOutstandingBasic
+    general_corporate:
+      1. general_corporate_weightedAverageShsOut_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfSharesOutstandingBasic
+    life_insurance:
+      1. life_insurance_weightedAverageShsOut_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfSharesOutstandingBasic
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_weightedAverageShsOut_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfSharesOutstandingBasic
+    personal_credit_institutions:
+      1. personal_credit_institutions_weightedAverageShsOut_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfSharesOutstandingBasic
+    reit:
+      1. reit_weightedAverageShsOut_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfSharesOutstandingBasic
+    savings_institutions:
+      1. savings_institutions_weightedAverageShsOut_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfSharesOutstandingBasic
+  weightedAverageShsOutDil: Weighted-average diluted shares outstanding.
+    banks:
+      1. banks_weightedAverageShsOutDil_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding
+    electric_utilities:
+      1. electric_utilities_weightedAverageShsOutDil_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding
+    general_corporate:
+      1. general_corporate_weightedAverageShsOutDil_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding
+    life_insurance:
+      1. life_insurance_weightedAverageShsOutDil_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_weightedAverageShsOutDil_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding
+    personal_credit_institutions:
+      1. personal_credit_institutions_weightedAverageShsOutDil_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding
+    reit:
+      1. reit_weightedAverageShsOutDil_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding
+    savings_institutions:
+      1. savings_institutions_weightedAverageShsOutDil_reported_1 [direct]
+         concept: us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding
+
+BS
+  cashAndCashEquivalents: Unrestricted cash and cash equivalents; excludes restricted cash and bank balances outside the cash-equivalent definition.
+    banks:
+      1. banks_cashAndCashEquivalents_direct_1 [direct]
+         concept: us-gaap:CashAndCashEquivalentsAtCarryingValue
+    electric_utilities:
+      1. electric_utilities_cashAndCashEquivalents_direct_1 [direct]
+         concept: us-gaap:CashAndCashEquivalentsAtCarryingValue
+    general_corporate:
+      1. general_corporate_cashAndCashEquivalents_direct_1 [direct]
+         concept: us-gaap:CashAndCashEquivalentsAtCarryingValue
+    life_insurance:
+      1. life_insurance_cashAndCashEquivalents_direct_1 [direct]
+         concept: us-gaap:CashAndCashEquivalentsAtCarryingValue
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_cashAndCashEquivalents_direct_1 [direct]
+         concept: us-gaap:CashAndCashEquivalentsAtCarryingValue
+    personal_credit_institutions:
+      1. personal_credit_institutions_cashAndCashEquivalents_direct_1 [direct]
+         concept: us-gaap:CashAndCashEquivalentsAtCarryingValue
+    reit:
+      1. reit_cashAndCashEquivalents_direct_1 [direct]
+         concept: us-gaap:CashAndCashEquivalentsAtCarryingValue
+    savings_institutions:
+      1. savings_institutions_cashAndCashEquivalents_direct_1 [direct]
+         concept: us-gaap:CashAndCashEquivalentsAtCarryingValue
+  shortTermInvestments: Current investments excluding amounts already classified as cash equivalents.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_shortTermInvestments_direct_1 [direct]
+         concept: us-gaap:ShortTermInvestments
+    general_corporate:
+      1. general_corporate_shortTermInvestments_direct_1 [direct]
+         concept: us-gaap:ShortTermInvestments
+    life_insurance:
+      1. life_insurance_shortTermInvestments_direct_1 [direct]
+         concept: us-gaap:ShortTermInvestments
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_shortTermInvestments_direct_1 [direct]
+         concept: us-gaap:ShortTermInvestments
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_shortTermInvestments_direct_1 [direct]
+         concept: us-gaap:ShortTermInvestments
+    savings_institutions:
+      1. savings_institutions_shortTermInvestments_direct_1 [direct]
+         concept: us-gaap:ShortTermInvestments
+  cashAndShortTermInvestments: Unrestricted cash equivalents plus current investments without overlap.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_cashAndShortTermInvestments_calculated [calculation]
+         expression: cashAndCashEquivalents + shortTermInvestments
+    general_corporate:
+      1. general_corporate_cashAndShortTermInvestments_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsAndShortTermInvestments
+      2. general_corporate_cashAndShortTermInvestments_calculated [calculation]
+         expression: cashAndCashEquivalents + shortTermInvestments
+    life_insurance:
+      1. life_insurance_cashAndShortTermInvestments_calculated [calculation]
+         expression: cashAndCashEquivalents + shortTermInvestments
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_cashAndShortTermInvestments_calculated [calculation]
+         expression: cashAndCashEquivalents + shortTermInvestments
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_cashAndShortTermInvestments_calculated [calculation]
+         expression: cashAndCashEquivalents + shortTermInvestments
+    savings_institutions:
+      1. savings_institutions_cashAndShortTermInvestments_calculated [calculation]
+         expression: cashAndCashEquivalents + shortTermInvestments
+  netReceivables: Total current receivables net of allowances, including trade and other receivables. Bank loan portfolios are not automatic substitutes.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_netReceivables_direct_1 [direct]
+         concept: us-gaap:ReceivablesNetCurrent
+      2. electric_utilities_netReceivables_direct_2 [direct]
+         concept: us-gaap:AccountsAndOtherReceivablesNetCurrent
+      3. electric_utilities_netReceivables_calculated [calculation]
+         expression: accountsReceivables + otherReceivables
+    general_corporate:
+      1. general_corporate_netReceivables_direct_1 [direct]
+         concept: us-gaap:ReceivablesNetCurrent
+      2. general_corporate_netReceivables_direct_2 [direct]
+         concept: us-gaap:AccountsAndOtherReceivablesNetCurrent
+      3. general_corporate_netReceivables_calculated [calculation]
+         expression: accountsReceivables + otherReceivables
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netReceivables_direct_1 [direct]
+         concept: us-gaap:ReceivablesNetCurrent
+      2. oil_and_gas_extraction_netReceivables_direct_2 [direct]
+         concept: us-gaap:AccountsAndOtherReceivablesNetCurrent
+      3. oil_and_gas_extraction_netReceivables_calculated [calculation]
+         expression: accountsReceivables + otherReceivables
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  accountsReceivables: Current trade accounts receivable net of allowances.
+    banks:
+      1. banks_accountsReceivables_direct_1 [direct]
+         concept: us-gaap:AccountsReceivableNet
+    electric_utilities:
+      1. electric_utilities_accountsReceivables_direct_1 [direct]
+         concept: us-gaap:AccountsReceivableNetCurrent
+      2. electric_utilities_accountsReceivables_direct_2 [direct]
+         concept: us-gaap:AccountsReceivableNet
+    general_corporate:
+      1. general_corporate_accountsReceivables_direct_1 [direct]
+         concept: us-gaap:AccountsReceivableNetCurrent
+      2. general_corporate_accountsReceivables_direct_2 [direct]
+         concept: us-gaap:AccountsReceivableNet
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_accountsReceivables_direct_1 [direct]
+         concept: us-gaap:AccountsReceivableNetCurrent
+      2. oil_and_gas_extraction_accountsReceivables_direct_2 [direct]
+         concept: us-gaap:AccountsReceivableNet
+    personal_credit_institutions:
+      1. personal_credit_institutions_accountsReceivables_direct_1 [direct]
+         concept: us-gaap:AccountsReceivableNet
+    reit:
+      1. reit_accountsReceivables_direct_1 [direct]
+         concept: us-gaap:AccountsReceivableNetCurrent
+      2. reit_accountsReceivables_direct_2 [direct]
+         concept: us-gaap:AccountsReceivableNet
+    savings_institutions:
+      1. savings_institutions_accountsReceivables_direct_1 [direct]
+         concept: us-gaap:AccountsReceivableNet
+  otherReceivables: Current nontrade receivables net of allowances.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_otherReceivables_direct_1 [direct]
+         concept: us-gaap:OtherReceivablesNetCurrent
+    general_corporate:
+      1. general_corporate_otherReceivables_direct_1 [direct]
+         concept: us-gaap:OtherReceivablesNetCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_otherReceivables_direct_1 [direct]
+         concept: us-gaap:OtherReceivablesNetCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  inventory: Total inventory net of valuation allowances.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_inventory_direct_1 [direct]
+         concept: us-gaap:InventoryNet
+    general_corporate:
+      1. general_corporate_inventory_direct_1 [direct]
+         concept: us-gaap:InventoryNet
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_inventory_direct_1 [direct]
+         concept: us-gaap:InventoryNet
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_inventory_direct_1 [direct]
+         concept: us-gaap:InventoryNet
+    savings_institutions:
+      No enabled structural candidate rules
+  prepaids: Total current prepaid expenses; excludes other assets bundled with prepaids.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_prepaids_direct_1 [direct]
+         concept: us-gaap:PrepaidExpenseCurrent
+    general_corporate:
+      1. general_corporate_prepaids_direct_1 [direct]
+         concept: us-gaap:PrepaidExpenseCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_prepaids_direct_1 [direct]
+         concept: us-gaap:PrepaidExpenseCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_prepaids_direct_1 [direct]
+         concept: us-gaap:PrepaidExpenseCurrent
+    savings_institutions:
+      No enabled structural candidate rules
+  otherCurrentAssets: Reported other current assets; may include separately exposed prepaids or receivables. Not an additive API residual.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_otherCurrentAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssetsCurrent
+    general_corporate:
+      1. general_corporate_otherCurrentAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssetsCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_otherCurrentAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssetsCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_otherCurrentAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssetsCurrent
+    savings_institutions:
+      No enabled structural candidate rules
+  totalCurrentAssets: Reported total current assets. Unclassified balance sheets remain null.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_totalCurrentAssets_direct_1 [direct]
+         concept: us-gaap:AssetsCurrent
+    general_corporate:
+      1. general_corporate_totalCurrentAssets_direct_1 [direct]
+         concept: us-gaap:AssetsCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalCurrentAssets_direct_1 [direct]
+         concept: us-gaap:AssetsCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_totalCurrentAssets_direct_1 [direct]
+         concept: us-gaap:AssetsCurrent
+    savings_institutions:
+      No enabled structural candidate rules
+  propertyPlantEquipmentNet: Net property, plant and equipment; lease inclusion must follow the approved issuer presentation.
+    banks:
+      1. banks_propertyPlantEquipmentNet_direct_1 [direct]
+         concept: us-gaap:PropertyPlantAndEquipmentNet
+    electric_utilities:
+      1. electric_utilities_propertyPlantEquipmentNet_direct_1 [direct]
+         concept: us-gaap:PropertyPlantAndEquipmentNet
+    general_corporate:
+      1. general_corporate_propertyPlantEquipmentNet_direct_1 [direct]
+         concept: us-gaap:PropertyPlantAndEquipmentNet
+    life_insurance:
+      1. life_insurance_propertyPlantEquipmentNet_direct_1 [direct]
+         concept: us-gaap:PropertyPlantAndEquipmentNet
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_propertyPlantEquipmentNet_direct_1 [direct]
+         concept: us-gaap:PropertyPlantAndEquipmentNet
+    personal_credit_institutions:
+      1. personal_credit_institutions_propertyPlantEquipmentNet_direct_1 [direct]
+         concept: us-gaap:PropertyPlantAndEquipmentNet
+    reit:
+      1. reit_propertyPlantEquipmentNet_direct_1 [direct]
+         concept: us-gaap:PropertyPlantAndEquipmentNet
+    savings_institutions:
+      1. savings_institutions_propertyPlantEquipmentNet_direct_1 [direct]
+         concept: us-gaap:PropertyPlantAndEquipmentNet
+  goodwill: Goodwill carrying amount net of impairments.
+    banks:
+      1. banks_goodwill_direct_1 [direct]
+         concept: us-gaap:Goodwill
+    electric_utilities:
+      1. electric_utilities_goodwill_direct_1 [direct]
+         concept: us-gaap:Goodwill
+    general_corporate:
+      1. general_corporate_goodwill_direct_1 [direct]
+         concept: us-gaap:Goodwill
+    life_insurance:
+      1. life_insurance_goodwill_direct_1 [direct]
+         concept: us-gaap:Goodwill
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_goodwill_direct_1 [direct]
+         concept: us-gaap:Goodwill
+    personal_credit_institutions:
+      1. personal_credit_institutions_goodwill_direct_1 [direct]
+         concept: us-gaap:Goodwill
+    reit:
+      1. reit_goodwill_direct_1 [direct]
+         concept: us-gaap:Goodwill
+    savings_institutions:
+      1. savings_institutions_goodwill_direct_1 [direct]
+         concept: us-gaap:Goodwill
+  intangibleAssets: Total identifiable intangible assets net, excluding goodwill; finite-lived assets alone are insufficient.
+    banks:
+      1. banks_intangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetExcludingGoodwill
+    electric_utilities:
+      1. electric_utilities_intangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetExcludingGoodwill
+    general_corporate:
+      1. general_corporate_intangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetExcludingGoodwill
+    life_insurance:
+      1. life_insurance_intangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetExcludingGoodwill
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_intangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetExcludingGoodwill
+    personal_credit_institutions:
+      1. personal_credit_institutions_intangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetExcludingGoodwill
+    reit:
+      1. reit_intangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetExcludingGoodwill
+    savings_institutions:
+      1. savings_institutions_intangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetExcludingGoodwill
+  goodwillAndIntangibleAssets: Goodwill plus all identifiable intangible assets net.
+    banks:
+      1. banks_goodwillAndIntangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetIncludingGoodwill
+      2. banks_goodwillAndIntangibleAssets_calculated [calculation]
+         expression: goodwill + intangibleAssets
+    electric_utilities:
+      1. electric_utilities_goodwillAndIntangibleAssets_calculated [calculation]
+         expression: goodwill + intangibleAssets
+    general_corporate:
+      1. general_corporate_goodwillAndIntangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetIncludingGoodwill
+      2. general_corporate_goodwillAndIntangibleAssets_calculated [calculation]
+         expression: goodwill + intangibleAssets
+    life_insurance:
+      1. life_insurance_goodwillAndIntangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetIncludingGoodwill
+      2. life_insurance_goodwillAndIntangibleAssets_calculated [calculation]
+         expression: goodwill + intangibleAssets
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_goodwillAndIntangibleAssets_calculated [calculation]
+         expression: goodwill + intangibleAssets
+    personal_credit_institutions:
+      1. personal_credit_institutions_goodwillAndIntangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetIncludingGoodwill
+      2. personal_credit_institutions_goodwillAndIntangibleAssets_calculated [calculation]
+         expression: goodwill + intangibleAssets
+    reit:
+      1. reit_goodwillAndIntangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetIncludingGoodwill
+      2. reit_goodwillAndIntangibleAssets_calculated [calculation]
+         expression: goodwill + intangibleAssets
+    savings_institutions:
+      1. savings_institutions_goodwillAndIntangibleAssets_direct_1 [direct]
+         concept: us-gaap:IntangibleAssetsNetIncludingGoodwill
+      2. savings_institutions_goodwillAndIntangibleAssets_calculated [calculation]
+         expression: goodwill + intangibleAssets
+  longTermInvestments: Total noncurrent investments; excludes current investments.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_longTermInvestments_direct_1 [direct]
+         concept: us-gaap:LongTermInvestments
+    general_corporate:
+      1. general_corporate_longTermInvestments_direct_1 [direct]
+         concept: us-gaap:LongTermInvestments
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_longTermInvestments_direct_1 [direct]
+         concept: us-gaap:LongTermInvestments
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  taxAssets: Net recognized deferred income tax assets across maturities; excludes gross assets before valuation allowances and current tax receivables.
+    banks:
+      1. banks_taxAssets_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxAssetsNet
+    electric_utilities:
+      1. electric_utilities_taxAssets_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxAssetsNet
+    general_corporate:
+      1. general_corporate_taxAssets_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxAssetsNet
+      2. general_corporate_taxAssets_direct_2 [direct]
+         concept: us-gaap:DeferredTaxAssetsNet
+    life_insurance:
+      1. life_insurance_taxAssets_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxAssetsNet
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_taxAssets_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxAssetsNet
+    personal_credit_institutions:
+      1. personal_credit_institutions_taxAssets_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxAssetsNet
+    reit:
+      1. reit_taxAssets_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxAssetsNet
+    savings_institutions:
+      1. savings_institutions_taxAssets_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxAssetsNet
+  otherNonCurrentAssets: Reported other noncurrent assets; may overlap separately exposed deferred tax or lease assets.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_otherNonCurrentAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssetsNoncurrent
+    general_corporate:
+      1. general_corporate_otherNonCurrentAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssetsNoncurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_otherNonCurrentAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssetsNoncurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_otherNonCurrentAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssetsNoncurrent
+    savings_institutions:
+      No enabled structural candidate rules
+  totalNonCurrentAssets: Total noncurrent assets of a classified balance sheet.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_totalNonCurrentAssets_direct_1 [direct]
+         concept: us-gaap:AssetsNoncurrent
+      2. electric_utilities_totalNonCurrentAssets_calculated [calculation]
+         expression: totalAssets - totalCurrentAssets
+    general_corporate:
+      1. general_corporate_totalNonCurrentAssets_direct_1 [direct]
+         concept: us-gaap:AssetsNoncurrent
+      2. general_corporate_totalNonCurrentAssets_calculated [calculation]
+         expression: totalAssets - totalCurrentAssets
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalNonCurrentAssets_direct_1 [direct]
+         concept: us-gaap:AssetsNoncurrent
+      2. oil_and_gas_extraction_totalNonCurrentAssets_calculated [calculation]
+         expression: totalAssets - totalCurrentAssets
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_totalNonCurrentAssets_calculated [calculation]
+         expression: totalAssets - totalCurrentAssets
+    savings_institutions:
+      No enabled structural candidate rules
+  otherAssets: Reported other assets on an unclassified or explicit all-maturity basis; not a balancing plug.
+    banks:
+      1. banks_otherAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssets
+    electric_utilities:
+      1. electric_utilities_otherAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssets
+    general_corporate:
+      1. general_corporate_otherAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssets
+    life_insurance:
+      1. life_insurance_otherAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssets
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_otherAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssets
+    personal_credit_institutions:
+      1. personal_credit_institutions_otherAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssets
+    reit:
+      1. reit_otherAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssets
+    savings_institutions:
+      1. savings_institutions_otherAssets_direct_1 [direct]
+         concept: us-gaap:OtherAssets
+  totalAssets: Consolidated total assets.
+    banks:
+      1. banks_totalAssets_direct_1 [direct]
+         concept: us-gaap:Assets
+    electric_utilities:
+      1. electric_utilities_totalAssets_direct_1 [direct]
+         concept: us-gaap:Assets
+    general_corporate:
+      1. general_corporate_totalAssets_direct_1 [direct]
+         concept: us-gaap:Assets
+    life_insurance:
+      1. life_insurance_totalAssets_direct_1 [direct]
+         concept: us-gaap:Assets
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalAssets_direct_1 [direct]
+         concept: us-gaap:Assets
+    personal_credit_institutions:
+      1. personal_credit_institutions_totalAssets_direct_1 [direct]
+         concept: us-gaap:Assets
+    reit:
+      1. reit_totalAssets_direct_1 [direct]
+         concept: us-gaap:Assets
+    savings_institutions:
+      1. savings_institutions_totalAssets_direct_1 [direct]
+         concept: us-gaap:Assets
+  totalPayables: Total current trade and other accounts payable; excludes accrued expenses and tax liabilities unless explicitly reconciled.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      No enabled structural candidate rules
+    general_corporate:
+      1. general_corporate_totalPayables_calculated [calculation]
+         expression: accountPayables + otherPayables
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalPayables_calculated [calculation]
+         expression: accountPayables + otherPayables
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  accountPayables: Current trade accounts payable.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_accountPayables_direct_1 [direct]
+         concept: us-gaap:AccountsPayableCurrent
+    general_corporate:
+      1. general_corporate_accountPayables_direct_1 [direct]
+         concept: us-gaap:AccountsPayableCurrent
+      2. general_corporate_accountPayables_direct_2 [direct]
+         concept: us-gaap:AccountsPayableTradeCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_accountPayables_direct_1 [direct]
+         concept: us-gaap:AccountsPayableCurrent
+      2. oil_and_gas_extraction_accountPayables_direct_2 [direct]
+         concept: us-gaap:AccountsPayableTradeCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_accountPayables_direct_1 [direct]
+         concept: us-gaap:AccountsPayableCurrent
+    savings_institutions:
+      No enabled structural candidate rules
+  otherPayables: Current other accounts payable excluding trade payables, taxes and accrued expenses.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      No enabled structural candidate rules
+    general_corporate:
+      1. general_corporate_otherPayables_direct_1 [direct]
+         concept: us-gaap:AccountsPayableOtherCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_otherPayables_direct_1 [direct]
+         concept: us-gaap:AccountsPayableOtherCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  accruedExpenses: Total current accrued expense liabilities excluding accounts payable.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_accruedExpenses_direct_1 [direct]
+         concept: us-gaap:AccruedLiabilitiesCurrent
+    general_corporate:
+      1. general_corporate_accruedExpenses_direct_1 [direct]
+         concept: us-gaap:AccruedLiabilitiesCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_accruedExpenses_direct_1 [direct]
+         concept: us-gaap:AccruedLiabilitiesCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_accruedExpenses_direct_1 [direct]
+         concept: us-gaap:AccruedLiabilitiesCurrent
+    savings_institutions:
+      No enabled structural candidate rules
+  shortTermDebt: Current interest-bearing debt including current maturities of long-term debt, excluding operating and finance leases.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_shortTermDebt_direct_1 [direct]
+         concept: us-gaap:DebtCurrent
+    general_corporate:
+      1. general_corporate_shortTermDebt_direct_1 [direct]
+         concept: us-gaap:DebtCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_shortTermDebt_direct_1 [direct]
+         concept: us-gaap:DebtCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  capitalLeaseObligationsCurrent: Current finance/capital lease liabilities only; operating leases are excluded despite legacy API field naming.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_capitalLeaseObligationsCurrent_direct_1 [direct]
+         concept: us-gaap:FinanceLeaseLiabilityCurrent
+    general_corporate:
+      1. general_corporate_capitalLeaseObligationsCurrent_direct_1 [direct]
+         concept: us-gaap:FinanceLeaseLiabilityCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_capitalLeaseObligationsCurrent_direct_1 [direct]
+         concept: us-gaap:FinanceLeaseLiabilityCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  taxPayables: Total current taxes payable, not merely income taxes.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_taxPayables_direct_1 [direct]
+         concept: us-gaap:TaxesPayableCurrent
+    general_corporate:
+      1. general_corporate_taxPayables_direct_1 [direct]
+         concept: us-gaap:TaxesPayableCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_taxPayables_direct_1 [direct]
+         concept: us-gaap:TaxesPayableCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  deferredRevenue: Current deferred revenue or contract liabilities on the approved comprehensive issuer basis.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_deferredRevenue_direct_1 [direct]
+         concept: us-gaap:DeferredRevenueCurrent
+      2. electric_utilities_deferredRevenue_direct_2 [direct]
+         concept: us-gaap:ContractWithCustomerLiabilityCurrent
+    general_corporate:
+      1. general_corporate_deferredRevenue_direct_1 [direct]
+         concept: us-gaap:DeferredRevenueCurrent
+      2. general_corporate_deferredRevenue_direct_2 [direct]
+         concept: us-gaap:ContractWithCustomerLiabilityCurrent
+    life_insurance:
+      1. life_insurance_deferredRevenue_direct_1 [direct]
+         concept: us-gaap:DeferredRevenueCurrent
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_deferredRevenue_direct_1 [direct]
+         concept: us-gaap:DeferredRevenueCurrent
+      2. oil_and_gas_extraction_deferredRevenue_direct_2 [direct]
+         concept: us-gaap:ContractWithCustomerLiabilityCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_deferredRevenue_direct_1 [direct]
+         concept: us-gaap:DeferredRevenueCurrent
+      2. reit_deferredRevenue_direct_2 [direct]
+         concept: us-gaap:ContractWithCustomerLiabilityCurrent
+    savings_institutions:
+      No enabled structural candidate rules
+  otherCurrentLiabilities: Reported other current liabilities; may overlap separately exposed tax, accrual or lease items.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_otherCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilitiesCurrent
+    general_corporate:
+      1. general_corporate_otherCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilitiesCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_otherCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilitiesCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_otherCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilitiesCurrent
+    savings_institutions:
+      No enabled structural candidate rules
+  totalCurrentLiabilities: Reported total current liabilities. Unclassified balance sheets remain null.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_totalCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:LiabilitiesCurrent
+    general_corporate:
+      1. general_corporate_totalCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:LiabilitiesCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:LiabilitiesCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_totalCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:LiabilitiesCurrent
+    savings_institutions:
+      No enabled structural candidate rules
+  longTermDebt: Noncurrent interest-bearing debt excluding current maturities and all leases.
+    banks:
+      1. banks_longTermDebt_direct_1 [direct]
+         concept: us-gaap:LongTermDebtNoncurrent
+    electric_utilities:
+      1. electric_utilities_longTermDebt_direct_1 [direct]
+         concept: us-gaap:LongTermDebtNoncurrent
+    general_corporate:
+      1. general_corporate_longTermDebt_direct_1 [direct]
+         concept: us-gaap:LongTermDebtNoncurrent
+    life_insurance:
+      1. life_insurance_longTermDebt_direct_1 [direct]
+         concept: us-gaap:LongTermDebtNoncurrent
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_longTermDebt_direct_1 [direct]
+         concept: us-gaap:LongTermDebtNoncurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_longTermDebt_direct_1 [direct]
+         concept: us-gaap:LongTermDebtNoncurrent
+    savings_institutions:
+      No enabled structural candidate rules
+  capitalLeaseObligationsNonCurrent: Noncurrent finance/capital lease liabilities only; operating leases excluded.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_capitalLeaseObligationsNonCurrent_direct_1 [direct]
+         concept: us-gaap:FinanceLeaseLiabilityNoncurrent
+    general_corporate:
+      1. general_corporate_capitalLeaseObligationsNonCurrent_direct_1 [direct]
+         concept: us-gaap:FinanceLeaseLiabilityNoncurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_capitalLeaseObligationsNonCurrent_direct_1 [direct]
+         concept: us-gaap:FinanceLeaseLiabilityNoncurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_capitalLeaseObligationsNonCurrent_direct_1 [direct]
+         concept: us-gaap:FinanceLeaseLiabilityNoncurrent
+    savings_institutions:
+      No enabled structural candidate rules
+  deferredRevenueNonCurrent: Noncurrent deferred revenue or contract liabilities on the approved comprehensive issuer basis.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_deferredRevenueNonCurrent_direct_1 [direct]
+         concept: us-gaap:ContractWithCustomerLiabilityNoncurrent
+    general_corporate:
+      1. general_corporate_deferredRevenueNonCurrent_direct_1 [direct]
+         concept: us-gaap:DeferredRevenueNoncurrent
+      2. general_corporate_deferredRevenueNonCurrent_direct_2 [direct]
+         concept: us-gaap:ContractWithCustomerLiabilityNoncurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      No enabled structural candidate rules
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  deferredTaxLiabilitiesNonCurrent: Net recognized noncurrent deferred income tax liabilities.
+    banks:
+      1. banks_deferredTaxLiabilitiesNonCurrent_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxLiabilitiesNet
+    electric_utilities:
+      1. electric_utilities_deferredTaxLiabilitiesNonCurrent_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxLiabilitiesNet
+    general_corporate:
+      1. general_corporate_deferredTaxLiabilitiesNonCurrent_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxLiabilitiesNet
+    life_insurance:
+      1. life_insurance_deferredTaxLiabilitiesNonCurrent_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxLiabilitiesNet
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_deferredTaxLiabilitiesNonCurrent_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxLiabilitiesNet
+    personal_credit_institutions:
+      1. personal_credit_institutions_deferredTaxLiabilitiesNonCurrent_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxLiabilitiesNet
+    reit:
+      1. reit_deferredTaxLiabilitiesNonCurrent_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxLiabilitiesNet
+    savings_institutions:
+      1. savings_institutions_deferredTaxLiabilitiesNonCurrent_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxLiabilitiesNet
+  otherNonCurrentLiabilities: Reported other noncurrent liabilities; may overlap separately exposed tax or lease liabilities.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_otherNonCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilitiesNoncurrent
+    general_corporate:
+      1. general_corporate_otherNonCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilitiesNoncurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_otherNonCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilitiesNoncurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_otherNonCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilitiesNoncurrent
+    savings_institutions:
+      No enabled structural candidate rules
+  totalNonCurrentLiabilities: Total noncurrent liabilities of a classified balance sheet.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_totalNonCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:LiabilitiesNoncurrent
+      2. electric_utilities_totalNonCurrentLiabilities_calculated [calculation]
+         expression: totalLiabilities - totalCurrentLiabilities
+    general_corporate:
+      1. general_corporate_totalNonCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:LiabilitiesNoncurrent
+      2. general_corporate_totalNonCurrentLiabilities_calculated [calculation]
+         expression: totalLiabilities - totalCurrentLiabilities
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalNonCurrentLiabilities_direct_1 [direct]
+         concept: us-gaap:LiabilitiesNoncurrent
+      2. oil_and_gas_extraction_totalNonCurrentLiabilities_calculated [calculation]
+         expression: totalLiabilities - totalCurrentLiabilities
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_totalNonCurrentLiabilities_calculated [calculation]
+         expression: totalLiabilities - totalCurrentLiabilities
+    savings_institutions:
+      No enabled structural candidate rules
+  otherLiabilities: Reported other liabilities on an unclassified or explicit all-maturity basis; not a balancing plug.
+    banks:
+      1. banks_otherLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilities
+    electric_utilities:
+      No enabled structural candidate rules
+    general_corporate:
+      1. general_corporate_otherLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilities
+    life_insurance:
+      1. life_insurance_otherLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilities
+    oil_and_gas_extraction:
+      No enabled structural candidate rules
+    personal_credit_institutions:
+      1. personal_credit_institutions_otherLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilities
+    reit:
+      1. reit_otherLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilities
+    savings_institutions:
+      1. savings_institutions_otherLiabilities_direct_1 [direct]
+         concept: us-gaap:OtherLiabilities
+  capitalLeaseObligations: Total finance/capital lease liabilities across maturities; excludes operating leases.
+    banks:
+      1. banks_capitalLeaseObligations_direct_1 [direct]
+         concept: us-gaap:FinanceLeaseLiability
+    electric_utilities:
+      1. electric_utilities_capitalLeaseObligations_direct_1 [direct]
+         concept: us-gaap:FinanceLeaseLiability
+      2. electric_utilities_capitalLeaseObligations_calculated [calculation]
+         expression: capitalLeaseObligationsCurrent + capitalLeaseObligationsNonCurrent
+    general_corporate:
+      1. general_corporate_capitalLeaseObligations_calculated [calculation]
+         expression: capitalLeaseObligationsCurrent + capitalLeaseObligationsNonCurrent
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_capitalLeaseObligations_calculated [calculation]
+         expression: capitalLeaseObligationsCurrent + capitalLeaseObligationsNonCurrent
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_capitalLeaseObligations_direct_1 [direct]
+         concept: us-gaap:FinanceLeaseLiability
+    savings_institutions:
+      1. savings_institutions_capitalLeaseObligations_direct_1 [direct]
+         concept: us-gaap:FinanceLeaseLiability
+  totalLiabilities: Consolidated total liabilities excluding permanent and temporary equity.
+    banks:
+      1. banks_totalLiabilities_direct_1 [direct]
+         concept: us-gaap:Liabilities
+      2. banks_totalLiabilities_from_total_equity [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalEquity
+      3. banks_totalLiabilities_from_parent_equity_reviewed [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalStockholdersEquity
+    electric_utilities:
+      1. electric_utilities_totalLiabilities_direct_1 [direct]
+         concept: us-gaap:Liabilities
+      2. electric_utilities_totalLiabilities_from_total_equity [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalEquity
+      3. electric_utilities_totalLiabilities_from_parent_equity_reviewed [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalStockholdersEquity
+    general_corporate:
+      1. general_corporate_totalLiabilities_direct_1 [direct]
+         concept: us-gaap:Liabilities
+      2. general_corporate_totalLiabilities_from_total_equity [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalEquity
+      3. general_corporate_totalLiabilities_from_parent_equity_reviewed [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalStockholdersEquity
+    life_insurance:
+      1. life_insurance_totalLiabilities_direct_1 [direct]
+         concept: us-gaap:Liabilities
+      2. life_insurance_totalLiabilities_from_total_equity [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalEquity
+      3. life_insurance_totalLiabilities_from_parent_equity_reviewed [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalStockholdersEquity
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalLiabilities_direct_1 [direct]
+         concept: us-gaap:Liabilities
+      2. oil_and_gas_extraction_totalLiabilities_from_total_equity [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalEquity
+      3. oil_and_gas_extraction_totalLiabilities_from_parent_equity_reviewed [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalStockholdersEquity
+    personal_credit_institutions:
+      1. personal_credit_institutions_totalLiabilities_direct_1 [direct]
+         concept: us-gaap:Liabilities
+      2. personal_credit_institutions_totalLiabilities_from_total_equity [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalEquity
+      3. personal_credit_institutions_totalLiabilities_from_parent_equity_reviewed [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalStockholdersEquity
+    reit:
+      1. reit_totalLiabilities_direct_1 [direct]
+         concept: us-gaap:Liabilities
+      2. reit_totalLiabilities_from_total_equity [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalEquity
+      3. reit_totalLiabilities_from_parent_equity_reviewed [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalStockholdersEquity
+    savings_institutions:
+      1. savings_institutions_totalLiabilities_direct_1 [direct]
+         concept: us-gaap:Liabilities
+      2. savings_institutions_totalLiabilities_from_total_equity [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalEquity
+      3. savings_institutions_totalLiabilities_from_parent_equity_reviewed [calculation]
+         expression: totalLiabilitiesAndTotalEquity - totalStockholdersEquity
+  treasuryStock: Total treasury stock carrying amount, expressed as a positive equity deduction; never blindly apply abs().
+    banks:
+      1. banks_treasuryStock_direct_1 [direct]
+         concept: us-gaap:TreasuryStockValue
+    electric_utilities:
+      1. electric_utilities_treasuryStock_direct_1 [direct]
+         concept: us-gaap:TreasuryStockValue
+    general_corporate:
+      1. general_corporate_treasuryStock_direct_1 [direct]
+         concept: us-gaap:TreasuryStockValue
+    life_insurance:
+      1. life_insurance_treasuryStock_direct_1 [direct]
+         concept: us-gaap:TreasuryStockValue
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_treasuryStock_direct_1 [direct]
+         concept: us-gaap:TreasuryStockValue
+    personal_credit_institutions:
+      1. personal_credit_institutions_treasuryStock_direct_1 [direct]
+         concept: us-gaap:TreasuryStockValue
+    reit:
+      1. reit_treasuryStock_direct_1 [direct]
+         concept: us-gaap:TreasuryStockValue
+    savings_institutions:
+      1. savings_institutions_treasuryStock_direct_1 [direct]
+         concept: us-gaap:TreasuryStockValue
+  preferredStock: Permanent-equity preferred stock carrying amount; excludes redeemable temporary-equity or liability-classified preferred stock.
+    banks:
+      1. banks_preferredStock_direct_1 [direct]
+         concept: us-gaap:PreferredStockValue
+      2. banks_preferredStock_direct_2 [direct]
+         concept: us-gaap:PreferredStockValueOutstanding
+    electric_utilities:
+      1. electric_utilities_preferredStock_direct_1 [direct]
+         concept: us-gaap:PreferredStockValue
+      2. electric_utilities_preferredStock_direct_2 [direct]
+         concept: us-gaap:PreferredStockValueOutstanding
+    general_corporate:
+      1. general_corporate_preferredStock_direct_1 [direct]
+         concept: us-gaap:PreferredStockValue
+    life_insurance:
+      1. life_insurance_preferredStock_direct_1 [direct]
+         concept: us-gaap:PreferredStockValue
+      2. life_insurance_preferredStock_direct_2 [direct]
+         concept: us-gaap:PreferredStockValueOutstanding
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_preferredStock_direct_1 [direct]
+         concept: us-gaap:PreferredStockValue
+      2. oil_and_gas_extraction_preferredStock_direct_2 [direct]
+         concept: us-gaap:PreferredStockValueOutstanding
+    personal_credit_institutions:
+      1. personal_credit_institutions_preferredStock_direct_1 [direct]
+         concept: us-gaap:PreferredStockValue
+      2. personal_credit_institutions_preferredStock_direct_2 [direct]
+         concept: us-gaap:PreferredStockValueOutstanding
+    reit:
+      1. reit_preferredStock_direct_1 [direct]
+         concept: us-gaap:PreferredStockValue
+      2. reit_preferredStock_direct_2 [direct]
+         concept: us-gaap:PreferredStockValueOutstanding
+    savings_institutions:
+      1. savings_institutions_preferredStock_direct_1 [direct]
+         concept: us-gaap:PreferredStockValue
+      2. savings_institutions_preferredStock_direct_2 [direct]
+         concept: us-gaap:PreferredStockValueOutstanding
+  commonStock: Common stock carrying amount; combined common stock and APIC requires explicit scope approval and must not double count APIC.
+    banks:
+      1. banks_commonStock_direct_1 [direct]
+         concept: us-gaap:CommonStockValue
+      2. banks_commonStock_direct_2 [direct]
+         concept: us-gaap:CommonStockValueOutstanding
+    electric_utilities:
+      1. electric_utilities_commonStock_direct_1 [direct]
+         concept: us-gaap:CommonStockValue
+      2. electric_utilities_commonStock_direct_2 [direct]
+         concept: us-gaap:CommonStockValueOutstanding
+    general_corporate:
+      1. general_corporate_commonStock_direct_1 [direct]
+         concept: us-gaap:CommonStockValue
+      2. general_corporate_commonStock_direct_2 [direct]
+         concept: us-gaap:CommonStockValueOutstanding
+    life_insurance:
+      1. life_insurance_commonStock_direct_1 [direct]
+         concept: us-gaap:CommonStockValue
+      2. life_insurance_commonStock_direct_2 [direct]
+         concept: us-gaap:CommonStockValueOutstanding
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_commonStock_direct_1 [direct]
+         concept: us-gaap:CommonStockValue
+      2. oil_and_gas_extraction_commonStock_direct_2 [direct]
+         concept: us-gaap:CommonStockValueOutstanding
+    personal_credit_institutions:
+      1. personal_credit_institutions_commonStock_direct_1 [direct]
+         concept: us-gaap:CommonStockValue
+      2. personal_credit_institutions_commonStock_direct_2 [direct]
+         concept: us-gaap:CommonStockValueOutstanding
+    reit:
+      1. reit_commonStock_direct_1 [direct]
+         concept: us-gaap:CommonStockValue
+      2. reit_commonStock_direct_2 [direct]
+         concept: us-gaap:CommonStockValueOutstanding
+    savings_institutions:
+      1. savings_institutions_commonStock_direct_1 [direct]
+         concept: us-gaap:CommonStockValue
+      2. savings_institutions_commonStock_direct_2 [direct]
+         concept: us-gaap:CommonStockValueOutstanding
+  retainedEarnings: Retained earnings or accumulated deficit, signed as reported.
+    banks:
+      1. banks_retainedEarnings_direct_1 [direct]
+         concept: us-gaap:RetainedEarningsAccumulatedDeficit
+    electric_utilities:
+      1. electric_utilities_retainedEarnings_direct_1 [direct]
+         concept: us-gaap:RetainedEarningsAccumulatedDeficit
+    general_corporate:
+      1. general_corporate_retainedEarnings_direct_1 [direct]
+         concept: us-gaap:RetainedEarningsAccumulatedDeficit
+    life_insurance:
+      1. life_insurance_retainedEarnings_direct_1 [direct]
+         concept: us-gaap:RetainedEarningsAccumulatedDeficit
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_retainedEarnings_direct_1 [direct]
+         concept: us-gaap:RetainedEarningsAccumulatedDeficit
+    personal_credit_institutions:
+      1. personal_credit_institutions_retainedEarnings_direct_1 [direct]
+         concept: us-gaap:RetainedEarningsAccumulatedDeficit
+    reit:
+      1. reit_retainedEarnings_direct_1 [direct]
+         concept: us-gaap:RetainedEarningsAccumulatedDeficit
+    savings_institutions:
+      1. savings_institutions_retainedEarnings_direct_1 [direct]
+         concept: us-gaap:RetainedEarningsAccumulatedDeficit
+  additionalPaidInCapital: Total additional paid-in capital, excluding amounts embedded in an approved combined common-stock balance.
+    banks:
+      1. banks_additionalPaidInCapital_direct_1 [direct]
+         concept: us-gaap:AdditionalPaidInCapital
+    electric_utilities:
+      1. electric_utilities_additionalPaidInCapital_direct_1 [direct]
+         concept: us-gaap:AdditionalPaidInCapital
+    general_corporate:
+      1. general_corporate_additionalPaidInCapital_direct_1 [direct]
+         concept: us-gaap:AdditionalPaidInCapital
+    life_insurance:
+      1. life_insurance_additionalPaidInCapital_direct_1 [direct]
+         concept: us-gaap:AdditionalPaidInCapital
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_additionalPaidInCapital_direct_1 [direct]
+         concept: us-gaap:AdditionalPaidInCapital
+    personal_credit_institutions:
+      1. personal_credit_institutions_additionalPaidInCapital_direct_1 [direct]
+         concept: us-gaap:AdditionalPaidInCapital
+    reit:
+      1. reit_additionalPaidInCapital_direct_1 [direct]
+         concept: us-gaap:AdditionalPaidInCapital
+    savings_institutions:
+      1. savings_institutions_additionalPaidInCapital_direct_1 [direct]
+         concept: us-gaap:AdditionalPaidInCapital
+  accumulatedOtherComprehensiveIncomeLoss: Accumulated other comprehensive income or loss net of tax, signed as reported.
+    banks:
+      1. banks_accumulatedOtherComprehensiveIncomeLoss_direct_1 [direct]
+         concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax
+    electric_utilities:
+      1. electric_utilities_accumulatedOtherComprehensiveIncomeLoss_direct_1 [direct]
+         concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax
+    general_corporate:
+      1. general_corporate_accumulatedOtherComprehensiveIncomeLoss_direct_1 [direct]
+         concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax
+    life_insurance:
+      1. life_insurance_accumulatedOtherComprehensiveIncomeLoss_direct_1 [direct]
+         concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_accumulatedOtherComprehensiveIncomeLoss_direct_1 [direct]
+         concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax
+    personal_credit_institutions:
+      1. personal_credit_institutions_accumulatedOtherComprehensiveIncomeLoss_direct_1 [direct]
+         concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax
+    reit:
+      1. reit_accumulatedOtherComprehensiveIncomeLoss_direct_1 [direct]
+         concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax
+    savings_institutions:
+      1. savings_institutions_accumulatedOtherComprehensiveIncomeLoss_direct_1 [direct]
+         concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax
+  otherTotalStockholdersEquity: Reported other parent stockholders equity; not an unexplained residual.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      No enabled structural candidate rules
+    general_corporate:
+      No enabled structural candidate rules
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      No enabled structural candidate rules
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  totalStockholdersEquity: Permanent stockholders equity attributable to the parent, excluding noncontrolling interests.
+    banks:
+      1. banks_totalStockholdersEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquity
+    electric_utilities:
+      1. electric_utilities_totalStockholdersEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquity
+    general_corporate:
+      1. general_corporate_totalStockholdersEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquity
+    life_insurance:
+      1. life_insurance_totalStockholdersEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquity
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalStockholdersEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquity
+    personal_credit_institutions:
+      1. personal_credit_institutions_totalStockholdersEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquity
+    reit:
+      1. reit_totalStockholdersEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquity
+    savings_institutions:
+      1. savings_institutions_totalStockholdersEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquity
+  totalEquity: Total permanent equity including noncontrolling interests; excludes mezzanine/temporary equity.
+    banks:
+      1. banks_totalEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
+      2. banks_totalEquity_calculated [calculation]
+         expression: totalStockholdersEquity + minorityInterest
+    electric_utilities:
+      1. electric_utilities_totalEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
+      2. electric_utilities_totalEquity_calculated [calculation]
+         expression: totalStockholdersEquity + minorityInterest
+    general_corporate:
+      1. general_corporate_totalEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
+      2. general_corporate_totalEquity_calculated [calculation]
+         expression: totalStockholdersEquity + minorityInterest
+    life_insurance:
+      1. life_insurance_totalEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
+      2. life_insurance_totalEquity_calculated [calculation]
+         expression: totalStockholdersEquity + minorityInterest
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
+      2. oil_and_gas_extraction_totalEquity_calculated [calculation]
+         expression: totalStockholdersEquity + minorityInterest
+    personal_credit_institutions:
+      1. personal_credit_institutions_totalEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
+      2. personal_credit_institutions_totalEquity_calculated [calculation]
+         expression: totalStockholdersEquity + minorityInterest
+    reit:
+      1. reit_totalEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
+      2. reit_totalEquity_calculated [calculation]
+         expression: totalStockholdersEquity + minorityInterest
+    savings_institutions:
+      1. savings_institutions_totalEquity_direct_1 [direct]
+         concept: us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
+      2. savings_institutions_totalEquity_calculated [calculation]
+         expression: totalStockholdersEquity + minorityInterest
+  minorityInterest: Permanent-equity noncontrolling interest; excludes redeemable noncontrolling interest.
+    banks:
+      1. banks_minorityInterest_direct_1 [direct]
+         concept: us-gaap:MinorityInterest
+    electric_utilities:
+      1. electric_utilities_minorityInterest_direct_1 [direct]
+         concept: us-gaap:MinorityInterest
+    general_corporate:
+      1. general_corporate_minorityInterest_direct_1 [direct]
+         concept: us-gaap:MinorityInterest
+    life_insurance:
+      1. life_insurance_minorityInterest_direct_1 [direct]
+         concept: us-gaap:MinorityInterest
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_minorityInterest_direct_1 [direct]
+         concept: us-gaap:MinorityInterest
+    personal_credit_institutions:
+      1. personal_credit_institutions_minorityInterest_direct_1 [direct]
+         concept: us-gaap:MinorityInterest
+    reit:
+      1. reit_minorityInterest_direct_1 [direct]
+         concept: us-gaap:MinorityInterest
+    savings_institutions:
+      1. savings_institutions_minorityInterest_direct_1 [direct]
+         concept: us-gaap:MinorityInterest
+  totalLiabilitiesAndTotalEquity: Reported balance-sheet total liabilities and equity; presentation may include separately disclosed temporary equity, which must be reconciled.
+    banks:
+      1. banks_totalLiabilitiesAndTotalEquity_direct_1 [direct]
+         concept: us-gaap:LiabilitiesAndStockholdersEquity
+    electric_utilities:
+      1. electric_utilities_totalLiabilitiesAndTotalEquity_direct_1 [direct]
+         concept: us-gaap:LiabilitiesAndStockholdersEquity
+    general_corporate:
+      1. general_corporate_totalLiabilitiesAndTotalEquity_direct_1 [direct]
+         concept: us-gaap:LiabilitiesAndStockholdersEquity
+    life_insurance:
+      1. life_insurance_totalLiabilitiesAndTotalEquity_direct_1 [direct]
+         concept: us-gaap:LiabilitiesAndStockholdersEquity
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalLiabilitiesAndTotalEquity_direct_1 [direct]
+         concept: us-gaap:LiabilitiesAndStockholdersEquity
+    personal_credit_institutions:
+      1. personal_credit_institutions_totalLiabilitiesAndTotalEquity_direct_1 [direct]
+         concept: us-gaap:LiabilitiesAndStockholdersEquity
+    reit:
+      1. reit_totalLiabilitiesAndTotalEquity_direct_1 [direct]
+         concept: us-gaap:LiabilitiesAndStockholdersEquity
+    savings_institutions:
+      1. savings_institutions_totalLiabilitiesAndTotalEquity_direct_1 [direct]
+         concept: us-gaap:LiabilitiesAndStockholdersEquity
+  totalInvestments: Total current and noncurrent investments on a consistent carrying-value basis, excluding cash equivalents.
+    banks:
+      1. banks_totalInvestments_direct_1 [direct]
+         concept: us-gaap:Investments
+    electric_utilities:
+      1. electric_utilities_totalInvestments_calculated [calculation]
+         expression: shortTermInvestments + longTermInvestments
+    general_corporate:
+      1. general_corporate_totalInvestments_calculated [calculation]
+         expression: shortTermInvestments + longTermInvestments
+    life_insurance:
+      1. life_insurance_totalInvestments_direct_1 [direct]
+         concept: us-gaap:Investments
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalInvestments_direct_1 [direct]
+         concept: us-gaap:Investments
+      2. oil_and_gas_extraction_totalInvestments_calculated [calculation]
+         expression: shortTermInvestments + longTermInvestments
+    personal_credit_institutions:
+      1. personal_credit_institutions_totalInvestments_direct_1 [direct]
+         concept: us-gaap:Investments
+    reit:
+      1. reit_totalInvestments_direct_1 [direct]
+         concept: us-gaap:Investments
+    savings_institutions:
+      1. savings_institutions_totalInvestments_direct_1 [direct]
+         concept: us-gaap:Investments
+  totalDebt: Current and noncurrent interest-bearing borrowings plus finance lease liabilities, excluding operating leases, deposits and trade payables.
+    banks:
+      1. banks_totalDebt_direct_1 [direct]
+         concept: us-gaap:DebtAndCapitalLeaseObligations
+    electric_utilities:
+      1. electric_utilities_totalDebt_calculated [calculation]
+         expression: shortTermDebt + longTermDebt + capitalLeaseObligations
+    general_corporate:
+      1. general_corporate_totalDebt_calculated [calculation]
+         expression: shortTermDebt + longTermDebt + capitalLeaseObligations
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_totalDebt_calculated [calculation]
+         expression: shortTermDebt + longTermDebt + capitalLeaseObligations
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_totalDebt_direct_1 [direct]
+         concept: us-gaap:DebtAndCapitalLeaseObligations
+    savings_institutions:
+      1. savings_institutions_totalDebt_direct_1 [direct]
+         concept: us-gaap:DebtAndCapitalLeaseObligations
+  netDebt: Total debt including finance leases less unrestricted cash and cash equivalents; short-term investments are not deducted.
+    banks:
+      1. banks_netDebt_calculated [calculation]
+         expression: totalDebt - cashAndCashEquivalents
+    electric_utilities:
+      1. electric_utilities_netDebt_calculated [calculation]
+         expression: totalDebt - cashAndCashEquivalents
+    general_corporate:
+      1. general_corporate_netDebt_calculated [calculation]
+         expression: totalDebt - cashAndCashEquivalents
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netDebt_calculated [calculation]
+         expression: totalDebt - cashAndCashEquivalents
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_netDebt_calculated [calculation]
+         expression: totalDebt - cashAndCashEquivalents
+    savings_institutions:
+      1. savings_institutions_netDebt_calculated [calculation]
+         expression: totalDebt - cashAndCashEquivalents
+
+CF
+  netIncome: Net income used as the consolidated cash-flow reconciliation starting point; parent-only versus including NCI must match the CF statement.
+    banks:
+      1. banks_netIncome_direct_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+         sign multiplier: 1
+      2. banks_netIncome_direct_2 [direct]
+         concept: us-gaap:ProfitLoss
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_netIncome_direct_1 [direct]
+         concept: us-gaap:ProfitLoss
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_netIncome_direct_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+         sign multiplier: 1
+      2. general_corporate_netIncome_direct_2 [direct]
+         concept: us-gaap:ProfitLoss
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_netIncome_direct_1 [direct]
+         concept: us-gaap:ProfitLoss
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netIncome_direct_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+         sign multiplier: 1
+      2. oil_and_gas_extraction_netIncome_direct_2 [direct]
+         concept: us-gaap:ProfitLoss
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_netIncome_direct_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+         sign multiplier: 1
+      2. personal_credit_institutions_netIncome_direct_2 [direct]
+         concept: us-gaap:ProfitLoss
+         sign multiplier: 1
+    reit:
+      1. reit_netIncome_direct_1 [direct]
+         concept: us-gaap:ProfitLoss
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_netIncome_direct_1 [direct]
+         concept: us-gaap:NetIncomeLoss
+         sign multiplier: 1
+      2. savings_institutions_netIncome_direct_2 [direct]
+         concept: us-gaap:ProfitLoss
+         sign multiplier: 1
+  depreciationAndAmortization: Total depreciation and amortization addback in operating cash reconciliation, excluding depletion unless explicitly approved.
+    banks:
+      1. banks_depreciationAndAmortization_direct_1 [direct]
+         concept: us-gaap:DepreciationAndAmortization
+         sign multiplier: 1
+    electric_utilities:
+      No enabled structural candidate rules
+    general_corporate:
+      1. general_corporate_depreciationAndAmortization_direct_1 [direct]
+         concept: us-gaap:DepreciationAndAmortization
+         sign multiplier: 1
+      2. general_corporate_depreciationAndAmortization_dd_and_a_reviewed_cf [direct]
+         concept: us-gaap:DepreciationDepletionAndAmortization
+         sign multiplier: 1
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      No enabled structural candidate rules
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      1. savings_institutions_depreciationAndAmortization_direct_1 [direct]
+         concept: us-gaap:DepreciationAndAmortization
+         sign multiplier: 1
+  deferredIncomeTax: Signed deferred income tax reconciliation adjustment, excluding current cash taxes.
+    banks:
+      1. banks_deferredIncomeTax_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxExpenseBenefit
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_deferredIncomeTax_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxExpenseBenefit
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_deferredIncomeTax_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxExpenseBenefit
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_deferredIncomeTax_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxExpenseBenefit
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_deferredIncomeTax_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxExpenseBenefit
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_deferredIncomeTax_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxExpenseBenefit
+         sign multiplier: 1
+    reit:
+      1. reit_deferredIncomeTax_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxExpenseBenefit
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_deferredIncomeTax_direct_1 [direct]
+         concept: us-gaap:DeferredIncomeTaxExpenseBenefit
+         sign multiplier: 1
+  stockBasedCompensation: Total noncash share-based compensation addback; exclude capitalized amounts not included in the reconciliation.
+    banks:
+      1. banks_stockBasedCompensation_direct_1 [direct]
+         concept: us-gaap:ShareBasedCompensation
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_stockBasedCompensation_direct_1 [direct]
+         concept: us-gaap:ShareBasedCompensation
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_stockBasedCompensation_direct_1 [direct]
+         concept: us-gaap:ShareBasedCompensation
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_stockBasedCompensation_direct_1 [direct]
+         concept: us-gaap:ShareBasedCompensation
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_stockBasedCompensation_direct_1 [direct]
+         concept: us-gaap:ShareBasedCompensation
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_stockBasedCompensation_direct_1 [direct]
+         concept: us-gaap:ShareBasedCompensation
+         sign multiplier: 1
+    reit:
+      1. reit_stockBasedCompensation_direct_1 [direct]
+         concept: us-gaap:ShareBasedCompensation
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_stockBasedCompensation_direct_1 [direct]
+         concept: us-gaap:ShareBasedCompensation
+         sign multiplier: 1
+  changeInWorkingCapital: Aggregate operating working-capital cash effect, not a change in balance-sheet working capital.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      No enabled structural candidate rules
+    general_corporate:
+      No enabled structural candidate rules
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      No enabled structural candidate rules
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  accountsReceivables: Operating cash effect of change in trade accounts receivable; asset increases are outflows.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_accountsReceivables_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsReceivable
+         sign multiplier: -1
+    general_corporate:
+      1. general_corporate_accountsReceivables_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsReceivable
+         sign multiplier: -1
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_accountsReceivables_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsReceivable
+         sign multiplier: -1
+    personal_credit_institutions:
+      1. personal_credit_institutions_accountsReceivables_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsReceivable
+         sign multiplier: -1
+    reit:
+      1. reit_accountsReceivables_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsReceivable
+         sign multiplier: -1
+    savings_institutions:
+      No enabled structural candidate rules
+  inventory: Operating cash effect of change in inventory; increases are outflows.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_inventory_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInInventories
+         sign multiplier: -1
+    general_corporate:
+      1. general_corporate_inventory_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInInventories
+         sign multiplier: -1
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_inventory_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInInventories
+         sign multiplier: -1
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  accountsPayables: Operating cash effect of change in trade accounts payable; increases are inflows.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_accountsPayables_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsPayable
+         sign multiplier: 1
+      2. electric_utilities_accountsPayables_direct_2 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsPayableTrade
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_accountsPayables_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsPayable
+         sign multiplier: 1
+      2. general_corporate_accountsPayables_direct_2 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsPayableTrade
+         sign multiplier: 1
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_accountsPayables_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsPayable
+         sign multiplier: 1
+      2. oil_and_gas_extraction_accountsPayables_direct_2 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsPayableTrade
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_accountsPayables_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsPayable
+         sign multiplier: 1
+    reit:
+      1. reit_accountsPayables_direct_1 [direct]
+         concept: us-gaap:IncreaseDecreaseInAccountsPayable
+         sign multiplier: 1
+    savings_institutions:
+      No enabled structural candidate rules
+  otherWorkingCapital: Aggregate remaining operating working-capital cash effect excluding trade receivables, inventory and trade payables.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      No enabled structural candidate rules
+    general_corporate:
+      No enabled structural candidate rules
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      No enabled structural candidate rules
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  otherNonCashItems: Reported total other noncash operating reconciliation adjustments, excluding separately exposed D&A, deferred tax and SBC.
+    banks:
+      1. banks_otherNonCashItems_direct_1 [direct]
+         concept: us-gaap:OtherNoncashIncomeExpense
+         sign multiplier: -1
+    electric_utilities:
+      1. electric_utilities_otherNonCashItems_direct_1 [direct]
+         concept: us-gaap:OtherNoncashIncomeExpense
+         sign multiplier: -1
+      2. electric_utilities_otherNonCashItems_direct_2 [direct]
+         concept: us-gaap:OtherNoncashExpense
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_otherNonCashItems_direct_1 [direct]
+         concept: us-gaap:OtherNoncashIncomeExpense
+         sign multiplier: -1
+      2. general_corporate_otherNonCashItems_direct_2 [direct]
+         concept: us-gaap:OtherNoncashExpense
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_otherNonCashItems_direct_1 [direct]
+         concept: us-gaap:OtherNoncashIncomeExpense
+         sign multiplier: -1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_otherNonCashItems_direct_1 [direct]
+         concept: us-gaap:OtherNoncashIncomeExpense
+         sign multiplier: -1
+    personal_credit_institutions:
+      1. personal_credit_institutions_otherNonCashItems_direct_1 [direct]
+         concept: us-gaap:OtherNoncashIncomeExpense
+         sign multiplier: -1
+    reit:
+      1. reit_otherNonCashItems_direct_1 [direct]
+         concept: us-gaap:OtherNoncashIncomeExpense
+         sign multiplier: -1
+      2. reit_otherNonCashItems_direct_2 [direct]
+         concept: us-gaap:OtherNoncashExpense
+         sign multiplier: 1
+    savings_institutions:
+      No enabled structural candidate rules
+  netCashProvidedByOperatingActivities: Consolidated total net operating cash flow including discontinued operations.
+    banks:
+      1. banks_netCashProvidedByOperatingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_netCashProvidedByOperatingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_netCashProvidedByOperatingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_netCashProvidedByOperatingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netCashProvidedByOperatingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_netCashProvidedByOperatingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    reit:
+      1. reit_netCashProvidedByOperatingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_netCashProvidedByOperatingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+  investmentsInPropertyPlantAndEquipment: Cash payments for property, plant and equipment, negative; excludes noncash additions and asset sale proceeds.
+    banks:
+      1. banks_investmentsInPropertyPlantAndEquipment_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    electric_utilities:
+      1. electric_utilities_investmentsInPropertyPlantAndEquipment_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    general_corporate:
+      1. general_corporate_investmentsInPropertyPlantAndEquipment_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    life_insurance:
+      1. life_insurance_investmentsInPropertyPlantAndEquipment_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_investmentsInPropertyPlantAndEquipment_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    personal_credit_institutions:
+      1. personal_credit_institutions_investmentsInPropertyPlantAndEquipment_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    reit:
+      1. reit_investmentsInPropertyPlantAndEquipment_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    savings_institutions:
+      1. savings_institutions_investmentsInPropertyPlantAndEquipment_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+  acquisitionsNet: Net acquisition and divestiture cash flow after acquired/divested cash; payments negative, proceeds positive.
+    banks:
+      1. banks_acquisitionsNet_cash_components [calculation]
+         expression: us-gaap:ProceedsFromDivestitureOfBusinessesNetOfCashDivested + (-1 * us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired)
+    electric_utilities:
+      No enabled structural candidate rules
+    general_corporate:
+      1. general_corporate_acquisitionsNet_cash_components [calculation]
+         expression: us-gaap:ProceedsFromDivestitureOfBusinessesNetOfCashDivested + (-1 * us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired)
+    life_insurance:
+      1. life_insurance_acquisitionsNet_cash_components [calculation]
+         expression: us-gaap:ProceedsFromDivestitureOfBusinessesNetOfCashDivested + (-1 * us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired)
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_acquisitionsNet_cash_components [calculation]
+         expression: us-gaap:ProceedsFromDivestitureOfBusinessesNetOfCashDivested + (-1 * us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired)
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      No enabled structural candidate rules
+    savings_institutions:
+      No enabled structural candidate rules
+  purchasesOfInvestments: Total investment purchases classified in investing cash flows, negative; component security classes require exhaustive scope approval.
+    banks:
+      1. banks_purchasesOfInvestments_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquireInvestments
+         sign multiplier: -1
+      2. banks_purchasesOfInvestments_direct_2 [direct]
+         concept: us-gaap:PaymentsToAcquireMarketableSecurities
+         sign multiplier: -1
+    electric_utilities:
+      1. electric_utilities_purchasesOfInvestments_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquireInvestments
+         sign multiplier: -1
+      2. electric_utilities_purchasesOfInvestments_direct_2 [direct]
+         concept: us-gaap:PaymentsToAcquireMarketableSecurities
+         sign multiplier: -1
+    general_corporate:
+      1. general_corporate_purchasesOfInvestments_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquireInvestments
+         sign multiplier: -1
+      2. general_corporate_purchasesOfInvestments_direct_2 [direct]
+         concept: us-gaap:PaymentsToAcquireMarketableSecurities
+         sign multiplier: -1
+    life_insurance:
+      1. life_insurance_purchasesOfInvestments_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquireInvestments
+         sign multiplier: -1
+      2. life_insurance_purchasesOfInvestments_direct_2 [direct]
+         concept: us-gaap:PaymentsToAcquireMarketableSecurities
+         sign multiplier: -1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_purchasesOfInvestments_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquireInvestments
+         sign multiplier: -1
+    personal_credit_institutions:
+      1. personal_credit_institutions_purchasesOfInvestments_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquireMarketableSecurities
+         sign multiplier: -1
+    reit:
+      1. reit_purchasesOfInvestments_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquireInvestments
+         sign multiplier: -1
+      2. reit_purchasesOfInvestments_direct_2 [direct]
+         concept: us-gaap:PaymentsToAcquireMarketableSecurities
+         sign multiplier: -1
+    savings_institutions:
+      1. savings_institutions_purchasesOfInvestments_direct_1 [direct]
+         concept: us-gaap:PaymentsToAcquireInvestments
+         sign multiplier: -1
+      2. savings_institutions_purchasesOfInvestments_direct_2 [direct]
+         concept: us-gaap:PaymentsToAcquireMarketableSecurities
+         sign multiplier: -1
+  salesMaturitiesOfInvestments: Total investment sale, maturity and collection proceeds, positive; no mixing overlapping security subtotals.
+    banks:
+      1. banks_salesMaturitiesOfInvestments_direct_1 [direct]
+         concept: us-gaap:ProceedsFromSaleMaturityAndCollectionsOfInvestments
+         sign multiplier: 1
+      2. banks_salesMaturitiesOfInvestments_direct_2 [direct]
+         concept: us-gaap:ProceedsFromSaleAndMaturityOfMarketableSecurities
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_salesMaturitiesOfInvestments_direct_1 [direct]
+         concept: us-gaap:ProceedsFromSaleMaturityAndCollectionsOfInvestments
+         sign multiplier: 1
+      2. electric_utilities_salesMaturitiesOfInvestments_direct_2 [direct]
+         concept: us-gaap:ProceedsFromSaleAndMaturityOfMarketableSecurities
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_salesMaturitiesOfInvestments_direct_1 [direct]
+         concept: us-gaap:ProceedsFromSaleMaturityAndCollectionsOfInvestments
+         sign multiplier: 1
+      2. general_corporate_salesMaturitiesOfInvestments_direct_2 [direct]
+         concept: us-gaap:ProceedsFromSaleAndMaturityOfMarketableSecurities
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_salesMaturitiesOfInvestments_direct_1 [direct]
+         concept: us-gaap:ProceedsFromSaleMaturityAndCollectionsOfInvestments
+         sign multiplier: 1
+      2. life_insurance_salesMaturitiesOfInvestments_direct_2 [direct]
+         concept: us-gaap:ProceedsFromSaleAndMaturityOfMarketableSecurities
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_salesMaturitiesOfInvestments_direct_1 [direct]
+         concept: us-gaap:ProceedsFromSaleMaturityAndCollectionsOfInvestments
+         sign multiplier: 1
+      2. oil_and_gas_extraction_salesMaturitiesOfInvestments_direct_2 [direct]
+         concept: us-gaap:ProceedsFromSaleAndMaturityOfMarketableSecurities
+         sign multiplier: 1
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_salesMaturitiesOfInvestments_direct_1 [direct]
+         concept: us-gaap:ProceedsFromSaleMaturityAndCollectionsOfInvestments
+         sign multiplier: 1
+      2. reit_salesMaturitiesOfInvestments_direct_2 [direct]
+         concept: us-gaap:ProceedsFromSaleAndMaturityOfMarketableSecurities
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_salesMaturitiesOfInvestments_direct_1 [direct]
+         concept: us-gaap:ProceedsFromSaleAndMaturityOfMarketableSecurities
+         sign multiplier: 1
+  otherInvestingActivities: Reported net other investing cash flows, excluding exposed capex, acquisitions and investment purchases/proceeds.
+    banks:
+      1. banks_otherInvestingActivities_direct_1 [direct]
+         concept: us-gaap:PaymentsForProceedsFromOtherInvestingActivities
+         sign multiplier: -1
+    electric_utilities:
+      1. electric_utilities_otherInvestingActivities_direct_1 [direct]
+         concept: us-gaap:PaymentsForProceedsFromOtherInvestingActivities
+         sign multiplier: -1
+    general_corporate:
+      1. general_corporate_otherInvestingActivities_direct_1 [direct]
+         concept: us-gaap:PaymentsForProceedsFromOtherInvestingActivities
+         sign multiplier: -1
+    life_insurance:
+      1. life_insurance_otherInvestingActivities_direct_1 [direct]
+         concept: us-gaap:PaymentsForProceedsFromOtherInvestingActivities
+         sign multiplier: -1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_otherInvestingActivities_direct_1 [direct]
+         concept: us-gaap:PaymentsForProceedsFromOtherInvestingActivities
+         sign multiplier: -1
+    personal_credit_institutions:
+      1. personal_credit_institutions_otherInvestingActivities_direct_1 [direct]
+         concept: us-gaap:PaymentsForProceedsFromOtherInvestingActivities
+         sign multiplier: -1
+    reit:
+      1. reit_otherInvestingActivities_direct_1 [direct]
+         concept: us-gaap:PaymentsForProceedsFromOtherInvestingActivities
+         sign multiplier: -1
+    savings_institutions:
+      1. savings_institutions_otherInvestingActivities_direct_1 [direct]
+         concept: us-gaap:PaymentsForProceedsFromOtherInvestingActivities
+         sign multiplier: -1
+  netCashProvidedByInvestingActivities: Consolidated total net investing cash flow including discontinued operations.
+    banks:
+      1. banks_netCashProvidedByInvestingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInInvestingActivities
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_netCashProvidedByInvestingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInInvestingActivities
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_netCashProvidedByInvestingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInInvestingActivities
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_netCashProvidedByInvestingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInInvestingActivities
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netCashProvidedByInvestingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInInvestingActivities
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_netCashProvidedByInvestingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInInvestingActivities
+         sign multiplier: 1
+    reit:
+      1. reit_netCashProvidedByInvestingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInInvestingActivities
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_netCashProvidedByInvestingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInInvestingActivities
+         sign multiplier: 1
+  netDebtIssuance: Net cash borrowings less repayments, excluding lease principal, deposits and noncash conversions; debt issuance cost treatment must be reconciled.
+    banks:
+      1. banks_netDebtIssuance_direct_1 [direct]
+         concept: us-gaap:ProceedsFromRepaymentsOfDebt
+         sign multiplier: 1
+      2. banks_netDebtIssuance_calculated [calculation]
+         expression: longTermNetDebtIssuance + shortTermNetDebtIssuance
+    electric_utilities:
+      1. electric_utilities_netDebtIssuance_calculated [calculation]
+         expression: longTermNetDebtIssuance + shortTermNetDebtIssuance
+    general_corporate:
+      1. general_corporate_netDebtIssuance_direct_1 [direct]
+         concept: us-gaap:ProceedsFromRepaymentsOfDebt
+         sign multiplier: 1
+      2. general_corporate_netDebtIssuance_calculated [calculation]
+         expression: longTermNetDebtIssuance + shortTermNetDebtIssuance
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      No enabled structural candidate rules
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_netDebtIssuance_calculated [calculation]
+         expression: longTermNetDebtIssuance + shortTermNetDebtIssuance
+    savings_institutions:
+      1. savings_institutions_netDebtIssuance_direct_1 [direct]
+         concept: us-gaap:ProceedsFromRepaymentsOfDebt
+         sign multiplier: 1
+      2. savings_institutions_netDebtIssuance_calculated [calculation]
+         expression: longTermNetDebtIssuance + shortTermNetDebtIssuance
+  longTermNetDebtIssuance: Long-term cash debt issuance less repayment; classify borrowing by instrument, not maturity reclassification.
+    banks:
+      1. banks_longTermNetDebtIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromIssuanceOfLongTermDebt + (-1 * us-gaap:RepaymentsOfLongTermDebt)
+    electric_utilities:
+      1. electric_utilities_longTermNetDebtIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromIssuanceOfLongTermDebt + (-1 * us-gaap:RepaymentsOfLongTermDebt)
+    general_corporate:
+      1. general_corporate_longTermNetDebtIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromIssuanceOfLongTermDebt + (-1 * us-gaap:RepaymentsOfLongTermDebt)
+    life_insurance:
+      1. life_insurance_longTermNetDebtIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromIssuanceOfLongTermDebt + (-1 * us-gaap:RepaymentsOfLongTermDebt)
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_longTermNetDebtIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromIssuanceOfLongTermDebt + (-1 * us-gaap:RepaymentsOfLongTermDebt)
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_longTermNetDebtIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromIssuanceOfLongTermDebt + (-1 * us-gaap:RepaymentsOfLongTermDebt)
+    savings_institutions:
+      1. savings_institutions_longTermNetDebtIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromIssuanceOfLongTermDebt + (-1 * us-gaap:RepaymentsOfLongTermDebt)
+  shortTermNetDebtIssuance: Short-term cash debt issuance less repayment, excluding long-term current maturities.
+    banks:
+      1. banks_shortTermNetDebtIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromShortTermDebt + (-1 * us-gaap:RepaymentsOfShortTermDebt)
+    electric_utilities:
+      1. electric_utilities_shortTermNetDebtIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromShortTermDebt + (-1 * us-gaap:RepaymentsOfShortTermDebt)
+    general_corporate:
+      1. general_corporate_shortTermNetDebtIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromShortTermDebt + (-1 * us-gaap:RepaymentsOfShortTermDebt)
+    life_insurance:
+      No enabled structural candidate rules
+    oil_and_gas_extraction:
+      No enabled structural candidate rules
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_shortTermNetDebtIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromShortTermDebt + (-1 * us-gaap:RepaymentsOfShortTermDebt)
+    savings_institutions:
+      1. savings_institutions_shortTermNetDebtIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromShortTermDebt + (-1 * us-gaap:RepaymentsOfShortTermDebt)
+  netStockIssuance: Net common and preferred stock issuance less repurchases; excludes noncash stock and NCI transactions.
+    banks:
+      1. banks_netStockIssuance_calculated [calculation]
+         expression: netCommonStockIssuance + netPreferredStockIssuance
+    electric_utilities:
+      No enabled structural candidate rules
+    general_corporate:
+      No enabled structural candidate rules
+    life_insurance:
+      1. life_insurance_netStockIssuance_calculated [calculation]
+         expression: netCommonStockIssuance + netPreferredStockIssuance
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netStockIssuance_calculated [calculation]
+         expression: netCommonStockIssuance + netPreferredStockIssuance
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_netStockIssuance_calculated [calculation]
+         expression: netCommonStockIssuance + netPreferredStockIssuance
+    savings_institutions:
+      No enabled structural candidate rules
+  netCommonStockIssuance: Common stock cash issuance less common stock repurchases; issuer must confirm coverage of plan/option proceeds and issuance costs.
+    banks:
+      1. banks_netCommonStockIssuance_calculated [calculation]
+         expression: commonStockIssuance + commonStockRepurchased
+    electric_utilities:
+      1. electric_utilities_netCommonStockIssuance_calculated [calculation]
+         expression: commonStockIssuance + commonStockRepurchased
+    general_corporate:
+      1. general_corporate_netCommonStockIssuance_calculated [calculation]
+         expression: commonStockIssuance + commonStockRepurchased
+    life_insurance:
+      1. life_insurance_netCommonStockIssuance_calculated [calculation]
+         expression: commonStockIssuance + commonStockRepurchased
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netCommonStockIssuance_calculated [calculation]
+         expression: commonStockIssuance + commonStockRepurchased
+    personal_credit_institutions:
+      1. personal_credit_institutions_netCommonStockIssuance_calculated [calculation]
+         expression: commonStockIssuance + commonStockRepurchased
+    reit:
+      1. reit_netCommonStockIssuance_calculated [calculation]
+         expression: commonStockIssuance + commonStockRepurchased
+    savings_institutions:
+      1. savings_institutions_netCommonStockIssuance_calculated [calculation]
+         expression: commonStockIssuance + commonStockRepurchased
+  commonStockIssuance: Total cash proceeds from common stock issuance, positive; option/plan proceeds must be reconciled before treating a narrower subtotal as total.
+    banks:
+      1. banks_commonStockIssuance_direct_1 [direct]
+         concept: us-gaap:ProceedsFromIssuanceOfCommonStock
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_commonStockIssuance_direct_1 [direct]
+         concept: us-gaap:ProceedsFromIssuanceOfCommonStock
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_commonStockIssuance_direct_1 [direct]
+         concept: us-gaap:ProceedsFromIssuanceOfCommonStock
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_commonStockIssuance_direct_1 [direct]
+         concept: us-gaap:ProceedsFromIssuanceOfCommonStock
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_commonStockIssuance_direct_1 [direct]
+         concept: us-gaap:ProceedsFromIssuanceOfCommonStock
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_commonStockIssuance_direct_1 [direct]
+         concept: us-gaap:ProceedsFromIssuanceOfCommonStock
+         sign multiplier: 1
+    reit:
+      1. reit_commonStockIssuance_direct_1 [direct]
+         concept: us-gaap:ProceedsFromIssuanceOfCommonStock
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_commonStockIssuance_direct_1 [direct]
+         concept: us-gaap:ProceedsFromIssuanceOfCommonStock
+         sign multiplier: 1
+  commonStockRepurchased: Cash repurchases of common stock, negative; excludes employee tax withholding unless explicitly reconciled.
+    banks:
+      1. banks_commonStockRepurchased_direct_1 [direct]
+         concept: us-gaap:PaymentsForRepurchaseOfCommonStock
+         sign multiplier: -1
+    electric_utilities:
+      1. electric_utilities_commonStockRepurchased_direct_1 [direct]
+         concept: us-gaap:PaymentsForRepurchaseOfCommonStock
+         sign multiplier: -1
+    general_corporate:
+      1. general_corporate_commonStockRepurchased_direct_1 [direct]
+         concept: us-gaap:PaymentsForRepurchaseOfCommonStock
+         sign multiplier: -1
+    life_insurance:
+      1. life_insurance_commonStockRepurchased_direct_1 [direct]
+         concept: us-gaap:PaymentsForRepurchaseOfCommonStock
+         sign multiplier: -1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_commonStockRepurchased_direct_1 [direct]
+         concept: us-gaap:PaymentsForRepurchaseOfCommonStock
+         sign multiplier: -1
+    personal_credit_institutions:
+      1. personal_credit_institutions_commonStockRepurchased_direct_1 [direct]
+         concept: us-gaap:PaymentsForRepurchaseOfCommonStock
+         sign multiplier: -1
+    reit:
+      1. reit_commonStockRepurchased_direct_1 [direct]
+         concept: us-gaap:PaymentsForRepurchaseOfCommonStock
+         sign multiplier: -1
+    savings_institutions:
+      1. savings_institutions_commonStockRepurchased_direct_1 [direct]
+         concept: us-gaap:PaymentsForRepurchaseOfCommonStock
+         sign multiplier: -1
+  netPreferredStockIssuance: Net preferred stock cash issuance less preferred repurchases; excludes liability-classified instruments unless explicitly approved.
+    banks:
+      1. banks_netPreferredStockIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromIssuanceOfPreferredStockAndPreferenceStock + (-1 * us-gaap:PaymentsForRepurchaseOfPreferredStockAndPreferenceStock)
+    electric_utilities:
+      No enabled structural candidate rules
+    general_corporate:
+      No enabled structural candidate rules
+    life_insurance:
+      1. life_insurance_netPreferredStockIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromIssuanceOfPreferredStockAndPreferenceStock + (-1 * us-gaap:PaymentsForRepurchaseOfPreferredStockAndPreferenceStock)
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netPreferredStockIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromIssuanceOfPreferredStockAndPreferenceStock + (-1 * us-gaap:PaymentsForRepurchaseOfPreferredStockAndPreferenceStock)
+    personal_credit_institutions:
+      No enabled structural candidate rules
+    reit:
+      1. reit_netPreferredStockIssuance_cash_components [calculation]
+         expression: us-gaap:ProceedsFromIssuanceOfPreferredStockAndPreferenceStock + (-1 * us-gaap:PaymentsForRepurchaseOfPreferredStockAndPreferenceStock)
+    savings_institutions:
+      No enabled structural candidate rules
+  netDividendsPaid: Total cash dividends paid to parent shareholders, negative; excludes NCI distributions.
+    banks:
+      1. banks_netDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividends
+         sign multiplier: -1
+    electric_utilities:
+      1. electric_utilities_netDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividends
+         sign multiplier: -1
+    general_corporate:
+      1. general_corporate_netDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividends
+         sign multiplier: -1
+    life_insurance:
+      1. life_insurance_netDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividends
+         sign multiplier: -1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividends
+         sign multiplier: -1
+    personal_credit_institutions:
+      1. personal_credit_institutions_netDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividends
+         sign multiplier: -1
+    reit:
+      1. reit_netDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividends
+         sign multiplier: -1
+    savings_institutions:
+      1. savings_institutions_netDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividends
+         sign multiplier: -1
+  commonDividendsPaid: Cash common stock dividends paid, negative.
+    banks:
+      1. banks_commonDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsCommonStock
+         sign multiplier: -1
+    electric_utilities:
+      1. electric_utilities_commonDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsCommonStock
+         sign multiplier: -1
+    general_corporate:
+      1. general_corporate_commonDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsCommonStock
+         sign multiplier: -1
+    life_insurance:
+      1. life_insurance_commonDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsCommonStock
+         sign multiplier: -1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_commonDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsCommonStock
+         sign multiplier: -1
+    personal_credit_institutions:
+      1. personal_credit_institutions_commonDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsCommonStock
+         sign multiplier: -1
+    reit:
+      1. reit_commonDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsCommonStock
+         sign multiplier: -1
+    savings_institutions:
+      1. savings_institutions_commonDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsCommonStock
+         sign multiplier: -1
+  preferredDividendsPaid: Cash preferred stock dividends paid, negative.
+    banks:
+      1. banks_preferredDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsPreferredStockAndPreferenceStock
+         sign multiplier: -1
+    electric_utilities:
+      1. electric_utilities_preferredDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsPreferredStockAndPreferenceStock
+         sign multiplier: -1
+    general_corporate:
+      No enabled structural candidate rules
+    life_insurance:
+      1. life_insurance_preferredDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsPreferredStockAndPreferenceStock
+         sign multiplier: -1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_preferredDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsPreferredStockAndPreferenceStock
+         sign multiplier: -1
+    personal_credit_institutions:
+      1. personal_credit_institutions_preferredDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsPreferredStockAndPreferenceStock
+         sign multiplier: -1
+    reit:
+      1. reit_preferredDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsPreferredStockAndPreferenceStock
+         sign multiplier: -1
+    savings_institutions:
+      1. savings_institutions_preferredDividendsPaid_direct_1 [direct]
+         concept: us-gaap:PaymentsOfDividendsPreferredStockAndPreferenceStock
+         sign multiplier: -1
+  otherFinancingActivities: Reported net other financing cash flow excluding separately exposed debt, stock and dividends.
+    banks:
+      1. banks_otherFinancingActivities_direct_1 [direct]
+         concept: us-gaap:ProceedsFromPaymentsForOtherFinancingActivities
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_otherFinancingActivities_direct_1 [direct]
+         concept: us-gaap:ProceedsFromPaymentsForOtherFinancingActivities
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_otherFinancingActivities_direct_1 [direct]
+         concept: us-gaap:ProceedsFromPaymentsForOtherFinancingActivities
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_otherFinancingActivities_direct_1 [direct]
+         concept: us-gaap:ProceedsFromPaymentsForOtherFinancingActivities
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_otherFinancingActivities_direct_1 [direct]
+         concept: us-gaap:ProceedsFromPaymentsForOtherFinancingActivities
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_otherFinancingActivities_direct_1 [direct]
+         concept: us-gaap:ProceedsFromPaymentsForOtherFinancingActivities
+         sign multiplier: 1
+    reit:
+      1. reit_otherFinancingActivities_direct_1 [direct]
+         concept: us-gaap:ProceedsFromPaymentsForOtherFinancingActivities
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_otherFinancingActivities_direct_1 [direct]
+         concept: us-gaap:ProceedsFromPaymentsForOtherFinancingActivities
+         sign multiplier: 1
+  netCashProvidedByFinancingActivities: Consolidated total net financing cash flow including discontinued operations.
+    banks:
+      1. banks_netCashProvidedByFinancingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInFinancingActivities
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_netCashProvidedByFinancingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInFinancingActivities
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_netCashProvidedByFinancingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInFinancingActivities
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_netCashProvidedByFinancingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInFinancingActivities
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netCashProvidedByFinancingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInFinancingActivities
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_netCashProvidedByFinancingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInFinancingActivities
+         sign multiplier: 1
+    reit:
+      1. reit_netCashProvidedByFinancingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInFinancingActivities
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_netCashProvidedByFinancingActivities_direct_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInFinancingActivities
+         sign multiplier: 1
+  effectOfForexChangesOnCash: Exchange-rate effect on the same cash and restricted-cash basis used by the CF reconciliation.
+    banks:
+      No enabled structural candidate rules
+    electric_utilities:
+      1. electric_utilities_effectOfForexChangesOnCash_direct_1 [direct]
+         concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. electric_utilities_effectOfForexChangesOnCash_direct_2 [direct]
+         concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_effectOfForexChangesOnCash_direct_1 [direct]
+         concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. general_corporate_effectOfForexChangesOnCash_direct_2 [direct]
+         concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_effectOfForexChangesOnCash_direct_1 [direct]
+         concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. life_insurance_effectOfForexChangesOnCash_direct_2 [direct]
+         concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_effectOfForexChangesOnCash_direct_1 [direct]
+         concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. oil_and_gas_extraction_effectOfForexChangesOnCash_direct_2 [direct]
+         concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_effectOfForexChangesOnCash_direct_1 [direct]
+         concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. personal_credit_institutions_effectOfForexChangesOnCash_direct_2 [direct]
+         concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    reit:
+      1. reit_effectOfForexChangesOnCash_direct_1 [direct]
+         concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+    savings_institutions:
+      No enabled structural candidate rules
+  netChangeInCash: Change in CF reconciliation cash including FX; restricted cash inclusion follows the approved reported basis.
+    banks:
+      1. banks_netChangeInCash_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_netChangeInCash_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_netChangeInCash_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_netChangeInCash_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_netChangeInCash_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_netChangeInCash_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect
+         sign multiplier: 1
+    reit:
+      1. reit_netChangeInCash_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_netChangeInCash_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect
+         sign multiplier: 1
+  cashAtEndOfPeriod: CF reconciliation cash balance at exact period end, including restricted cash where used in the reported cash-flow bridge.
+    banks:
+      1. banks_cashAtEndOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. banks_cashAtEndOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_cashAtEndOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. electric_utilities_cashAtEndOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_cashAtEndOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. general_corporate_cashAtEndOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_cashAtEndOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. life_insurance_cashAtEndOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_cashAtEndOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. oil_and_gas_extraction_cashAtEndOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_cashAtEndOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. personal_credit_institutions_cashAtEndOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+      3. personal_credit_institutions_cashAtEndOfPeriod_direct_3 [direct]
+         concept: us-gaap:CashAndCashEquivalentsAtCarryingValue
+         sign multiplier: 1
+    reit:
+      1. reit_cashAtEndOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. reit_cashAtEndOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_cashAtEndOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. savings_institutions_cashAtEndOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+  cashAtBeginningOfPeriod: CF reconciliation cash balance at the day before exact period start, on the same basis as period end.
+    banks:
+      1. banks_cashAtBeginningOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. banks_cashAtBeginningOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_cashAtBeginningOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. electric_utilities_cashAtBeginningOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_cashAtBeginningOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. general_corporate_cashAtBeginningOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_cashAtBeginningOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. life_insurance_cashAtBeginningOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_cashAtBeginningOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. oil_and_gas_extraction_cashAtBeginningOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_cashAtBeginningOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. personal_credit_institutions_cashAtBeginningOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+      3. personal_credit_institutions_cashAtBeginningOfPeriod_direct_3 [direct]
+         concept: us-gaap:CashAndCashEquivalentsAtCarryingValue
+         sign multiplier: 1
+    reit:
+      1. reit_cashAtBeginningOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. reit_cashAtBeginningOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_cashAtBeginningOfPeriod_direct_1 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+         sign multiplier: 1
+      2. savings_institutions_cashAtBeginningOfPeriod_direct_2 [direct]
+         concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+         sign multiplier: 1
+  operatingCashFlow: Alias of total consolidated operating cash flow, not continuing operations only.
+    banks:
+      1. banks_operatingCashFlow_alias_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_operatingCashFlow_alias_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_operatingCashFlow_alias_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_operatingCashFlow_alias_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_operatingCashFlow_alias_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_operatingCashFlow_alias_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    reit:
+      1. reit_operatingCashFlow_alias_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_operatingCashFlow_alias_1 [direct]
+         concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+         sign multiplier: 1
+  capitalExpenditure: Alias of cash PP&E purchases, negative; excludes acquired businesses, intangible/software additions and noncash purchases.
+    banks:
+      1. banks_capitalExpenditure_alias_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    electric_utilities:
+      1. electric_utilities_capitalExpenditure_alias_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    general_corporate:
+      1. general_corporate_capitalExpenditure_alias_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    life_insurance:
+      1. life_insurance_capitalExpenditure_alias_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_capitalExpenditure_alias_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    personal_credit_institutions:
+      1. personal_credit_institutions_capitalExpenditure_alias_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    reit:
+      1. reit_capitalExpenditure_alias_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+    savings_institutions:
+      1. savings_institutions_capitalExpenditure_alias_1 [direct]
+         concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+         sign multiplier: -1
+  freeCashFlow: Operating cash flow plus negative cash PP&E capital expenditure; not adjusted FCF.
+    banks:
+      1. banks_freeCashFlow_calculated [calculation]
+         expression: operatingCashFlow + capitalExpenditure
+    electric_utilities:
+      1. electric_utilities_freeCashFlow_calculated [calculation]
+         expression: operatingCashFlow + capitalExpenditure
+    general_corporate:
+      1. general_corporate_freeCashFlow_calculated [calculation]
+         expression: operatingCashFlow + capitalExpenditure
+    life_insurance:
+      1. life_insurance_freeCashFlow_calculated [calculation]
+         expression: operatingCashFlow + capitalExpenditure
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_freeCashFlow_calculated [calculation]
+         expression: operatingCashFlow + capitalExpenditure
+    personal_credit_institutions:
+      1. personal_credit_institutions_freeCashFlow_calculated [calculation]
+         expression: operatingCashFlow + capitalExpenditure
+    reit:
+      1. reit_freeCashFlow_calculated [calculation]
+         expression: operatingCashFlow + capitalExpenditure
+    savings_institutions:
+      1. savings_institutions_freeCashFlow_calculated [calculation]
+         expression: operatingCashFlow + capitalExpenditure
+  incomeTaxesPaid: Cash income taxes paid net of refunds, expressed as positive payments; gross-paid alternative requires refund reconciliation.
+    banks:
+      1. banks_incomeTaxesPaid_direct_1 [direct]
+         concept: us-gaap:IncomeTaxesPaidNet
+         sign multiplier: 1
+      2. banks_incomeTaxesPaid_direct_2 [direct]
+         concept: us-gaap:IncomeTaxesPaid
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_incomeTaxesPaid_direct_1 [direct]
+         concept: us-gaap:IncomeTaxesPaidNet
+         sign multiplier: 1
+      2. electric_utilities_incomeTaxesPaid_direct_2 [direct]
+         concept: us-gaap:IncomeTaxesPaid
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_incomeTaxesPaid_direct_1 [direct]
+         concept: us-gaap:IncomeTaxesPaidNet
+         sign multiplier: 1
+      2. general_corporate_incomeTaxesPaid_direct_2 [direct]
+         concept: us-gaap:IncomeTaxesPaid
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_incomeTaxesPaid_direct_1 [direct]
+         concept: us-gaap:IncomeTaxesPaidNet
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_incomeTaxesPaid_direct_1 [direct]
+         concept: us-gaap:IncomeTaxesPaidNet
+         sign multiplier: 1
+      2. oil_and_gas_extraction_incomeTaxesPaid_direct_2 [direct]
+         concept: us-gaap:IncomeTaxesPaid
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_incomeTaxesPaid_direct_1 [direct]
+         concept: us-gaap:IncomeTaxesPaidNet
+         sign multiplier: 1
+      2. personal_credit_institutions_incomeTaxesPaid_direct_2 [direct]
+         concept: us-gaap:IncomeTaxesPaid
+         sign multiplier: 1
+    reit:
+      1. reit_incomeTaxesPaid_direct_1 [direct]
+         concept: us-gaap:IncomeTaxesPaidNet
+         sign multiplier: 1
+      2. reit_incomeTaxesPaid_direct_2 [direct]
+         concept: us-gaap:IncomeTaxesPaid
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_incomeTaxesPaid_direct_1 [direct]
+         concept: us-gaap:IncomeTaxesPaidNet
+         sign multiplier: 1
+      2. savings_institutions_incomeTaxesPaid_direct_2 [direct]
+         concept: us-gaap:IncomeTaxesPaid
+         sign multiplier: 1
+  interestPaid: Cash interest paid net of refunds, expressed as positive payments; capitalized-interest scope must be documented.
+    banks:
+      1. banks_interestPaid_direct_1 [direct]
+         concept: us-gaap:InterestPaidNet
+         sign multiplier: 1
+      2. banks_interestPaid_direct_2 [direct]
+         concept: us-gaap:InterestPaid
+         sign multiplier: 1
+    electric_utilities:
+      1. electric_utilities_interestPaid_direct_1 [direct]
+         concept: us-gaap:InterestPaidNet
+         sign multiplier: 1
+      2. electric_utilities_interestPaid_direct_2 [direct]
+         concept: us-gaap:InterestPaid
+         sign multiplier: 1
+    general_corporate:
+      1. general_corporate_interestPaid_direct_1 [direct]
+         concept: us-gaap:InterestPaidNet
+         sign multiplier: 1
+      2. general_corporate_interestPaid_direct_2 [direct]
+         concept: us-gaap:InterestPaid
+         sign multiplier: 1
+    life_insurance:
+      1. life_insurance_interestPaid_direct_1 [direct]
+         concept: us-gaap:InterestPaidNet
+         sign multiplier: 1
+    oil_and_gas_extraction:
+      1. oil_and_gas_extraction_interestPaid_direct_1 [direct]
+         concept: us-gaap:InterestPaidNet
+         sign multiplier: 1
+      2. oil_and_gas_extraction_interestPaid_direct_2 [direct]
+         concept: us-gaap:InterestPaid
+         sign multiplier: 1
+    personal_credit_institutions:
+      1. personal_credit_institutions_interestPaid_direct_1 [direct]
+         concept: us-gaap:InterestPaidNet
+         sign multiplier: 1
+    reit:
+      1. reit_interestPaid_direct_1 [direct]
+         concept: us-gaap:InterestPaidNet
+         sign multiplier: 1
+      2. reit_interestPaid_direct_2 [direct]
+         concept: us-gaap:InterestPaid
+         sign multiplier: 1
+    savings_institutions:
+      1. savings_institutions_interestPaid_direct_1 [direct]
+         concept: us-gaap:InterestPaidNet
+         sign multiplier: 1
+      2. savings_institutions_interestPaid_direct_2 [direct]
+         concept: us-gaap:InterestPaid
+         sign multiplier: 1

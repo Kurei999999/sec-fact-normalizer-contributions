@@ -1,0 +1,3404 @@
+{
+  "schema_version": "1.4.0",
+  "profile_id": "oil_and_gas_extraction",
+  "statement": "IS",
+  "status": "draft_classification_for_review",
+  "validation_profile": "industry_statement",
+  "description": "Oil and gas extraction income-statement skeleton for SIC 1311 retaining all 128 supplied unique US GAAP concepts once. The supplied ConocoPhillips reference guides presentation. Consolidated earnings, producing-activity disclosures, capitalized costs, OCI, distributions and denominator alternatives remain distinct. Hierarchy defines no arithmetic.",
+  "mapping_rules": {
+    "analytical_metrics_not_primary_statement": true,
+    "children_imply_arithmetic": false,
+    "classification_axes_may_overlap": true,
+    "concept_status_default": "proposed",
+    "missing_fact_not_zero": true,
+    "nested_components_not_additive_by_default": true,
+    "resolve_overlapping_totals_without_summing": true,
+    "review_requires_reason": true,
+    "same_category_implies_equivalence": false,
+    "total_and_subtotal_do_not_imply_arithmetic": true
+  },
+  "classification_notes": [
+    "All 128 supplied unique concepts appear once. The industry inventory is not a claim that ConocoPhillips reports every concept or uses every presentation.",
+    "The reference presentation guides ordering and families only. Its unusual-items, interest-capitalized and EBITDA presentations do not establish taxonomy equivalence, signs, nonrecurrence or a calculated subtotal. No EBITDA, EBITDAX or cash-flow proxy is manufactured.",
+    "Functional production/exploration/administrative expenses overlap natural DD&A, taxes, personnel, leases and share-based expenses. Choose the issuer aggregate or reconciled components.",
+    "OperatingCostsAndExpenses excludes SG&A and production-related costs classified in cost of sales. Nonproduction DepreciationAndAmortization is distinct from producing DD&A and depletion.",
+    "AccretionExpense excludes ARO. ExplorationAbandonmentAndImpairmentExpense specifically measures impairment of unproved properties, including unsuccessful/doubtful capitalized exploratory wells.",
+    "ResultsOfOperations measures concern producing activities. Revenue excludes royalties and net profit disbursements; activity expense and pretax result exclude general corporate overhead and interest costs. These are supplementary rather than interchangeable with consolidated IS totals.",
+    "Producing lifting costs include specified taxes and support depreciation. DD&A with valuation provisions differs from DD&A with accretion and can overlap activity impairment and ARO accretion.",
+    "ProductionCosts is capitalized production cost. Acquisition/exploration/development incurred costs include both capitalized and expensed amounts. Neither is automatically an IS expense.",
+    "Net income, continuing/discontinued results and common numerators preserve consolidated/parent/NCI scope. Participating-security allocations are separate from preferred dividends.",
+    "Discontinued EPS includes activity-plus-disposal versus activity-only alternatives. Pro forma and issued-share denominators are supplementary, not reported basic/diluted outstanding denominators.",
+    "RestructuringCosts is after cash payments under its definition, unlike gross RestructuringCharges. Contingent consideration liability changes can include settlement/non-earnings effects; both require reconciliation.",
+    "The financial-service sale-gain tag remains scope-specific. Currency OCI and stock dividends are not earnings or cash expense. All fact signs and dimensions require source context."
+  ],
+  "metadata_contract": {
+    "period_type": "All 128 supplied concepts verified as duration in official US GAAP 2026.",
+    "unit_type": "115 monetary, 9 per-share and 4 shares concepts verified from the official schema; source facts determine currency/scale.",
+    "contra": "False throughout for expense/result/allocation/share/distribution measures; no automatic expense negation or gains reversal is implied."
+  },
+  "taxonomy_reference": {
+    "namespace": "http://fasb.org/us-gaap/2026",
+    "schema_url": "https://xbrl.fasb.org/us-gaap/2026/elts/us-gaap-2026.xsd",
+    "documentation_url": "https://xbrl.fasb.org/us-gaap/2026/elts/us-gaap-doc-2026.xml",
+    "note": "Metadata and definitions checked against official 2026 schema and documentation. Historical filings retain their own taxonomy versions and units."
+  },
+  "sources": [
+    {
+      "role": "format_reference",
+      "path": "skeleton_rules.md"
+    },
+    {
+      "role": "concept_universe",
+      "description": "128 unique user-supplied US GAAP concepts for SIC 1311."
+    },
+    {
+      "role": "taxonomy_metadata",
+      "path": "data/taxonomy/us-gaap/2026/",
+      "description": "Official FASB 2026 schema and documentation retained locally."
+    }
+  ],
+  "metadata_notes": {},
+  "nodes": [
+    {
+      "node_id": "revenue_presentation",
+      "metric_id": null,
+      "label": "Revenue presentation",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "All revenue can contain customer-contract, noncontract, operating interest and lease income. Tax-inclusive/exclusive customer revenue is alternative measurement, not additive.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "reported_revenue_totals",
+          "metric_id": null,
+          "label": "Reported revenue totals",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Use the issuer reported total rather than manufacturing a sum across overlapping revenue categories.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "revenues",
+              "metric_id": "revenues",
+              "label": "Total revenue",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:Revenues",
+                  "status": "review",
+                  "review_reason": "Reported all-revenue totals may include customer-contract and other revenue populations; do not add those separately reported revenue views to the total."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "customer_contract_revenue_alternatives",
+          "metric_id": null,
+          "label": "Customer-contract revenue alternatives",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Including/excluding assessed taxes are alternative measurement bases for overlapping customer-contract revenue.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "revenue_from_contract_with_customer_excluding_assessed_tax",
+              "metric_id": "revenue_from_contract_with_customer_excluding_assessed_tax",
+              "label": "Customer-Contract Revenue, Excluding Assessed Tax",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+                  "status": "review",
+                  "review_reason": "Customer-contract revenue excludes assessed taxes and can be included in all revenue; it differs from the tax-inclusive alternative and noncontract revenue."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "revenue_from_contract_with_customer_including_assessed_tax",
+              "metric_id": "revenue_from_contract_with_customer_including_assessed_tax",
+              "label": "Revenue from contract with customer including assessed tax",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+                  "status": "review",
+                  "review_reason": "Customer-contract revenue including assessed taxes is an alternative tax basis to the excluding-tax amount; do not sum both."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "noncontract_and_other_revenue",
+          "metric_id": null,
+          "label": "Noncontract and operating interest revenue",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Lease income can be part of noncustomer-contract revenue; operating interest can already be included in revenue.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "revenue_not_from_contract_with_customer",
+              "metric_id": "revenue_not_from_contract_with_customer",
+              "label": "Revenue not from contract with customer",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:RevenueNotFromContractWithCustomer",
+                  "status": "review",
+                  "review_reason": "Noncustomer-contract revenue differs in accounting scope from customer-contract revenue and can include lease income supplied separately; establish coverage before combining."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "operating_lease_lease_income",
+              "metric_id": "operating_lease_lease_income",
+              "label": "Operating lease income including variable payments",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OperatingLeaseLeaseIncome",
+                  "status": "review",
+                  "review_reason": "Operating lease income includes specified variable payments and can be included in noncontract or total revenue; it is lessor income rather than lessee lease cost."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "interest_income_operating",
+              "metric_id": "interest_income_operating",
+              "label": "Operating Interest Income",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InterestIncomeOperating",
+                  "status": "review",
+                  "review_reason": "Operating interest income is distinct from explicitly nonoperating net interest; establish whether it is included in reported revenue."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "operating_expenses_and_costs",
+      "metric_id": null,
+      "label": "Operating costs and expenses",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "Functional, natural and asset-class expenses overlap. No sum of these presentation families is prescribed; producing-activity supplementary measures are kept separately.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "reported_cost_total_alternatives",
+          "metric_id": null,
+          "label": "Reported cost total alternatives",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "CostsAndExpenses may include nonoperating costs. OperatingCostsAndExpenses excludes SG&A and production-related cost of sales, unlike other supplied operating/cost aggregates.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "costs_and_expenses",
+              "metric_id": "costs_and_expenses",
+              "label": "Costs and expenses",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CostsAndExpenses",
+                  "status": "review",
+                  "review_reason": "CostsAndExpenses can span operating and nonoperating costs and overlap operating totals, cost of revenue and interest; identify the scope used in the issuer statement."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "operating_expenses",
+              "metric_id": "operating_expenses",
+              "label": "Operating expenses",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OperatingExpenses",
+                  "status": "review",
+                  "review_reason": "OperatingExpenses may contain functional costs and SG&A, whereas OperatingCostsAndExpenses excludes SG&A and costs assigned to production cost of sales; reconcile the issuer total coverage."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "operating_costs_and_expenses",
+              "metric_id": "operating_costs_and_expenses",
+              "label": "Operating costs excluding SG&A and cost of sales",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OperatingCostsAndExpenses",
+                  "status": "review",
+                  "review_reason": "OperatingCostsAndExpenses excludes SG&A and production-related costs included in cost of sales; it is not equivalent to all operating expenses."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "cost_of_revenue",
+              "metric_id": "cost_of_revenue",
+              "label": "Cost of revenue",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CostOfRevenue",
+                  "status": "review",
+                  "review_reason": "CostOfRevenue can contain the goods/services cost of sales and broader revenue-generating costs; do not add overlapping cost aggregates."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "cost_of_goods_and_services_sold",
+              "metric_id": "cost_of_goods_and_services_sold",
+              "label": "Cost of Goods and Services Sold",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CostOfGoodsAndServicesSold",
+                  "status": "review",
+                  "review_reason": "Goods/services cost of sales excludes financial-service revenue costs and may differ from the broader CostOfRevenue population; reconcile DD&A inclusion."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "exploration_and_unproved_property_costs",
+          "metric_id": null,
+          "label": "Exploration and unproved-property costs",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Exploration can include support depreciation and dry-hole costs. Unproved-property impairment can overlap exploration and broader property impairment.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "exploration_expense",
+              "metric_id": "exploration_expense",
+              "label": "Exploration expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ExplorationExpense",
+                  "status": "review",
+                  "review_reason": "Exploration expense can include dry holes, support-equipment depreciation, undeveloped-property carrying costs and prospecting; it may overlap unproved-property impairment and functional cost totals."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "unproved_property_impairment_and_exploratory_writeoffs",
+              "metric_id": "unproved_property_impairment_and_exploratory_writeoffs",
+              "label": "Unproved-property impairment and exploratory well write-offs",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ExplorationAbandonmentAndImpairmentExpense",
+                  "status": "review",
+                  "review_reason": "Despite its name, this is impairment of unproved oil/gas properties, including capitalized exploratory wells with unsuccessful or doubtful projects; it can overlap oil/gas impairment and exploration expense."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "asset_consumption_expense_views",
+          "metric_id": null,
+          "label": "Depreciation, depletion and amortization",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "All DD&A, nonproduction D&A, depreciation-only, depletion-only and residual D&A are overlapping measures; production allocation can already include these charges.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "depreciation_depletion_and_amortization",
+              "metric_id": "depreciation_depletion_and_amortization",
+              "label": "Depreciation depletion and amortization",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DepreciationDepletionAndAmortization",
+                  "status": "review",
+                  "review_reason": "DD&A can include depreciation and oil/gas depletion supplied separately; it differs from nonproduction DepreciationAndAmortization and producing-only supplementary measures."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "depreciation_and_amortization",
+              "metric_id": "depreciation_and_amortization",
+              "label": "Nonproduction depreciation and amortization",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DepreciationAndAmortization",
+                  "status": "review",
+                  "review_reason": "The official definition concerns nonproduction physical/intangible asset consumption; it is not interchangeable with oil/gas producing DD&A or depletion."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "depreciation",
+              "metric_id": "depreciation",
+              "label": "Depreciation",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:Depreciation",
+                  "status": "review",
+                  "review_reason": "Depreciation is a component of broader DD&A and may include support equipment costs already allocated to exploration or production expense."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "depletion_of_oil_and_gas_properties",
+              "metric_id": "depletion_of_oil_and_gas_properties",
+              "label": "Depletion of oil and gas properties",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DepletionOfOilAndGasProperties",
+                  "status": "review",
+                  "review_reason": "Oil/gas depletion can be included in total DD&A or producing-activity DD&A and must not be added again to those aggregates."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_depreciation_and_amortization",
+              "metric_id": "other_depreciation_and_amortization",
+              "label": "Other depreciation and amortization",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherDepreciationAndAmortization",
+                  "status": "review",
+                  "review_reason": "Other D&A is a residual within broader depreciation/amortization or DD&A totals; establish the excluded asset classes."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "accretion_by_liability_scope",
+          "metric_id": null,
+          "label": "Accretion by liability scope",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "ARO accretion and AccretionExpense excluding ARO are explicitly different scopes. Neither is an investing acquisition cost or cash settlement.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "asset_retirement_obligation_accretion_expense",
+              "metric_id": "asset_retirement_obligation_accretion_expense",
+              "label": "Asset retirement obligation accretion expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AssetRetirementObligationAccretionExpense",
+                  "status": "review",
+                  "review_reason": "ARO accretion reflects passage of time on discounted retirement liabilities and differs from AccretionExpense, which explicitly excludes ARO; producing-activity ARO accretion is a separate scope disclosure."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "accretion_expense",
+              "metric_id": "accretion_expense",
+              "label": "Accretion expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AccretionExpense",
+                  "status": "review",
+                  "review_reason": "AccretionExpense explicitly excludes asset retirement obligation accretion; do not map it to the oil/gas ARO accretion measure or assume identical presentation."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "asset_impairment_scopes",
+          "metric_id": null,
+          "label": "Asset impairment scopes",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "All-asset, long-lived-held-for-use and oil/gas property impairments overlap and may contain unproved-property write-offs; net disposal/impairment aggregates are separate alternatives.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "asset_impairment_charges",
+              "metric_id": "asset_impairment_charges",
+              "label": "Total asset impairment charges",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AssetImpairmentCharges",
+                  "status": "review",
+                  "review_reason": "Total asset impairment can contain oil/gas, unproved exploratory and other long-lived asset impairments; do not add detailed impairments to this total."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "impairment_of_long_lived_assets_held_for_use",
+              "metric_id": "impairment_of_long_lived_assets_held_for_use",
+              "label": "Impairment of long-lived assets held for use",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ImpairmentOfLongLivedAssetsHeldForUse",
+                  "status": "review",
+                  "review_reason": "Held-for-use long-lived impairment can include oil/gas impairment and assets to be disposed of other than by sale; reconcile it against asset-class and broad impairment totals."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "impairment_of_oil_and_gas_properties",
+              "metric_id": "impairment_of_oil_and_gas_properties",
+              "label": "Impairment of oil and gas properties",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ImpairmentOfOilAndGasProperties",
+                  "status": "review",
+                  "review_reason": "Oil/gas property impairment can be included in broad asset or held-for-use impairment and can contain unproved exploratory write-offs; select a reconciled property population."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "general_and_administrative_costs",
+          "metric_id": null,
+          "label": "General and administrative costs",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "SG&A can contain G&A and residual G&A; management/professional fees may already be included. Do not add aggregate and component views.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "selling_general_and_administrative_expense",
+              "metric_id": "selling_general_and_administrative_expense",
+              "label": "Selling, general and administrative expenses",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:SellingGeneralAndAdministrativeExpense",
+                  "status": "review",
+                  "review_reason": "SG&A includes G&A and can include management, personnel, professional and allocated share-based expenses supplied separately; use a reconciled functional presentation."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "general_and_administrative_expense",
+              "metric_id": "general_and_administrative_expense",
+              "label": "General and administrative expenses",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:GeneralAndAdministrativeExpense",
+                  "status": "review",
+                  "review_reason": "G&A can be included in SG&A and may contain personnel, management and professional fees reported separately; identify residual versus aggregate presentation."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_general_and_administrative_expense",
+              "metric_id": "other_general_and_administrative_expense",
+              "label": "Other general and administrative expenses",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherGeneralAndAdministrativeExpense",
+                  "status": "review",
+                  "review_reason": "Other G&A is a residual within total G&A or SG&A and may contain professional/management fees also reported separately."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "management_fee_expense",
+              "metric_id": "management_fee_expense",
+              "label": "Investment management fee expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ManagementFeeExpense",
+                  "status": "review",
+                  "review_reason": "Management fees may already be included in G&A or producing-activity expenses and can overlap other professional-service costs; determine functional scope."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "professional_fees",
+              "metric_id": "professional_fees",
+              "label": "Professional fees",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ProfessionalFees",
+                  "status": "review",
+                  "review_reason": "Professional fees can be included in G&A/SG&A, acquisition costs or other expense; identify functional allocation before aggregation."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "personnel_and_share_based_expenses",
+          "metric_id": null,
+          "label": "Personnel and share-based expenses",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Natural personnel and allocated share-award expenses can be distributed among exploration, production and G&A; they are not additional functional totals.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "labor_and_related_expense",
+              "metric_id": "labor_and_related_expense",
+              "label": "Labor and related expenses",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:LaborAndRelatedExpense",
+                  "status": "review",
+                  "review_reason": "Personnel costs can be allocated to production, exploration and G&A and may include allocated share-based compensation; do not add natural and functional cost views."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "allocated_share_based_compensation_expense",
+              "metric_id": "allocated_share_based_compensation_expense",
+              "label": "Allocated Share Based Compensation Expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AllocatedShareBasedCompensationExpense",
+                  "status": "review",
+                  "review_reason": "Allocated share-based compensation is a natural expense that may already be included in G&A, personnel and other functional costs; it is not an additional cost to add by default."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "lessee_operating_lease_costs",
+          "metric_id": null,
+          "label": "Lessee operating lease costs",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Single operating lease cost and lease expense excluding sublease income overlap and may already be included in functional costs; lessor revenue is separate.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "operating_lease_cost",
+              "metric_id": "operating_lease_cost",
+              "label": "Lessee single operating lease cost",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OperatingLeaseCost",
+                  "status": "review",
+                  "review_reason": "OperatingLeaseCost is the single lessee operating lease cost and can overlap operating lease expense and functional production/G&A costs."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "operating_lease_expense",
+              "metric_id": "operating_lease_expense",
+              "label": "Operating lease expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OperatingLeaseExpense",
+                  "status": "review",
+                  "review_reason": "Operating lease expense excludes sublease income under its definition and may overlap operating lease cost; neither should be added to functional costs already containing lease charges."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "production_and_other_taxes",
+          "metric_id": null,
+          "label": "Production and other taxes",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Production tax may be included in lifting costs and broader other-than-income taxes. Tax subsets and residuals must be reconciled; these are not income taxes by default.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "production_tax_expense",
+              "metric_id": "production_tax_expense",
+              "label": "Production tax expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ProductionTaxExpense",
+                  "status": "review",
+                  "review_reason": "Production tax on oil/gas can be included in lifting costs and broader taxes excluding income/excise; do not add a tax subset to its expense aggregate."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "taxes_excluding_income_and_excise_taxes",
+              "metric_id": "taxes_excluding_income_and_excise_taxes",
+              "label": "Taxes excluding income and excise taxes",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TaxesExcludingIncomeAndExciseTaxes",
+                  "status": "review",
+                  "review_reason": "Taxes excluding income and excise can include production and severance taxes supplied separately; it differs from all other tax expense."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "taxes_other",
+              "metric_id": "taxes_other",
+              "label": "Taxes other",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TaxesOther",
+                  "status": "review",
+                  "review_reason": "Other tax expense has unspecified tax population and can overlap production or other-than-income tax charges; do not equate it with income tax expense."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "research_credit_and_residual_operating_costs",
+          "metric_id": null,
+          "label": "R&D, credit provision and residual operating costs",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "R&D differs from exploration; credit expense and residual costs may already be included in functional totals. No missing production-expense subtotal is manufactured.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "research_and_development_expense",
+              "metric_id": "research_and_development_expense",
+              "label": "Research And Development Expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ResearchAndDevelopmentExpense",
+                  "status": "review",
+                  "review_reason": "R&D expense may be included in broader operating expense or SG&A presentation; distinguish it from exploration expense and capitalized property development."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "provision_for_doubtful_accounts",
+              "metric_id": "provision_for_doubtful_accounts",
+              "label": "Provision for doubtful accounts",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ProvisionForDoubtfulAccounts",
+                  "status": "review",
+                  "review_reason": "Doubtful-account provision may already be included in other operating or administrative expense; it is an expense, not the balance-sheet receivable allowance."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_cost_and_expense_operating",
+              "metric_id": "other_cost_and_expense_operating",
+              "label": "Other operating costs and expenses",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherCostAndExpenseOperating",
+                  "status": "review",
+                  "review_reason": "Other operating costs are a residual that can contain separately reported exploration, accretion or taxes; determine issuer exclusions."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "operating_result_measures",
+      "metric_id": null,
+      "label": "Operating result measures",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "Reported gross profit and operating income are distinct result levels. Net other operating results overlap income-only and residual expense views; no automatic equation is defined.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "gross_profit",
+          "metric_id": "gross_profit",
+          "label": "Gross Profit",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:GrossProfit",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "operating_income_loss",
+          "metric_id": "operating_income_loss",
+          "label": "Operating Income (Loss)",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:OperatingIncomeLoss",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "other_operating_income_expense_net",
+          "metric_id": "other_operating_income_expense_net",
+          "label": "Other operating income or expense, net",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:OtherOperatingIncomeExpenseNet",
+              "status": "review",
+              "review_reason": "Net other operating income/expense can contain other operating income and residual operating expense; choose a consistent net or gross presentation."
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "other_operating_income",
+          "metric_id": "other_operating_income",
+          "label": "Other operating income",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:OtherOperatingIncome",
+              "status": "review",
+              "review_reason": "Other operating income is income-only and can be included in net other operating income/expense; do not add both."
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "node_id": "financing_and_nonoperating_results",
+      "metric_id": null,
+      "label": "Financing and nonoperating results",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "Interest, equity-method, investment and residual results may be included in reported nonoperating totals. Select issuer presentation and avoid duplicate gross/net interest deductions.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "reported_nonoperating_result_alternatives",
+          "metric_id": null,
+          "label": "Nonoperating total and residual alternatives",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Total nonoperating results and residual other results overlap; income-only and expense-only measures are components or alternatives depending on issuer coverage.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "nonoperating_income_expense",
+              "metric_id": "nonoperating_income_expense",
+              "label": "Total nonoperating income or expense",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:NonoperatingIncomeExpense",
+                  "status": "review",
+                  "review_reason": "The nonoperating aggregate can include interest, equity-method and other results separately mapped; confirm issuer inclusions before using details alongside it."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_nonoperating_income_expense",
+              "metric_id": "other_nonoperating_income_expense",
+              "label": "Other nonoperating income or expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherNonoperatingIncomeExpense",
+                  "status": "review",
+                  "review_reason": "Residual nonoperating income/expense may already contain the other-income-only or other-expense-only measures; preserve the issuer exclusions."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_nonoperating_income",
+              "metric_id": "other_nonoperating_income",
+              "label": "Other nonoperating income",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherNonoperatingIncome",
+                  "status": "review",
+                  "review_reason": "Other nonoperating income is an income-only view and can already be netted into other nonoperating income/expense or total nonoperating results."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_nonoperating_expense",
+              "metric_id": "other_nonoperating_expense",
+              "label": "Other nonoperating expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherNonoperatingExpense",
+                  "status": "review",
+                  "review_reason": "Other nonoperating expense is expense-only and can already be netted in residual or total nonoperating income/expense."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "interest_expense_views",
+          "metric_id": null,
+          "label": "Interest expense views",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "All interest, explicitly nonoperating interest, interest/debt financing costs and debt/other components overlap. Determine capitalization and expense coverage from issuer facts.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "interest_expense",
+              "metric_id": "interest_expense",
+              "label": "Total interest expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InterestExpense",
+                  "status": "review",
+                  "review_reason": "InterestExpense can overlap nonoperating interest, debt interest and combined interest/debt expense; match capitalized versus expensed coverage."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "interest_expense_nonoperating",
+              "metric_id": "interest_expense_nonoperating",
+              "label": "Nonoperating interest expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InterestExpenseNonoperating",
+                  "status": "review",
+                  "review_reason": "Nonoperating interest expense can be contained in InterestAndDebtExpense and the issuer broader interest expense; do not deduct it again after selecting a net nonoperating-interest measure."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "interest_and_debt_expense",
+              "metric_id": "interest_and_debt_expense",
+              "label": "Nonoperating interest and debt-related expense",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InterestAndDebtExpense",
+                  "status": "review",
+                  "review_reason": "Interest and debt expense covers nonoperating financing-related costs and can contain standalone interest expense/debt interest; reconcile capitalized versus expensed interest."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "interest_expense_debt",
+              "metric_id": "interest_expense_debt",
+              "label": "Debt interest expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InterestExpenseDebt",
+                  "status": "review",
+                  "review_reason": "Debt interest is an instrument-specific component that can be included in broader interest and nonoperating interest/debt expense."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "interest_expense_other",
+              "metric_id": "interest_expense_other",
+              "label": "Other Interest Expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InterestExpenseOther",
+                  "status": "review",
+                  "review_reason": "Other interest expense is a residual within broader interest expense and can overlap debt/lease financing charges; determine issuer exclusions."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "net_interest_alternatives",
+          "metric_id": null,
+          "label": "Net interest alternatives",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Generic net interest has unresolved operating scope while the other tag explicitly covers nonoperating income/expense; neither is additional to matching gross interest.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "interest_income_expense_nonoperating_net",
+              "metric_id": "interest_income_expense_nonoperating_net",
+              "label": "Nonoperating Net Interest Income (Expense)",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InterestIncomeExpenseNonoperatingNet",
+                  "status": "review",
+                  "review_reason": "Net nonoperating interest income/expense is an alternative to matching gross nonoperating interest income and expense; do not deduct the expense component again."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "interest_income_expense_net",
+              "metric_id": "interest_income_expense_net",
+              "label": "Net Interest Income (Expense)",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InterestIncomeExpenseNet",
+                  "status": "review",
+                  "review_reason": "Generic net interest income/expense does not establish operating versus nonoperating location; it can overlap gross interest and the explicitly nonoperating net measure."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "interest_income_views",
+          "metric_id": null,
+          "label": "Interest income views",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Interest-and-other income can contain investment and other interest; do not add combined and component measures.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "interest_and_other_income",
+              "metric_id": "interest_and_other_income",
+              "label": "Interest and other ancillary income",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InterestAndOtherIncome",
+                  "status": "review",
+                  "review_reason": "Interest and other income combines interest with other earnings and can overlap standalone investment/other interest and residual income measures."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "investment_income_interest",
+              "metric_id": "investment_income_interest",
+              "label": "Nonoperating securities interest before premium adjustments",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InvestmentIncomeInterest",
+                  "status": "review",
+                  "review_reason": "Investment interest can be included in interest-and-other-income or other interest income; it is not automatically an additional nonoperating receipt."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "interest_income_other",
+              "metric_id": "interest_income_other",
+              "label": "Interest income other",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InterestIncomeOther",
+                  "status": "review",
+                  "review_reason": "Other interest income can be part of investment interest or interest-and-other-income; identify residual portfolio coverage and operating/nonoperating location."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "equity_method_and_investment_results",
+          "metric_id": null,
+          "label": "Equity-method and investment results",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Equity-method income may sit before/after the selected pretax subtotal depending on its definition. Broad investment gains can overlap event or asset-class results.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "income_loss_from_equity_method_investments",
+              "metric_id": "income_loss_from_equity_method_investments",
+              "label": "Equity-Method Investment Income (Loss)",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IncomeLossFromEquityMethodInvestments",
+                  "status": "review",
+                  "review_reason": "Equity-method earnings may be included before or after the selected pretax subtotal depending on that subtotal scope; avoid counting them twice."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "gain_loss_on_investments",
+              "metric_id": "gain_loss_on_investments",
+              "label": "Realized and unrealized investment gains and losses",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:GainLossOnInvestments",
+                  "status": "review",
+                  "review_reason": "Investment gains can include asset classes or realization scopes also reported in derivative/property results; establish portfolio coverage rather than treating all gains as additional."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "disposal_remeasurement_and_event_results",
+      "metric_id": null,
+      "label": "Disposal, remeasurement and event results",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "This event grouping does not assert nonrecurrence or a universal operating/nonoperating location. Earnings results differ from cash proceeds and can be included in functional/result totals.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "property_and_business_disposal_results",
+          "metric_id": null,
+          "label": "Property and business disposal results",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Broad asset gains can contain PP&E, oil/gas property and business-sale results. Combined disposal-and-impairment results overlap both gains and impairment charges.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "broad_asset_disposal_result",
+              "metric_id": "broad_asset_disposal_result",
+              "label": "Broad asset disposal result",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:GainLossOnDispositionOfAssets1",
+                  "status": "review",
+                  "review_reason": "Broad asset disposal gains can include PP&E, intangibles and subsidiary/equity-method interests; they overlap narrower property and business-sale results."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "gain_loss_on_sale_of_property_plant_equipment",
+              "metric_id": "gain_loss_on_sale_of_property_plant_equipment",
+              "label": "PP&E sale gain or loss including oil, gas and timber",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:GainLossOnSaleOfPropertyPlantEquipment",
+                  "status": "review",
+                  "review_reason": "PP&E disposal gains include oil/gas and timber property under the definition and can contain the separately supplied oil/gas sale result."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "gain_loss_on_sale_of_oil_and_gas_property",
+              "metric_id": "gain_loss_on_sale_of_oil_and_gas_property",
+              "label": "Gain loss on sale of oil and gas property",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:GainLossOnSaleOfOilAndGasProperty",
+                  "status": "review",
+                  "review_reason": "Oil/gas property sale gains are a narrower asset population than PP&E or broad disposal gains and may already be included in those aggregates."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "gain_loss_on_sale_of_business",
+              "metric_id": "gain_loss_on_sale_of_business",
+              "label": "Business disposal gain or loss",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:GainLossOnSaleOfBusiness",
+                  "status": "review",
+                  "review_reason": "Business-sale gains can be included in broad asset disposal or nonoperating results and do not represent cash sale proceeds."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "combined_asset_sale_and_impairment_result",
+              "metric_id": "combined_asset_sale_and_impairment_result",
+              "label": "Combined asset sale and impairment result",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:GainLossOnSalesOfAssetsAndAssetImpairmentCharges",
+                  "status": "review",
+                  "review_reason": "Combined asset-sale and impairment results overlap the separately supplied disposal gains and impairment charges; choose the net aggregate or matching components."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "derivative_and_hedging_results",
+          "metric_id": null,
+          "label": "Derivative and hedging results",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Fair-value changes recognized in earnings, broad pretax derivatives, non-designated positions, oil/gas hedges and unrealized commodities overlap. Do not reverse OCI into IS by assumption.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "derivative_gain_loss_on_derivative_net",
+              "metric_id": "derivative_gain_loss_on_derivative_net",
+              "label": "Derivative fair-value change recognized in earnings",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DerivativeGainLossOnDerivativeNet",
+                  "status": "review",
+                  "review_reason": "This derivative measure is fair-value changes recognized in the income statement; it can overlap broader pretax derivative results and is not equivalent to all hedge settlements."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "gain_loss_on_derivative_instruments_net_pretax",
+              "metric_id": "gain_loss_on_derivative_instruments_net_pretax",
+              "label": "Pretax derivative gains and losses",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:GainLossOnDerivativeInstrumentsNetPretax",
+                  "status": "review",
+                  "review_reason": "Pretax derivative gains can contain designated and non-designated positions and overlap income-statement fair-value changes; identify recognized earnings versus OCI."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "nondesignated_derivative_result",
+              "metric_id": "nondesignated_derivative_result",
+              "label": "Nondesignated derivative result",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DerivativeInstrumentsNotDesignatedAsHedgingInstrumentsGainLossNet",
+                  "status": "review",
+                  "review_reason": "Non-designated derivative gains are a subset of overall derivative earnings; designated oil/gas hedges and unrealized commodity views may have different coverage."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "gain_loss_on_oil_and_gas_hedging_activity",
+              "metric_id": "gain_loss_on_oil_and_gas_hedging_activity",
+              "label": "Gain loss on oil and gas hedging activity",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:GainLossOnOilAndGasHedgingActivity",
+                  "status": "review",
+                  "review_reason": "Oil/gas hedging gains can include designated hedge results also contained in overall derivative earnings; distinguish them from unrealized-only and non-designated derivative measures."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "unrealized_gain_loss_on_commodity_contracts",
+              "metric_id": "unrealized_gain_loss_on_commodity_contracts",
+              "label": "Unrealized gain loss on commodity contracts",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:UnrealizedGainLossOnCommodityContracts",
+                  "status": "review",
+                  "review_reason": "Unrealized commodity contract gains are a valuation subset that can be contained in total derivative earnings; determine earnings recognition and hedge designation."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "financing_and_currency_event_results",
+          "metric_id": null,
+          "label": "Financing and currency event results",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Debt extinguishment, warrant liability fair-value and foreign-currency transaction earnings can be included in nonoperating totals. Currency translation OCI remains supplementary.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "gains_losses_on_extinguishment_of_debt",
+              "metric_id": "gains_losses_on_extinguishment_of_debt",
+              "label": "Debt extinguishment gain or loss",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:GainsLossesOnExtinguishmentOfDebt",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "fair_value_adjustment_of_warrants",
+              "metric_id": "fair_value_adjustment_of_warrants",
+              "label": "Fair Value Adjustment Of Warrants",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:FairValueAdjustmentOfWarrants",
+                  "status": "review",
+                  "review_reason": "Warrant fair-value adjustment is expense/income on warrant liabilities and may overlap other financial remeasurement results; it is not a commodity hedge gain."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "foreign_currency_transaction_gain_loss_before_tax",
+              "metric_id": "foreign_currency_transaction_gain_loss_before_tax",
+              "label": "Foreign Currency Transaction Gain (Loss), Pretax",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ForeignCurrencyTransactionGainLossBeforeTax",
+                  "status": "review",
+                  "review_reason": "Foreign-currency transaction gains differ from translation OCI and may overlap other income/expense; keep the earnings and OCI populations distinct."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "acquisition_restructuring_and_legal_costs",
+          "metric_id": null,
+          "label": "Acquisition, restructuring and legal costs",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Transaction, restructuring, contractual severance and litigation charges can be included in G&A/personnel expenses. The post-cash-payment restructuring measure is supplementary.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "business_combination_acquisition_related_costs",
+              "metric_id": "business_combination_acquisition_related_costs",
+              "label": "Business acquisition transaction expenses",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:BusinessCombinationAcquisitionRelatedCosts",
+                  "status": "review",
+                  "review_reason": "Acquisition-related costs can already be included in G&A or restructuring/transaction presentations; their occurrence does not establish that they are nonrecurring."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "restructuring_charges",
+              "metric_id": "restructuring_charges",
+              "label": "Restructuring charges",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:RestructuringCharges",
+                  "status": "review",
+                  "review_reason": "Restructuring charges exclude discontinued operations and ARO; they may include severance and other functional costs and are not equivalent to the after-cash-payment restructuring-cost measure."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "contractual_severance_costs",
+              "metric_id": "contractual_severance_costs",
+              "label": "Contractual severance costs",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:SeveranceCosts1",
+                  "status": "review",
+                  "review_reason": "SeveranceCosts1 concerns special or contractual termination benefits and excludes one-time termination benefits; it may be contained in restructuring or personnel expense."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "litigation_settlement_expense",
+              "metric_id": "litigation_settlement_expense",
+              "label": "Litigation expense including related fees",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:LitigationSettlementExpense",
+                  "status": "review",
+                  "review_reason": "Litigation settlement expense can be included in G&A or other costs and can contain accruals; it is not by definition an unusual or nonrecurring amount."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "pretax_income_and_income_taxes",
+      "metric_id": null,
+      "label": "Pretax income and income taxes",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "Pretax subtotal definitions differ in whether equity-method results are included. Current federal tax is contained in current tax, which is contained in all income-tax expense.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "reported_pretax_result_alternatives",
+          "metric_id": null,
+          "label": "Pretax result alternatives",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Before-equity-method and including-equity-method pretax measures are alternatives at different result levels; both preserve NCI scope under their definitions.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "pretax_continuing_income_including_nci",
+              "metric_id": "pretax_continuing_income_including_nci",
+              "label": "Continuing pretax income including NCI",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "pretax_continuing_income_before_equity_method_results",
+              "metric_id": "pretax_continuing_income_before_equity_method_results",
+              "label": "Pretax continuing income before equity method results",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "income_tax_total_and_components",
+          "metric_id": null,
+          "label": "Income-tax total and components",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Income tax expense is the total measure; current and federal-current amounts are narrower components, not extra full tax charges.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "income_tax_expense_benefit",
+              "metric_id": "income_tax_expense_benefit",
+              "label": "Continuing-operation income tax expense or benefit",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IncomeTaxExpenseBenefit",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "current_income_tax_expense_benefit",
+              "metric_id": "current_income_tax_expense_benefit",
+              "label": "Current income tax expense or benefit",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CurrentIncomeTaxExpenseBenefit",
+                  "status": "review",
+                  "review_reason": "Current income tax is a component of total income tax expense, not an alternative total; it can include the federal-only current tax supplied separately."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "current_federal_tax_expense_benefit",
+              "metric_id": "current_federal_tax_expense_benefit",
+              "label": "Current federal or national tax expense or benefit",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CurrentFederalTaxExpenseBenefit",
+                  "status": "review",
+                  "review_reason": "Current federal tax is a jurisdictional subset of current tax expense and total tax expense; it is not an additional full income-tax charge."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "continuing_and_discontinued_results",
+      "metric_id": null,
+      "label": "Continuing and discontinued results",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "Parent-attributable continuing income differs from continuing income including NCI. Discontinued net-of-tax income preserves its own consolidated/attribution scope.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "income_loss_from_continuing_operations",
+          "metric_id": "income_loss_from_continuing_operations",
+          "label": "Parent-attributable continuing-operation income",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:IncomeLossFromContinuingOperations",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "continuing_income_including_nci",
+          "metric_id": "continuing_income_including_nci",
+          "label": "Continuing income including NCI",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:IncomeLossFromContinuingOperationsIncludingPortionAttributableToNoncontrollingInterest",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "income_loss_from_discontinued_operations_net_of_tax",
+          "metric_id": "income_loss_from_discontinued_operations_net_of_tax",
+          "label": "Consolidated discontinued-operation income",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTax",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "node_id": "net_income_and_attribution",
+      "metric_id": null,
+      "label": "Net income and attribution",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "ProfitLoss includes consolidated ownership interests; NetIncomeLoss is parent-attributable. Total NCI may contain redeemable NCI. Do not subtract NCI from an already parent-attributable result.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "profit_loss",
+          "metric_id": "profit_loss",
+          "label": "Consolidated net income",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:ProfitLoss",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "net_income_loss",
+          "metric_id": "net_income_loss",
+          "label": "Parent-attributable net income",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:NetIncomeLoss",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "net_income_attributable_to_nci",
+          "metric_id": "net_income_attributable_to_nci",
+          "label": "Net income attributable to NCI",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:NetIncomeLossAttributableToNoncontrollingInterest",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "net_income_attributable_to_redeemable_nci",
+          "metric_id": "net_income_attributable_to_redeemable_nci",
+          "label": "Net income attributable to redeemable NCI",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:NetIncomeLossAttributableToRedeemableNoncontrollingInterest",
+              "status": "review",
+              "review_reason": "Redeemable NCI income is an attribution subset that can already be included in total NCI results; redemption classification does not create an extra earnings deduction."
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "node_id": "common_income_and_allocations",
+      "metric_id": null,
+      "label": "Common income and allocations",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "Basic/diluted common numerators, preferred dividends and participating-security allocations preserve different roles; preferred and participation adjustments are not interchangeable.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "common_income_numerator_alternatives",
+          "metric_id": null,
+          "label": "Common income numerator alternatives",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Basic and diluted common earnings can differ due to numerator adjustments and are not additive.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "common_income_basic",
+              "metric_id": "common_income_basic",
+              "label": "Common income basic",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:NetIncomeLossAvailableToCommonStockholdersBasic",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "common_income_diluted",
+              "metric_id": "common_income_diluted",
+              "label": "Common income diluted",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:NetIncomeLossAvailableToCommonStockholdersDiluted",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "preferred_dividend_adjustments",
+          "metric_id": null,
+          "label": "Preferred dividend adjustments",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Preferred dividends and other adjustments is broader than the dividend-only IS impact; stock-settled dividends are a supplementary declaration disclosure.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "preferred_stock_dividends_income_statement_impact",
+              "metric_id": "preferred_stock_dividends_income_statement_impact",
+              "label": "Preferred dividends affecting common income",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockDividendsIncomeStatementImpact",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_dividends_and_other_adjustments",
+              "metric_id": "preferred_stock_dividends_and_other_adjustments",
+              "label": "Preferred dividends and other common-income adjustments",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockDividendsAndOtherAdjustments",
+                  "status": "review",
+                  "review_reason": "Preferred dividends and other adjustments is broader than preferred dividends alone and can contain the separately supplied preferred dividend impact."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "participating_security_allocations",
+          "metric_id": null,
+          "label": "Participating-security allocations",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Basic/diluted allocations concern participating securities rather than preferred dividends and may already be reflected in common earnings.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "participating_security_allocation_basic",
+              "metric_id": "participating_security_allocation_basic",
+              "label": "Participating security allocation basic",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:UndistributedEarningsLossAllocatedToParticipatingSecuritiesBasic",
+                  "status": "review",
+                  "review_reason": "Basic participating-security allocations reduce the common earnings allocation and are distinct from preferred dividends; preserve the basic-versus-diluted numerator scope."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "participating_security_allocation_diluted",
+              "metric_id": "participating_security_allocation_diluted",
+              "label": "Participating security allocation diluted",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:UndistributedEarningsLossAllocatedToParticipatingSecuritiesDiluted",
+                  "status": "review",
+                  "review_reason": "Diluted participating-security allocations have a diluted common-earnings numerator scope and are not interchangeable with basic allocations or preferred dividends."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "earnings_per_share",
+      "metric_id": null,
+      "label": "Earnings per share",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "Total, continuing and discontinued EPS are different numerators and can have different denominator rules; do not construct total EPS by adding mismatched reported components.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "total_eps",
+          "metric_id": null,
+          "label": "Total EPS",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Basic and diluted EPS are alternatives with different denominators.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "earnings_per_share_basic",
+              "metric_id": "earnings_per_share_basic",
+              "label": "Basic earnings per share",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:EarningsPerShareBasic",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "earnings_per_share_diluted",
+              "metric_id": "earnings_per_share_diluted",
+              "label": "Diluted earnings per share",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:EarningsPerShareDiluted",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "continuing_eps",
+          "metric_id": null,
+          "label": "Continuing-operation EPS",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Basic and diluted continuing EPS preserve parent attribution and denominator scope.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "income_loss_from_continuing_operations_per_basic_share",
+              "metric_id": "income_loss_from_continuing_operations_per_basic_share",
+              "label": "Basic continuing-operation earnings per share",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IncomeLossFromContinuingOperationsPerBasicShare",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "income_loss_from_continuing_operations_per_diluted_share",
+              "metric_id": "income_loss_from_continuing_operations_per_diluted_share",
+              "label": "Diluted continuing-operation earnings per share",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IncomeLossFromContinuingOperationsPerDilutedShare",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "discontinued_eps_with_disposal",
+          "metric_id": null,
+          "label": "Discontinued EPS including disposal",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "These definitions include discontinued operating activity and disposal gains/losses; they are broader than activity-only discontinued EPS.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "income_loss_from_discontinued_operations_net_of_tax_per_basic_share",
+              "metric_id": "income_loss_from_discontinued_operations_net_of_tax_per_basic_share",
+              "label": "Basic discontinued-operation EPS including disposal result",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTaxPerBasicShare",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "income_loss_from_discontinued_operations_net_of_tax_per_diluted_share",
+              "metric_id": "income_loss_from_discontinued_operations_net_of_tax_per_diluted_share",
+              "label": "Diluted discontinued-operation EPS including disposal result",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTaxPerDilutedShare",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "discontinued_activity_only_eps",
+          "metric_id": null,
+          "label": "Discontinued activity-only EPS",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "These definitions concern discontinued activity without the broader activity-plus-disposal scope; do not equate with similarly named discontinued EPS.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "discontinued_activity_only_eps_basic",
+              "metric_id": "discontinued_activity_only_eps_basic",
+              "label": "Discontinued activity only eps basic",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DiscontinuedOperationIncomeLossFromDiscontinuedOperationNetOfTaxPerBasicShare",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "discontinued_activity_only_eps_diluted",
+              "metric_id": "discontinued_activity_only_eps_diluted",
+              "label": "Discontinued activity only eps diluted",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DiscontinuedOperationIncomeLossFromDiscontinuedOperationNetOfTaxPerDilutedShare",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "weighted_average_outstanding_shares",
+      "metric_id": null,
+      "label": "Weighted-average outstanding shares",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "Reported basic/diluted outstanding denominators differ from issued shares before treasury deductions and pro forma transaction-based denominators retained in supplements.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "weighted_average_number_of_shares_outstanding_basic",
+          "metric_id": "weighted_average_number_of_shares_outstanding_basic",
+          "label": "Basic weighted-average shares",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "shares",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:WeightedAverageNumberOfSharesOutstandingBasic",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "weighted_average_number_of_diluted_shares_outstanding",
+          "metric_id": "weighted_average_number_of_diluted_shares_outstanding",
+          "label": "Diluted weighted-average shares",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "duration",
+          "unit_type": "shares",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "node_id": "supplementary_disclosures",
+      "metric_id": null,
+      "label": "Supplementary disclosures",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "Producing-activity measures, capitalized/incurred costs, OCI, distributions, pro forma denominators and unresolved expense candidates remain separate from consolidated IS arithmetic.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "producing_activity_results",
+          "metric_id": null,
+          "label": "Oil/gas producing-activity results",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Activity disclosures have defined oil/gas scopes and do not form a duplicate consolidated IS. Activity expenses/results exclude general corporate overhead and interest; transportation, G&A, DD&A, taxes and impairment can overlap narrower activity costs.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "producing_activity_revenue_expense_and_result",
+              "metric_id": null,
+              "label": "Producing revenue, expenses and result",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Revenue excludes royalty and net-profit disbursements. Reported activity expenses/results have a different overhead/interest scope than consolidated totals.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "producing_activity_revenue",
+                  "metric_id": "producing_activity_revenue",
+                  "label": "Producing activity revenue",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "duration",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ResultsOfOperationsRevenueFromOilAndGasProducingActivities",
+                      "status": "review",
+                      "review_reason": "Producing-activity revenue excludes royalty payments and net profit disbursements under its definition; its supplementary activity scope need not equal consolidated revenues."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "producing_activity_expenses",
+                  "metric_id": "producing_activity_expenses",
+                  "label": "Producing activity expenses",
+                  "node_kind": "total",
+                  "aggregation_policy": "none",
+                  "period_type": "duration",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ResultsOfOperationsExpenseFromOilAndGasProducingActivities",
+                      "status": "review",
+                      "review_reason": "Producing-activity expenses exclude general corporate overhead and interest costs; they are not total consolidated costs and contain narrower production/exploration/DD&A views."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "producing_activity_pretax_result",
+                  "metric_id": "producing_activity_pretax_result",
+                  "label": "Producing activity pretax result",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "duration",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ResultsOfOperationsIncomeBeforeIncomeTaxes",
+                      "status": "review",
+                      "review_reason": "Producing-activity pretax results exclude general corporate overhead and interest costs; they are not the consolidated continuing-operation pretax subtotal."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "producing_activity_operating_cost_details",
+              "metric_id": null,
+              "label": "Producing-activity operating cost details",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Lifting costs can include taxes and support depreciation; transportation, exploration and activity G&A can be part of broader activity expense.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "producing_activity_lifting_costs",
+                  "metric_id": "producing_activity_lifting_costs",
+                  "label": "Producing activity lifting costs",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "duration",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ResultsOfOperationsProductionOrLiftingCosts",
+                      "status": "review",
+                      "review_reason": "Supplementary lifting costs include support depreciation, property and severance taxes and operating inputs; they can overlap consolidated DD&A, production taxes and functional expenses."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "results_of_operations_transportation_costs",
+                  "metric_id": "results_of_operations_transportation_costs",
+                  "label": "Results of operations transportation costs",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "duration",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ResultsOfOperationsTransportationCosts",
+                      "status": "review",
+                      "review_reason": "Producing-activity transportation costs are supplementary expenses that can already be in consolidated production or cost-of-sales measures."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "producing_activity_exploration_expense",
+                  "metric_id": "producing_activity_exploration_expense",
+                  "label": "Producing activity exploration expense",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "duration",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ResultsOfOperationsExplorationExpense",
+                      "status": "review",
+                      "review_reason": "Producing-activity exploration expense includes geological/geophysical and dry-hole costs and may be contained in the consolidated exploration expense and activity expense total."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "producing_activity_general_administrative_costs",
+                  "metric_id": "producing_activity_general_administrative_costs",
+                  "label": "Producing activity general administrative costs",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "duration",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ResultsOfOperationsGeneralAndAdministrativeRelatedToOilAndGasProducingActivities",
+                      "status": "review",
+                      "review_reason": "Producing-activity G&A is an activity-specific allocation and can overlap consolidated G&A; the producing-activity result excludes general corporate overhead."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "producing_activity_asset_charge_alternatives",
+              "metric_id": null,
+              "label": "Producing-activity asset charge alternatives",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "DD&A/valuation provisions and DD&A/accretion differ in scope and overlap impairment and ARO-accretion components.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "producing_activity_dda_and_valuation_provisions",
+                  "metric_id": "producing_activity_dda_and_valuation_provisions",
+                  "label": "Producing-activity DD&A and valuation provisions",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "duration",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ResultsOfOperationsDepreciationDepletionAndAmortizationAndValuationProvisions",
+                      "status": "review",
+                      "review_reason": "Producing-activity DD&A plus valuation provisions combines consumption and valuation charges; it overlaps standalone producing impairment and the DD&A/accretion alternative."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "producing_activity_dda_and_accretion",
+                  "metric_id": "producing_activity_dda_and_accretion",
+                  "label": "Producing-activity DD&A and accretion",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "duration",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ResultsOfOperationsDepreciationDepletionAmortizationAndAccretion",
+                      "status": "review",
+                      "review_reason": "Producing-activity DD&A/accretion includes accretion and differs from DD&A plus valuation provisions; component coverage can overlap ARO accretion and impairments."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "producing_activity_impairment",
+                  "metric_id": "producing_activity_impairment",
+                  "label": "Producing activity impairment",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "duration",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ResultsOfOperationsImpairmentOfOilAndGasProperties",
+                      "status": "review",
+                      "review_reason": "Producing-activity impairment is a supplementary activity-specific charge and can already be included in producing DD&A/valuation provisions or consolidated oil/gas impairment."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "producing_activity_aro_accretion",
+                  "metric_id": "producing_activity_aro_accretion",
+                  "label": "Producing-activity ARO accretion",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "duration",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ResultsOfOperationsAccretionOfAssetRetirementObligations",
+                      "status": "review",
+                      "review_reason": "Producing-activity ARO accretion is supplementary activity-specific expense and can overlap consolidated ARO accretion or producing DD&A/accretion."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "capitalized_and_incurred_activity_costs",
+          "metric_id": null,
+          "label": "Capitalized and incurred activity costs",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Property acquisition/exploration/development costs combine capitalized and expensed amounts, while ProductionCosts is capitalized production cost; neither is a universal IS expense subtotal.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "incurred_acquisition_exploration_development_costs",
+              "metric_id": "incurred_acquisition_exploration_development_costs",
+              "label": "Incurred acquisition exploration development costs",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CostsIncurredOilAndGasPropertyAcquisitionExplorationAndDevelopmentActivities",
+                  "status": "review",
+                  "review_reason": "Costs incurred for acquisition, exploration and development include both capitalized costs and expensed costs; this investment activity disclosure is not an IS expense subtotal."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "capitalized_production_costs_incurred",
+              "metric_id": "capitalized_production_costs_incurred",
+              "label": "Capitalized production costs incurred",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ProductionCosts",
+                  "status": "review",
+                  "review_reason": "ProductionCosts is capitalized production cost incurred under the official definition, not a reported consolidated production expense; retain it as an activity cost disclosure."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "geographic_and_financial_service_scope_disclosures",
+          "metric_id": null,
+          "label": "Geographic and financial-service scope disclosures",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Domestic pretax income is a geographic component. The financial-service asset-sale gain definition does not establish an oil/gas disposal mapping.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "domestic_pretax_continuing_income",
+              "metric_id": "domestic_pretax_continuing_income",
+              "label": "Domestic pretax continuing income",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic",
+                  "status": "review",
+                  "review_reason": "Domestic continuing-operation pretax income is a geographic subset of the relevant consolidated pretax result and is not an extra pretax subtotal."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "gains_losses_on_sales_of_assets",
+              "metric_id": "gains_losses_on_sales_of_assets",
+              "label": "Financial-service asset disposal gain or loss",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:GainsLossesOnSalesOfAssets",
+                  "status": "review",
+                  "review_reason": "The definition restricts this sale-gain tag to assets used in financial-service operations; it cannot be substituted for generic oil/gas or PP&E disposal gains."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "distributions_and_oci",
+          "metric_id": null,
+          "label": "Distributions and OCI",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Cash dividends per share and stock-settled preferred dividends are distributions, not expenses. Before-tax currency OCI differs from foreign-currency transaction earnings.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "common_stock_dividends_per_share_cash_paid",
+              "metric_id": "common_stock_dividends_per_share_cash_paid",
+              "label": "Common stock dividends per share cash paid",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockDividendsPerShareCashPaid",
+                  "status": "review",
+                  "review_reason": "Cash dividends paid per common share are distributions, not earnings per share or an income-statement expense."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_dividends_settled_in_stock",
+              "metric_id": "preferred_dividends_settled_in_stock",
+              "label": "Preferred dividends settled in stock",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DividendsPreferredStockStock",
+                  "status": "review",
+                  "review_reason": "Preferred dividends settled in stock include paid and unpaid declared amounts; they are not cash payments or necessarily the same as the preferred dividend IS impact."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "foreign_currency_oci_before_tax",
+              "metric_id": "foreign_currency_oci_before_tax",
+              "label": "Foreign currency OCI before tax",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentBeforeTax",
+                  "status": "review",
+                  "review_reason": "Foreign-currency transaction/translation adjustment is before tax and after reclassification in OCI; it is not the foreign-currency transaction earnings result."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "alternative_share_denominators",
+          "metric_id": null,
+          "label": "Alternative share denominators",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Issued shares before treasury reductions and pro forma diluted shares do not replace reported outstanding EPS denominators.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "weighted_average_shares_issued_basic",
+              "metric_id": "weighted_average_shares_issued_basic",
+              "label": "Weighted average shares issued basic",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:WeightedAverageNumberOfSharesIssuedBasic",
+                  "status": "review",
+                  "review_reason": "Weighted-average shares issued are before treasury-share reductions and differ from weighted-average outstanding shares used for basic EPS."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "pro_forma_diluted_weighted_average_shares",
+              "metric_id": "pro_forma_diluted_weighted_average_shares",
+              "label": "Pro forma diluted weighted average shares",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ProFormaWeightedAverageSharesOutstandingDiluted",
+                  "status": "review",
+                  "review_reason": "Pro forma diluted weighted-average shares reflect a hypothetical transaction basis and are not the reported diluted EPS denominator."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "unresolved_reconciliation_and_expense_candidates",
+          "metric_id": null,
+          "label": "Reconciliation and expense candidates requiring review",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Broad residuals, contingent consideration liability changes and after-cash restructuring amounts require issuer location and earnings reconciliation before primary IS use.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "other_income",
+              "metric_id": "other_income",
+              "label": "Other income",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherIncome",
+                  "status": "review",
+                  "review_reason": "OtherIncome has unresolved operating/nonoperating coverage and can overlap more specifically classified residual income; do not infer location solely from the tag."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_expenses",
+              "metric_id": "other_expenses",
+              "label": "Other expenses",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherExpenses",
+                  "status": "review",
+                  "review_reason": "OtherExpenses has unresolved functional and operating/nonoperating coverage; preserve the candidate outside primary expense totals until issuer presentation is established."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_general_expense",
+              "metric_id": "other_general_expense",
+              "label": "Other general expense",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherGeneralExpense",
+                  "status": "review",
+                  "review_reason": "Other general expense has unresolved functional scope and may be contained in G&A or other operating costs; identify issuer placement before primary aggregation."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "contingent_consideration_liability_change",
+              "metric_id": "contingent_consideration_liability_change",
+              "label": "Contingent consideration liability change",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:BusinessCombinationContingentConsiderationArrangementsChangeInAmountOfContingentConsiderationLiability1",
+                  "status": "review",
+                  "review_reason": "Contingent consideration liability changes can include settlement differences and remeasurement outside earnings; they are not a pure IS expense without issuer reconciliation."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "restructuring_costs_after_cash_payments",
+              "metric_id": "restructuring_costs_after_cash_payments",
+              "label": "Restructuring costs after cash payments",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:RestructuringCosts",
+                  "status": "review",
+                  "review_reason": "The official definition measures restructuring expense after cash payments and excludes discontinued operations and ARO; retain as a reconciliation disclosure rather than a second gross restructuring charge."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "unmapped_placeholders": []
+}

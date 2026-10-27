@@ -1,0 +1,685 @@
+general_corporate — CF
+Types: [total], [group], [line_item]; * = review
+
+├── Operating Activities [group]
+│   ├── Indirect Method [group]
+│   │   ├── Net Income / Loss [group]
+│   │   │   ├── Net Income Loss [line_item]
+│   │   │   │   concept: us-gaap:NetIncomeLoss
+│   │   │   └── Profit Loss [line_item]
+│   │   │       concept: us-gaap:ProfitLoss
+│   │   ├── Noncash and Reclassification Adjustments [group]
+│   │   │   ├── Depreciation / Amortization [group]
+│   │   │   │   ├── Depreciation [line_item]
+│   │   │   │   │   concept: us-gaap:Depreciation
+│   │   │   │   ├── Depreciation Depletion And Amortization [line_item]
+│   │   │   │   │   concept: us-gaap:DepreciationDepletionAndAmortization
+│   │   │   │   ├── Amortization Of Intangible Assets [line_item]
+│   │   │   │   │   concept: us-gaap:AmortizationOfIntangibleAssets
+│   │   │   │   ├── Depreciation And Amortization [line_item]
+│   │   │   │   │   concept: us-gaap:DepreciationAndAmortization
+│   │   │   │   ├── Adjustment For Amortization [line_item]
+│   │   │   │   │   concept: us-gaap:AdjustmentForAmortization
+│   │   │   │   ├── Capitalized Computer Software Amortization1 [line_item]
+│   │   │   │   │   concept: us-gaap:CapitalizedComputerSoftwareAmortization1
+│   │   │   │   └── Other Depreciation And Amortization [line_item]
+│   │   │   │       concept: us-gaap:OtherDepreciationAndAmortization
+│   │   │   ├── Share-based Compensation [group]
+│   │   │   │   ├── Share Based Compensation [line_item]
+│   │   │   │   │   concept: us-gaap:ShareBasedCompensation
+│   │   │   │   ├── Allocated Share Based Compensation Expense [line_item]
+│   │   │   │   │   concept: us-gaap:AllocatedShareBasedCompensationExpense
+│   │   │   │   ├── Stock Option Plan Expense [line_item]
+│   │   │   │   │   concept: us-gaap:StockOptionPlanExpense
+│   │   │   │   ├── Restricted Stock Expense [line_item]
+│   │   │   │   │   concept: us-gaap:RestrictedStockExpense
+│   │   │   │   └── Adjustment Of Warrants Granted For Services [line_item]
+│   │   │   │       concept: us-gaap:AdjustmentOfWarrantsGrantedForServices
+│   │   │   ├── Deferred Income Taxes [group]
+│   │   │   │   ├── Deferred Income Tax Expense Benefit [line_item]
+│   │   │   │   │   concept: us-gaap:DeferredIncomeTaxExpenseBenefit
+│   │   │   │   ├── Deferred Income Taxes And Tax Credits [line_item]
+│   │   │   │   │   concept: us-gaap:DeferredIncomeTaxesAndTaxCredits
+│   │   │   │   ├── Increase Decrease In Deferred Income Taxes [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInDeferredIncomeTaxes
+│   │   │   │   └── Deferred Federal State And Local Tax Expense Benefit [line_item]
+│   │   │   │       concept: us-gaap:DeferredFederalStateAndLocalTaxExpenseBenefit
+│   │   │   ├── Impairment / Write-offs [group]
+│   │   │   │   ├── Asset Impairment Charges [line_item] *
+│   │   │   │   │   concept: us-gaap:AssetImpairmentCharges
+│   │   │   │   ├── Goodwill Impairment Loss [line_item] *
+│   │   │   │   │   concept: us-gaap:GoodwillImpairmentLoss
+│   │   │   │   ├── Provision For Doubtful Accounts [line_item] *
+│   │   │   │   │   concept: us-gaap:ProvisionForDoubtfulAccounts
+│   │   │   │   ├── Impairment Of Long Lived Assets Held For Use [line_item] *
+│   │   │   │   │   concept: us-gaap:ImpairmentOfLongLivedAssetsHeldForUse
+│   │   │   │   ├── Inventory Write Down [line_item] *
+│   │   │   │   │   concept: us-gaap:InventoryWriteDown
+│   │   │   │   ├── Impairment Of Intangible Assets Finitelived [line_item] *
+│   │   │   │   │   concept: us-gaap:ImpairmentOfIntangibleAssetsFinitelived
+│   │   │   │   ├── Impairment Of Intangible Assets Excluding Goodwill [line_item] *
+│   │   │   │   │   concept: us-gaap:ImpairmentOfIntangibleAssetsExcludingGoodwill
+│   │   │   │   ├── Impairment Of Long Lived Assets To Be Disposed Of [line_item] *
+│   │   │   │   │   concept: us-gaap:ImpairmentOfLongLivedAssetsToBeDisposedOf
+│   │   │   │   ├── Operating Lease Impairment Loss [line_item] *
+│   │   │   │   │   concept: us-gaap:OperatingLeaseImpairmentLoss
+│   │   │   │   ├── Impairment Of Intangible Assets Indefinitelived Excluding Goodwill [line_item] *
+│   │   │   │   │   concept: us-gaap:ImpairmentOfIntangibleAssetsIndefinitelivedExcludingGoodwill
+│   │   │   │   ├── Goodwill And Intangible Asset Impairment [line_item] *
+│   │   │   │   │   concept: us-gaap:GoodwillAndIntangibleAssetImpairment
+│   │   │   │   ├── Impairment Of Investments [line_item] *
+│   │   │   │   │   concept: us-gaap:ImpairmentOfInvestments
+│   │   │   │   ├── Tangible Asset Impairment Charges [line_item] *
+│   │   │   │   │   concept: us-gaap:TangibleAssetImpairmentCharges
+│   │   │   │   ├── Other Asset Impairment Charges [line_item] *
+│   │   │   │   │   concept: us-gaap:OtherAssetImpairmentCharges
+│   │   │   │   ├── Write Off Of Deferred Debt Issuance Cost [line_item] *
+│   │   │   │   │   concept: us-gaap:WriteOffOfDeferredDebtIssuanceCost
+│   │   │   │   ├── Equity Method Investment Other Than Temporary Impairment [line_item] *
+│   │   │   │   │   concept: us-gaap:EquityMethodInvestmentOtherThanTemporaryImpairment
+│   │   │   │   ├── Equity Securities Without Readily Determinable Fair Value Impairment Loss Annual Amount [line_item] *
+│   │   │   │   │   concept: us-gaap:EquitySecuritiesWithoutReadilyDeterminableFairValueImpairmentLossAnnualAmount
+│   │   │   │   └── Provision For Other Credit Losses [line_item] *
+│   │   │   │       concept: us-gaap:ProvisionForOtherCreditLosses
+│   │   │   ├── Gains / Losses Reclassifications [group]
+│   │   │   │   ├── Gains Losses On Extinguishment Of Debt [line_item] *
+│   │   │   │   │   concept: us-gaap:GainsLossesOnExtinguishmentOfDebt
+│   │   │   │   ├── Gain Loss On Sale Of Property Plant Equipment [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnSaleOfPropertyPlantEquipment
+│   │   │   │   ├── Fair Value Adjustment Of Warrants [line_item] *
+│   │   │   │   │   concept: us-gaap:FairValueAdjustmentOfWarrants
+│   │   │   │   ├── Foreign Currency Transaction Gain Loss Before Tax [line_item] *
+│   │   │   │   │   concept: us-gaap:ForeignCurrencyTransactionGainLossBeforeTax
+│   │   │   │   ├── Gain Loss On Disposition Of Assets1 [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnDispositionOfAssets1
+│   │   │   │   ├── Gain Loss On Disposition Of Assets [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnDispositionOfAssets
+│   │   │   │   ├── Derivative Gain Loss On Derivative Net [line_item] *
+│   │   │   │   │   concept: us-gaap:DerivativeGainLossOnDerivativeNet
+│   │   │   │   ├── Unrealized Gain Loss On Investments [line_item] *
+│   │   │   │   │   concept: us-gaap:UnrealizedGainLossOnInvestments
+│   │   │   │   ├── Gain Loss On Investments [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnInvestments
+│   │   │   │   ├── Unrealized Gain Loss On Derivatives [line_item] *
+│   │   │   │   │   concept: us-gaap:UnrealizedGainLossOnDerivatives
+│   │   │   │   ├── Foreign Currency Transaction Gain Loss Unrealized [line_item] *
+│   │   │   │   │   concept: us-gaap:ForeignCurrencyTransactionGainLossUnrealized
+│   │   │   │   ├── Gain Loss On Sale Of Business [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnSaleOfBusiness
+│   │   │   │   ├── Marketable Securities Unrealized Gain Loss [line_item] *
+│   │   │   │   │   concept: us-gaap:MarketableSecuritiesUnrealizedGainLoss
+│   │   │   │   ├── Gain Loss Related To Litigation Settlement [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossRelatedToLitigationSettlement
+│   │   │   │   ├── Gain Loss On Termination Of Lease [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnTerminationOfLease
+│   │   │   │   ├── Gain Loss On Sale Of Investments [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnSaleOfInvestments
+│   │   │   │   ├── Debt Securities Available For Sale Realized Gain Loss [line_item] *
+│   │   │   │   │   concept: us-gaap:DebtSecuritiesAvailableForSaleRealizedGainLoss
+│   │   │   │   ├── Gain Loss On Derivative Instruments Net Pretax [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnDerivativeInstrumentsNetPretax
+│   │   │   │   ├── Disposal Group Not Discontinued Operation Gain Loss On Disposal [line_item] *
+│   │   │   │   │   concept: us-gaap:DisposalGroupNotDiscontinuedOperationGainLossOnDisposal
+│   │   │   │   ├── Equity Securities Fv Ni Unrealized Gain Loss [line_item] *
+│   │   │   │   │   concept: us-gaap:EquitySecuritiesFvNiUnrealizedGainLoss
+│   │   │   │   ├── Gain Loss On Sale Of Other Assets [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnSaleOfOtherAssets
+│   │   │   │   ├── Gain Loss On Disposition Of Intangible Assets [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnDispositionOfIntangibleAssets
+│   │   │   │   ├── Realized Investment Gains Losses [line_item] *
+│   │   │   │   │   concept: us-gaap:RealizedInvestmentGainsLosses
+│   │   │   │   ├── Fair Value Option Changes In Fair Value Gain Loss1 [line_item] *
+│   │   │   │   │   concept: us-gaap:FairValueOptionChangesInFairValueGainLoss1
+│   │   │   │   ├── Equity Method Investment Realized Gain Loss On Disposal [line_item] *
+│   │   │   │   │   concept: us-gaap:EquityMethodInvestmentRealizedGainLossOnDisposal
+│   │   │   │   ├── Discontinued Operation Gain Loss On Disposal Of Discontinued Operation Net Of Tax [line_item] *
+│   │   │   │   │   concept: us-gaap:DiscontinuedOperationGainLossOnDisposalOfDiscontinuedOperationNetOfTax
+│   │   │   │   ├── Equity Securities Fv Ni Gain Loss [line_item] *
+│   │   │   │   │   concept: us-gaap:EquitySecuritiesFvNiGainLoss
+│   │   │   │   ├── Debt Securities Available For Sale Unrealized Gain Loss [line_item] *
+│   │   │   │   │   concept: us-gaap:DebtSecuritiesAvailableForSaleUnrealizedGainLoss
+│   │   │   │   └── Liabilities Fair Value Adjustment [line_item] *
+│   │   │   │       concept: us-gaap:LiabilitiesFairValueAdjustment
+│   │   │   ├── Other Adjustments [group]
+│   │   │   │   ├── Other Noncash Income Expense [line_item]
+│   │   │   │   │   concept: us-gaap:OtherNoncashIncomeExpense
+│   │   │   │   ├── Other Noncash Expense [line_item]
+│   │   │   │   │   concept: us-gaap:OtherNoncashExpense
+│   │   │   │   ├── Paid In Kind Interest [line_item]
+│   │   │   │   │   concept: us-gaap:PaidInKindInterest
+│   │   │   │   └── Accretion Expense [line_item]
+│   │   │   │       concept: us-gaap:AccretionExpense
+│   │   │   ├── Debt Discount / Premium and Financing Cost Amortization [group]
+│   │   │   │   ├── Amortization Of Debt Discount Premium [line_item]
+│   │   │   │   │   concept: us-gaap:AmortizationOfDebtDiscountPremium
+│   │   │   │   ├── Amortization Of Financing Costs [line_item]
+│   │   │   │   │   concept: us-gaap:AmortizationOfFinancingCosts
+│   │   │   │   └── Amortization Of Financing Costs And Discounts [line_item]
+│   │   │   │       concept: us-gaap:AmortizationOfFinancingCostsAndDiscounts
+│   │   │   ├── Investment Premium / Discount Accretion and Amortization [group]
+│   │   │   │   ├── Accretion Amortization Of Discounts And Premiums Investments [line_item]
+│   │   │   │   │   concept: us-gaap:AccretionAmortizationOfDiscountsAndPremiumsInvestments
+│   │   │   │   └── Investment Income Net Amortization Of Discount And Premium [line_item]
+│   │   │   │       concept: us-gaap:InvestmentIncomeNetAmortizationOfDiscountAndPremium
+│   │   │   ├── Lease Right-of-use Asset Amortization [group]
+│   │   │   │   ├── Operating Lease Right Of Use Asset Amortization Expense [line_item]
+│   │   │   │   │   concept: us-gaap:OperatingLeaseRightOfUseAssetAmortizationExpense
+│   │   │   │   └── Finance Lease Right Of Use Asset Amortization [line_item]
+│   │   │   │       concept: us-gaap:FinanceLeaseRightOfUseAssetAmortization
+│   │   │   └── Capitalized Contract Cost Amortization [group]
+│   │   │       └── Capitalized Contract Cost Amortization [line_item]
+│   │   │           concept: us-gaap:CapitalizedContractCostAmortization
+│   │   └── Changes in Operating Assets / Liabilities [group]
+│   │       ├── Receivables Changes [group]
+│   │       │   ├── Increase Decrease In Accounts Receivable [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInAccountsReceivable
+│   │       │   ├── Increase Decrease In Other Receivables [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInOtherReceivables
+│   │       │   ├── Increase Decrease In Contract With Customer Asset [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInContractWithCustomerAsset
+│   │       │   ├── Increase Decrease In Receivables [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInReceivables
+│   │       │   ├── Increase Decrease In Due From Related Parties [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInDueFromRelatedParties
+│   │       │   ├── Increase Decrease In Income Taxes Receivable [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInIncomeTaxesReceivable
+│   │       │   ├── Increase Decrease In Accrued Interest Receivable Net [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInAccruedInterestReceivableNet
+│   │       │   ├── Increase Decrease In Accounts And Other Receivables [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInAccountsAndOtherReceivables
+│   │       │   └── Increase Decrease In Accounts Receivable Related Parties [line_item]
+│   │       │       concept: us-gaap:IncreaseDecreaseInAccountsReceivableRelatedParties
+│   │       ├── Inventories Changes [group]
+│   │       │   └── Increase Decrease In Inventories [line_item]
+│   │       │       concept: us-gaap:IncreaseDecreaseInInventories
+│   │       ├── Prepaid Expenses / Other Operating Assets Changes [group]
+│   │       │   ├── Increase Decrease In Prepaid Deferred Expense And Other Assets [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets
+│   │       │   ├── Increase Decrease In Other Operating Assets [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInOtherOperatingAssets
+│   │       │   ├── Increase Decrease In Prepaid Expense [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInPrepaidExpense
+│   │       │   ├── Increase Decrease In Other Noncurrent Assets [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInOtherNoncurrentAssets
+│   │       │   ├── Increase Decrease In Other Current Assets [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInOtherCurrentAssets
+│   │       │   ├── Increase Decrease In Deferred Charges [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInDeferredCharges
+│   │       │   ├── Increase Decrease In Prepaid Expenses Other [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInPrepaidExpensesOther
+│   │       │   └── Increase Decrease In Deposit Other Assets [line_item]
+│   │       │       concept: us-gaap:IncreaseDecreaseInDepositOtherAssets
+│   │       ├── Accounts Payable Changes [group]
+│   │       │   ├── Increase Decrease In Accounts Payable [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInAccountsPayable
+│   │       │   ├── Increase Decrease In Accounts Payable Trade [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInAccountsPayableTrade
+│   │       │   └── Increase Decrease In Accounts Payable Related Parties [line_item]
+│   │       │       concept: us-gaap:IncreaseDecreaseInAccountsPayableRelatedParties
+│   │       ├── Accrued Liabilities Changes [group]
+│   │       │   ├── Increase Decrease In Accrued Liabilities [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInAccruedLiabilities
+│   │       │   ├── Increase Decrease In Accrued Income Taxes Payable [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInAccruedIncomeTaxesPayable
+│   │       │   ├── Increase Decrease In Employee Related Liabilities [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInEmployeeRelatedLiabilities
+│   │       │   ├── Increase Decrease In Interest Payable Net [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInInterestPayableNet
+│   │       │   ├── Increase Decrease In Other Accrued Liabilities [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInOtherAccruedLiabilities
+│   │       │   └── Increase Decrease In Accrued Taxes Payable [line_item]
+│   │       │       concept: us-gaap:IncreaseDecreaseInAccruedTaxesPayable
+│   │       ├── Deferred Revenue Changes [group]
+│   │       │   ├── Increase Decrease In Contract With Customer Liability [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInContractWithCustomerLiability
+│   │       │   └── Increase Decrease In Deferred Revenue [line_item]
+│   │       │       concept: us-gaap:IncreaseDecreaseInDeferredRevenue
+│   │       ├── Other Operating Liabilities Changes [group]
+│   │       │   ├── Increase Decrease In Operating Lease Liability [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInOperatingLeaseLiability
+│   │       │   ├── Increase Decrease In Other Operating Liabilities [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInOtherOperatingLiabilities
+│   │       │   ├── Increase Decrease In Other Noncurrent Liabilities [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInOtherNoncurrentLiabilities
+│   │       │   ├── Increase Decrease In Due To Related Parties [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInDueToRelatedParties
+│   │       │   ├── Increase Decrease In Other Current Liabilities [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInOtherCurrentLiabilities
+│   │       │   ├── Increase Decrease In Derivative Liabilities [line_item] *
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInDerivativeLiabilities
+│   │       │   ├── Increase Decrease In Deferred Liabilities [line_item]
+│   │       │   │   concept: us-gaap:IncreaseDecreaseInDeferredLiabilities
+│   │       │   └── Increase Decrease In Due To Related Parties Current [line_item]
+│   │       │       concept: us-gaap:IncreaseDecreaseInDueToRelatedPartiesCurrent
+│   │       └── Combined Operating Assets / Liabilities Changes [group]
+│   │           ├── Increase Decrease In Accounts Payable And Accrued Liabilities [line_item]
+│   │           │   concept: us-gaap:IncreaseDecreaseInAccountsPayableAndAccruedLiabilities
+│   │           ├── Increase Decrease In Accrued Liabilities And Other Operating Liabilities [line_item]
+│   │           │   concept: us-gaap:IncreaseDecreaseInAccruedLiabilitiesAndOtherOperatingLiabilities
+│   │           ├── Increase Decrease In Other Accounts Payable And Accrued Liabilities [line_item]
+│   │           │   concept: us-gaap:IncreaseDecreaseInOtherAccountsPayableAndAccruedLiabilities
+│   │           └── Increase Decrease In Other Operating Capital Net [line_item]
+│   │               concept: us-gaap:IncreaseDecreaseInOtherOperatingCapitalNet
+│   ├── Other Operating Activities / Method Review [group]
+│   │   └── Other Operating Activities Cash Flow Statement [line_item]
+│   │       concept: us-gaap:OtherOperatingActivitiesCashFlowStatement
+│   ├── Continuing / Discontinued Operations Details [group]
+│   │   ├── Net Cash Provided By Used In Operating Activities Continuing Operations [line_item]
+│   │   │   concept: us-gaap:NetCashProvidedByUsedInOperatingActivitiesContinuingOperations
+│   │   └── Cash Provided By Used In Operating Activities Discontinued Operations [line_item]
+│   │       concept: us-gaap:CashProvidedByUsedInOperatingActivitiesDiscontinuedOperations
+│   └── Net Cash from Operating Activities [group]
+│       └── Net Cash Provided By Used In Operating Activities [line_item]
+│           concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+├── Investing Activities [group]
+│   ├── Property, Plant and Equipment [group]
+│   │   ├── Purchases [group]
+│   │   │   └── Payments To Acquire Property Plant And Equipment [line_item]
+│   │   │       concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+│   │   └── Sale Proceeds [group]
+│   │       └── Proceeds From Sale Of Property Plant And Equipment [line_item]
+│   │           concept: us-gaap:ProceedsFromSaleOfPropertyPlantAndEquipment
+│   ├── Intangibles / Capitalized Software [group]
+│   │   ├── Purchases / Development Payments [group]
+│   │   │   ├── Payments To Acquire Intangible Assets [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireIntangibleAssets
+│   │   │   ├── Payments To Develop Software [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToDevelopSoftware
+│   │   │   └── Payments For Software [line_item]
+│   │   │       concept: us-gaap:PaymentsForSoftware
+│   │   └── Sale Proceeds [group]
+│   │       └── Proceeds From Sale Of Intangible Assets [line_item]
+│   │           concept: us-gaap:ProceedsFromSaleOfIntangibleAssets
+│   ├── Investments / Securities [group]
+│   │   ├── Purchases [group]
+│   │   │   ├── Payments To Acquire Marketable Securities [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireMarketableSecurities
+│   │   │   ├── Payments To Acquire Investments [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireInvestments
+│   │   │   ├── Payments To Acquire Available For Sale Securities Debt [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireAvailableForSaleSecuritiesDebt
+│   │   │   ├── Payments To Acquire Short Term Investments [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireShortTermInvestments
+│   │   │   ├── Payments To Acquire Equity Method Investments [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireEquityMethodInvestments
+│   │   │   ├── Payments To Acquire Other Investments [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireOtherInvestments
+│   │   │   └── Payments To Acquire Longterm Investments [line_item]
+│   │   │       concept: us-gaap:PaymentsToAcquireLongtermInvestments
+│   │   ├── Sale Proceeds [group]
+│   │   │   ├── Proceeds From Sale Of Available For Sale Securities Debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromSaleOfAvailableForSaleSecuritiesDebt
+│   │   │   ├── Proceeds From Sale Of Short Term Investments [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromSaleOfShortTermInvestments
+│   │   │   └── Proceeds From Sale Of Equity Method Investments [line_item]
+│   │   │       concept: us-gaap:ProceedsFromSaleOfEquityMethodInvestments
+│   │   ├── Maturity Proceeds [group]
+│   │   │   ├── Proceeds From Maturities Prepayments And Calls Of Available For Sale Securities [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities
+│   │   │   └── Proceeds From Maturities Prepayments And Calls Of Shortterm Investments [line_item]
+│   │   │       concept: us-gaap:ProceedsFromMaturitiesPrepaymentsAndCallsOfShorttermInvestments
+│   │   ├── Combined Sale / Maturity / Collection Proceeds [group]
+│   │   │   ├── Proceeds From Sale And Maturity Of Marketable Securities [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromSaleAndMaturityOfMarketableSecurities
+│   │   │   ├── Proceeds From Sale And Maturity Of Available For Sale Securities [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromSaleAndMaturityOfAvailableForSaleSecurities
+│   │   │   ├── Proceeds From Sale Maturity And Collections Of Investments [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromSaleMaturityAndCollectionsOfInvestments
+│   │   │   └── Proceeds From Sale Maturity And Collection Of Shortterm Investments [line_item]
+│   │   │       concept: us-gaap:ProceedsFromSaleMaturityAndCollectionOfShorttermInvestments
+│   │   └── Net Purchases / Sales — Where Reported [group]
+│   │       └── Payments For Proceeds From Investments [line_item]
+│   │           concept: us-gaap:PaymentsForProceedsFromInvestments
+│   ├── Business Acquisitions / Divestitures [group]
+│   │   ├── Acquisition Payments, Net of Cash Acquired [group]
+│   │   │   └── Payments To Acquire Businesses Net Of Cash Acquired [line_item]
+│   │   │       concept: us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired
+│   │   ├── Gross Acquisition Payments [group]
+│   │   │   └── Payments To Acquire Businesses Gross [line_item]
+│   │   │       concept: us-gaap:PaymentsToAcquireBusinessesGross
+│   │   ├── Cash Acquired [group]
+│   │   │   └── Cash Acquired From Acquisition [line_item]
+│   │   │       concept: us-gaap:CashAcquiredFromAcquisition
+│   │   ├── Divestiture Proceeds, Net of Cash Divested [group]
+│   │   │   └── Proceeds From Divestiture Of Businesses Net Of Cash Divested [line_item]
+│   │   │       concept: us-gaap:ProceedsFromDivestitureOfBusinessesNetOfCashDivested
+│   │   └── Other Divestiture Proceeds / Review [group]
+│   │       └── Proceeds From Divestiture Of Businesses [line_item]
+│   │           concept: us-gaap:ProceedsFromDivestitureOfBusinesses
+│   ├── Loans Made / Collections [group]
+│   │   └── Payments To Acquire Notes Receivable [line_item]
+│   │       concept: us-gaap:PaymentsToAcquireNotesReceivable
+│   ├── Other Investing Activities [group]
+│   │   ├── Payments For Proceeds From Other Investing Activities [line_item]
+│   │   │   concept: us-gaap:PaymentsForProceedsFromOtherInvestingActivities
+│   │   ├── Payments To Acquire Productive Assets [line_item] *
+│   │   │   concept: us-gaap:PaymentsToAcquireProductiveAssets
+│   │   ├── Proceeds From Sale Of Productive Assets [line_item] *
+│   │   │   concept: us-gaap:ProceedsFromSaleOfProductiveAssets
+│   │   ├── Payments To Acquire In Process Research And Development [line_item] *
+│   │   │   concept: us-gaap:PaymentsToAcquireInProcessResearchAndDevelopment
+│   │   └── Payments To Acquire Other Productive Assets [line_item] *
+│   │       concept: us-gaap:PaymentsToAcquireOtherProductiveAssets
+│   ├── Continuing / Discontinued Operations Details [group]
+│   │   ├── Net Cash Provided By Used In Investing Activities Continuing Operations [line_item]
+│   │   │   concept: us-gaap:NetCashProvidedByUsedInInvestingActivitiesContinuingOperations
+│   │   └── Cash Provided By Used In Investing Activities Discontinued Operations [line_item]
+│   │       concept: us-gaap:CashProvidedByUsedInInvestingActivitiesDiscontinuedOperations
+│   └── Net Cash from Investing Activities [group]
+│       └── Net Cash Provided By Used In Investing Activities [line_item]
+│           concept: us-gaap:NetCashProvidedByUsedInInvestingActivities
+├── Financing Activities [group]
+│   ├── Debt [group]
+│   │   ├── Borrowing Proceeds [group]
+│   │   │   ├── Proceeds From Convertible Debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromConvertibleDebt
+│   │   │   ├── Proceeds From Issuance Of Long Term Debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfLongTermDebt
+│   │   │   ├── Proceeds From Related Party Debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromRelatedPartyDebt
+│   │   │   ├── Proceeds From Notes Payable [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromNotesPayable
+│   │   │   ├── Proceeds From Issuance Of Debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfDebt
+│   │   │   ├── Proceeds From Lines Of Credit [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromLinesOfCredit
+│   │   │   ├── Proceeds From Short Term Debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromShortTermDebt
+│   │   │   ├── Proceeds From Debt Net Of Issuance Costs [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromDebtNetOfIssuanceCosts
+│   │   │   ├── Proceeds From Long Term Lines Of Credit [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromLongTermLinesOfCredit
+│   │   │   ├── Proceeds From Bank Debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromBankDebt
+│   │   │   ├── Proceeds From Issuance Of Secured Debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfSecuredDebt
+│   │   │   └── Proceeds From Other Debt [line_item]
+│   │   │       concept: us-gaap:ProceedsFromOtherDebt
+│   │   ├── Repayments [group]
+│   │   │   ├── Repayments Of Long Term Debt [line_item]
+│   │   │   │   concept: us-gaap:RepaymentsOfLongTermDebt
+│   │   │   ├── Repayments Of Notes Payable [line_item]
+│   │   │   │   concept: us-gaap:RepaymentsOfNotesPayable
+│   │   │   ├── Repayments Of Related Party Debt [line_item]
+│   │   │   │   concept: us-gaap:RepaymentsOfRelatedPartyDebt
+│   │   │   ├── Repayments Of Debt [line_item]
+│   │   │   │   concept: us-gaap:RepaymentsOfDebt
+│   │   │   ├── Repayments Of Convertible Debt [line_item]
+│   │   │   │   concept: us-gaap:RepaymentsOfConvertibleDebt
+│   │   │   ├── Repayments Of Lines Of Credit [line_item]
+│   │   │   │   concept: us-gaap:RepaymentsOfLinesOfCredit
+│   │   │   ├── Repayments Of Short Term Debt [line_item]
+│   │   │   │   concept: us-gaap:RepaymentsOfShortTermDebt
+│   │   │   ├── Repayments Of Long Term Lines Of Credit [line_item]
+│   │   │   │   concept: us-gaap:RepaymentsOfLongTermLinesOfCredit
+│   │   │   ├── Repayments Of Bank Debt [line_item]
+│   │   │   │   concept: us-gaap:RepaymentsOfBankDebt
+│   │   │   ├── Repayments Of Other Debt [line_item]
+│   │   │   │   concept: us-gaap:RepaymentsOfOtherDebt
+│   │   │   └── Repayments Of Secured Debt [line_item]
+│   │   │       concept: us-gaap:RepaymentsOfSecuredDebt
+│   │   ├── Other Net Borrowings / Repayments [group]
+│   │   │   ├── Proceeds From Repayments Of Related Party Debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromRepaymentsOfRelatedPartyDebt
+│   │   │   ├── Proceeds From Repayments Of Notes Payable [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromRepaymentsOfNotesPayable
+│   │   │   ├── Proceeds From Repayments Of Debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromRepaymentsOfDebt
+│   │   │   └── Proceeds From Repayments Of Lines Of Credit [line_item]
+│   │   │       concept: us-gaap:ProceedsFromRepaymentsOfLinesOfCredit
+│   │   └── Debt Issuance / Financing / Extinguishment Payments [group]
+│   │       ├── Payments Of Debt Issuance Costs [line_item]
+│   │       │   concept: us-gaap:PaymentsOfDebtIssuanceCosts
+│   │       ├── Payments Of Financing Costs [line_item]
+│   │       │   concept: us-gaap:PaymentsOfFinancingCosts
+│   │       └── Payments Of Debt Extinguishment Costs [line_item]
+│   │           concept: us-gaap:PaymentsOfDebtExtinguishmentCosts
+│   ├── Equity [group]
+│   │   ├── Share Issuance / Option Exercises / Warrants [group]
+│   │   │   ├── Proceeds From Issuance Of Common Stock [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfCommonStock
+│   │   │   ├── Proceeds From Stock Options Exercised [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromStockOptionsExercised
+│   │   │   ├── Proceeds From Issuance Initial Public Offering [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceInitialPublicOffering
+│   │   │   ├── Proceeds From Warrant Exercises [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromWarrantExercises
+│   │   │   ├── Proceeds From Issuance Of Private Placement [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfPrivatePlacement
+│   │   │   ├── Proceeds From Issuance Of Warrants [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfWarrants
+│   │   │   ├── Proceeds From Issuance Or Sale Of Equity [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOrSaleOfEquity
+│   │   │   ├── Proceeds From Issuance Of Convertible Preferred Stock [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfConvertiblePreferredStock
+│   │   │   ├── Proceeds From Stock Plans [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromStockPlans
+│   │   │   ├── Proceeds From Issuance Of Preferred Stock And Preference Stock [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfPreferredStockAndPreferenceStock
+│   │   │   ├── Proceeds From Issuance Of Shares Under Incentive And Share Based Compensation Plans Including Stock Options [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfSharesUnderIncentiveAndShareBasedCompensationPlansIncludingStockOptions
+│   │   │   ├── Proceeds From Issuance Of Redeemable Convertible Preferred Stock [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfRedeemableConvertiblePreferredStock
+│   │   │   ├── Proceeds From Issuance Of Shares Under Incentive And Share Based Compensation Plans [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfSharesUnderIncentiveAndShareBasedCompensationPlans
+│   │   │   ├── Proceeds From Other Equity [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromOtherEquity
+│   │   │   └── Proceeds From Contributed Capital [line_item]
+│   │   │       concept: us-gaap:ProceedsFromContributedCapital
+│   │   ├── Share Repurchases [group]
+│   │   │   ├── Payments For Repurchase Of Common Stock [line_item]
+│   │   │   │   concept: us-gaap:PaymentsForRepurchaseOfCommonStock
+│   │   │   └── Payments For Repurchase Of Equity [line_item]
+│   │   │       concept: us-gaap:PaymentsForRepurchaseOfEquity
+│   │   ├── Share-based Award Tax Withholding [group]
+│   │   │   └── Payments Related To Tax Withholding For Share Based Compensation [line_item]
+│   │   │       concept: us-gaap:PaymentsRelatedToTaxWithholdingForShareBasedCompensation
+│   │   └── Equity Issuance Costs [group]
+│   │       └── Payments Of Stock Issuance Costs [line_item]
+│   │           concept: us-gaap:PaymentsOfStockIssuanceCosts
+│   ├── Dividends / Distributions [group]
+│   │   ├── Payments Of Dividends [line_item]
+│   │   │   concept: us-gaap:PaymentsOfDividends
+│   │   └── Payments Of Dividends Common Stock [line_item]
+│   │       concept: us-gaap:PaymentsOfDividendsCommonStock
+│   ├── Finance Lease Principal Payments [group]
+│   │   └── Finance Lease Principal Payments [line_item]
+│   │       concept: us-gaap:FinanceLeasePrincipalPayments
+│   ├── Noncontrolling Interest Transactions [group]
+│   │   ├── Proceeds From Minority Shareholders [line_item]
+│   │   │   concept: us-gaap:ProceedsFromMinorityShareholders
+│   │   └── Payments To Minority Shareholders [line_item]
+│   │       concept: us-gaap:PaymentsToMinorityShareholders
+│   ├── Other Financing Activities [group]
+│   │   ├── Proceeds From Payments For Other Financing Activities [line_item]
+│   │   │   concept: us-gaap:ProceedsFromPaymentsForOtherFinancingActivities
+│   │   ├── Payment For Contingent Consideration Liability Financing Activities [line_item]
+│   │   │   concept: us-gaap:PaymentForContingentConsiderationLiabilityFinancingActivities
+│   │   └── Payment Of Financing And Stock Issuance Costs [line_item]
+│   │       concept: us-gaap:PaymentOfFinancingAndStockIssuanceCosts
+│   ├── Continuing / Discontinued Operations Details [group]
+│   │   ├── Net Cash Provided By Used In Financing Activities Continuing Operations [line_item]
+│   │   │   concept: us-gaap:NetCashProvidedByUsedInFinancingActivitiesContinuingOperations
+│   │   └── Cash Provided By Used In Financing Activities Discontinued Operations [line_item]
+│   │       concept: us-gaap:CashProvidedByUsedInFinancingActivitiesDiscontinuedOperations
+│   └── Net Cash from Financing Activities [group]
+│       └── Net Cash Provided By Used In Financing Activities [line_item]
+│           concept: us-gaap:NetCashProvidedByUsedInFinancingActivities
+├── Cash Reconciliation [group]
+│   ├── Exchange Rate Effects [group]
+│   │   ├── Cash, Cash Equivalents and Restricted Cash [group]
+│   │   │   └── Effect Of Exchange Rate On Cash Cash Equivalents Restricted Cash And Restricted Cash Equivalents [line_item]
+│   │   │       concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+│   │   └── Cash Including Disposal Groups / Discontinued Operations [group]
+│   │       └── Effect Of Exchange Rate On Cash Cash Equivalents Restricted Cash And Restricted Cash Equivalents Including Disposal Group And Discontinued Operations [line_item]
+│   │           concept: us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+│   ├── Net Change in Cash [group]
+│   │   └── Cash, Cash Equivalents and Restricted Cash [group]
+│   │       ├── Including Exchange Rate Effect [group]
+│   │       │   └── Cash Cash Equivalents Restricted Cash And Restricted Cash Equivalents Period Increase Decrease Including Exchange Rate Effect [line_item]
+│   │       │       concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect
+│   │       └── Excluding Exchange Rate Effect [group]
+│   │           └── Cash Cash Equivalents Restricted Cash And Restricted Cash Equivalents Period Increase Decrease Excluding Exchange Rate Effect [line_item]
+│   │               concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseExcludingExchangeRateEffect
+│   ├── Beginning / Ending Balances — Select by Context [group]
+│   │   ├── Cash, Cash Equivalents and Restricted Cash [group]
+│   │   │   └── Cash Cash Equivalents Restricted Cash And Restricted Cash Equivalents [line_item]
+│   │   │       concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+│   │   └── Cash Including Disposal Groups / Discontinued Operations [group]
+│   │       └── Cash Cash Equivalents Restricted Cash And Restricted Cash Equivalents Including Disposal Group And Discontinued Operations [line_item]
+│   │           concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+│   └── Continuing / Discontinued Operations Cash Flow Details — All Activities [group]
+│       └── Net Cash Provided By Used In Continuing Operations [line_item] *
+│           concept: us-gaap:NetCashProvidedByUsedInContinuingOperations
+└── Supplementary Disclosures [group]
+    ├── Cash Paid for Interest [group]
+    │   ├── Interest Paid Net [line_item]
+    │   │   concept: us-gaap:InterestPaidNet
+    │   └── Interest Paid [line_item]
+    │       concept: us-gaap:InterestPaid
+    ├── Cash Paid for Income Taxes / Refunds [group]
+    │   ├── Income Taxes Paid Net [line_item]
+    │   │   concept: us-gaap:IncomeTaxesPaidNet
+    │   ├── Income Taxes Paid [line_item]
+    │   │   concept: us-gaap:IncomeTaxesPaid
+    │   ├── Income Tax Paid Federal After Refund Received [line_item]
+    │   │   concept: us-gaap:IncomeTaxPaidFederalAfterRefundReceived
+    │   ├── Income Tax Paid State And Local After Refund Received [line_item]
+    │   │   concept: us-gaap:IncomeTaxPaidStateAndLocalAfterRefundReceived
+    │   ├── Income Tax Paid Foreign After Refund Received [line_item]
+    │   │   concept: us-gaap:IncomeTaxPaidForeignAfterRefundReceived
+    │   └── Proceeds From Income Tax Refunds [line_item]
+    │       concept: us-gaap:ProceedsFromIncomeTaxRefunds
+    ├── Noncash Investing / Financing Transactions [group]
+    │   ├── Right Of Use Asset Obtained In Exchange For Operating Lease Liability [line_item] *
+    │   │   concept: us-gaap:RightOfUseAssetObtainedInExchangeForOperatingLeaseLiability
+    │   ├── Capital Expenditures Incurred But Not Yet Paid [line_item] *
+    │   │   concept: us-gaap:CapitalExpendituresIncurredButNotYetPaid
+    │   ├── Stock Issued1 [line_item] *
+    │   │   concept: us-gaap:StockIssued1
+    │   ├── Conversion Of Stock Amount Converted1 [line_item] *
+    │   │   concept: us-gaap:ConversionOfStockAmountConverted1
+    │   ├── Debt Conversion Converted Instrument Amount1 [line_item] *
+    │   │   concept: us-gaap:DebtConversionConvertedInstrumentAmount1
+    │   ├── Issuance Of Stock And Warrants For Services Or Claims [line_item] *
+    │   │   concept: us-gaap:IssuanceOfStockAndWarrantsForServicesOrClaims
+    │   ├── Debt Issuance Costs Incurred During Noncash Or Partial Noncash Transaction [line_item] *
+    │   │   concept: us-gaap:DebtIssuanceCostsIncurredDuringNoncashOrPartialNoncashTransaction
+    │   ├── Right Of Use Asset Obtained In Exchange For Finance Lease Liability [line_item] *
+    │   │   concept: us-gaap:RightOfUseAssetObtainedInExchangeForFinanceLeaseLiability
+    │   ├── Conversion Of Stock Shares Issued1 [line_item] *
+    │   │   concept: us-gaap:ConversionOfStockSharesIssued1
+    │   ├── Debt Conversion Original Debt Amount1 [line_item] *
+    │   │   concept: us-gaap:DebtConversionOriginalDebtAmount1
+    │   ├── Capital Lease Obligations Incurred [line_item] *
+    │   │   concept: us-gaap:CapitalLeaseObligationsIncurred
+    │   ├── Conversion Of Stock Amount Issued1 [line_item] *
+    │   │   concept: us-gaap:ConversionOfStockAmountIssued1
+    │   ├── Notes Issued1 [line_item] *
+    │   │   concept: us-gaap:NotesIssued1
+    │   ├── Liabilities Assumed1 [line_item] *
+    │   │   concept: us-gaap:LiabilitiesAssumed1
+    │   ├── Noncash Or Part Noncash Acquisition Fixed Assets Acquired1 [line_item] *
+    │   │   concept: us-gaap:NoncashOrPartNoncashAcquisitionFixedAssetsAcquired1
+    │   ├── Business Combination Consideration Transferred Equity Interests Issued And Issuable [line_item] *
+    │   │   concept: us-gaap:BusinessCombinationConsiderationTransferredEquityInterestsIssuedAndIssuable
+    │   └── Noncash Or Part Noncash Acquisition Intangible Assets Acquired1 [line_item] *
+    │       concept: us-gaap:NoncashOrPartNoncashAcquisitionIntangibleAssetsAcquired1
+    ├── Restricted Cash Reconciliation Details [group]
+    │   ├── Restricted Cash [line_item]
+    │   │   concept: us-gaap:RestrictedCash
+    │   ├── Cash Equivalents At Carrying Value [line_item]
+    │   │   concept: us-gaap:CashEquivalentsAtCarryingValue
+    │   ├── Restricted Cash Noncurrent [line_item]
+    │   │   concept: us-gaap:RestrictedCashNoncurrent
+    │   ├── Restricted Cash And Cash Equivalents [line_item]
+    │   │   concept: us-gaap:RestrictedCashAndCashEquivalents
+    │   ├── Restricted Cash And Cash Equivalents At Carrying Value [line_item]
+    │   │   concept: us-gaap:RestrictedCashAndCashEquivalentsAtCarryingValue
+    │   ├── Restricted Cash And Cash Equivalents Noncurrent [line_item]
+    │   │   concept: us-gaap:RestrictedCashAndCashEquivalentsNoncurrent
+    │   └── Disposal Group Including Discontinued Operation Cash And Cash Equivalents [line_item]
+    │       concept: us-gaap:DisposalGroupIncludingDiscontinuedOperationCashAndCashEquivalents
+    ├── Other Disclosures / Classification Review [group]
+    │   ├── Operating Lease Cost [line_item] *
+    │   │   concept: us-gaap:OperatingLeaseCost
+    │   ├── Valuation Allowance Deferred Tax Asset Change In Amount [line_item] *
+    │   │   concept: us-gaap:ValuationAllowanceDeferredTaxAssetChangeInAmount
+    │   ├── Operating Lease Expense [line_item] *
+    │   │   concept: us-gaap:OperatingLeaseExpense
+    │   ├── Debt Instrument Interest Rate Stated Percentage [line_item] *
+    │   │   concept: us-gaap:DebtInstrumentInterestRateStatedPercentage
+    │   ├── Allowance For Doubtful Accounts Receivable Write Offs [line_item] *
+    │   │   concept: us-gaap:AllowanceForDoubtfulAccountsReceivableWriteOffs
+    │   ├── Income Loss From Equity Method Investments [line_item] *
+    │   │   concept: us-gaap:IncomeLossFromEquityMethodInvestments
+    │   ├── Income Loss From Continuing Operations [line_item] *
+    │   │   concept: us-gaap:IncomeLossFromContinuingOperations
+    │   ├── Sale Of Stock Consideration Received On Transaction [line_item] *
+    │   │   concept: us-gaap:SaleOfStockConsiderationReceivedOnTransaction
+    │   ├── Business Combination Contingent Consideration Arrangements Change In Amount Of Contingent Consideration Liability1 [line_item] *
+    │   │   concept: us-gaap:BusinessCombinationContingentConsiderationArrangementsChangeInAmountOfContingentConsiderationLiability1
+    │   ├── Finance Lease Interest Expense [line_item] *
+    │   │   concept: us-gaap:FinanceLeaseInterestExpense
+    │   ├── Employee Service Share Based Compensation Tax Benefit From Compensation Expense [line_item] *
+    │   │   concept: us-gaap:EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense
+    │   ├── Business Combination Contingent Consideration Liability [line_item] *
+    │   │   concept: us-gaap:BusinessCombinationContingentConsiderationLiability
+    │   ├── Debt Instrument Convertible Conversion Price1 [line_item] *
+    │   │   concept: us-gaap:DebtInstrumentConvertibleConversionPrice1
+    │   ├── Employee Benefits And Share Based Compensation [line_item] *
+    │   │   concept: us-gaap:EmployeeBenefitsAndShareBasedCompensation
+    │   ├── Goodwill Purchase Accounting Adjustments [line_item] *
+    │   │   concept: us-gaap:GoodwillPurchaseAccountingAdjustments
+    │   ├── Employee Service Share Based Compensation Allocation Of Recognized Period Costs Capitalized Amount [line_item] *
+    │   │   concept: us-gaap:EmployeeServiceShareBasedCompensationAllocationOfRecognizedPeriodCostsCapitalizedAmount
+    │   ├── Income Loss From Continuing Operations Including Portion Attributable To Noncontrolling Interest [line_item] *
+    │   │   concept: us-gaap:IncomeLossFromContinuingOperationsIncludingPortionAttributableToNoncontrollingInterest
+    │   ├── Income Loss From Discontinued Operations Net Of Tax Attributable To Reporting Entity [line_item] *
+    │   │   concept: us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity
+    │   ├── Restructuring Costs [line_item] *
+    │   │   concept: us-gaap:RestructuringCosts
+    │   ├── Dividends [line_item] *
+    │   │   concept: us-gaap:Dividends
+    │   ├── Equity Method Investment Ownership Percentage [line_item] *
+    │   │   concept: us-gaap:EquityMethodInvestmentOwnershipPercentage
+    │   ├── Share Based Compensation Arrangement By Share Based Payment Award Plan Modification Incremental Compensation Cost [line_item] *
+    │   │   concept: us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardPlanModificationIncrementalCompensationCost
+    │   ├── Fair Value Of Assets Acquired [line_item] *
+    │   │   concept: us-gaap:FairValueOfAssetsAcquired
+    │   ├── Accrued Bonuses Current [line_item] *
+    │   │   concept: us-gaap:AccruedBonusesCurrent
+    │   ├── Business Acquisition Cost Of Acquired Entity Transaction Costs [line_item] *
+    │   │   concept: us-gaap:BusinessAcquisitionCostOfAcquiredEntityTransactionCosts
+    │   ├── Capitalized Computer Software Additions [line_item] *
+    │   │   concept: us-gaap:CapitalizedComputerSoftwareAdditions
+    │   ├── Dividends Payable Current And Noncurrent [line_item] *
+    │   │   concept: us-gaap:DividendsPayableCurrentAndNoncurrent
+    │   ├── Share Based Compensation Arrangement By Share Based Payment Award Equity Instruments Other Than Options Vested In Period Total Fair Value [line_item] *
+    │   │   concept: us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue
+    │   ├── Temporary Equity Accretion To Redemption Value [line_item] *
+    │   │   concept: us-gaap:TemporaryEquityAccretionToRedemptionValue
+    │   ├── Payments For Legal Settlements [line_item] *
+    │   │   concept: us-gaap:PaymentsForLegalSettlements
+    │   ├── Extinguishment Of Debt Amount [line_item] *
+    │   │   concept: us-gaap:ExtinguishmentOfDebtAmount
+    │   ├── Debt Instrument Increase Accrued Interest [line_item] *
+    │   │   concept: us-gaap:DebtInstrumentIncreaseAccruedInterest
+    │   ├── Foreign Currency Transaction Loss Before Tax [line_item] *
+    │   │   concept: us-gaap:ForeignCurrencyTransactionLossBeforeTax
+    │   ├── Interest Costs Capitalized [line_item] *
+    │   │   concept: us-gaap:InterestCostsCapitalized
+    │   ├── Foreign Currency Transaction Gain Before Tax [line_item] *
+    │   │   concept: us-gaap:ForeignCurrencyTransactionGainBeforeTax
+    │   └── Available For Sale Debt Securities Gross Unrealized Loss [line_item] *
+    │       concept: us-gaap:AvailableForSaleDebtSecuritiesGrossUnrealizedLoss
+    ├── Lease Cash Payment Disclosures [group]
+    │   ├── Operating Lease Payments [line_item]
+    │   │   concept: us-gaap:OperatingLeasePayments
+    │   ├── Payments For Rent [line_item]
+    │   │   concept: us-gaap:PaymentsForRent
+    │   └── Finance Lease Interest Payment On Liability [line_item]
+    │       concept: us-gaap:FinanceLeaseInterestPaymentOnLiability
+    └── Other Cash Payment Disclosures [group]
+        └── Payments For Restructuring [line_item]
+            concept: us-gaap:PaymentsForRestructuring

@@ -1,0 +1,71 @@
+name: Classification suggestion
+description: Help classify a reported financial concept; no coding needed.
+title: "[Classification] "
+body:
+  - type: input
+    id: review_id
+    attributes:
+      label: Review item ID
+      description: Optional ID from the sample review queue.
+  - type: input
+    id: company
+    attributes:
+      label: Company and CIK
+    validations:
+      required: true
+  - type: input
+    id: concept
+    attributes:
+      label: Reported concept
+      placeholder: "us-gaap:ConceptName"
+    validations:
+      required: true
+  - type: input
+    id: industry
+    attributes:
+      label: Industry profile
+    validations:
+      required: true
+  - type: dropdown
+    id: statement
+    attributes:
+      label: Proposed statement
+      options:
+        - Income statement (IS)
+        - Balance sheet (BS)
+        - Cash flow (CF)
+        - Outside primary statements
+        - Unsure
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Proposed category or node
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope of your suggestion
+      options:
+        - This observation only
+        - This company
+        - This industry
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Filing evidence
+      description: Include filing URL, accession, period, value and unit.
+    validations:
+      required: true
+  - type: textarea
+    id: reasoning
+    attributes:
+      label: Why does this classification fit?
+      description: Explain the accounting meaning and whether this is a total, component or disclosure.
+    validations:
+      required: true

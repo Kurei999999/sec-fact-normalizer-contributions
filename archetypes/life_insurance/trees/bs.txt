@@ -1,0 +1,361 @@
+life_insurance — BS
+Types: [total], [group], [line_item]; * = review
+
+├── Total assets [total]
+│   concept: us-gaap:Assets
+│   ├── Cash and cash equivalents [group]
+│   │   ├── Cash and Cash Equivalents [line_item]
+│   │   │   concept: us-gaap:CashAndCashEquivalentsAtCarryingValue
+│   │   └── Cash [line_item]
+│   │       concept: us-gaap:Cash
+│   ├── Investment assets [group]
+│   │   ├── Reported investment aggregate [group]
+│   │   │   └── Investments [line_item] *
+│   │   │       concept: us-gaap:Investments
+│   │   ├── Fixed-income investments [group]
+│   │   │   ├── Available-for-Sale Debt Securities [line_item]
+│   │   │   │   concept: us-gaap:AvailableForSaleSecuritiesDebtSecurities
+│   │   │   ├── AFS Debt Securities, Excluding Accrued Interest [line_item]
+│   │   │   │   concept: us-gaap:DebtSecuritiesAvailableForSaleExcludingAccruedInterest
+│   │   │   ├── Held To Maturity Securities [line_item]
+│   │   │   │   concept: us-gaap:HeldToMaturitySecurities
+│   │   │   └── Trading Debt Securities [line_item]
+│   │   │       concept: us-gaap:TradingSecuritiesDebt
+│   │   ├── Equity security investments [group]
+│   │   │   ├── FV-NI equity securities: current and noncurrent [line_item]
+│   │   │   │   concept: us-gaap:EquitySecuritiesFvNiCurrentAndNoncurrent
+│   │   │   ├── FV-NI equity securities: current [line_item] *
+│   │   │   │   concept: us-gaap:EquitySecuritiesFvNi
+│   │   │   └── Equity Securities Without Readily Determinable Fair Value Amount [line_item]
+│   │   │       concept: us-gaap:EquitySecuritiesWithoutReadilyDeterminableFairValueAmount
+│   │   ├── Affiliate and equity-method investments [group]
+│   │   │   ├── Equity Method Investments [line_item]
+│   │   │   │   concept: us-gaap:EquityMethodInvestments
+│   │   │   └── Investments In Affiliates Subsidiaries Associates And Joint Ventures [line_item] *
+│   │   │       concept: us-gaap:InvestmentsInAffiliatesSubsidiariesAssociatesAndJointVentures
+│   │   ├── Real estate investments [group]
+│   │   │   ├── Real estate investments, net of depreciation [line_item]
+│   │   │   │   concept: us-gaap:RealEstateInvestments
+│   │   │   ├── Real estate joint venture investments [line_item]
+│   │   │   │   concept: us-gaap:RealEstateInvestmentsJointVentures
+│   │   │   ├── Real estate held for sale [line_item]
+│   │   │   │   concept: us-gaap:RealEstateHeldforsale
+│   │   │   └── Investment property accumulated depreciation [line_item]
+│   │   │       concept: us-gaap:RealEstateInvestmentPropertyAccumulatedDepreciation
+│   │   ├── Mortgage, policy and other loans [group]
+│   │   │   ├── Mortgage loans [group]
+│   │   │   │   ├── Mortgage Loans On Real Estate Commercial And Consumer Net [line_item]
+│   │   │   │   │   concept: us-gaap:MortgageLoansOnRealEstateCommercialAndConsumerNet
+│   │   │   │   └── Mortgage Loans On Real Estate [line_item] *
+│   │   │   │       concept: us-gaap:MortgageLoansOnRealEstate
+│   │   │   ├── Policy loans [group]
+│   │   │   │   ├── Loans Insurance Policy [line_item] *
+│   │   │   │   │   concept: us-gaap:LoansInsurancePolicy
+│   │   │   │   └── Policy Loans Receivable [line_item] *
+│   │   │   │       concept: us-gaap:PolicyLoansReceivable
+│   │   │   ├── Other notes and financing receivables [group]
+│   │   │   │   ├── Notes Receivable, Net [line_item]
+│   │   │   │   │   concept: us-gaap:NotesReceivableNet
+│   │   │   │   ├── Financing Receivables, Net, Excluding Accrued Interest [line_item]
+│   │   │   │   │   concept: us-gaap:FinancingReceivableExcludingAccruedInterestAfterAllowanceForCreditLoss
+│   │   │   │   └── Financing Receivables, Before Allowance, Excluding Accrued Interest [line_item]
+│   │   │   │       concept: us-gaap:FinancingReceivableExcludingAccruedInterestBeforeAllowanceForCreditLoss
+│   │   │   └── Loan credit allowances [group]
+│   │   │       ├── Allowance For Loan And Lease Losses Real Estate [line_item] *
+│   │   │       │   concept: us-gaap:AllowanceForLoanAndLeaseLossesRealEstate
+│   │   │       ├── Financing Receivable Credit Loss Allowance [line_item] *
+│   │   │       │   concept: us-gaap:FinancingReceivableAllowanceForCreditLosses
+│   │   │       └── Financing Receivable Allowance, Excluding Accrued Interest [line_item] *
+│   │   │           concept: us-gaap:FinancingReceivableAllowanceForCreditLossExcludingAccruedInterest
+│   │   ├── Other investment portfolios [group]
+│   │   │   ├── Other Investments [line_item]
+│   │   │   │   concept: us-gaap:OtherInvestments
+│   │   │   ├── Short Term Investments [line_item]
+│   │   │   │   concept: us-gaap:ShortTermInvestments
+│   │   │   ├── Other Short Term Investments [line_item] *
+│   │   │   │   concept: us-gaap:OtherShortTermInvestments
+│   │   │   ├── Other Long Term Investments [line_item] *
+│   │   │   │   concept: us-gaap:OtherLongTermInvestments
+│   │   │   └── Alternative Investment [line_item] *
+│   │   │       concept: us-gaap:AlternativeInvestment
+│   │   ├── Resale agreement assets [group]
+│   │   │   └── Securities Purchased Under Agreements To Resell [line_item]
+│   │   │       concept: us-gaap:SecuritiesPurchasedUnderAgreementsToResell
+│   │   └── AFS debt credit allowances [group]
+│   │       ├── AFS debt credit allowance [line_item]
+│   │       │   concept: us-gaap:DebtSecuritiesAvailableForSaleAllowanceForCreditLoss
+│   │       └── AFS debt credit allowance, excluding accrued interest [line_item]
+│   │           concept: us-gaap:DebtSecuritiesAvailableForSaleAmortizedCostAllowanceForCreditLossExcludingAccruedInterest
+│   ├── Accrued investment income [group]
+│   │   └── Accrued Investment Income Receivable [line_item]
+│   │       concept: us-gaap:AccruedInvestmentIncomeReceivable
+│   ├── Premium and other receivables [group]
+│   │   ├── Premium and other receivables, net [line_item]
+│   │   │   concept: us-gaap:PremiumsAndOtherReceivablesNet
+│   │   ├── Premium receivables, net [line_item]
+│   │   │   concept: us-gaap:PremiumsReceivableAtCarryingValue
+│   │   ├── Allowance For Doubtful Accounts Premiums And Other Receivables [line_item]
+│   │   │   concept: us-gaap:AllowanceForDoubtfulAccountsPremiumsAndOtherReceivables
+│   │   └── Allowance for Doubtful Accounts [line_item] *
+│   │       concept: us-gaap:AllowanceForDoubtfulAccountsReceivable
+│   ├── Reinsurance assets [group]
+│   │   ├── Reinsurance recoverables, net [line_item]
+│   │   │   concept: us-gaap:ReinsuranceRecoverables
+│   │   ├── Reinsurance recoverables, gross [line_item]
+│   │   │   concept: us-gaap:ReinsuranceRecoverablesGross
+│   │   ├── Reinsurance recoverable credit allowance [line_item]
+│   │   │   concept: us-gaap:ReinsuranceRecoverablesAllowance
+│   │   ├── Reinsurance recoverables: IBNR claims, net [line_item]
+│   │   │   concept: us-gaap:ReinsuranceReceivablesIncurredButNotReportedClaims
+│   │   ├── Market risk benefit reinsurance recoverable, net [line_item]
+│   │   │   concept: us-gaap:MarketRiskBenefitReinsuranceRecoverableAfterAllowance
+│   │   └── Funds Held Under Reinsurance Agreements Asset [line_item]
+│   │       concept: us-gaap:FundsHeldUnderReinsuranceAgreementsAsset
+│   ├── Deferred insurance acquisition and inducement costs [group]
+│   │   ├── Deferred policy acquisition costs (DAC) [line_item]
+│   │   │   concept: us-gaap:DeferredPolicyAcquisitionCosts
+│   │   ├── Deferred acquisition costs and VOBA, net [line_item] *
+│   │   │   concept: us-gaap:DeferredPolicyAcquisitionCostsAndValueOfBusinessAcquired
+│   │   ├── Value of business acquired (VOBA) [line_item]
+│   │   │   concept: us-gaap:ValueOfBusinessAcquiredVOBA
+│   │   └── Deferred Sales Inducements Net [line_item]
+│   │       concept: us-gaap:DeferredSalesInducementsNet
+│   ├── Market risk benefit assets [group]
+│   │   └── Market Risk Benefit Asset Amount [line_item]
+│   │       concept: us-gaap:MarketRiskBenefitAssetAmount
+│   ├── Derivative assets [group]
+│   │   ├── Derivative assets after master netting [line_item] *
+│   │   │   concept: us-gaap:DerivativeAssets
+│   │   └── Embedded derivative assets: fair value [line_item] *
+│   │       concept: us-gaap:EmbeddedDerivativeFairValueOfEmbeddedDerivativeAsset
+│   ├── Separate account assets [group]
+│   │   └── Separate Account Assets [line_item]
+│   │       concept: us-gaap:SeparateAccountAssets
+│   ├── Property and operating lease assets [group]
+│   │   ├── Property, Plant and Equipment, Net [line_item]
+│   │   │   concept: us-gaap:PropertyPlantAndEquipmentNet
+│   │   └── Operating Lease Right-of-Use Assets [line_item]
+│   │       concept: us-gaap:OperatingLeaseRightOfUseAsset
+│   ├── Goodwill and intangible assets [group]
+│   │   ├── Goodwill [line_item]
+│   │   │   concept: us-gaap:Goodwill
+│   │   ├── Intangible Assets, Excluding Goodwill [line_item]
+│   │   │   concept: us-gaap:IntangibleAssetsNetExcludingGoodwill
+│   │   ├── Other Intangible Assets Net [line_item] *
+│   │   │   concept: us-gaap:OtherIntangibleAssetsNet
+│   │   ├── Intangible Assets, Including Goodwill [line_item] *
+│   │   │   concept: us-gaap:IntangibleAssetsNetIncludingGoodwill
+│   │   └── Finite-lived intangible accumulated amortization [line_item]
+│   │       concept: us-gaap:FiniteLivedIntangibleAssetsAccumulatedAmortization
+│   ├── Tax assets [group]
+│   │   ├── Deferred Income Tax Assets, Net [line_item]
+│   │   │   concept: us-gaap:DeferredIncomeTaxAssetsNet
+│   │   ├── Income tax refunds receivable: maturity unspecified [line_item] *
+│   │   │   concept: us-gaap:IncomeTaxReceivable
+│   │   └── Income tax refunds receivable: current [line_item] *
+│   │       concept: us-gaap:IncomeTaxesReceivable
+│   └── Other assets and deposit assets [group]
+│       ├── Other Assets [line_item]
+│       │   concept: us-gaap:OtherAssets
+│       └── Deposit Assets [line_item]
+│           concept: us-gaap:DepositAssets
+├── Total liabilities [total]
+│   concept: us-gaap:Liabilities
+│   ├── Insurance contract liabilities [group]
+│   │   ├── Reported benefits and claims aggregate [group]
+│   │   │   └── Future policy benefits and unpaid claims aggregate [line_item] *
+│   │   │       concept: us-gaap:LiabilityForFuturePolicyBenefitsAndUnpaidClaimsAndClaimsAdjustmentExpense
+│   │   ├── Future policy benefit alternatives [group]
+│   │   │   ├── Future policy benefits before reinsurance [line_item]
+│   │   │   │   concept: us-gaap:LiabilityForFuturePolicyBenefits
+│   │   │   └── Future policy benefits after reinsurance [line_item] *
+│   │   │       concept: us-gaap:LiabilityForFuturePolicyBenefitAfterReinsurance
+│   │   ├── Claims and claims adjustment liabilities [group]
+│   │   │   ├── Liability For Claims And Claims Adjustment Expense [line_item]
+│   │   │   │   concept: us-gaap:LiabilityForClaimsAndClaimsAdjustmentExpense
+│   │   │   └── Unpaid claims and adjustment expenses, net of reinsurance [line_item] *
+│   │   │       concept: us-gaap:LiabilityForUnpaidClaimsAndClaimsAdjustmentExpenseNet
+│   │   ├── Policyholder deposits and funds [group]
+│   │   │   ├── Policyholder Contract Deposits [line_item]
+│   │   │   │   concept: us-gaap:PolicyholderContractDeposits
+│   │   │   ├── Policyholder Funds [line_item] *
+│   │   │   │   concept: us-gaap:PolicyholderFunds
+│   │   │   ├── Other Policyholder Funds [line_item] *
+│   │   │   │   concept: us-gaap:OtherPolicyholderFunds
+│   │   │   ├── Guaranteed Interest Contracts [line_item] *
+│   │   │   │   concept: us-gaap:GuaranteedInterestContracts
+│   │   │   └── Policyholder Dividends Payable [line_item]
+│   │   │       concept: us-gaap:PolicyholderDividendsPayable
+│   │   └── Unearned premiums [group]
+│   │       └── Unearned Insurance Premiums [line_item]
+│   │           concept: us-gaap:UnearnedPremiums
+│   ├── Reinsurance liabilities [group]
+│   │   ├── Reinsurance Payable [line_item]
+│   │   │   concept: us-gaap:ReinsurancePayable
+│   │   └── Funds Held Under Reinsurance Agreements Liability [line_item]
+│   │       concept: us-gaap:FundsHeldUnderReinsuranceAgreementsLiability
+│   ├── Market risk benefit liabilities [group]
+│   │   └── Market Risk Benefit Liability Amount [line_item]
+│   │       concept: us-gaap:MarketRiskBenefitLiabilityAmount
+│   ├── Separate account liabilities [group]
+│   │   └── Separate Accounts Liability [line_item]
+│   │       concept: us-gaap:SeparateAccountsLiability
+│   ├── Borrowings [group]
+│   │   ├── Reported debt total and maturity alternatives [group]
+│   │   │   ├── Short- and Long-Term Debt, Combined [line_item]
+│   │   │   │   concept: us-gaap:DebtLongtermAndShorttermCombinedAmount
+│   │   │   ├── Long-Term Debt, Excluding Leases [line_item]
+│   │   │   │   concept: us-gaap:LongTermDebt
+│   │   │   ├── Long Term Debt Noncurrent [line_item]
+│   │   │   │   concept: us-gaap:LongTermDebtNoncurrent
+│   │   │   └── Short-Term Borrowings [line_item]
+│   │   │       concept: us-gaap:ShortTermBorrowings
+│   │   └── Debt instrument and collateral views [group]
+│   │       ├── Notes Payable [line_item]
+│   │       │   concept: us-gaap:NotesPayable
+│   │       ├── Secured Debt [line_item]
+│   │       │   concept: us-gaap:SecuredDebt
+│   │       ├── Subordinated Debt [line_item]
+│   │       │   concept: us-gaap:SubordinatedDebt
+│   │       ├── Surplus notes: GAAP liabilities [line_item]
+│   │       │   concept: us-gaap:SurplusNotes
+│   │       └── Other Long Term Debt [line_item]
+│   │           concept: us-gaap:OtherLongTermDebt
+│   ├── Operating lease liabilities [group]
+│   │   └── Operating Lease Liabilities [line_item]
+│   │       concept: us-gaap:OperatingLeaseLiability
+│   ├── Investment and collateral liabilities [group]
+│   │   ├── Securities Sold Under Agreements To Repurchase [line_item]
+│   │   │   concept: us-gaap:SecuritiesSoldUnderAgreementsToRepurchase
+│   │   ├── Cash collateral received for securities loaned [line_item]
+│   │   │   concept: us-gaap:DepositsReceivedForSecuritiesLoanedAtCarryingValue
+│   │   ├── Obligation to return securities collateral [line_item]
+│   │   │   concept: us-gaap:ObligationToReturnSecuritiesReceivedAsCollateral
+│   │   └── Investment Related Liabilities [line_item] *
+│   │       concept: us-gaap:InvestmentRelatedLiabilities
+│   ├── Derivative liability balances [group]
+│   │   └── Derivative liabilities after master netting [line_item] *
+│   │       concept: us-gaap:DerivativeLiabilities
+│   ├── Income tax liabilities [group]
+│   │   ├── Deferred Income Tax Liabilities [line_item] *
+│   │   │   concept: us-gaap:DeferredIncomeTaxLiabilities
+│   │   ├── Deferred Income Tax Liabilities, Net [line_item]
+│   │   │   concept: us-gaap:DeferredIncomeTaxLiabilitiesNet
+│   │   ├── Accrued Income Taxes, Current and Noncurrent [line_item]
+│   │   │   concept: us-gaap:AccruedIncomeTaxes
+│   │   └── Accrued Income Taxes Current [line_item]
+│   │       concept: us-gaap:AccruedIncomeTaxesCurrent
+│   └── Other liabilities and deferred revenue [group]
+│       ├── Other Liabilities [line_item]
+│       │   concept: us-gaap:OtherLiabilities
+│       ├── Accounts Payable and Accrued Liabilities, Current and Noncurrent [line_item]
+│       │   concept: us-gaap:AccountsPayableAndAccruedLiabilitiesCurrentAndNoncurrent
+│       └── Deferred Revenue Current [line_item]
+│           concept: us-gaap:DeferredRevenueCurrent
+├── Total equity including noncontrolling interests [total]
+│   concept: us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
+│   ├── Equity attributable to the parent [total]
+│   │   concept: us-gaap:StockholdersEquity
+│   │   ├── Common share capital [group]
+│   │   │   ├── Common Stock Carrying Value [line_item]
+│   │   │   │   concept: us-gaap:CommonStockValue
+│   │   │   └── Common Stock Carrying Value, Outstanding [line_item] *
+│   │   │       concept: us-gaap:CommonStockValueOutstanding
+│   │   ├── Additional paid-in capital [group]
+│   │   │   ├── Additional Paid-in Capital [line_item]
+│   │   │   │   concept: us-gaap:AdditionalPaidInCapital
+│   │   │   └── Additional Paid-in Capital, Common Stock [line_item] *
+│   │   │       concept: us-gaap:AdditionalPaidInCapitalCommonStock
+│   │   ├── Preferred share capital candidates [group]
+│   │   │   ├── Preferred Stock Carrying Value [line_item] *
+│   │   │   │   concept: us-gaap:PreferredStockValue
+│   │   │   └── Preferred Stock Carrying Value, Outstanding [line_item] *
+│   │   │       concept: us-gaap:PreferredStockValueOutstanding
+│   │   ├── Retained earnings [group]
+│   │   │   └── Retained Earnings (Accumulated Deficit) [line_item]
+│   │   │       concept: us-gaap:RetainedEarningsAccumulatedDeficit
+│   │   ├── Treasury stock [group]
+│   │   │   ├── Treasury Stock Carrying Value [line_item]
+│   │   │   │   concept: us-gaap:TreasuryStockValue
+│   │   │   └── Common Treasury Stock Carrying Value [line_item] *
+│   │   │       concept: us-gaap:TreasuryStockCommonValue
+│   │   └── Accumulated other comprehensive income [group]
+│   │       ├── Accumulated Other Comprehensive Income (Loss), Net of Tax [line_item]
+│   │       │   concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax
+│   │       ├── AOCI: AFS securities, after tax [line_item]
+│   │       │   concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax
+│   │       ├── AOCI: foreign currency translation, after tax [line_item]
+│   │       │   concept: us-gaap:AccumulatedOtherComprehensiveIncomeLossForeignCurrencyTranslationAdjustmentNetOfTax
+│   │       └── AOCI: future policy benefit discount-rate changes, after tax [line_item]
+│   │           concept: us-gaap:AociLiabilityForFuturePolicyBenefitAfterTax
+│   └── Noncontrolling Interest [line_item]
+│       concept: us-gaap:MinorityInterest
+├── Temporary equity and redeemable noncontrolling interests [group]
+│   ├── Temporary equity including noncontrolling interests [line_item] *
+│   │   concept: us-gaap:TemporaryEquityCarryingAmountIncludingPortionAttributableToNoncontrollingInterests
+│   └── Redeemable Noncontrolling Interest Equity Carrying Amount [line_item] *
+│       concept: us-gaap:RedeemableNoncontrollingInterestEquityCarryingAmount
+├── Total liabilities and equity [total]
+│   concept: us-gaap:LiabilitiesAndStockholdersEquity
+└── Supplementary balance-sheet disclosures [group]
+    ├── Investment measurement alternatives [group]
+    │   ├── AFS Debt Securities, Amortized Cost [line_item] *
+    │   │   concept: us-gaap:AvailableForSaleDebtSecuritiesAmortizedCostBasis
+    │   ├── AFS Amortized Cost, Before Allowance, Excluding Interest [line_item] *
+    │   │   concept: us-gaap:DebtSecuritiesAvailableForSaleAmortizedCostExcludingAccruedInterestBeforeAllowanceForCreditLoss
+    │   ├── AFS Amortized Cost, After Allowance, Excluding Interest [line_item] *
+    │   │   concept: us-gaap:DebtSecuritiesAvailableForSaleAmortizedCostExcludingAccruedInterestAfterAllowanceForCreditLoss
+    │   ├── Held To Maturity Securities Fair Value [line_item] *
+    │   │   concept: us-gaap:HeldToMaturitySecuritiesFairValue
+    │   ├── Equity Securities FV-NI Cost [line_item] *
+    │   │   concept: us-gaap:EquitySecuritiesFvNiCost
+    │   ├── Trading debt and FV-NI equity securities: cost [line_item] *
+    │   │   concept: us-gaap:DebtSecuritiesTradingAndEquitySecuritiesFvNiCost
+    │   ├── Trading Debt Securities, Amortized Cost [line_item] *
+    │   │   concept: us-gaap:TradingSecuritiesDebtAmortizedCost
+    │   └── Equity-method investments: disclosed fair value [line_item] *
+    │       concept: us-gaap:EquityMethodInvestmentsFairValueDisclosure
+    ├── Other fair-value disclosures [group]
+    │   ├── Loans Receivable, Disclosed Fair Value [line_item] *
+    │   │   concept: us-gaap:LoansReceivableFairValueDisclosure
+    │   ├── Other assets: disclosed fair value [line_item] *
+    │   │   concept: us-gaap:OtherAssetsFairValueDisclosure
+    │   └── Other liabilities: disclosed fair value [line_item] *
+    │       concept: us-gaap:OtherLiabilitiesFairValueDisclosure
+    ├── Restricted and trust-held asset subsets [group]
+    │   ├── Assets Held In Trust [line_item] *
+    │   │   concept: us-gaap:AssetsHeldInTrust
+    │   └── Restricted AFS Debt Securities [line_item] *
+    │       concept: us-gaap:DebtSecuritiesAvailableForSaleRestricted
+    ├── Insurance risk exposures [group]
+    │   └── Market risk benefits: net amount at risk [line_item] *
+    │       concept: us-gaap:MarketRiskBenefitNetAmountAtRisk
+    ├── Share counts [group]
+    │   ├── Common Shares Authorized [line_item]
+    │   │   concept: us-gaap:CommonStockSharesAuthorized
+    │   ├── Common Shares Issued [line_item]
+    │   │   concept: us-gaap:CommonStockSharesIssued
+    │   ├── Common Shares Outstanding [line_item]
+    │   │   concept: us-gaap:CommonStockSharesOutstanding
+    │   ├── Common Treasury Shares [line_item]
+    │   │   concept: us-gaap:TreasuryStockCommonShares
+    │   ├── Preferred Shares Authorized [line_item]
+    │   │   concept: us-gaap:PreferredStockSharesAuthorized
+    │   ├── Preferred Shares Issued [line_item]
+    │   │   concept: us-gaap:PreferredStockSharesIssued
+    │   └── Preferred Shares Outstanding [line_item]
+    │       concept: us-gaap:PreferredStockSharesOutstanding
+    ├── Share par and liquidation terms [group]
+    │   ├── Common Stock Par or Stated Value per Share [line_item]
+    │   │   concept: us-gaap:CommonStockParOrStatedValuePerShare
+    │   ├── Preferred Stock Par or Stated Value per Share [line_item]
+    │   │   concept: us-gaap:PreferredStockParOrStatedValuePerShare
+    │   ├── Preferred liquidation preference excess per share [line_item] *
+    │   │   concept: us-gaap:PreferredStockLiquidationPreference
+    │   └── Aggregate preferred liquidation preference excess [line_item] *
+    │       concept: us-gaap:PreferredStockLiquidationPreferenceValue
+    └── AOCI tax and commitments [group]
+        ├── Tax Allocated to AOCI Attributable to Parent [line_item] *
+        │   concept: us-gaap:AociTaxAttributableToParent
+        └── Commitments and Contingencies [line_item] *
+            concept: us-gaap:CommitmentsAndContingencies

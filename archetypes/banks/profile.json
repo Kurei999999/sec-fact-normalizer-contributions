@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "profile_id": "banks",
+  "research_scope": {
+    "source_sics": [
+      "6021",
+      "6022",
+      "6029"
+    ],
+    "description": "SIC population used to develop this archetype and generate its research concept inventory. This does not define runtime company assignments.",
+    "source": "archetypes/archetype_research_scope.md",
+    "statement_scope": "profile_level"
+  }
+}

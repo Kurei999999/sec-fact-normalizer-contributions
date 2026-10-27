@@ -1,0 +1,190 @@
+{
+  "generated_at": "2026-10-27T11:42:53.815011+00:00",
+  "status": "complete",
+  "profiles": {
+    "banks": {
+      "loaded_companies": 315,
+      "selected_companies": 322,
+      "unique_concepts": 7821,
+      "statements": {
+        "BS": {
+          "observed_unique": 387,
+          "unmapped": 155
+        },
+        "IS": {
+          "observed_unique": 354,
+          "unmapped": 154
+        },
+        "CF": {
+          "observed_unique": 581,
+          "unmapped": 255
+        },
+        "unclassified": {
+          "observed_unique": 6613,
+          "unmapped": 6613
+        }
+      }
+    },
+    "electric_utilities": {
+      "loaded_companies": 74,
+      "selected_companies": 76,
+      "unique_concepts": 5306,
+      "statements": {
+        "BS": {
+          "observed_unique": 276,
+          "unmapped": 72
+        },
+        "IS": {
+          "observed_unique": 167,
+          "unmapped": 56
+        },
+        "CF": {
+          "observed_unique": 303,
+          "unmapped": 96
+        },
+        "unclassified": {
+          "observed_unique": 4608,
+          "unmapped": 4591
+        }
+      }
+    },
+    "general_corporate": {
+      "loaded_companies": 1344,
+      "selected_companies": 1356,
+      "unique_concepts": 8664,
+      "statements": {
+        "BS": {
+          "observed_unique": 561,
+          "unmapped": 330
+        },
+        "IS": {
+          "observed_unique": 410,
+          "unmapped": 261
+        },
+        "CF": {
+          "observed_unique": 823,
+          "unmapped": 527
+        },
+        "unclassified": {
+          "observed_unique": 7088,
+          "unmapped": 7086
+        }
+      }
+    },
+    "life_insurance": {
+      "loaded_companies": 22,
+      "selected_companies": 23,
+      "unique_concepts": 3952,
+      "statements": {
+        "BS": {
+          "observed_unique": 164,
+          "unmapped": 16
+        },
+        "IS": {
+          "observed_unique": 91,
+          "unmapped": 28
+        },
+        "CF": {
+          "observed_unique": 207,
+          "unmapped": 45
+        },
+        "unclassified": {
+          "observed_unique": 3512,
+          "unmapped": 3492
+        }
+      }
+    },
+    "oil_and_gas_extraction": {
+      "loaded_companies": 104,
+      "selected_companies": 114,
+      "unique_concepts": 5454,
+      "statements": {
+        "BS": {
+          "observed_unique": 263,
+          "unmapped": 78
+        },
+        "IS": {
+          "observed_unique": 198,
+          "unmapped": 70
+        },
+        "CF": {
+          "observed_unique": 355,
+          "unmapped": 119
+        },
+        "unclassified": {
+          "observed_unique": 4707,
+          "unmapped": 4705
+        }
+      }
+    },
+    "personal_credit_institutions": {
+      "loaded_companies": 12,
+      "selected_companies": 12,
+      "unique_concepts": 2245,
+      "statements": {
+        "BS": {
+          "observed_unique": 105,
+          "unmapped": 0
+        },
+        "IS": {
+          "observed_unique": 91,
+          "unmapped": 11
+        },
+        "CF": {
+          "observed_unique": 148,
+          "unmapped": 3
+        },
+        "unclassified": {
+          "observed_unique": 1921,
+          "unmapped": 1891
+        }
+      }
+    },
+    "reit": {
+      "loaded_companies": 198,
+      "selected_companies": 200,
+      "unique_concepts": 5882,
+      "statements": {
+        "BS": {
+          "observed_unique": 448,
+          "unmapped": 187
+        },
+        "IS": {
+          "observed_unique": 374,
+          "unmapped": 197
+        },
+        "CF": {
+          "observed_unique": 627,
+          "unmapped": 245
+        },
+        "unclassified": {
+          "observed_unique": 4564,
+          "unmapped": 4541
+        }
+      }
+    },
+    "savings_institutions": {
+      "loaded_companies": 77,
+      "selected_companies": 80,
+      "unique_concepts": 4118,
+      "statements": {
+        "BS": {
+          "observed_unique": 217,
+          "unmapped": 38
+        },
+        "IS": {
+          "observed_unique": 208,
+          "unmapped": 68
+        },
+        "CF": {
+          "observed_unique": 320,
+          "unmapped": 91
+        },
+        "unclassified": {
+          "observed_unique": 3419,
+          "unmapped": 3416
+        }
+      }
+    }
+  }
+}

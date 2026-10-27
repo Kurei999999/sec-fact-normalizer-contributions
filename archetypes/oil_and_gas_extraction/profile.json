@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "profile_id": "oil_and_gas_extraction",
+  "research_scope": {
+    "source_sics": [
+      "1311"
+    ],
+    "description": "SIC population used to develop this archetype and generate its research concept inventory. This does not define runtime company assignments.",
+    "source": "archetypes/archetype_research_scope.md",
+    "statement_scope": "profile_level"
+  }
+}

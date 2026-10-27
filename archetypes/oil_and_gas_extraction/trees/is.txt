@@ -1,0 +1,311 @@
+oil_and_gas_extraction — IS
+Types: [total], [group], [line_item]; * = review
+
+├── Revenue presentation [group]
+│   ├── Reported revenue totals [group]
+│   │   └── Total revenue [total] *
+│   │       concept: us-gaap:Revenues
+│   ├── Customer-contract revenue alternatives [group]
+│   │   ├── Customer-Contract Revenue, Excluding Assessed Tax [line_item] *
+│   │   │   concept: us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
+│   │   └── Revenue from contract with customer including assessed tax [line_item] *
+│   │       concept: us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax
+│   └── Noncontract and operating interest revenue [group]
+│       ├── Revenue not from contract with customer [line_item] *
+│       │   concept: us-gaap:RevenueNotFromContractWithCustomer
+│       ├── Operating lease income including variable payments [line_item] *
+│       │   concept: us-gaap:OperatingLeaseLeaseIncome
+│       └── Operating Interest Income [line_item] *
+│           concept: us-gaap:InterestIncomeOperating
+├── Operating costs and expenses [group]
+│   ├── Reported cost total alternatives [group]
+│   │   ├── Costs and expenses [total] *
+│   │   │   concept: us-gaap:CostsAndExpenses
+│   │   ├── Operating expenses [total] *
+│   │   │   concept: us-gaap:OperatingExpenses
+│   │   ├── Operating costs excluding SG&A and cost of sales [total] *
+│   │   │   concept: us-gaap:OperatingCostsAndExpenses
+│   │   ├── Cost of revenue [line_item] *
+│   │   │   concept: us-gaap:CostOfRevenue
+│   │   └── Cost of Goods and Services Sold [line_item] *
+│   │       concept: us-gaap:CostOfGoodsAndServicesSold
+│   ├── Exploration and unproved-property costs [group]
+│   │   ├── Exploration expense [line_item] *
+│   │   │   concept: us-gaap:ExplorationExpense
+│   │   └── Unproved-property impairment and exploratory well write-offs [line_item] *
+│   │       concept: us-gaap:ExplorationAbandonmentAndImpairmentExpense
+│   ├── Depreciation, depletion and amortization [group]
+│   │   ├── Depreciation depletion and amortization [total] *
+│   │   │   concept: us-gaap:DepreciationDepletionAndAmortization
+│   │   ├── Nonproduction depreciation and amortization [total] *
+│   │   │   concept: us-gaap:DepreciationAndAmortization
+│   │   ├── Depreciation [line_item] *
+│   │   │   concept: us-gaap:Depreciation
+│   │   ├── Depletion of oil and gas properties [line_item] *
+│   │   │   concept: us-gaap:DepletionOfOilAndGasProperties
+│   │   └── Other depreciation and amortization [line_item] *
+│   │       concept: us-gaap:OtherDepreciationAndAmortization
+│   ├── Accretion by liability scope [group]
+│   │   ├── Asset retirement obligation accretion expense [line_item] *
+│   │   │   concept: us-gaap:AssetRetirementObligationAccretionExpense
+│   │   └── Accretion expense [line_item] *
+│   │       concept: us-gaap:AccretionExpense
+│   ├── Asset impairment scopes [group]
+│   │   ├── Total asset impairment charges [line_item] *
+│   │   │   concept: us-gaap:AssetImpairmentCharges
+│   │   ├── Impairment of long-lived assets held for use [line_item] *
+│   │   │   concept: us-gaap:ImpairmentOfLongLivedAssetsHeldForUse
+│   │   └── Impairment of oil and gas properties [line_item] *
+│   │       concept: us-gaap:ImpairmentOfOilAndGasProperties
+│   ├── General and administrative costs [group]
+│   │   ├── Selling, general and administrative expenses [total] *
+│   │   │   concept: us-gaap:SellingGeneralAndAdministrativeExpense
+│   │   ├── General and administrative expenses [line_item] *
+│   │   │   concept: us-gaap:GeneralAndAdministrativeExpense
+│   │   ├── Other general and administrative expenses [line_item] *
+│   │   │   concept: us-gaap:OtherGeneralAndAdministrativeExpense
+│   │   ├── Investment management fee expense [line_item] *
+│   │   │   concept: us-gaap:ManagementFeeExpense
+│   │   └── Professional fees [line_item] *
+│   │       concept: us-gaap:ProfessionalFees
+│   ├── Personnel and share-based expenses [group]
+│   │   ├── Labor and related expenses [line_item] *
+│   │   │   concept: us-gaap:LaborAndRelatedExpense
+│   │   └── Allocated Share Based Compensation Expense [line_item] *
+│   │       concept: us-gaap:AllocatedShareBasedCompensationExpense
+│   ├── Lessee operating lease costs [group]
+│   │   ├── Lessee single operating lease cost [line_item] *
+│   │   │   concept: us-gaap:OperatingLeaseCost
+│   │   └── Operating lease expense [line_item] *
+│   │       concept: us-gaap:OperatingLeaseExpense
+│   ├── Production and other taxes [group]
+│   │   ├── Production tax expense [line_item] *
+│   │   │   concept: us-gaap:ProductionTaxExpense
+│   │   ├── Taxes excluding income and excise taxes [line_item] *
+│   │   │   concept: us-gaap:TaxesExcludingIncomeAndExciseTaxes
+│   │   └── Taxes other [line_item] *
+│   │       concept: us-gaap:TaxesOther
+│   └── R&D, credit provision and residual operating costs [group]
+│       ├── Research And Development Expense [line_item] *
+│       │   concept: us-gaap:ResearchAndDevelopmentExpense
+│       ├── Provision for doubtful accounts [line_item] *
+│       │   concept: us-gaap:ProvisionForDoubtfulAccounts
+│       └── Other operating costs and expenses [line_item] *
+│           concept: us-gaap:OtherCostAndExpenseOperating
+├── Operating result measures [group]
+│   ├── Gross Profit [total]
+│   │   concept: us-gaap:GrossProfit
+│   ├── Operating Income (Loss) [total]
+│   │   concept: us-gaap:OperatingIncomeLoss
+│   ├── Other operating income or expense, net [line_item] *
+│   │   concept: us-gaap:OtherOperatingIncomeExpenseNet
+│   └── Other operating income [line_item] *
+│       concept: us-gaap:OtherOperatingIncome
+├── Financing and nonoperating results [group]
+│   ├── Nonoperating total and residual alternatives [group]
+│   │   ├── Total nonoperating income or expense [total] *
+│   │   │   concept: us-gaap:NonoperatingIncomeExpense
+│   │   ├── Other nonoperating income or expense [line_item] *
+│   │   │   concept: us-gaap:OtherNonoperatingIncomeExpense
+│   │   ├── Other nonoperating income [line_item] *
+│   │   │   concept: us-gaap:OtherNonoperatingIncome
+│   │   └── Other nonoperating expense [line_item] *
+│   │       concept: us-gaap:OtherNonoperatingExpense
+│   ├── Interest expense views [group]
+│   │   ├── Total interest expense [line_item] *
+│   │   │   concept: us-gaap:InterestExpense
+│   │   ├── Nonoperating interest expense [line_item] *
+│   │   │   concept: us-gaap:InterestExpenseNonoperating
+│   │   ├── Nonoperating interest and debt-related expense [total] *
+│   │   │   concept: us-gaap:InterestAndDebtExpense
+│   │   ├── Debt interest expense [line_item] *
+│   │   │   concept: us-gaap:InterestExpenseDebt
+│   │   └── Other Interest Expense [line_item] *
+│   │       concept: us-gaap:InterestExpenseOther
+│   ├── Net interest alternatives [group]
+│   │   ├── Nonoperating Net Interest Income (Expense) [total] *
+│   │   │   concept: us-gaap:InterestIncomeExpenseNonoperatingNet
+│   │   └── Net Interest Income (Expense) [total] *
+│   │       concept: us-gaap:InterestIncomeExpenseNet
+│   ├── Interest income views [group]
+│   │   ├── Interest and other ancillary income [line_item] *
+│   │   │   concept: us-gaap:InterestAndOtherIncome
+│   │   ├── Nonoperating securities interest before premium adjustments [line_item] *
+│   │   │   concept: us-gaap:InvestmentIncomeInterest
+│   │   └── Interest income other [line_item] *
+│   │       concept: us-gaap:InterestIncomeOther
+│   └── Equity-method and investment results [group]
+│       ├── Equity-Method Investment Income (Loss) [line_item] *
+│       │   concept: us-gaap:IncomeLossFromEquityMethodInvestments
+│       └── Realized and unrealized investment gains and losses [line_item] *
+│           concept: us-gaap:GainLossOnInvestments
+├── Disposal, remeasurement and event results [group]
+│   ├── Property and business disposal results [group]
+│   │   ├── Broad asset disposal result [line_item] *
+│   │   │   concept: us-gaap:GainLossOnDispositionOfAssets1
+│   │   ├── PP&E sale gain or loss including oil, gas and timber [line_item] *
+│   │   │   concept: us-gaap:GainLossOnSaleOfPropertyPlantEquipment
+│   │   ├── Gain loss on sale of oil and gas property [line_item] *
+│   │   │   concept: us-gaap:GainLossOnSaleOfOilAndGasProperty
+│   │   ├── Business disposal gain or loss [line_item] *
+│   │   │   concept: us-gaap:GainLossOnSaleOfBusiness
+│   │   └── Combined asset sale and impairment result [total] *
+│   │       concept: us-gaap:GainLossOnSalesOfAssetsAndAssetImpairmentCharges
+│   ├── Derivative and hedging results [group]
+│   │   ├── Derivative fair-value change recognized in earnings [line_item] *
+│   │   │   concept: us-gaap:DerivativeGainLossOnDerivativeNet
+│   │   ├── Pretax derivative gains and losses [line_item] *
+│   │   │   concept: us-gaap:GainLossOnDerivativeInstrumentsNetPretax
+│   │   ├── Nondesignated derivative result [line_item] *
+│   │   │   concept: us-gaap:DerivativeInstrumentsNotDesignatedAsHedgingInstrumentsGainLossNet
+│   │   ├── Gain loss on oil and gas hedging activity [line_item] *
+│   │   │   concept: us-gaap:GainLossOnOilAndGasHedgingActivity
+│   │   └── Unrealized gain loss on commodity contracts [line_item] *
+│   │       concept: us-gaap:UnrealizedGainLossOnCommodityContracts
+│   ├── Financing and currency event results [group]
+│   │   ├── Debt extinguishment gain or loss [line_item]
+│   │   │   concept: us-gaap:GainsLossesOnExtinguishmentOfDebt
+│   │   ├── Fair Value Adjustment Of Warrants [line_item] *
+│   │   │   concept: us-gaap:FairValueAdjustmentOfWarrants
+│   │   └── Foreign Currency Transaction Gain (Loss), Pretax [line_item] *
+│   │       concept: us-gaap:ForeignCurrencyTransactionGainLossBeforeTax
+│   └── Acquisition, restructuring and legal costs [group]
+│       ├── Business acquisition transaction expenses [line_item] *
+│       │   concept: us-gaap:BusinessCombinationAcquisitionRelatedCosts
+│       ├── Restructuring charges [line_item] *
+│       │   concept: us-gaap:RestructuringCharges
+│       ├── Contractual severance costs [line_item] *
+│       │   concept: us-gaap:SeveranceCosts1
+│       └── Litigation expense including related fees [line_item] *
+│           concept: us-gaap:LitigationSettlementExpense
+├── Pretax income and income taxes [group]
+│   ├── Pretax result alternatives [group]
+│   │   ├── Continuing pretax income including NCI [total]
+│   │   │   concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+│   │   └── Pretax continuing income before equity method results [total]
+│   │       concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments
+│   └── Income-tax total and components [group]
+│       ├── Continuing-operation income tax expense or benefit [total]
+│       │   concept: us-gaap:IncomeTaxExpenseBenefit
+│       ├── Current income tax expense or benefit [line_item] *
+│       │   concept: us-gaap:CurrentIncomeTaxExpenseBenefit
+│       └── Current federal or national tax expense or benefit [line_item] *
+│           concept: us-gaap:CurrentFederalTaxExpenseBenefit
+├── Continuing and discontinued results [group]
+│   ├── Parent-attributable continuing-operation income [total]
+│   │   concept: us-gaap:IncomeLossFromContinuingOperations
+│   ├── Continuing income including NCI [total]
+│   │   concept: us-gaap:IncomeLossFromContinuingOperationsIncludingPortionAttributableToNoncontrollingInterest
+│   └── Consolidated discontinued-operation income [total]
+│       concept: us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTax
+├── Net income and attribution [group]
+│   ├── Consolidated net income [total]
+│   │   concept: us-gaap:ProfitLoss
+│   ├── Parent-attributable net income [total]
+│   │   concept: us-gaap:NetIncomeLoss
+│   ├── Net income attributable to NCI [line_item]
+│   │   concept: us-gaap:NetIncomeLossAttributableToNoncontrollingInterest
+│   └── Net income attributable to redeemable NCI [line_item] *
+│       concept: us-gaap:NetIncomeLossAttributableToRedeemableNoncontrollingInterest
+├── Common income and allocations [group]
+│   ├── Common income numerator alternatives [group]
+│   │   ├── Common income basic [total]
+│   │   │   concept: us-gaap:NetIncomeLossAvailableToCommonStockholdersBasic
+│   │   └── Common income diluted [total]
+│   │       concept: us-gaap:NetIncomeLossAvailableToCommonStockholdersDiluted
+│   ├── Preferred dividend adjustments [group]
+│   │   ├── Preferred dividends affecting common income [line_item]
+│   │   │   concept: us-gaap:PreferredStockDividendsIncomeStatementImpact
+│   │   └── Preferred dividends and other common-income adjustments [total] *
+│   │       concept: us-gaap:PreferredStockDividendsAndOtherAdjustments
+│   └── Participating-security allocations [group]
+│       ├── Participating security allocation basic [line_item] *
+│       │   concept: us-gaap:UndistributedEarningsLossAllocatedToParticipatingSecuritiesBasic
+│       └── Participating security allocation diluted [line_item] *
+│           concept: us-gaap:UndistributedEarningsLossAllocatedToParticipatingSecuritiesDiluted
+├── Earnings per share [group]
+│   ├── Total EPS [group]
+│   │   ├── Basic earnings per share [line_item]
+│   │   │   concept: us-gaap:EarningsPerShareBasic
+│   │   └── Diluted earnings per share [line_item]
+│   │       concept: us-gaap:EarningsPerShareDiluted
+│   ├── Continuing-operation EPS [group]
+│   │   ├── Basic continuing-operation earnings per share [line_item]
+│   │   │   concept: us-gaap:IncomeLossFromContinuingOperationsPerBasicShare
+│   │   └── Diluted continuing-operation earnings per share [line_item]
+│   │       concept: us-gaap:IncomeLossFromContinuingOperationsPerDilutedShare
+│   ├── Discontinued EPS including disposal [group]
+│   │   ├── Basic discontinued-operation EPS including disposal result [line_item]
+│   │   │   concept: us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTaxPerBasicShare
+│   │   └── Diluted discontinued-operation EPS including disposal result [line_item]
+│   │       concept: us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTaxPerDilutedShare
+│   └── Discontinued activity-only EPS [group]
+│       ├── Discontinued activity only eps basic [line_item]
+│       │   concept: us-gaap:DiscontinuedOperationIncomeLossFromDiscontinuedOperationNetOfTaxPerBasicShare
+│       └── Discontinued activity only eps diluted [line_item]
+│           concept: us-gaap:DiscontinuedOperationIncomeLossFromDiscontinuedOperationNetOfTaxPerDilutedShare
+├── Weighted-average outstanding shares [group]
+│   ├── Basic weighted-average shares [line_item]
+│   │   concept: us-gaap:WeightedAverageNumberOfSharesOutstandingBasic
+│   └── Diluted weighted-average shares [line_item]
+│       concept: us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding
+└── Supplementary disclosures [group]
+    ├── Oil/gas producing-activity results [group]
+    │   ├── Producing revenue, expenses and result [group]
+    │   │   ├── Producing activity revenue [line_item] *
+    │   │   │   concept: us-gaap:ResultsOfOperationsRevenueFromOilAndGasProducingActivities
+    │   │   ├── Producing activity expenses [total] *
+    │   │   │   concept: us-gaap:ResultsOfOperationsExpenseFromOilAndGasProducingActivities
+    │   │   └── Producing activity pretax result [line_item] *
+    │   │       concept: us-gaap:ResultsOfOperationsIncomeBeforeIncomeTaxes
+    │   ├── Producing-activity operating cost details [group]
+    │   │   ├── Producing activity lifting costs [line_item] *
+    │   │   │   concept: us-gaap:ResultsOfOperationsProductionOrLiftingCosts
+    │   │   ├── Results of operations transportation costs [line_item] *
+    │   │   │   concept: us-gaap:ResultsOfOperationsTransportationCosts
+    │   │   ├── Producing activity exploration expense [line_item] *
+    │   │   │   concept: us-gaap:ResultsOfOperationsExplorationExpense
+    │   │   └── Producing activity general administrative costs [line_item] *
+    │   │       concept: us-gaap:ResultsOfOperationsGeneralAndAdministrativeRelatedToOilAndGasProducingActivities
+    │   └── Producing-activity asset charge alternatives [group]
+    │       ├── Producing-activity DD&A and valuation provisions [line_item] *
+    │       │   concept: us-gaap:ResultsOfOperationsDepreciationDepletionAndAmortizationAndValuationProvisions
+    │       ├── Producing-activity DD&A and accretion [line_item] *
+    │       │   concept: us-gaap:ResultsOfOperationsDepreciationDepletionAmortizationAndAccretion
+    │       ├── Producing activity impairment [line_item] *
+    │       │   concept: us-gaap:ResultsOfOperationsImpairmentOfOilAndGasProperties
+    │       └── Producing-activity ARO accretion [line_item] *
+    │           concept: us-gaap:ResultsOfOperationsAccretionOfAssetRetirementObligations
+    ├── Capitalized and incurred activity costs [group]
+    │   ├── Incurred acquisition exploration development costs [line_item] *
+    │   │   concept: us-gaap:CostsIncurredOilAndGasPropertyAcquisitionExplorationAndDevelopmentActivities
+    │   └── Capitalized production costs incurred [line_item] *
+    │       concept: us-gaap:ProductionCosts
+    ├── Geographic and financial-service scope disclosures [group]
+    │   ├── Domestic pretax continuing income [line_item] *
+    │   │   concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic
+    │   └── Financial-service asset disposal gain or loss [line_item] *
+    │       concept: us-gaap:GainsLossesOnSalesOfAssets
+    ├── Distributions and OCI [group]
+    │   ├── Common stock dividends per share cash paid [line_item] *
+    │   │   concept: us-gaap:CommonStockDividendsPerShareCashPaid
+    │   ├── Preferred dividends settled in stock [line_item] *
+    │   │   concept: us-gaap:DividendsPreferredStockStock
+    │   └── Foreign currency OCI before tax [line_item] *
+    │       concept: us-gaap:OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentBeforeTax
+    ├── Alternative share denominators [group]
+    │   ├── Weighted average shares issued basic [line_item] *
+    │   │   concept: us-gaap:WeightedAverageNumberOfSharesIssuedBasic
+    │   └── Pro forma diluted weighted average shares [line_item] *
+    │       concept: us-gaap:ProFormaWeightedAverageSharesOutstandingDiluted
+    └── Reconciliation and expense candidates requiring review [group]
+        ├── Other income [line_item] *
+        │   concept: us-gaap:OtherIncome
+        ├── Other expenses [line_item] *
+        │   concept: us-gaap:OtherExpenses
+        ├── Other general expense [line_item] *
+        │   concept: us-gaap:OtherGeneralExpense
+        ├── Contingent consideration liability change [line_item] *
+        │   concept: us-gaap:BusinessCombinationContingentConsiderationArrangementsChangeInAmountOfContingentConsiderationLiability1
+        └── Restructuring costs after cash payments [line_item] *
+            concept: us-gaap:RestructuringCosts

@@ -1,0 +1,3938 @@
+{
+  "schema_version": "1.4.0",
+  "profile_id": "life_insurance",
+  "statement": "BS",
+  "status": "draft_classification_for_review",
+  "validation_profile": "typed_balance_sheet",
+  "description": "Life insurance balance-sheet skeleton using all 150 user-supplied unique US-GAAP concepts for SIC 6311. The supplied MetLife presentation guides broad families; insurance obligations, reinsurance, separate accounts and measurement alternatives retain distinct scopes. This classification does not prescribe arithmetic or complete coverage for an individual issuer.",
+  "mapping_rules": {
+    "analytical_metrics_not_primary_statement": true,
+    "children_imply_arithmetic": false,
+    "classification_axes_may_overlap": true,
+    "concept_status_default": "proposed",
+    "contra_balance_sign_requires_fact_context": true,
+    "fair_value_disclosures_not_carrying_values": true,
+    "missing_fact_not_zero": true,
+    "nested_components_not_additive_by_default": true,
+    "primary_balances_instant_monetary_only": true,
+    "resolve_overlapping_totals_without_summing": true,
+    "review_requires_reason": true,
+    "same_category_implies_equivalence": false,
+    "total_and_subtotal_do_not_imply_arithmetic": true,
+    "unspecified_maturity_not_assumed_current_or_noncurrent": true
+  },
+  "classification_notes": [
+    "All supplied concepts appear exactly once. The supplied inventory defines coverage; no company-frequency threshold is inferred.",
+    "MetLife is a presentation reference for the industry. The reference presentation totals, zero displays and net debt do not establish taxonomy equivalence, fact signs, completeness or calculations.",
+    "Hierarchy and total node kinds do not imply addition. Alternative totals, valuation bases and subsets require reconciliation before aggregation.",
+    "General-account investments and separate-account assets remain distinct; their corresponding liabilities are not automatically netted against assets.",
+    "Gross and reinsurance-net insurance liabilities are alternatives. Reinsurance assets, allowances and funds-held balances require matched scope and are not automatically offset against liabilities.",
+    "DAC, VOBA and their combined aggregate overlap; market-risk-benefit carrying positions differ from exposure measures.",
+    "No maturity classification is inferred for unclassified tags. Explicitly current and noncurrent concepts retain their taxonomy scope.",
+    "Preferred and redeemable interests require redemption-term review. Temporary equity remains separate from permanent equity.",
+    "Contra identifies valuation or equity deduction balances, not a universal instruction to negate source values. Review dimensions, measurement and sign presentation before production use."
+  ],
+  "metadata_contract": {
+    "period_type": "Verified against taxonomy periodType for all concepts.",
+    "unit_type": "Verified monetary, shares and per-share taxonomy item types.",
+    "contra": "True for identified credit allowances, accumulated depreciation/amortization and treasury stock cost. Source-fact signs require separate review."
+  },
+  "taxonomy_reference": {
+    "namespace": "http://fasb.org/us-gaap/2026",
+    "schema_url": "https://xbrl.fasb.org/us-gaap/2026/elts/us-gaap-2026.xsd",
+    "documentation_url": "https://xbrl.fasb.org/us-gaap/2026/elts/us-gaap-doc-2026.xml",
+    "note": "Metadata and definitions checked against official 2026 schema and documentation. Historical filings retain their own taxonomy versions and units."
+  },
+  "sources": [
+    {
+      "role": "format_reference",
+      "path": "skeleton_rules.md"
+    },
+    {
+      "role": "concept_universe",
+      "description": "150 unique user-supplied us-gaap concepts for SIC 6311, compared with facts_by_statement.json BS inventory."
+    },
+    {
+      "role": "taxonomy_metadata",
+      "description": "Official FASB US GAAP 2026 schema and documentation."
+    }
+  ],
+  "metadata_notes": {},
+  "nodes": [
+    {
+      "node_id": "assets",
+      "metric_id": "assets",
+      "label": "Total assets",
+      "node_kind": "total",
+      "aggregation_policy": "none",
+      "period_type": "instant",
+      "unit_type": "monetary",
+      "contra": false,
+      "taxonomy_type": "xbrli:monetaryItemType",
+      "classification_note": "Asset presentation is unclassified except where a concept explicitly specifies maturity. Children are overlapping reporting scopes, not an automatic sum.",
+      "concepts": [
+        {
+          "name": "us-gaap:Assets",
+          "status": "proposed",
+          "review_reason": null
+        }
+      ],
+      "children": [
+        {
+          "node_id": "cash_balances",
+          "metric_id": null,
+          "label": "Cash and cash equivalents",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Cash is a subset of cash and cash equivalents; select the reported scope without adding both.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "cash_and_cash_equivalents_at_carrying_value",
+              "metric_id": "cash_and_cash_equivalents_at_carrying_value",
+              "label": "Cash and Cash Equivalents",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "cash",
+              "metric_id": "cash",
+              "label": "Cash",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:Cash",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "investment_assets",
+          "metric_id": null,
+          "label": "Investment assets",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "The reported investment total may include the portfolios below; select totals or reconciled detail. No unsupported interest-earning asset subtotal is invented.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "investment_aggregate",
+              "metric_id": null,
+              "label": "Reported investment aggregate",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "The total is a reporting alternative to its portfolio detail.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "investments",
+                  "metric_id": "investments",
+                  "label": "Investments",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:Investments",
+                      "status": "review",
+                      "review_reason": "Investment aggregate coverage can include multiple portfolios, accrued amounts or assets measured on different bases; reconcile its issuer-specific components before using detail."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "fixed_income_portfolios",
+              "metric_id": null,
+              "label": "Fixed-income investments",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "AFS and trading debt are generally fair-value portfolios; HTM is a different carrying basis. AFS tags differ in accrued-interest scope. Do not add alternative AFS balances.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "available_for_sale_securities_debt_securities",
+                  "metric_id": "available_for_sale_securities_debt_securities",
+                  "label": "Available-for-Sale Debt Securities",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:AvailableForSaleSecuritiesDebtSecurities",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "debt_securities_available_for_sale_excluding_accrued_interest",
+                  "metric_id": "debt_securities_available_for_sale_excluding_accrued_interest",
+                  "label": "AFS Debt Securities, Excluding Accrued Interest",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:DebtSecuritiesAvailableForSaleExcludingAccruedInterest",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "held_to_maturity_securities",
+                  "metric_id": "held_to_maturity_securities",
+                  "label": "Held To Maturity Securities",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:HeldToMaturitySecurities",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "trading_securities_debt",
+                  "metric_id": "trading_securities_debt",
+                  "label": "Trading Debt Securities",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:TradingSecuritiesDebt",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "equity_security_portfolios",
+              "metric_id": null,
+              "label": "Equity security investments",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Current FV-NI investments can be included in the current-and-noncurrent total. Investments without readily determinable fair values use a distinct measurement scope.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "equity_securities_fv_ni_current_and_noncurrent",
+                  "metric_id": "equity_securities_fv_ni_current_and_noncurrent",
+                  "label": "FV-NI equity securities: current and noncurrent",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:EquitySecuritiesFvNiCurrentAndNoncurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "equity_securities_fv_ni",
+                  "metric_id": "equity_securities_fv_ni",
+                  "label": "FV-NI equity securities: current",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:EquitySecuritiesFvNi",
+                      "status": "review",
+                      "review_reason": "The taxonomy restricts this FV-NI balance to current investments; it is not interchangeable with the current-and-noncurrent FV-NI total."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "equity_securities_without_readily_determinable_fair_value_amount",
+                  "metric_id": "equity_securities_without_readily_determinable_fair_value_amount",
+                  "label": "Equity Securities Without Readily Determinable Fair Value Amount",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:EquitySecuritiesWithoutReadilyDeterminableFairValueAmount",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "affiliate_investments",
+              "metric_id": null,
+              "label": "Affiliate and equity-method investments",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Equity-method amounts can be included in broader affiliate, subsidiary, associate and joint venture balances. Review consolidation scope.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "equity_method_investments",
+                  "metric_id": "equity_method_investments",
+                  "label": "Equity Method Investments",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:EquityMethodInvestments",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "investments_in_affiliates_subsidiaries_associates_and_joint_ventures",
+                  "metric_id": "investments_in_affiliates_subsidiaries_associates_and_joint_ventures",
+                  "label": "Investments In Affiliates Subsidiaries Associates And Joint Ventures",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:InvestmentsInAffiliatesSubsidiariesAssociatesAndJointVentures",
+                      "status": "review",
+                      "review_reason": "Affiliate investment coverage is broader than equity-method investments and may reflect unconsolidated or parent-only reporting; establish consolidation and measurement basis."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "real_estate_investments_presentation",
+              "metric_id": null,
+              "label": "Real estate investments",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Real estate investments are net of accumulated depreciation and can include joint ventures. Joint-venture and held-for-sale balances can overlap this aggregate; accumulated depreciation must not be deducted again from a net balance.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "real_estate_investments",
+                  "metric_id": "real_estate_investments",
+                  "label": "Real estate investments, net of depreciation",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:RealEstateInvestments",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "real_estate_investments_joint_ventures",
+                  "metric_id": "real_estate_investments_joint_ventures",
+                  "label": "Real estate joint venture investments",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:RealEstateInvestmentsJointVentures",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "real_estate_heldforsale",
+                  "metric_id": "real_estate_heldforsale",
+                  "label": "Real estate held for sale",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:RealEstateHeldforsale",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "real_estate_investment_property_accumulated_depreciation",
+                  "metric_id": "real_estate_investment_property_accumulated_depreciation",
+                  "label": "Investment property accumulated depreciation",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": true,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:RealEstateInvestmentPropertyAccumulatedDepreciation",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "mortgage_policy_and_other_loans",
+              "metric_id": null,
+              "label": "Mortgage, policy and other loans",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Mortgage, policy and broader financing-receivable views may overlap. Reconcile loan class, accrued interest, gross/net scope and allowance before selecting balances.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "mortgage_loans",
+                  "metric_id": null,
+                  "label": "Mortgage loans",
+                  "node_kind": "group",
+                  "aggregation_policy": "none",
+                  "period_type": null,
+                  "unit_type": null,
+                  "contra": null,
+                  "taxonomy_type": null,
+                  "classification_note": "Commercial-and-consumer net mortgage loans already deduct reserves; the other real-estate loan tag requires gross/net scope review.",
+                  "concepts": [],
+                  "children": [
+                    {
+                      "node_id": "mortgage_loans_on_real_estate_commercial_and_consumer_net",
+                      "metric_id": "mortgage_loans_on_real_estate_commercial_and_consumer_net",
+                      "label": "Mortgage Loans On Real Estate Commercial And Consumer Net",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": "xbrli:monetaryItemType",
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:MortgageLoansOnRealEstateCommercialAndConsumerNet",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "node_id": "mortgage_loans_on_real_estate",
+                      "metric_id": "mortgage_loans_on_real_estate",
+                      "label": "Mortgage Loans On Real Estate",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": "xbrli:monetaryItemType",
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:MortgageLoansOnRealEstate",
+                          "status": "review",
+                          "review_reason": "The definition does not establish the same net-of-reserve scope as the commercial-and-consumer mortgage net tag; verify the issuer’s allowance treatment."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "policy_loans",
+                  "metric_id": null,
+                  "label": "Policy loans",
+                  "node_kind": "group",
+                  "aggregation_policy": "none",
+                  "period_type": null,
+                  "unit_type": null,
+                  "contra": null,
+                  "taxonomy_type": null,
+                  "classification_note": "Policy loans secured by insurance contracts have separate before-allowance and carrying-value concepts. These are alternative measurements of overlapping assets.",
+                  "concepts": [],
+                  "children": [
+                    {
+                      "node_id": "loans_insurance_policy",
+                      "metric_id": "loans_insurance_policy",
+                      "label": "Loans Insurance Policy",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": "xbrli:monetaryItemType",
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:LoansInsurancePolicy",
+                          "status": "review",
+                          "review_reason": "This is a before-allowance policy-loan balance including specified deferred interest and fees; reconcile it to the carrying amount reported as PolicyLoansReceivable."
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "node_id": "policy_loans_receivable",
+                      "metric_id": "policy_loans_receivable",
+                      "label": "Policy Loans Receivable",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": "xbrli:monetaryItemType",
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:PolicyLoansReceivable",
+                          "status": "review",
+                          "review_reason": "The carrying amount can overlap the separately supplied before-allowance policy-loan tag; identify allowance and accrued-interest coverage."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "other_financing_receivables",
+                  "metric_id": null,
+                  "label": "Other notes and financing receivables",
+                  "node_kind": "group",
+                  "aggregation_policy": "none",
+                  "period_type": null,
+                  "unit_type": null,
+                  "contra": null,
+                  "taxonomy_type": null,
+                  "classification_note": "Net notes and broad financing receivables can include mortgage or other investment loan classes. Before/after-allowance financing receivables exclude accrued interest and net investment in leases; match portfolio and measurement scope.",
+                  "concepts": [],
+                  "children": [
+                    {
+                      "node_id": "notes_receivable_net",
+                      "metric_id": "notes_receivable_net",
+                      "label": "Notes Receivable, Net",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": "xbrli:monetaryItemType",
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:NotesReceivableNet",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "node_id": "financing_receivables_net_excluding_interest",
+                      "metric_id": "financing_receivables_net_excluding_interest",
+                      "label": "Financing Receivables, Net, Excluding Accrued Interest",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": "xbrli:monetaryItemType",
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:FinancingReceivableExcludingAccruedInterestAfterAllowanceForCreditLoss",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "node_id": "financing_receivables_before_allowance_excluding_interest",
+                      "metric_id": "financing_receivables_before_allowance_excluding_interest",
+                      "label": "Financing Receivables, Before Allowance, Excluding Accrued Interest",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": "xbrli:monetaryItemType",
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:FinancingReceivableExcludingAccruedInterestBeforeAllowanceForCreditLoss",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "loan_credit_allowances",
+                  "metric_id": null,
+                  "label": "Loan credit allowances",
+                  "node_kind": "group",
+                  "aggregation_policy": "none",
+                  "period_type": null,
+                  "unit_type": null,
+                  "contra": null,
+                  "taxonomy_type": null,
+                  "classification_note": "Real-estate and broad financing allowances can overlap. Do not deduct an allowance from a net loan balance again.",
+                  "concepts": [],
+                  "children": [
+                    {
+                      "node_id": "allowance_for_loan_and_lease_losses_real_estate",
+                      "metric_id": "allowance_for_loan_and_lease_losses_real_estate",
+                      "label": "Allowance For Loan And Lease Losses Real Estate",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": true,
+                      "taxonomy_type": "xbrli:monetaryItemType",
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:AllowanceForLoanAndLeaseLossesRealEstate",
+                          "status": "review",
+                          "review_reason": "Real-estate loan reserves can overlap the broader financing receivable allowance; do not deduct from a mortgage amount already reported net."
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "node_id": "financing_receivable_allowance_for_credit_losses",
+                      "metric_id": "financing_receivable_allowance_for_credit_losses",
+                      "label": "Financing Receivable Credit Loss Allowance",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": true,
+                      "taxonomy_type": "xbrli:monetaryItemType",
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:FinancingReceivableAllowanceForCreditLosses",
+                          "status": "review",
+                          "review_reason": "This allowance can cover mortgage and other financing assets; identify portfolio coverage before applying it to the narrower real-estate loan balance."
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "node_id": "financing_receivable_allowance_for_credit_loss_excluding_accrued_interest",
+                      "metric_id": "financing_receivable_allowance_for_credit_loss_excluding_accrued_interest",
+                      "label": "Financing Receivable Allowance, Excluding Accrued Interest",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": true,
+                      "taxonomy_type": "xbrli:monetaryItemType",
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:FinancingReceivableAllowanceForCreditLossExcludingAccruedInterest",
+                          "status": "review",
+                          "review_reason": "The allowance excludes accrued interest and can overlap other financing allowances; match its portfolio and interest scope to a gross receivable."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "node_id": "other_investment_portfolios",
+              "metric_id": null,
+              "label": "Other investment portfolios",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Short-term totals and residual short-term balances overlap; alternative and long-term investments may be included in other investments. Respect explicit maturity.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "other_investments",
+                  "metric_id": "other_investments",
+                  "label": "Other Investments",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:OtherInvestments",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "short_term_investments",
+                  "metric_id": "short_term_investments",
+                  "label": "Short Term Investments",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ShortTermInvestments",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "other_short_term_investments",
+                  "metric_id": "other_short_term_investments",
+                  "label": "Other Short Term Investments",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:OtherShortTermInvestments",
+                      "status": "review",
+                      "review_reason": "Residual short-term investments may be included in ShortTermInvestments and must exclude separately selected security portfolios."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "other_long_term_investments",
+                  "metric_id": "other_long_term_investments",
+                  "label": "Other Long Term Investments",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:OtherLongTermInvestments",
+                      "status": "review",
+                      "review_reason": "Noncurrent residual investments may be included in OtherInvestments; establish maturity and asset-class exclusions."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "alternative_investment",
+                  "metric_id": "alternative_investment",
+                  "label": "Alternative Investment",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:AlternativeInvestment",
+                      "status": "review",
+                      "review_reason": "Alternative investments can overlap equity-method, real estate partnership and other investment balances; identify measurement and consolidation scope."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "reverse_repo_assets",
+              "metric_id": null,
+              "label": "Resale agreement assets",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Reverse repo assets are lending balances and differ from repo borrowings and obligations to return securities collateral.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "securities_purchased_under_agreements_to_resell",
+                  "metric_id": "securities_purchased_under_agreements_to_resell",
+                  "label": "Securities Purchased Under Agreements To Resell",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:SecuritiesPurchasedUnderAgreementsToResell",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "afs_allowances",
+              "metric_id": null,
+              "label": "AFS debt credit allowances",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "The allowance excluding accrued interest can overlap the broader AFS allowance. AFS allowances explain valuation and are not additional assets.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "debt_securities_available_for_sale_allowance_for_credit_loss",
+                  "metric_id": "debt_securities_available_for_sale_allowance_for_credit_loss",
+                  "label": "AFS debt credit allowance",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": true,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:DebtSecuritiesAvailableForSaleAllowanceForCreditLoss",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "afs_credit_loss_allowance_excluding_interest",
+                  "metric_id": "afs_credit_loss_allowance_excluding_interest",
+                  "label": "AFS debt credit allowance, excluding accrued interest",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": true,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:DebtSecuritiesAvailableForSaleAmortizedCostAllowanceForCreditLossExcludingAccruedInterest",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "investment_income_receivable",
+          "metric_id": null,
+          "label": "Accrued investment income",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Accrued investment income may be excluded from security or loan carrying amounts; reconcile the issuer’s accrued-interest presentation.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "accrued_investment_income_receivable",
+              "metric_id": "accrued_investment_income_receivable",
+              "label": "Accrued Investment Income Receivable",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AccruedInvestmentIncomeReceivable",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "premium_and_other_receivables",
+          "metric_id": null,
+          "label": "Premium and other receivables",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Both premium-only carrying amounts and premium-and-other-receivable totals are net of doubtful-account allowances. The narrower premium amount may be included in the total; do not deduct allowances again from net balances.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "premiums_and_other_receivables_net",
+              "metric_id": "premiums_and_other_receivables_net",
+              "label": "Premium and other receivables, net",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PremiumsAndOtherReceivablesNet",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "premiums_receivable_at_carrying_value",
+              "metric_id": "premiums_receivable_at_carrying_value",
+              "label": "Premium receivables, net",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PremiumsReceivableAtCarryingValue",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "allowance_for_doubtful_accounts_premiums_and_other_receivables",
+              "metric_id": "allowance_for_doubtful_accounts_premiums_and_other_receivables",
+              "label": "Allowance For Doubtful Accounts Premiums And Other Receivables",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": true,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AllowanceForDoubtfulAccountsPremiumsAndOtherReceivables",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "allowance_for_doubtful_accounts_receivable",
+              "metric_id": "allowance_for_doubtful_accounts_receivable",
+              "label": "Allowance for Doubtful Accounts",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": true,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AllowanceForDoubtfulAccountsReceivable",
+                  "status": "review",
+                  "review_reason": "The receivable allowance may include exposures outside premiums; establish scope before combining with the premium-and-other-receivable allowance."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "reinsurance_assets",
+          "metric_id": null,
+          "label": "Reinsurance assets",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Gross recoverables and allowance reconcile to a net balance only on matching scope. IBNR and market-risk-benefit recoverables may be included in broader recoverables. Funds held are separately characterized assets.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "reinsurance_recoverables",
+              "metric_id": "reinsurance_recoverables",
+              "label": "Reinsurance recoverables, net",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ReinsuranceRecoverables",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "reinsurance_recoverables_gross",
+              "metric_id": "reinsurance_recoverables_gross",
+              "label": "Reinsurance recoverables, gross",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ReinsuranceRecoverablesGross",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "reinsurance_recoverables_allowance",
+              "metric_id": "reinsurance_recoverables_allowance",
+              "label": "Reinsurance recoverable credit allowance",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": true,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ReinsuranceRecoverablesAllowance",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "reinsurance_receivables_incurred_but_not_reported_claims",
+              "metric_id": "reinsurance_receivables_incurred_but_not_reported_claims",
+              "label": "Reinsurance recoverables: IBNR claims, net",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ReinsuranceReceivablesIncurredButNotReportedClaims",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "market_risk_benefit_reinsurance_recoverable_after_allowance",
+              "metric_id": "market_risk_benefit_reinsurance_recoverable_after_allowance",
+              "label": "Market risk benefit reinsurance recoverable, net",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:MarketRiskBenefitReinsuranceRecoverableAfterAllowance",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "funds_held_under_reinsurance_agreements_asset",
+              "metric_id": "funds_held_under_reinsurance_agreements_asset",
+              "label": "Funds Held Under Reinsurance Agreements Asset",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:FundsHeldUnderReinsuranceAgreementsAsset",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "insurance_deferred_costs",
+          "metric_id": null,
+          "label": "Deferred insurance acquisition and inducement costs",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "The DAC-plus-VOBA aggregate overlaps DAC and VOBA individually. Deferred sales inducements have a separate contract cost scope; do not equate them to generic intangible assets.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "deferred_policy_acquisition_costs",
+              "metric_id": "deferred_policy_acquisition_costs",
+              "label": "Deferred policy acquisition costs (DAC)",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DeferredPolicyAcquisitionCosts",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "deferred_policy_acquisition_costs_and_value_of_business_acquired",
+              "metric_id": "deferred_policy_acquisition_costs_and_value_of_business_acquired",
+              "label": "Deferred acquisition costs and VOBA, net",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DeferredPolicyAcquisitionCostsAndValueOfBusinessAcquired",
+                  "status": "review",
+                  "review_reason": "The reported net DAC-plus-VOBA aggregate overlaps both separately mapped balances; select the aggregate or a reconciled component presentation."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "value_of_business_acquired_voba",
+              "metric_id": "value_of_business_acquired_voba",
+              "label": "Value of business acquired (VOBA)",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ValueOfBusinessAcquiredVOBA",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "deferred_sales_inducements_net",
+              "metric_id": "deferred_sales_inducements_net",
+              "label": "Deferred Sales Inducements Net",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DeferredSalesInducementsNet",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "market_risk_benefit_assets",
+          "metric_id": null,
+          "label": "Market risk benefit assets",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Recognized asset positions are separate from recognized liability positions and net amounts at risk. Do not net across contracts without issuer evidence.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "market_risk_benefit_asset_amount",
+              "metric_id": "market_risk_benefit_asset_amount",
+              "label": "Market Risk Benefit Asset Amount",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:MarketRiskBenefitAssetAmount",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "derivative_assets_presentation",
+          "metric_id": null,
+          "label": "Derivative assets",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "DerivativeAssets is fair value after effects of master netting arrangements, including positions not offset. Embedded derivative asset fair value may already be included in aggregate derivative assets or a host contract; establish recognition and collateral scope.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "derivative_assets",
+              "metric_id": "derivative_assets",
+              "label": "Derivative assets after master netting",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DerivativeAssets",
+                  "status": "review",
+                  "review_reason": "Fair value is after effects of master netting arrangements; determine embedded derivative inclusion and collateral presentation before combining with separate derivative asset disclosures."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "embedded_derivative_fair_value_of_embedded_derivative_asset",
+              "metric_id": "embedded_derivative_fair_value_of_embedded_derivative_asset",
+              "label": "Embedded derivative assets: fair value",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:EmbeddedDerivativeFairValueOfEmbeddedDerivativeAsset",
+                  "status": "review",
+                  "review_reason": "Embedded derivative asset fair value may be included in a host contract or aggregate derivatives; confirm separate balance-sheet recognition and avoid double counting."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "separate_account_assets_presentation",
+          "metric_id": null,
+          "label": "Separate account assets",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Separate-account assets are recognized assets; the corresponding separate-account liabilities are not deducted from this asset balance.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "separate_account_assets",
+              "metric_id": "separate_account_assets",
+              "label": "Separate Account Assets",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:SeparateAccountAssets",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "property_and_operating_lease_assets",
+          "metric_id": null,
+          "label": "Property and operating lease assets",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Owned PP&E and operating ROU assets are different asset classes but may be included in issuer aggregates. No maturity is inferred for unclassified balances.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "property_plant_and_equipment_net",
+              "metric_id": "property_plant_and_equipment_net",
+              "label": "Property, Plant and Equipment, Net",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PropertyPlantAndEquipmentNet",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "operating_lease_right_of_use_asset",
+              "metric_id": "operating_lease_right_of_use_asset",
+              "label": "Operating Lease Right-of-Use Assets",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OperatingLeaseRightOfUseAsset",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "goodwill_and_intangibles",
+          "metric_id": null,
+          "label": "Goodwill and intangible assets",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Goodwill-inclusive and goodwill-exclusive totals, residual intangibles and amortization disclosures can overlap VOBA and each other. Select matching scopes.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "goodwill",
+              "metric_id": "goodwill",
+              "label": "Goodwill",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:Goodwill",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "intangible_assets_net_excluding_goodwill",
+              "metric_id": "intangible_assets_net_excluding_goodwill",
+              "label": "Intangible Assets, Excluding Goodwill",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IntangibleAssetsNetExcludingGoodwill",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_intangible_assets_net",
+              "metric_id": "other_intangible_assets_net",
+              "label": "Other Intangible Assets Net",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherIntangibleAssetsNet",
+                  "status": "review",
+                  "review_reason": "Residual net intangible assets may overlap IntangibleAssetsNetExcludingGoodwill and VOBA; establish the issuer’s asset-class exclusions."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "intangible_assets_net_including_goodwill",
+              "metric_id": "intangible_assets_net_including_goodwill",
+              "label": "Intangible Assets, Including Goodwill",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IntangibleAssetsNetIncludingGoodwill",
+                  "status": "review",
+                  "review_reason": "The goodwill-inclusive aggregate overlaps goodwill and other intangible balances; determine whether acquired insurance business value is included."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "finite_lived_intangible_assets_accumulated_amortization",
+              "metric_id": "finite_lived_intangible_assets_accumulated_amortization",
+              "label": "Finite-lived intangible accumulated amortization",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": true,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:FiniteLivedIntangibleAssetsAccumulatedAmortization",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tax_assets",
+          "metric_id": null,
+          "label": "Tax assets",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Net deferred tax assets reflect valuation allowances and jurisdictional netting. IncomeTaxesReceivable explicitly covers current refunds; IncomeTaxReceivable has no explicit maturity restriction. They can overlap and must not be added as independent tax assets.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "deferred_income_tax_assets_net",
+              "metric_id": "deferred_income_tax_assets_net",
+              "label": "Deferred Income Tax Assets, Net",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DeferredIncomeTaxAssetsNet",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "income_tax_receivable",
+              "metric_id": "income_tax_receivable",
+              "label": "Income tax refunds receivable: maturity unspecified",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IncomeTaxReceivable",
+                  "status": "review",
+                  "review_reason": "The tax-refund receivable definition has no explicit maturity restriction; establish issuer maturity and overlap with the separately supplied current IncomeTaxesReceivable."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "income_taxes_receivable",
+              "metric_id": "income_taxes_receivable",
+              "label": "Income tax refunds receivable: current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IncomeTaxesReceivable",
+                  "status": "review",
+                  "review_reason": "This tax-refund receivable is explicitly due within one year or the operating cycle; it can be included in the other tax-refund balance and must not be added blindly."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "other_asset_balances",
+          "metric_id": null,
+          "label": "Other assets and deposit assets",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Deposit assets are assets transferred as security, not customer deposit liabilities. Other assets are a residual and can include separately disclosed classes.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "other_assets",
+              "metric_id": "other_assets",
+              "label": "Other Assets",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherAssets",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "deposit_assets",
+              "metric_id": "deposit_assets",
+              "label": "Deposit Assets",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DepositAssets",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "liabilities",
+      "metric_id": "liabilities",
+      "label": "Total liabilities",
+      "node_kind": "total",
+      "aggregation_policy": "none",
+      "period_type": "instant",
+      "unit_type": "monetary",
+      "contra": false,
+      "taxonomy_type": "xbrli:monetaryItemType",
+      "classification_note": "Liability totals and their presentation families are not additive by hierarchy; gross and reinsurance-net insurance obligations remain alternatives.",
+      "concepts": [
+        {
+          "name": "us-gaap:Liabilities",
+          "status": "proposed",
+          "review_reason": null
+        }
+      ],
+      "children": [
+        {
+          "node_id": "insurance_contract_liabilities",
+          "metric_id": null,
+          "label": "Insurance contract liabilities",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Future benefits, claims, policyholder deposits and funds have different definitions. The reported benefit-and-claims aggregate overlaps narrower liability balances.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "benefits_and_claims_aggregate",
+              "metric_id": null,
+              "label": "Reported benefits and claims aggregate",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "The combined insurance obligation is an alternative to a reconciled breakdown of future benefits and claims.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "insurance_benefits_and_claims_total",
+                  "metric_id": "insurance_benefits_and_claims_total",
+                  "label": "Future policy benefits and unpaid claims aggregate",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:LiabilityForFuturePolicyBenefitsAndUnpaidClaimsAndClaimsAdjustmentExpense",
+                      "status": "review",
+                      "review_reason": "This aggregate includes future-policy-benefit and claim-related obligations, which are also mapped separately; determine the exact included liability classes."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "future_policy_benefit_alternatives",
+              "metric_id": null,
+              "label": "Future policy benefit alternatives",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Before-reinsurance and after-reinsurance measures must not be added. Gross liability and separately recognized reinsurance asset presentation differs from a net reserve disclosure.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "liability_for_future_policy_benefits",
+                  "metric_id": "liability_for_future_policy_benefits",
+                  "label": "Future policy benefits before reinsurance",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:LiabilityForFuturePolicyBenefits",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "liability_for_future_policy_benefit_after_reinsurance",
+                  "metric_id": "liability_for_future_policy_benefit_after_reinsurance",
+                  "label": "Future policy benefits after reinsurance",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:LiabilityForFuturePolicyBenefitAfterReinsurance",
+                      "status": "review",
+                      "review_reason": "The after-reinsurance measure is an alternative to the gross liability plus separately recognized reinsurance recoverables; do not combine both presentations."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "claim_liability_alternatives",
+              "metric_id": null,
+              "label": "Claims and claims adjustment liabilities",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Unpaid claims and claims adjustment expense net explicitly deducts estimated reinsurance recoveries. The other claim liability represents estimated ultimate settlement costs. Select a consistent gross or reinsurance-net presentation.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "liability_for_claims_and_claims_adjustment_expense",
+                  "metric_id": "liability_for_claims_and_claims_adjustment_expense",
+                  "label": "Liability For Claims And Claims Adjustment Expense",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:LiabilityForClaimsAndClaimsAdjustmentExpense",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "liability_for_unpaid_claims_and_claims_adjustment_expense_net",
+                  "metric_id": "liability_for_unpaid_claims_and_claims_adjustment_expense_net",
+                  "label": "Unpaid claims and adjustment expenses, net of reinsurance",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:LiabilityForUnpaidClaimsAndClaimsAdjustmentExpenseNet",
+                      "status": "review",
+                      "review_reason": "This claims reserve is net of estimated reinsurance recoveries and includes IBNR; do not combine it with a gross claims reserve and the same reinsurance assets."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "policyholder_deposit_and_fund_balances",
+              "metric_id": null,
+              "label": "Policyholder deposits and funds",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Contract deposits, guaranteed-interest contracts and policyholder funds are different coverage views. Funds can include unpaid policy dividends; do not sum overlapping categories.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "policyholder_contract_deposits",
+                  "metric_id": "policyholder_contract_deposits",
+                  "label": "Policyholder Contract Deposits",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:PolicyholderContractDeposits",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "policyholder_funds",
+                  "metric_id": "policyholder_funds",
+                  "label": "Policyholder Funds",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:PolicyholderFunds",
+                      "status": "review",
+                      "review_reason": "Includes unpaid policy dividends and other participating-business amounts while excluding future benefits and claims; do not assume it equals policyholder contract deposits."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "other_policyholder_funds",
+                  "metric_id": "other_policyholder_funds",
+                  "label": "Other Policyholder Funds",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:OtherPolicyholderFunds",
+                      "status": "review",
+                      "review_reason": "Other policyholder funds are a residual returnable-funds category that may be included in PolicyholderFunds; determine exclusions."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "guaranteed_interest_contracts",
+                  "metric_id": "guaranteed_interest_contracts",
+                  "label": "Guaranteed Interest Contracts",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:GuaranteedInterestContracts",
+                      "status": "review",
+                      "review_reason": "Guaranteed-interest contract liabilities may already be included in policyholder contract deposits; establish the product coverage before combining."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "policyholder_dividends_payable",
+                  "metric_id": "policyholder_dividends_payable",
+                  "label": "Policyholder Dividends Payable",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:PolicyholderDividendsPayable",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "unearned_premium_liabilities",
+              "metric_id": null,
+              "label": "Unearned premiums",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Unearned premiums are not synonymous with future policy benefits or all policyholder contract deposits.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "unearned_premiums",
+                  "metric_id": "unearned_premiums",
+                  "label": "Unearned Insurance Premiums",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:UnearnedPremiums",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "reinsurance_liabilities",
+          "metric_id": null,
+          "label": "Reinsurance liabilities",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Reinsurance payable and funds held as security have distinct obligations and can be included in broader insurance liabilities; do not offset reinsurance assets automatically.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "reinsurance_payable",
+              "metric_id": "reinsurance_payable",
+              "label": "Reinsurance Payable",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ReinsurancePayable",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "funds_held_under_reinsurance_agreements_liability",
+              "metric_id": "funds_held_under_reinsurance_agreements_liability",
+              "label": "Funds Held Under Reinsurance Agreements Liability",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:FundsHeldUnderReinsuranceAgreementsLiability",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "market_risk_benefit_liabilities",
+          "metric_id": null,
+          "label": "Market risk benefit liabilities",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Recognized market-risk-benefit liability positions differ from net amounts at risk and separate asset positions.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "market_risk_benefit_liability_amount",
+              "metric_id": "market_risk_benefit_liability_amount",
+              "label": "Market Risk Benefit Liability Amount",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:MarketRiskBenefitLiabilityAmount",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "separate_account_liabilities",
+          "metric_id": null,
+          "label": "Separate account liabilities",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Separate-account liability balances are distinct from general-account insurance obligations; related assets remain recognized separately.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "separate_accounts_liability",
+              "metric_id": "separate_accounts_liability",
+              "label": "Separate Accounts Liability",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:SeparateAccountsLiability",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "borrowings",
+          "metric_id": null,
+          "label": "Borrowings",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Combined debt, total long-term debt, noncurrent long-term debt, collateral and subordination views overlap. Surplus notes are GAAP liabilities even if statutory accounting includes them in surplus.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "reported_debt_alternatives",
+              "metric_id": null,
+              "label": "Reported debt total and maturity alternatives",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Combined long/short debt includes maturity components. LongTermDebt can include current maturities whereas LongTermDebtNoncurrent excludes them. Do not add alternative totals.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "debt_longterm_and_shortterm_combined_amount",
+                  "metric_id": "debt_longterm_and_shortterm_combined_amount",
+                  "label": "Short- and Long-Term Debt, Combined",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:DebtLongtermAndShorttermCombinedAmount",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "long_term_debt",
+                  "metric_id": "long_term_debt",
+                  "label": "Long-Term Debt, Excluding Leases",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:LongTermDebt",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "long_term_debt_noncurrent",
+                  "metric_id": "long_term_debt_noncurrent",
+                  "label": "Long Term Debt Noncurrent",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:LongTermDebtNoncurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "short_term_borrowings",
+                  "metric_id": "short_term_borrowings",
+                  "label": "Short-Term Borrowings",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ShortTermBorrowings",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "debt_instrument_and_collateral_views",
+              "metric_id": null,
+              "label": "Debt instrument and collateral views",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Secured, subordinated, notes-payable and residual long-term debt can intersect maturity totals. These axes do not define additive peers.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "notes_payable",
+                  "metric_id": "notes_payable",
+                  "label": "Notes Payable",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:NotesPayable",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "secured_debt",
+                  "metric_id": "secured_debt",
+                  "label": "Secured Debt",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:SecuredDebt",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "subordinated_debt",
+                  "metric_id": "subordinated_debt",
+                  "label": "Subordinated Debt",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:SubordinatedDebt",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "surplus_notes",
+                  "metric_id": "surplus_notes",
+                  "label": "Surplus notes: GAAP liabilities",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:SurplusNotes",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "other_long_term_debt",
+                  "metric_id": "other_long_term_debt",
+                  "label": "Other Long Term Debt",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:OtherLongTermDebt",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "operating_lease_liabilities",
+          "metric_id": null,
+          "label": "Operating lease liabilities",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Operating lease liabilities differ from borrowings. Include in an analytical debt measure only under a separately defined policy.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "operating_lease_liability",
+              "metric_id": "operating_lease_liability",
+              "label": "Operating Lease Liabilities",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OperatingLeaseLiability",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "investment_and_collateral_liabilities",
+          "metric_id": null,
+          "label": "Investment and collateral liabilities",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Repo borrowings, cash collateral received, obligations to return securities and broad investment-related liabilities differ in transaction and measurement scope and may overlap.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "securities_sold_under_agreements_to_repurchase",
+              "metric_id": "securities_sold_under_agreements_to_repurchase",
+              "label": "Securities Sold Under Agreements To Repurchase",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:SecuritiesSoldUnderAgreementsToRepurchase",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "deposits_received_for_securities_loaned_at_carrying_value",
+              "metric_id": "deposits_received_for_securities_loaned_at_carrying_value",
+              "label": "Cash collateral received for securities loaned",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DepositsReceivedForSecuritiesLoanedAtCarryingValue",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "obligation_to_return_securities_received_as_collateral",
+              "metric_id": "obligation_to_return_securities_received_as_collateral",
+              "label": "Obligation to return securities collateral",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ObligationToReturnSecuritiesReceivedAsCollateral",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "investment_related_liabilities",
+              "metric_id": "investment_related_liabilities",
+              "label": "Investment Related Liabilities",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InvestmentRelatedLiabilities",
+                  "status": "review",
+                  "review_reason": "This broad investment-related liability category can include repo, collateral and derivative liabilities already mapped elsewhere; establish its issuer-specific composition."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "derivative_liabilities_presentation",
+          "metric_id": null,
+          "label": "Derivative liability balances",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "DerivativeLiabilities is fair value after effects of master netting arrangements, including positions not offset. Review overlap with insurance embedded derivatives and investment-related liability aggregates.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "derivative_liabilities",
+              "metric_id": "derivative_liabilities",
+              "label": "Derivative liabilities after master netting",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DerivativeLiabilities",
+                  "status": "review",
+                  "review_reason": "Fair value is after effects of master netting arrangements; establish overlap with insurance embedded derivatives and broad investment-related liabilities."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "income_tax_liabilities",
+          "metric_id": null,
+          "label": "Income tax liabilities",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Gross and net deferred tax liabilities are alternatives; current accrued income taxes can be included in all-period accrued income taxes. Respect jurisdictional netting.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "deferred_income_tax_liabilities",
+              "metric_id": "deferred_income_tax_liabilities",
+              "label": "Deferred Income Tax Liabilities",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DeferredIncomeTaxLiabilities",
+                  "status": "review",
+                  "review_reason": "This deferred tax liability measure precedes the jurisdictional asset offsets reflected in the net deferred tax liability alternative."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "deferred_income_tax_liabilities_net",
+              "metric_id": "deferred_income_tax_liabilities_net",
+              "label": "Deferred Income Tax Liabilities, Net",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DeferredIncomeTaxLiabilitiesNet",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "accrued_income_taxes",
+              "metric_id": "accrued_income_taxes",
+              "label": "Accrued Income Taxes, Current and Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AccruedIncomeTaxes",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "accrued_income_taxes_current",
+              "metric_id": "accrued_income_taxes_current",
+              "label": "Accrued Income Taxes Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AccruedIncomeTaxesCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "other_liability_balances",
+          "metric_id": null,
+          "label": "Other liabilities and deferred revenue",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Current deferred revenue and combined accounts payable/accruals can be included in other liabilities; residual exclusions require issuer presentation.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "other_liabilities",
+              "metric_id": "other_liabilities",
+              "label": "Other Liabilities",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherLiabilities",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "accounts_payable_and_accrued_liabilities_current_and_noncurrent",
+              "metric_id": "accounts_payable_and_accrued_liabilities_current_and_noncurrent",
+              "label": "Accounts Payable and Accrued Liabilities, Current and Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AccountsPayableAndAccruedLiabilitiesCurrentAndNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "deferred_revenue_current",
+              "metric_id": "deferred_revenue_current",
+              "label": "Deferred Revenue Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DeferredRevenueCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "equity_including_noncontrolling_interests",
+      "metric_id": "equity_including_noncontrolling_interests",
+      "label": "Total equity including noncontrolling interests",
+      "node_kind": "total",
+      "aggregation_policy": "none",
+      "period_type": "instant",
+      "unit_type": "monetary",
+      "contra": false,
+      "taxonomy_type": "xbrli:monetaryItemType",
+      "classification_note": "Total permanent equity includes parent and noncontrolling interests; temporary equity is presented separately and may require a separate balance-sheet reconciliation term.",
+      "concepts": [
+        {
+          "name": "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+          "status": "proposed",
+          "review_reason": null
+        }
+      ],
+      "children": [
+        {
+          "node_id": "stockholders_equity",
+          "metric_id": "stockholders_equity",
+          "label": "Equity attributable to the parent",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": "xbrli:monetaryItemType",
+          "classification_note": "Parent equity components are presentation families; common/preferred alternatives and treasury amounts must be reconciled before calculating equity.",
+          "concepts": [
+            {
+              "name": "us-gaap:StockholdersEquity",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": [
+            {
+              "node_id": "common_share_capital",
+              "metric_id": null,
+              "label": "Common share capital",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Issued and outstanding common stock values differ in treasury share coverage; select the legal-capital basis matching the issuer.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "common_stock_value",
+                  "metric_id": "common_stock_value",
+                  "label": "Common Stock Carrying Value",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:CommonStockValue",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "common_stock_value_outstanding",
+                  "metric_id": "common_stock_value_outstanding",
+                  "label": "Common Stock Carrying Value, Outstanding",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:CommonStockValueOutstanding",
+                      "status": "review",
+                      "review_reason": "Outstanding common stock value may differ from issued common stock value because of treasury shares; reconcile the issuer’s legal-capital presentation."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "additional_paid_in_capital_presentation",
+              "metric_id": null,
+              "label": "Additional paid-in capital",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Common-stock APIC is a subset or alternative to all-class APIC; do not add both.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "additional_paid_in_capital",
+                  "metric_id": "additional_paid_in_capital",
+                  "label": "Additional Paid-in Capital",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:AdditionalPaidInCapital",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "additional_paid_in_capital_common_stock",
+                  "metric_id": "additional_paid_in_capital_common_stock",
+                  "label": "Additional Paid-in Capital, Common Stock",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:AdditionalPaidInCapitalCommonStock",
+                      "status": "review",
+                      "review_reason": "Common-stock-specific additional paid-in capital may be included in the all-class APIC total; do not add both amounts."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "preferred_share_capital",
+              "metric_id": null,
+              "label": "Preferred share capital candidates",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Preferred carrying amounts require classification by redemption terms; their position here is provisional and does not presume permanent-equity treatment.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "preferred_stock_value",
+                  "metric_id": "preferred_stock_value",
+                  "label": "Preferred Stock Carrying Value",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:PreferredStockValue",
+                      "status": "review",
+                      "review_reason": "Preferred stock carrying values require redemption and settlement terms to determine permanent-equity, temporary-equity or liability presentation."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "preferred_stock_value_outstanding",
+                  "metric_id": "preferred_stock_value_outstanding",
+                  "label": "Preferred Stock Carrying Value, Outstanding",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:PreferredStockValueOutstanding",
+                      "status": "review",
+                      "review_reason": "Outstanding preferred carrying value can overlap PreferredStockValue and can require temporary-equity classification depending on redemption terms."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "retained_earnings",
+              "metric_id": null,
+              "label": "Retained earnings",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Retained earnings or accumulated deficit is an equity balance, not current-period net income.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "retained_earnings_accumulated_deficit",
+                  "metric_id": "retained_earnings_accumulated_deficit",
+                  "label": "Retained Earnings (Accumulated Deficit)",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:RetainedEarningsAccumulatedDeficit",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "treasury_stock_balances",
+              "metric_id": null,
+              "label": "Treasury stock",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "Treasury stock cost reduces equity. Common-only and all-class amounts overlap; preserve source signs and avoid applying a deduction twice.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "treasury_stock_value",
+                  "metric_id": "treasury_stock_value",
+                  "label": "Treasury Stock Carrying Value",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": true,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:TreasuryStockValue",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "treasury_stock_common_value",
+                  "metric_id": "treasury_stock_common_value",
+                  "label": "Common Treasury Stock Carrying Value",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": true,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:TreasuryStockCommonValue",
+                      "status": "review",
+                      "review_reason": "Common treasury stock cost may be included in the all-class treasury stock balance; select matching share-class coverage."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "accumulated_other_comprehensive_income",
+              "metric_id": null,
+              "label": "Accumulated other comprehensive income",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "After-tax AOCI total includes separately reported AFS, currency and future-benefit discount-rate components. Select total or reconciled detail, not both.",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "accumulated_other_comprehensive_income_loss_net_of_tax",
+                  "metric_id": "accumulated_other_comprehensive_income_loss_net_of_tax",
+                  "label": "Accumulated Other Comprehensive Income (Loss), Net of Tax",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "aoci_afs_securities_after_tax",
+                  "metric_id": "aoci_afs_securities_after_tax",
+                  "label": "AOCI: AFS securities, after tax",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:AccumulatedOtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "aoci_currency_translation_after_tax",
+                  "metric_id": "aoci_currency_translation_after_tax",
+                  "label": "AOCI: foreign currency translation, after tax",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:AccumulatedOtherComprehensiveIncomeLossForeignCurrencyTranslationAdjustmentNetOfTax",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "aoci_liability_for_future_policy_benefit_after_tax",
+                  "metric_id": "aoci_liability_for_future_policy_benefit_after_tax",
+                  "label": "AOCI: future policy benefit discount-rate changes, after tax",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": "xbrli:monetaryItemType",
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:AociLiabilityForFuturePolicyBenefitAfterTax",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "minority_interest",
+          "metric_id": "minority_interest",
+          "label": "Noncontrolling Interest",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": "xbrli:monetaryItemType",
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:MinorityInterest",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "node_id": "temporary_equity",
+      "metric_id": null,
+      "label": "Temporary equity and redeemable noncontrolling interests",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "Temporary equity is separate from permanent parent and noncontrolling equity. The total can include redeemable NCI; do not add the total and this component.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "temporary_equity_total",
+          "metric_id": "temporary_equity_total",
+          "label": "Temporary equity including noncontrolling interests",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": "xbrli:monetaryItemType",
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:TemporaryEquityCarryingAmountIncludingPortionAttributableToNoncontrollingInterests",
+              "status": "review",
+              "review_reason": "The temporary-equity aggregate can contain redeemable NCI and preferred interests; reconcile coverage and keep it separate from permanent equity."
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "redeemable_noncontrolling_interest_equity_carrying_amount",
+          "metric_id": "redeemable_noncontrolling_interest_equity_carrying_amount",
+          "label": "Redeemable Noncontrolling Interest Equity Carrying Amount",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": "xbrli:monetaryItemType",
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:RedeemableNoncontrollingInterestEquityCarryingAmount",
+              "status": "review",
+              "review_reason": "Redeemable noncontrolling interests may be included in the temporary-equity aggregate; identify redemption terms and exclude permanent NCI overlap."
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "node_id": "liabilities_and_stockholders_equity",
+      "metric_id": "liabilities_and_stockholders_equity",
+      "label": "Total liabilities and equity",
+      "node_kind": "total",
+      "aggregation_policy": "none",
+      "period_type": "instant",
+      "unit_type": "monetary",
+      "contra": false,
+      "taxonomy_type": "xbrli:monetaryItemType",
+      "classification_note": "Match the issuer’s inclusion of temporary equity and noncontrolling interests when reconciling liabilities and equity to assets; no calculation is prescribed.",
+      "concepts": [
+        {
+          "name": "us-gaap:LiabilitiesAndStockholdersEquity",
+          "status": "proposed",
+          "review_reason": null
+        }
+      ],
+      "children": []
+    },
+    {
+      "node_id": "supplementary_disclosures",
+      "metric_id": null,
+      "label": "Supplementary balance-sheet disclosures",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "Share terms, valuation alternatives, portfolio subsets and risk exposures are retained separately from primary carrying balances.",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "investment_measurement_alternatives",
+          "metric_id": null,
+          "label": "Investment measurement alternatives",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Cost, amortized cost and disclosed fair value are alternative measurements rather than additional investment assets. Match interest and credit-loss allowance scope.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "available_for_sale_debt_securities_amortized_cost_basis",
+              "metric_id": "available_for_sale_debt_securities_amortized_cost_basis",
+              "label": "AFS Debt Securities, Amortized Cost",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AvailableForSaleDebtSecuritiesAmortizedCostBasis",
+                  "status": "review",
+                  "review_reason": "AFS debt amortized cost differs from fair-value carrying amounts; establish accrued-interest and allowance coverage."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "afs_amortized_cost_before_allowance_excluding_interest",
+              "metric_id": "afs_amortized_cost_before_allowance_excluding_interest",
+              "label": "AFS Amortized Cost, Before Allowance, Excluding Interest",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DebtSecuritiesAvailableForSaleAmortizedCostExcludingAccruedInterestBeforeAllowanceForCreditLoss",
+                  "status": "review",
+                  "review_reason": "AFS amortized cost excludes accrued interest and precedes credit-loss allowances; do not substitute it for the net or fair-value balance."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "afs_amortized_cost_after_allowance_excluding_interest",
+              "metric_id": "afs_amortized_cost_after_allowance_excluding_interest",
+              "label": "AFS Amortized Cost, After Allowance, Excluding Interest",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DebtSecuritiesAvailableForSaleAmortizedCostExcludingAccruedInterestAfterAllowanceForCreditLoss",
+                  "status": "review",
+                  "review_reason": "AFS amortized cost is after allowance and excludes accrued interest; the main AFS carrying value has a different measurement basis."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "held_to_maturity_securities_fair_value",
+              "metric_id": "held_to_maturity_securities_fair_value",
+              "label": "Held To Maturity Securities Fair Value",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:HeldToMaturitySecuritiesFairValue",
+                  "status": "review",
+                  "review_reason": "HTM fair value is a disclosure measurement distinct from the amortized-cost carrying balance."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "equity_securities_fv_ni_cost",
+              "metric_id": "equity_securities_fv_ni_cost",
+              "label": "Equity Securities FV-NI Cost",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:EquitySecuritiesFvNiCost",
+                  "status": "review",
+                  "review_reason": "FV-NI equity investment cost is not the recognized fair-value carrying amount."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "debt_securities_trading_and_equity_securities_fv_ni_cost",
+              "metric_id": "debt_securities_trading_and_equity_securities_fv_ni_cost",
+              "label": "Trading debt and FV-NI equity securities: cost",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DebtSecuritiesTradingAndEquitySecuritiesFvNiCost",
+                  "status": "review",
+                  "review_reason": "Combined trading-debt and FV-NI equity cost overlaps separate portfolio cost disclosures and differs from fair-value carrying amounts."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "trading_securities_debt_amortized_cost",
+              "metric_id": "trading_securities_debt_amortized_cost",
+              "label": "Trading Debt Securities, Amortized Cost",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TradingSecuritiesDebtAmortizedCost",
+                  "status": "review",
+                  "review_reason": "Trading debt amortized cost is a disclosure measurement, not the fair-value trading investment carrying balance."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "equity_method_investments_fair_value_disclosure",
+              "metric_id": "equity_method_investments_fair_value_disclosure",
+              "label": "Equity-method investments: disclosed fair value",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:EquityMethodInvestmentsFairValueDisclosure",
+                  "status": "review",
+                  "review_reason": "Equity-method investment fair value is a disclosure alternative to its equity-method carrying amount."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "other_fair_value_disclosures",
+          "metric_id": null,
+          "label": "Other fair-value disclosures",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Fair-value disclosures can cover loan and other carrying balances already mapped in primary sections. They are not incremental assets or liabilities.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "loans_receivable_fair_value_disclosure",
+              "metric_id": "loans_receivable_fair_value_disclosure",
+              "label": "Loans Receivable, Disclosed Fair Value",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:LoansReceivableFairValueDisclosure",
+                  "status": "review",
+                  "review_reason": "Disclosed loan fair values can include mortgage, financing and policy loans and must not replace their carrying amounts without measurement review."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_assets_fair_value_disclosure",
+              "metric_id": "other_assets_fair_value_disclosure",
+              "label": "Other assets: disclosed fair value",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherAssetsFairValueDisclosure",
+                  "status": "review",
+                  "review_reason": "This is disclosed fair value for other assets, not their balance-sheet carrying amount."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_liabilities_fair_value_disclosure",
+              "metric_id": "other_liabilities_fair_value_disclosure",
+              "label": "Other liabilities: disclosed fair value",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherLiabilitiesFairValueDisclosure",
+                  "status": "review",
+                  "review_reason": "This is disclosed fair value for other liabilities, not their balance-sheet carrying amount."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "restricted_asset_subsets",
+          "metric_id": null,
+          "label": "Restricted and trust-held asset subsets",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Legal restrictions or trust custody do not make portfolio subsets additional recognized assets. Reconcile them to the investment and cash carrying balances.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "assets_held_in_trust",
+              "metric_id": "assets_held_in_trust",
+              "label": "Assets Held In Trust",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AssetsHeldInTrust",
+                  "status": "review",
+                  "review_reason": "Trust-held assets may remain within the recognized investment portfolio; legal restriction does not establish an additional asset to add to the balance sheet."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "debt_securities_available_for_sale_restricted",
+              "metric_id": "debt_securities_available_for_sale_restricted",
+              "label": "Restricted AFS Debt Securities",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DebtSecuritiesAvailableForSaleRestricted",
+                  "status": "review",
+                  "review_reason": "Restricted AFS debt is a portfolio subset potentially included in the main AFS carrying balance; do not add it as another investment category."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "insurance_risk_exposures",
+          "metric_id": null,
+          "label": "Insurance risk exposures",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Net amount at risk is an exposure measure distinct from recognized market-risk-benefit asset, liability and reinsurance recoverable balances.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "market_risk_benefit_net_amount_at_risk",
+              "metric_id": "market_risk_benefit_net_amount_at_risk",
+              "label": "Market risk benefits: net amount at risk",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:MarketRiskBenefitNetAmountAtRisk",
+                  "status": "review",
+                  "review_reason": "Guaranteed benefits in excess of account balances measure exposure, not the recognized market-risk-benefit asset or liability."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "share_count_disclosures",
+          "metric_id": null,
+          "label": "Share counts",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Authorized, issued and outstanding shares are distinct instant counts; common treasury shares explain a potential issued/outstanding difference but are not an equity dollar balance.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "common_stock_shares_authorized",
+              "metric_id": "common_stock_shares_authorized",
+              "label": "Common Shares Authorized",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": "xbrli:sharesItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockSharesAuthorized",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "common_stock_shares_issued",
+              "metric_id": "common_stock_shares_issued",
+              "label": "Common Shares Issued",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": "xbrli:sharesItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockSharesIssued",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "common_stock_shares_outstanding",
+              "metric_id": "common_stock_shares_outstanding",
+              "label": "Common Shares Outstanding",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": "xbrli:sharesItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockSharesOutstanding",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "treasury_stock_common_shares",
+              "metric_id": "treasury_stock_common_shares",
+              "label": "Common Treasury Shares",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": "xbrli:sharesItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TreasuryStockCommonShares",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_shares_authorized",
+              "metric_id": "preferred_stock_shares_authorized",
+              "label": "Preferred Shares Authorized",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": "xbrli:sharesItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockSharesAuthorized",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_shares_issued",
+              "metric_id": "preferred_stock_shares_issued",
+              "label": "Preferred Shares Issued",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": "xbrli:sharesItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockSharesIssued",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_shares_outstanding",
+              "metric_id": "preferred_stock_shares_outstanding",
+              "label": "Preferred Shares Outstanding",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": "xbrli:sharesItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockSharesOutstanding",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "share_contract_terms",
+          "metric_id": null,
+          "label": "Share par and liquidation terms",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "Par values are per-share contractual terms. Liquidation preference tags represent the excess over par or stated value, per share or aggregate; they are not preferred carrying values.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "common_stock_par_or_stated_value_per_share",
+              "metric_id": "common_stock_par_or_stated_value_per_share",
+              "label": "Common Stock Par or Stated Value per Share",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": "dtr-types:perShareItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockParOrStatedValuePerShare",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_par_or_stated_value_per_share",
+              "metric_id": "preferred_stock_par_or_stated_value_per_share",
+              "label": "Preferred Stock Par or Stated Value per Share",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": "dtr-types:perShareItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockParOrStatedValuePerShare",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_liquidation_preference",
+              "metric_id": "preferred_stock_liquidation_preference",
+              "label": "Preferred liquidation preference excess per share",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": "dtr-types:perShareItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockLiquidationPreference",
+                  "status": "review",
+                  "review_reason": "This per-share term is the excess of liquidation preference over par or stated value; it is not a preferred-stock carrying balance."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_liquidation_preference_value",
+              "metric_id": "preferred_stock_liquidation_preference_value",
+              "label": "Aggregate preferred liquidation preference excess",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockLiquidationPreferenceValue",
+                  "status": "review",
+                  "review_reason": "This aggregate excess of liquidation preference over par or stated value is a contractual term, not a carrying amount."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "tax_and_contingency_disclosures",
+          "metric_id": null,
+          "label": "AOCI tax and commitments",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "AOCI tax is not another after-tax equity component. Commitment and contingency disclosures need recognition context and are not assumed liabilities.",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "aoci_tax_attributable_to_parent",
+              "metric_id": "aoci_tax_attributable_to_parent",
+              "label": "Tax Allocated to AOCI Attributable to Parent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AociTaxAttributableToParent",
+                  "status": "review",
+                  "review_reason": "This AOCI tax balance is a tax component, not an additional after-tax equity component; reconcile its tax presentation."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "commitments_and_contingencies",
+              "metric_id": "commitments_and_contingencies",
+              "label": "Commitments and Contingencies",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": "xbrli:monetaryItemType",
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommitmentsAndContingencies",
+                  "status": "review",
+                  "review_reason": "Commitment and contingency disclosures do not establish a recognized balance-sheet liability without the filing’s recognition context."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "unmapped_placeholders": []
+}

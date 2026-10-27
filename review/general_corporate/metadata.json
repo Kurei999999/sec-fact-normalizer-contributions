@@ -1,0 +1,27 @@
+{
+  "profile_id": "general_corporate",
+  "source_sics": [
+    "2834",
+    "2836",
+    "7372",
+    "3674",
+    "3571",
+    "5311",
+    "5961",
+    "3569",
+    "7389"
+  ],
+  "selected_companies": 1356,
+  "loaded_companies": 1344,
+  "statement_dataset": "2026q3",
+  "taxonomy_sources": [
+    "us-gaap-doc-2026.xml"
+  ],
+  "generated_at": "2026-10-27T11:42:53.815011+00:00",
+  "company_universe": "Unique CIKs in supplied company-info JSON with matching source SICs",
+  "statement_evidence": "US-GAAP PRE rows in the supplied dataset for successfully loaded company CIKs",
+  "thresholds": {
+    "minimum_appearance": null,
+    "minimum_statement_rate": null
+  }
+}

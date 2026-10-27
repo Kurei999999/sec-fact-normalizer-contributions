@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "profile_id": "general_corporate",
+  "research_scope": {
+    "source_sics": [
+      "2834",
+      "2836",
+      "7372",
+      "3674",
+      "3571",
+      "5311",
+      "5961",
+      "3569",
+      "7389"
+    ],
+    "description": "SIC population used to develop this archetype and generate its research concept inventory. This does not define runtime company assignments.",
+    "source": "archetypes/archetype_research_scope.md",
+    "statement_scope": "profile_level"
+  }
+}

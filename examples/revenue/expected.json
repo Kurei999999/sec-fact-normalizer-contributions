@@ -1,0 +1,10 @@
+{
+  "statement": "IS",
+  "field": "revenue",
+  "node_id": "revenue_from_contract_with_customer_excluding_assessed_tax",
+  "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+  "value": "416161000000",
+  "unit": "USD",
+  "start_date": "2024-09-29",
+  "end_date": "2025-09-27"
+}

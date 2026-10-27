@@ -1,0 +1,3783 @@
+{
+  "schema_version": "1.4.0",
+  "profile_id": "general_corporate",
+  "statement": "BS",
+  "status": "draft_unclassified_concepts_integration",
+  "validation_profile": "industry_statement",
+  "description": "General Corporate BS presentation skeleton inspired by the supplied AEVA presentation example; US-GAAP concepts are co-located, provisional, and not implied arithmetic. Expanded with candidate classifications from user unmapped list. Review required before production use.",
+  "mapping_rules": {
+    "analytical_metrics_not_primary_statement": true,
+    "children_imply_arithmetic": false,
+    "concept_status_default": "proposed",
+    "missing_fact_not_zero": true,
+    "nested_components_not_additive_by_default": true,
+    "resolve_overlapping_totals_without_summing": true,
+    "same_category_implies_equivalence": false
+  },
+  "classification_notes": [],
+  "metadata_contract": {},
+  "taxonomy_reference": {},
+  "sources": [],
+  "metadata_notes": {
+    "source": "https://xbrl.fasb.org/us-gaap/2026/elts/us-gaap-2026.xsd",
+    "period_and_unit": "Period and unit types checked against the 2026 taxonomy. Historical filings require their own taxonomy context.",
+    "contra": "Intrinsic deduction balances; does not prescribe fact signs.",
+    "unmapped_placeholders": "Original concept-free placeholders retained outside the skeleton tree; no mapped concepts were removed."
+  },
+  "nodes": [
+    {
+      "node_id": "assets",
+      "metric_id": "assets",
+      "label": "Assets",
+      "node_kind": "total",
+      "aggregation_policy": "none",
+      "period_type": "instant",
+      "unit_type": "monetary",
+      "contra": false,
+      "taxonomy_type": null,
+      "classification_note": "",
+      "concepts": [
+        {
+          "name": "us-gaap:Assets",
+          "status": "proposed",
+          "review_reason": null
+        }
+      ],
+      "children": [
+        {
+          "node_id": "current_assets",
+          "metric_id": "current_assets",
+          "label": "Current Assets",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:AssetsCurrent",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": [
+            {
+              "node_id": "cash_and_short_term_investments",
+              "metric_id": "cash_and_short_term_investments",
+              "label": "Cash and Short-term Investments",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CashCashEquivalentsAndShortTermInvestments",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": [
+                {
+                  "node_id": "cash_and_cash_equivalents",
+                  "metric_id": "cash_and_cash_equivalents",
+                  "label": "Cash and Cash Equivalents",
+                  "node_kind": "total",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": [
+                    {
+                      "node_id": "cash",
+                      "metric_id": "cash",
+                      "label": "Cash",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": null,
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:Cash",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "node_id": "cash_equivalents",
+                      "metric_id": "cash_equivalents",
+                      "label": "Cash Equivalents",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": null,
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:CashEquivalentsAtCarryingValue",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "short_term_investments",
+                  "metric_id": "short_term_investments",
+                  "label": "Short-term Investments",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ShortTermInvestments",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "receivables_net_current",
+              "metric_id": "receivables_net_current",
+              "label": "Receivables, Net (Current)",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ReceivablesNetCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:AccountsAndOtherReceivablesNetCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": [
+                {
+                  "node_id": "accounts_receivable_net_current",
+                  "metric_id": "accounts_receivable_net_current",
+                  "label": "Accounts Receivable, Net",
+                  "node_kind": "total",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:AccountsReceivableNetCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    },
+                    {
+                      "name": "us-gaap:AccountsReceivableNet",
+                      "status": "review",
+                      "review_reason": "Confirm whether the reported net receivable balance is current before using this current node."
+                    }
+                  ],
+                  "children": [
+                    {
+                      "node_id": "accounts_receivable_gross_current",
+                      "metric_id": "accounts_receivable_gross_current",
+                      "label": "Accounts Receivable, Gross",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": null,
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:AccountsReceivableGrossCurrent",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "node_id": "allowance_doubtful_accounts_current",
+                      "metric_id": "allowance_doubtful_accounts_current",
+                      "label": "Allowance for Doubtful Accounts",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": true,
+                      "taxonomy_type": null,
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:AllowanceForDoubtfulAccountsReceivableCurrent",
+                          "status": "proposed",
+                          "review_reason": null
+                        },
+                        {
+                          "name": "us-gaap:AllowanceForDoubtfulAccountsReceivable",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "other_receivables_current",
+                  "metric_id": "other_receivables_current",
+                  "label": "Other Receivables",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:OtherReceivablesNetCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    },
+                    {
+                      "name": "us-gaap:GrantsReceivableCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    },
+                    {
+                      "name": "us-gaap:InterestReceivableCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    },
+                    {
+                      "name": "us-gaap:NotesAndLoansReceivableNetCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "inventory_net",
+              "metric_id": "inventory_net",
+              "label": "Inventory, Net",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InventoryNet",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": [
+                {
+                  "node_id": "inventory_gross",
+                  "metric_id": "inventory_gross",
+                  "label": "Inventory, Gross",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:InventoryGross",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "inventory_raw_materials",
+                  "metric_id": "inventory_raw_materials",
+                  "label": "Raw Materials",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:InventoryRawMaterialsNetOfReserves",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "inventory_work_in_process",
+                  "metric_id": "inventory_work_in_process",
+                  "label": "Work in Process",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:InventoryWorkInProcessNetOfReserves",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "inventory_finished_goods",
+                  "metric_id": "inventory_finished_goods",
+                  "label": "Finished Goods",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:InventoryFinishedGoodsNetOfReserves",
+                      "status": "proposed",
+                      "review_reason": null
+                    },
+                    {
+                      "name": "us-gaap:InventoryFinishedGoods",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "inventory_valuation_reserves",
+                  "metric_id": "inventory_valuation_reserves",
+                  "label": "Inventory Valuation Reserves",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": true,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:InventoryValuationReserves",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "contract_assets_current",
+              "metric_id": "contract_assets_current",
+              "label": "Contract Assets",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ContractWithCustomerAssetNetCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "restricted_cash_current",
+              "metric_id": "restricted_cash_current",
+              "label": "Restricted Cash",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:RestrictedCashCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:RestrictedCash",
+                  "status": "review",
+                  "review_reason": "Confirm the restriction period and current classification in the filing."
+                },
+                {
+                  "name": "us-gaap:RestrictedCashAndCashEquivalentsAtCarryingValue",
+                  "status": "review",
+                  "review_reason": "Confirm current classification and whether the balance includes both cash and cash equivalents."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_current_assets",
+              "metric_id": "other_current_assets",
+              "label": "Other Current Assets",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherAssetsCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:DeferredCostsCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:OtherAssetsMiscellaneousCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:PrepaidExpenseAndOtherAssetsCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "prepaid_expenses_current",
+              "metric_id": "prepaid_expenses_current",
+              "label": "Prepaid Expenses, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherPrepaidExpenseCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:PrepaidExpenseCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:PrepaidInsurance",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:PrepaidTaxes",
+                  "status": "review",
+                  "review_reason": "Confirm the prepaid tax balance is current in the filing."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "tax_receivables_current",
+              "metric_id": null,
+              "label": "Tax Receivables, Current",
+              "node_kind": "group",
+              "aggregation_policy": "none",
+              "period_type": null,
+              "unit_type": null,
+              "contra": null,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [],
+              "children": [
+                {
+                  "node_id": "vat_receivable_current",
+                  "metric_id": "vat_receivable_current",
+                  "label": "Value Added Tax Receivable, Current",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ValueAddedTaxReceivableCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "other_investments_current",
+              "metric_id": "other_investments_current",
+              "label": "Marketable Securities, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AvailableForSaleSecuritiesDebtSecuritiesCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:MarketableSecuritiesCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "contract_costs_current",
+              "metric_id": "contract_costs_current",
+              "label": "Capitalized Contract Costs, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CapitalizedContractCostNetCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "deposits_current",
+              "metric_id": "deposits_current",
+              "label": "Deposits, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DepositsAssetsCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "unbilled_receivables_current",
+              "metric_id": "unbilled_receivables_current",
+              "label": "Unbilled Receivables, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:UnbilledReceivablesCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "noncurrent_assets",
+          "metric_id": "noncurrent_assets",
+          "label": "Noncurrent Assets",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:AssetsNoncurrent",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:NoncurrentAssets",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": [
+            {
+              "node_id": "ppe_net",
+              "metric_id": "ppe_net",
+              "label": "Property, Plant and Equipment, Net",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PropertyPlantAndEquipmentNet",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": [
+                {
+                  "node_id": "ppe_gross",
+                  "metric_id": "ppe_gross",
+                  "label": "PP&E, Gross",
+                  "node_kind": "total",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:PropertyPlantAndEquipmentGross",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": [
+                    {
+                      "node_id": "construction_in_progress_gross",
+                      "metric_id": "construction_in_progress_gross",
+                      "label": "Construction in Progress",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": null,
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:ConstructionInProgressGross",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "node_id": "machinery_equipment_gross",
+                      "metric_id": "machinery_equipment_gross",
+                      "label": "Machinery and Equipment",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": null,
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:MachineryAndEquipmentGross",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "node_id": "furniture_fixtures_gross",
+                      "metric_id": "furniture_fixtures_gross",
+                      "label": "Furniture and Fixtures",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": null,
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:FurnitureAndFixturesGross",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "node_id": "leasehold_improvements_gross",
+                      "metric_id": "leasehold_improvements_gross",
+                      "label": "Leasehold Improvements",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": null,
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:LeaseholdImprovementsGross",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "ppe_accumulated_depreciation",
+                  "metric_id": "ppe_accumulated_depreciation",
+                  "label": "Accumulated Depreciation, PP&E",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": true,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "operating_lease_rou_assets",
+              "metric_id": "operating_lease_rou_assets",
+              "label": "Operating Lease Right-of-Use Assets",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OperatingLeaseRightOfUseAsset",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "finance_lease_rou_assets",
+              "metric_id": "finance_lease_rou_assets",
+              "label": "Finance Lease Right-of-Use Assets",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:FinanceLeaseRightOfUseAsset",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "intangibles_including_goodwill_net",
+              "metric_id": "intangibles_including_goodwill_net",
+              "label": "Intangible Assets Including Goodwill, Net",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IntangibleAssetsNetIncludingGoodwill",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": [
+                {
+                  "node_id": "goodwill",
+                  "metric_id": "goodwill",
+                  "label": "Goodwill",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:Goodwill",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "intangible_assets_net_excluding_goodwill",
+                  "metric_id": "intangible_assets_net_excluding_goodwill",
+                  "label": "Intangible Assets, Net (Excluding Goodwill)",
+                  "node_kind": "total",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:IntangibleAssetsNetExcludingGoodwill",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": [
+                    {
+                      "node_id": "finite_lived_intangibles_net",
+                      "metric_id": "finite_lived_intangibles_net",
+                      "label": "Finite-lived Intangible Assets, Net",
+                      "node_kind": "total",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": null,
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:FiniteLivedIntangibleAssetsNet",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": [
+                        {
+                          "node_id": "finite_lived_intangibles_gross",
+                          "metric_id": "finite_lived_intangibles_gross",
+                          "label": "Finite-lived Intangible Assets, Gross",
+                          "node_kind": "line_item",
+                          "aggregation_policy": "none",
+                          "period_type": "instant",
+                          "unit_type": "monetary",
+                          "contra": false,
+                          "taxonomy_type": null,
+                          "classification_note": "",
+                          "concepts": [
+                            {
+                              "name": "us-gaap:FiniteLivedIntangibleAssetsGross",
+                              "status": "proposed",
+                              "review_reason": null
+                            }
+                          ],
+                          "children": []
+                        },
+                        {
+                          "node_id": "finite_lived_intangibles_accum_amortization",
+                          "metric_id": "finite_lived_intangibles_accum_amortization",
+                          "label": "Accumulated Amortization",
+                          "node_kind": "line_item",
+                          "aggregation_policy": "none",
+                          "period_type": "instant",
+                          "unit_type": "monetary",
+                          "contra": true,
+                          "taxonomy_type": null,
+                          "classification_note": "",
+                          "concepts": [
+                            {
+                              "name": "us-gaap:FiniteLivedIntangibleAssetsAccumulatedAmortization",
+                              "status": "proposed",
+                              "review_reason": null
+                            }
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "indefinite_lived_intangibles",
+                      "metric_id": "indefinite_lived_intangibles",
+                      "label": "Indefinite-lived Intangibles",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": null,
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:IndefiniteLivedIntangibleAssetsExcludingGoodwill",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "node_id": "long_term_investments",
+              "metric_id": "long_term_investments",
+              "label": "Long-term Investments",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:LongTermInvestments",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:AvailableForSaleSecuritiesDebtSecuritiesNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:EquityMethodInvestments",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:InvestmentsInAffiliatesSubsidiariesAssociatesAndJointVentures",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:EquitySecuritiesWithoutReadilyDeterminableFairValueAmount",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "deferred_tax_assets_net",
+              "metric_id": "deferred_tax_assets_net",
+              "label": "Deferred Tax Assets, Net",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DeferredIncomeTaxAssetsNet",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": [
+                {
+                  "node_id": "deferred_tax_assets_net_of_valuation_allowance",
+                  "metric_id": "deferred_tax_assets_net_of_valuation_allowance",
+                  "label": "Deferred Tax Assets, Net of Valuation Allowance (Before Liability Offsets)",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:DeferredTaxAssetsNet",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "deferred_tax_assets_gross",
+                  "metric_id": "deferred_tax_assets_gross",
+                  "label": "Deferred Tax Assets, Gross",
+                  "node_kind": "total",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:DeferredTaxAssetsGross",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": [
+                    {
+                      "node_id": "deferred_tax_assets_deferred_income",
+                      "metric_id": "deferred_tax_assets_deferred_income",
+                      "label": "Deferred Tax Assets Related to Deferred Income",
+                      "node_kind": "line_item",
+                      "aggregation_policy": "none",
+                      "period_type": "instant",
+                      "unit_type": "monetary",
+                      "contra": false,
+                      "taxonomy_type": null,
+                      "classification_note": "",
+                      "concepts": [
+                        {
+                          "name": "us-gaap:DeferredTaxAssetsDeferredIncome",
+                          "status": "proposed",
+                          "review_reason": null
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "node_id": "capitalized_contract_costs_noncurrent",
+              "metric_id": "capitalized_contract_costs_noncurrent",
+              "label": "Capitalized Contract Costs, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CapitalizedContractCostNetNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:CapitalizedContractCostNet",
+                  "status": "review",
+                  "review_reason": "Confirm the unspecified-maturity contract cost balance is noncurrent."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "restricted_cash_noncurrent",
+              "metric_id": "restricted_cash_noncurrent",
+              "label": "Restricted Cash, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:RestrictedCashNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:RestrictedCashAndCashEquivalentsNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_noncurrent_assets",
+              "metric_id": "other_noncurrent_assets",
+              "label": "Other Noncurrent Assets",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherAssetsNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:DeferredCosts",
+                  "status": "review",
+                  "review_reason": "Confirm the scope and maturity of deferred costs before using this noncurrent node."
+                },
+                {
+                  "name": "us-gaap:OtherAssets",
+                  "status": "review",
+                  "review_reason": "Confirm the unspecified other-assets balance is noncurrent and does not overlap other mapped balances."
+                },
+                {
+                  "name": "us-gaap:OtherAssetsMiscellaneousNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:NotesAndLoansReceivableNetNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "deposits_noncurrent",
+              "metric_id": "deposits_noncurrent",
+              "label": "Deposits, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DepositsAssetsNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "marketable_securities_noncurrent",
+              "metric_id": "marketable_securities_noncurrent",
+              "label": "Marketable Securities, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:MarketableSecuritiesNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "capitalized_software_net",
+              "metric_id": "capitalized_software_net",
+              "label": "Capitalized Computer Software, Net",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CapitalizedComputerSoftwareNet",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "assets_held_in_trust",
+              "metric_id": "assets_held_in_trust",
+              "label": "Assets Held in Trust",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AssetsHeldInTrustNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "prepaid_expenses_noncurrent",
+              "metric_id": "prepaid_expenses_noncurrent",
+              "label": "Prepaid Expenses, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PrepaidExpenseNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "equity_securities_fv_ni_maturity_unspecified",
+          "metric_id": "equity_securities_fv_ni_maturity_unspecified",
+          "label": "Equity Securities at Fair Value Through Net Income, Maturity Unspecified",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:EquitySecuritiesFvNi",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "held_for_sale_assets",
+          "metric_id": "held_for_sale_assets",
+          "label": "Assets Held for Sale / Disposal Groups",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:AssetsHeldForSaleNotPartOfDisposalGroupCurrent",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:AssetsOfDisposalGroupIncludingDiscontinuedOperation",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": [
+            {
+              "node_id": "disposal_group_assets_current",
+              "metric_id": "disposal_group_assets_current",
+              "label": "Disposal Group Assets, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AssetsOfDisposalGroupIncludingDiscontinuedOperationCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "disposal_group_assets_noncurrent",
+              "metric_id": "disposal_group_assets_noncurrent",
+              "label": "Disposal Group Assets, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DisposalGroupIncludingDiscontinuedOperationAssetsNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "liabilities",
+      "metric_id": "liabilities",
+      "label": "Liabilities",
+      "node_kind": "total",
+      "aggregation_policy": "none",
+      "period_type": "instant",
+      "unit_type": "monetary",
+      "contra": false,
+      "taxonomy_type": null,
+      "classification_note": "",
+      "concepts": [
+        {
+          "name": "us-gaap:Liabilities",
+          "status": "proposed",
+          "review_reason": null
+        }
+      ],
+      "children": [
+        {
+          "node_id": "current_liabilities",
+          "metric_id": "current_liabilities",
+          "label": "Current Liabilities",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:LiabilitiesCurrent",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": [
+            {
+              "node_id": "accounts_payable_current",
+              "metric_id": "accounts_payable_current",
+              "label": "Accounts Payable",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AccountsPayableCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:AccountsPayableOtherCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:AccountsPayableTradeCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "accrued_liabilities_current",
+              "metric_id": "accrued_liabilities_current",
+              "label": "Accrued Liabilities",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AccruedLiabilitiesCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": [
+                {
+                  "node_id": "employee_liabilities_current",
+                  "metric_id": "employee_liabilities_current",
+                  "label": "Employee-related Accruals",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:EmployeeRelatedLiabilitiesCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    },
+                    {
+                      "name": "us-gaap:AccruedEmployeeBenefitsCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    },
+                    {
+                      "name": "us-gaap:AccruedPayrollTaxesCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    },
+                    {
+                      "name": "us-gaap:AccruedSalariesCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "interest_payable_current",
+                  "metric_id": "interest_payable_current",
+                  "label": "Interest Payable",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:InterestPayableCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "other_accrued_liabilities_current",
+                  "metric_id": "other_accrued_liabilities_current",
+                  "label": "Other Accrued Liabilities",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:OtherAccruedLiabilitiesCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    },
+                    {
+                      "name": "us-gaap:AccruedMarketingCostsCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    },
+                    {
+                      "name": "us-gaap:AccruedProfessionalFeesCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    },
+                    {
+                      "name": "us-gaap:AccruedRoyaltiesCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "debt_current",
+              "metric_id": "debt_current",
+              "label": "Current Debt and Borrowings",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DebtCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:ConvertibleDebtCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:ConvertibleNotesPayableCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:LoansPayableCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:LinesOfCreditCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:ShortTermBankLoansAndNotesPayable",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": [
+                {
+                  "node_id": "short_term_borrowings",
+                  "metric_id": "short_term_borrowings",
+                  "label": "Short-term Borrowings",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:ShortTermBorrowings",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "long_term_debt_current",
+                  "metric_id": "long_term_debt_current",
+                  "label": "Current Portion of Long-term Debt",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:LongTermDebtCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "notes_payable_current",
+                  "metric_id": "notes_payable_current",
+                  "label": "Notes Payable, Current",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:NotesPayableCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "operating_lease_liability_current",
+              "metric_id": "operating_lease_liability_current",
+              "label": "Operating Lease Liabilities, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OperatingLeaseLiabilityCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "finance_lease_liability_current",
+              "metric_id": "finance_lease_liability_current",
+              "label": "Finance Lease Liabilities, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:FinanceLeaseLiabilityCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "contract_liability_current",
+              "metric_id": "contract_liability_current",
+              "label": "Contract Liabilities, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ContractWithCustomerLiabilityCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:ContractWithCustomerLiability",
+                  "status": "review",
+                  "review_reason": "Confirm the contract liability is current rather than a combined maturity balance."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "taxes_payable_current",
+              "metric_id": "taxes_payable_current",
+              "label": "Taxes Payable, Current",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TaxesPayableCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": [
+                {
+                  "node_id": "income_taxes_payable_current",
+                  "metric_id": "income_taxes_payable_current",
+                  "label": "Income Taxes Payable, Current",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:AccruedIncomeTaxesCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    },
+                    {
+                      "name": "us-gaap:AccruedIncomeTaxes",
+                      "status": "review",
+                      "review_reason": "Confirm the accrued income tax balance is current."
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "node_id": "sales_excise_taxes_payable_current",
+                  "metric_id": "sales_excise_taxes_payable_current",
+                  "label": "Sales and Excise Taxes Payable, Current",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": false,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:SalesAndExciseTaxPayableCurrent",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "node_id": "derivative_liabilities_current",
+              "metric_id": "derivative_liabilities_current",
+              "label": "Derivative Liabilities, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DerivativeLiabilitiesCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_current_liabilities",
+              "metric_id": "other_current_liabilities",
+              "label": "Other Current Liabilities",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherLiabilitiesCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "accounts_payable_and_accruals_current",
+              "metric_id": "accounts_payable_and_accruals_current",
+              "label": "Accounts Payable and Accrued Liabilities, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AccountsPayableAndAccruedLiabilitiesCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:AccountsPayableAndOtherAccruedLiabilitiesCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "dividends_payable_current",
+              "metric_id": "dividends_payable_current",
+              "label": "Dividends Payable",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DividendsPayableCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "contingent_consideration_current",
+              "metric_id": "contingent_consideration_current",
+              "label": "Contingent Consideration, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:BusinessCombinationContingentConsiderationLiabilityCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "restructuring_reserve_current",
+              "metric_id": "restructuring_reserve_current",
+              "label": "Restructuring Reserve, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:RestructuringReserveCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "litigation_reserve_current",
+              "metric_id": "litigation_reserve_current",
+              "label": "Litigation Reserve, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:LitigationReserveCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "deferred_revenue_current",
+              "metric_id": "deferred_revenue_current",
+              "label": "Deferred Revenue, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DeferredRevenueCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "noncurrent_liabilities",
+          "metric_id": "noncurrent_liabilities",
+          "label": "Noncurrent Liabilities",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:LiabilitiesNoncurrent",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": [
+            {
+              "node_id": "long_term_debt_noncurrent",
+              "metric_id": "long_term_debt_noncurrent",
+              "label": "Long-term Debt, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:LongTermDebtNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:ConvertibleDebtNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:ConvertibleLongTermNotesPayable",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:LongTermLoansPayable",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:LongTermNotesPayable",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:OtherLongTermDebtNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "operating_lease_liability_noncurrent",
+              "metric_id": "operating_lease_liability_noncurrent",
+              "label": "Operating Lease Liabilities, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OperatingLeaseLiabilityNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "finance_lease_liability_noncurrent",
+              "metric_id": "finance_lease_liability_noncurrent",
+              "label": "Finance Lease Liabilities, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:FinanceLeaseLiabilityNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "contract_liability_noncurrent",
+              "metric_id": "contract_liability_noncurrent",
+              "label": "Contract Liabilities, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ContractWithCustomerLiabilityNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "deferred_revenue_noncurrent",
+              "metric_id": "deferred_revenue_noncurrent",
+              "label": "Deferred Revenue, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DeferredRevenueNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "deferred_tax_liabilities",
+              "metric_id": "deferred_tax_liabilities",
+              "label": "Deferred Tax Liabilities",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DeferredIncomeTaxLiabilities",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:DeferredIncomeTaxLiabilitiesNet",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:DeferredTaxLiabilities",
+                  "status": "review",
+                  "review_reason": "Confirm the gross/net scope and presentation of the deferred tax liability."
+                },
+                {
+                  "name": "us-gaap:DeferredTaxLiabilitiesOther",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "contingent_consideration_liability_noncurrent",
+              "metric_id": "contingent_consideration_liability_noncurrent",
+              "label": "Contingent Consideration Liabilities, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:BusinessCombinationContingentConsiderationLiabilityNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:BusinessCombinationContingentConsiderationLiability",
+                  "status": "review",
+                  "review_reason": "Confirm the contingent consideration liability is noncurrent."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_noncurrent_liabilities",
+              "metric_id": "other_noncurrent_liabilities",
+              "label": "Other Noncurrent Liabilities",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherLiabilitiesNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:DeferredRentCredit",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "tax_uncertainty_noncurrent",
+              "metric_id": "tax_uncertainty_noncurrent",
+              "label": "Uncertain Tax Positions, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:LiabilityForUncertainTaxPositionsNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "derivative_liabilities_noncurrent",
+              "metric_id": "derivative_liabilities_noncurrent",
+              "label": "Derivative Liabilities, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DerivativeLiabilitiesNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "income_taxes_payable_noncurrent",
+              "metric_id": "income_taxes_payable_noncurrent",
+              "label": "Income Taxes Payable, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AccruedIncomeTaxesNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "other_accrued_liabilities_noncurrent",
+              "metric_id": "other_accrued_liabilities_noncurrent",
+              "label": "Other Accrued Liabilities, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:OtherAccruedLiabilitiesNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "operating_lease_liability_total",
+          "metric_id": "operating_lease_liability_total",
+          "label": "Operating Lease Liabilities, Total",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:OperatingLeaseLiability",
+              "status": "review",
+              "review_reason": "Confirm whether the reported lease liability is a total or a maturity-specific balance."
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "deferred_revenue_unspecified",
+          "metric_id": "deferred_revenue_unspecified",
+          "label": "Deferred Revenue, Maturity Unspecified",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:DeferredRevenue",
+              "status": "review",
+              "review_reason": "Confirm whether deferred revenue combines current and noncurrent amounts."
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "disposal_group_liabilities",
+          "metric_id": "disposal_group_liabilities",
+          "label": "Disposal Group Liabilities",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:LiabilitiesOfDisposalGroupIncludingDiscontinuedOperation",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": [
+            {
+              "node_id": "disposal_group_liabilities_current",
+              "metric_id": "disposal_group_liabilities_current",
+              "label": "Disposal Group Liabilities, Current",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:LiabilitiesOfDisposalGroupIncludingDiscontinuedOperationCurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "disposal_group_liabilities_noncurrent",
+              "metric_id": "disposal_group_liabilities_noncurrent",
+              "label": "Disposal Group Liabilities, Noncurrent",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:LiabilitiesOfDisposalGroupIncludingDiscontinuedOperationNoncurrent",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "liabilities_mixed_maturity",
+          "metric_id": "liabilities_mixed_maturity",
+          "label": "Liabilities, Current and Noncurrent / Unspecified",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:AccountsPayableAndAccruedLiabilitiesCurrentAndNoncurrent",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:AccountsPayableCurrentAndNoncurrent",
+              "status": "review",
+              "review_reason": "Confirm the combined maturity scope and overlap with separately mapped payable balances."
+            },
+            {
+              "name": "us-gaap:AccruedLiabilitiesAndOtherLiabilities",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:AccruedLiabilitiesCurrentAndNoncurrent",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:OtherAccountsPayableAndAccruedLiabilities",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:OtherLiabilities",
+              "status": "review",
+              "review_reason": "Confirm the liability scope and maturity before using this mixed-maturity node."
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "node_id": "total_equity_including_nci",
+      "metric_id": "total_equity_including_nci",
+      "label": "Total Equity Including Noncontrolling Interest",
+      "node_kind": "total",
+      "aggregation_policy": "none",
+      "period_type": "instant",
+      "unit_type": "monetary",
+      "contra": false,
+      "taxonomy_type": null,
+      "classification_note": "",
+      "concepts": [
+        {
+          "name": "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+          "status": "proposed",
+          "review_reason": null
+        }
+      ],
+      "children": [
+        {
+          "node_id": "equity_attributable_to_parent",
+          "metric_id": "equity_attributable_to_parent",
+          "label": "Stockholders' Equity Attributable to Parent",
+          "node_kind": "total",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:StockholdersEquity",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": [
+            {
+              "node_id": "common_stock_value",
+              "metric_id": "common_stock_value",
+              "label": "Common Stock",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockValue",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:CommonStockValueOutstanding",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_value",
+              "metric_id": "preferred_stock_value",
+              "label": "Preferred Stock",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockValue",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "additional_paid_in_capital",
+              "metric_id": "additional_paid_in_capital",
+              "label": "Additional Paid-in Capital",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AdditionalPaidInCapital",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:AdditionalPaidInCapitalCommonStock",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "retained_earnings",
+              "metric_id": "retained_earnings",
+              "label": "Retained Earnings / Accumulated Deficit",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:RetainedEarningsAccumulatedDeficit",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "accumulated_oci",
+              "metric_id": "accumulated_oci",
+              "label": "Accumulated Other Comprehensive Income (Loss)",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:AccumulatedOtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax",
+                  "status": "proposed",
+                  "review_reason": null
+                },
+                {
+                  "name": "us-gaap:AccumulatedOtherComprehensiveIncomeLossForeignCurrencyTranslationAdjustmentNetOfTax",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "treasury_stock_value",
+              "metric_id": "treasury_stock_value",
+              "label": "Treasury Stock",
+              "node_kind": "total",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": true,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TreasuryStockValue",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": [
+                {
+                  "node_id": "treasury_stock_common_value",
+                  "metric_id": "treasury_stock_common_value",
+                  "label": "Treasury Stock, Common",
+                  "node_kind": "line_item",
+                  "aggregation_policy": "none",
+                  "period_type": "instant",
+                  "unit_type": "monetary",
+                  "contra": true,
+                  "taxonomy_type": null,
+                  "classification_note": "",
+                  "concepts": [
+                    {
+                      "name": "us-gaap:TreasuryStockCommonValue",
+                      "status": "proposed",
+                      "review_reason": null
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "noncontrolling_interest",
+          "metric_id": "noncontrolling_interest",
+          "label": "Noncontrolling Interest",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:MinorityInterest",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "node_id": "temporary_equity",
+      "metric_id": null,
+      "label": "Temporary / Mezzanine Equity",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "temporary_equity_parent",
+          "metric_id": "temporary_equity_parent",
+          "label": "Temporary Equity Attributable to Parent",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:TemporaryEquityCarryingAmountAttributableToParent",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "redeemable_nci",
+          "metric_id": "redeemable_nci",
+          "label": "Redeemable Noncontrolling Interest",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:RedeemableNoncontrollingInterestEquityCarryingAmount",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "node_id": "liabilities_and_stockholders_equity",
+      "metric_id": "liabilities_and_stockholders_equity",
+      "label": "Total Liabilities and Equity",
+      "node_kind": "total",
+      "aggregation_policy": "none",
+      "period_type": "instant",
+      "unit_type": "monetary",
+      "contra": false,
+      "taxonomy_type": null,
+      "classification_note": "",
+      "concepts": [
+        {
+          "name": "us-gaap:LiabilitiesAndStockholdersEquity",
+          "status": "proposed",
+          "review_reason": null
+        }
+      ],
+      "children": []
+    },
+    {
+      "node_id": "supplementary_disclosures",
+      "metric_id": null,
+      "label": "Supplementary Disclosures",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "",
+      "concepts": [],
+      "children": [
+        {
+          "node_id": "share_information",
+          "metric_id": null,
+          "label": "Share Counts and Capital Terms",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "common_shares_issued",
+              "metric_id": "common_shares_issued",
+              "label": "Common Shares Issued",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockSharesIssued",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "common_shares_outstanding",
+              "metric_id": "common_shares_outstanding",
+              "label": "Common Shares Outstanding",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockSharesOutstanding",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "common_shares_authorized",
+              "metric_id": "common_shares_authorized",
+              "label": "Common Shares Authorized",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockSharesAuthorized",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "common_stock_par_value",
+              "metric_id": "common_stock_par_value",
+              "label": "Common Stock Par Value per Share",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockParOrStatedValuePerShare",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_shares_issued",
+              "metric_id": "preferred_shares_issued",
+              "label": "Preferred Shares Issued",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockSharesIssued",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "debt_and_investment_details",
+          "metric_id": null,
+          "label": "Debt and Investment Disclosures",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "debt_face_amount",
+              "metric_id": "debt_face_amount",
+              "label": "Debt Face Amount",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DebtInstrumentFaceAmount",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "long_term_debt_fair_value",
+              "metric_id": "long_term_debt_fair_value",
+              "label": "Long-term Debt Fair Value",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:LongTermDebtFairValue",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "investment_fair_value",
+              "metric_id": "investment_fair_value",
+              "label": "Investments Fair Value",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:InvestmentsFairValueDisclosure",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "commitments",
+          "metric_id": "commitments",
+          "label": "Commitments and Contingencies",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:CommitmentsAndContingencies",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "debt_terms",
+          "metric_id": "debt_terms",
+          "label": "Debt Terms and Financing Costs",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:ConvertibleDebt",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:ConvertibleNotesPayable",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:DebtInstrumentUnamortizedDiscount",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:DebtInstrumentUnamortizedDiscountCurrent",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:DeferredFinanceCostsNet",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:DeferredFinanceCostsNoncurrentNet",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:LineOfCredit",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:LongTermLineOfCredit",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:LongTermDebtAndCapitalLeaseObligations",
+              "status": "review",
+              "review_reason": "Confirm the combined debt and lease scope and whether current portions are included."
+            },
+            {
+              "name": "us-gaap:UnamortizedDebtIssuanceExpense",
+              "status": "proposed",
+              "review_reason": null
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "equity_terms",
+          "metric_id": null,
+          "label": "Equity Terms, Shares and Warrants",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "class_of_warrant_or_right_outstanding",
+              "metric_id": "class_of_warrant_or_right_outstanding",
+              "label": "ClassOfWarrantOrRightOutstanding",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:ClassOfWarrantOrRightOutstanding",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "common_stock_capital_shares_reserved_for_future_issuance",
+              "metric_id": "common_stock_capital_shares_reserved_for_future_issuance",
+              "label": "CommonStockCapitalSharesReservedForFutureIssuance",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockCapitalSharesReservedForFutureIssuance",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_shares_authorized",
+              "metric_id": "preferred_stock_shares_authorized",
+              "label": "PreferredStockSharesAuthorized",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockSharesAuthorized",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_shares_outstanding",
+              "metric_id": "preferred_stock_shares_outstanding",
+              "label": "PreferredStockSharesOutstanding",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockSharesOutstanding",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "temporary_equity_shares_authorized",
+              "metric_id": "temporary_equity_shares_authorized",
+              "label": "TemporaryEquitySharesAuthorized",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TemporaryEquitySharesAuthorized",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "temporary_equity_shares_issued",
+              "metric_id": "temporary_equity_shares_issued",
+              "label": "TemporaryEquitySharesIssued",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TemporaryEquitySharesIssued",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "temporary_equity_shares_outstanding",
+              "metric_id": "temporary_equity_shares_outstanding",
+              "label": "TemporaryEquitySharesOutstanding",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TemporaryEquitySharesOutstanding",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "treasury_stock_common_shares",
+              "metric_id": "treasury_stock_common_shares",
+              "label": "TreasuryStockCommonShares",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TreasuryStockCommonShares",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "common_stock_no_par_value",
+              "metric_id": "common_stock_no_par_value",
+              "label": "CommonStockNoParValue",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockNoParValue",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_par_or_stated_value_per_share",
+              "metric_id": "preferred_stock_par_or_stated_value_per_share",
+              "label": "PreferredStockParOrStatedValuePerShare",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockParOrStatedValuePerShare",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "temporary_equity_par_or_stated_value_per_share",
+              "metric_id": "temporary_equity_par_or_stated_value_per_share",
+              "label": "TemporaryEquityParOrStatedValuePerShare",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TemporaryEquityParOrStatedValuePerShare",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "common_stock_shares_subscriptions",
+              "metric_id": "common_stock_shares_subscriptions",
+              "label": "CommonStockSharesSubscriptions",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CommonStockSharesSubscriptions",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_liquidation_preference_value",
+              "metric_id": "preferred_stock_liquidation_preference_value",
+              "label": "PreferredStockLiquidationPreferenceValue",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockLiquidationPreferenceValue",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "temporary_equity_liquidation_preference",
+              "metric_id": "temporary_equity_liquidation_preference",
+              "label": "TemporaryEquityLiquidationPreference",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TemporaryEquityLiquidationPreference",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "warrants_and_rights_outstanding",
+              "metric_id": "warrants_and_rights_outstanding",
+              "label": "WarrantsAndRightsOutstanding",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:WarrantsAndRightsOutstanding",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "preferred_stock_dividend_rate_percentage",
+              "metric_id": "preferred_stock_dividend_rate_percentage",
+              "label": "PreferredStockDividendRatePercentage",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "percent",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:PreferredStockDividendRatePercentage",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "stockholders_equity_note_stock_split_conversion_ratio1",
+              "metric_id": "stockholders_equity_note_stock_split_conversion_ratio1",
+              "label": "StockholdersEquityNoteStockSplitConversionRatio1",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "ratio",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:StockholdersEquityNoteStockSplitConversionRatio1",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "treasury_stock_acquired_average_cost_per_share",
+              "metric_id": "treasury_stock_acquired_average_cost_per_share",
+              "label": "TreasuryStockAcquiredAverageCostPerShare",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "per_share",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TreasuryStockAcquiredAverageCostPerShare",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "treasury_stock_shares_acquired",
+              "metric_id": "treasury_stock_shares_acquired",
+              "label": "TreasuryStockSharesAcquired",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "duration",
+              "unit_type": "shares",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:TreasuryStockSharesAcquired",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "asset_valuation_details",
+          "metric_id": null,
+          "label": "Asset Valuation and Gross/Net Details",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "available_for_sale_debt_securities_amortized_cost_basis",
+              "metric_id": "available_for_sale_debt_securities_amortized_cost_basis",
+              "label": "AvailableForSaleDebtSecuritiesAmortizedCostBasis",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AvailableForSaleDebtSecuritiesAmortizedCostBasis",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "available_for_sale_securities_debt_securities",
+              "metric_id": "available_for_sale_securities_debt_securities",
+              "label": "AvailableForSaleSecuritiesDebtSecurities",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:AvailableForSaleSecuritiesDebtSecurities",
+                  "status": "review",
+                  "review_reason": "Confirm the carrying-value measurement and overlap with other available-for-sale securities concepts."
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "debt_securities_available_for_sale_excluding_accrued_interest",
+              "metric_id": "debt_securities_available_for_sale_excluding_accrued_interest",
+              "label": "DebtSecuritiesAvailableForSaleExcludingAccruedInterest",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DebtSecuritiesAvailableForSaleExcludingAccruedInterest",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "cash_and_cash_equivalents_fair_value_disclosure",
+              "metric_id": "cash_and_cash_equivalents_fair_value_disclosure",
+              "label": "CashAndCashEquivalentsFairValueDisclosure",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CashAndCashEquivalentsFairValueDisclosure",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "intangible_assets_gross_excluding_goodwill",
+              "metric_id": "intangible_assets_gross_excluding_goodwill",
+              "label": "IntangibleAssetsGrossExcludingGoodwill",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:IntangibleAssetsGrossExcludingGoodwill",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "capitalized_computer_software_gross",
+              "metric_id": "capitalized_computer_software_gross",
+              "label": "CapitalizedComputerSoftwareGross",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CapitalizedComputerSoftwareGross",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "debt_securities_available_for_sale_allowance_for_credit_loss",
+              "metric_id": "debt_securities_available_for_sale_allowance_for_credit_loss",
+              "label": "DebtSecuritiesAvailableForSaleAllowanceForCreditLoss",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": true,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DebtSecuritiesAvailableForSaleAllowanceForCreditLoss",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "finance_lease_right_of_use_asset_accumulated_amortization",
+              "metric_id": "finance_lease_right_of_use_asset_accumulated_amortization",
+              "label": "FinanceLeaseRightOfUseAssetAccumulatedAmortization",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": true,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:FinanceLeaseRightOfUseAssetAccumulatedAmortization",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            },
+            {
+              "node_id": "capitalized_computer_software_accumulated_amortization",
+              "metric_id": "capitalized_computer_software_accumulated_amortization",
+              "label": "CapitalizedComputerSoftwareAccumulatedAmortization",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": true,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:CapitalizedComputerSoftwareAccumulatedAmortization",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "other_disclosures_review",
+          "metric_id": "other_disclosures_review",
+          "label": "Other Disclosures / Review",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:BusinessAcquisitionCostOfAcquiredEntityTransactionCosts",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:PurchaseObligation",
+              "status": "proposed",
+              "review_reason": null
+            },
+            {
+              "name": "us-gaap:UnrecognizedTaxBenefits",
+              "status": "review",
+              "review_reason": "Confirm whether this is a disclosure balance or a recognized liability before presentation."
+            }
+          ],
+          "children": []
+        },
+        {
+          "node_id": "pension_disclosures",
+          "metric_id": null,
+          "label": "Pension Disclosures",
+          "node_kind": "group",
+          "aggregation_policy": "none",
+          "period_type": null,
+          "unit_type": null,
+          "contra": null,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [],
+          "children": [
+            {
+              "node_id": "defined_benefit_plan_benefit_obligation",
+              "metric_id": "defined_benefit_plan_benefit_obligation",
+              "label": "Defined Benefit Plan, Benefit Obligation",
+              "node_kind": "line_item",
+              "aggregation_policy": "none",
+              "period_type": "instant",
+              "unit_type": "monetary",
+              "contra": false,
+              "taxonomy_type": null,
+              "classification_note": "",
+              "concepts": [
+                {
+                  "name": "us-gaap:DefinedBenefitPlanBenefitObligation",
+                  "status": "proposed",
+                  "review_reason": null
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "node_id": "other_intangible_assets_net",
+          "metric_id": "other_intangible_assets_net",
+          "label": "Other Intangible Assets Net",
+          "node_kind": "line_item",
+          "aggregation_policy": "none",
+          "period_type": "instant",
+          "unit_type": "monetary",
+          "contra": false,
+          "taxonomy_type": null,
+          "classification_note": "",
+          "concepts": [
+            {
+              "name": "us-gaap:OtherIntangibleAssetsNet",
+              "status": "review",
+              "review_reason": "Confirm the scope of other intangible assets and overlap with existing net intangible balances."
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "unmapped_placeholders": [
+    {
+      "node_id": "deferred_costs_noncurrent",
+      "metric_id": "deferred_costs_noncurrent",
+      "label": "Deferred Costs, Noncurrent",
+      "node_kind": "line_item",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "",
+      "concepts": [],
+      "children": []
+    },
+    {
+      "node_id": "total_debt_analytical",
+      "metric_id": null,
+      "label": "Total Debt (Derived / Source-specific)",
+      "node_kind": "analytical",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "",
+      "concepts": [],
+      "children": []
+    },
+    {
+      "node_id": "net_debt_analytical",
+      "metric_id": null,
+      "label": "Net Debt (Derived / Source-specific)",
+      "node_kind": "analytical",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "",
+      "concepts": [],
+      "children": []
+    },
+    {
+      "node_id": "analytical_metrics",
+      "metric_id": null,
+      "label": "Analytical Metrics",
+      "node_kind": "group",
+      "aggregation_policy": "none",
+      "period_type": null,
+      "unit_type": null,
+      "contra": null,
+      "taxonomy_type": null,
+      "classification_note": "",
+      "concepts": [],
+      "children": []
+    }
+  ]
+}

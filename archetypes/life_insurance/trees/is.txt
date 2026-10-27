@@ -1,0 +1,190 @@
+life_insurance — IS
+Types: [total], [group], [line_item]; * = review
+
+├── Revenue [group]
+│   ├── Total revenue [total]
+│   │   concept: us-gaap:Revenues
+│   ├── Net premiums earned [line_item]
+│   │   concept: us-gaap:PremiumsEarnedNet
+│   ├── Investment income and expenses [group]
+│   │   ├── Net investment income [total]
+│   │   │   concept: us-gaap:NetInvestmentIncome
+│   │   └── Investment expenses [line_item] *
+│   │       concept: us-gaap:InvestmentIncomeInvestmentExpense
+│   ├── Investment and derivative gains and losses [group]
+│   │   ├── Aggregate investment gains and losses [group]
+│   │   │   ├── Realized investment gains and losses [total]
+│   │   │   │   concept: us-gaap:RealizedInvestmentGainsLosses
+│   │   │   └── Realized and unrealized investment gains and losses [total] *
+│   │   │       concept: us-gaap:GainLossOnInvestments
+│   │   ├── Security and other investment disposal results [group]
+│   │   │   ├── Realized debt and equity security gains and losses [line_item] *
+│   │   │   │   concept: us-gaap:DebtAndEquitySecuritiesRealizedGainLoss
+│   │   │   ├── Realized FV-NI equity security gains and losses [line_item] *
+│   │   │   │   concept: us-gaap:EquitySecuritiesFvNiRealizedGainLoss
+│   │   │   └── Gains and losses on other investments [line_item] *
+│   │   │       concept: us-gaap:GainLossOnSaleOfOtherInvestments
+│   │   └── Pretax derivative gains and losses [line_item] *
+│   │       concept: us-gaap:GainLossOnDerivativeInstrumentsNetPretax
+│   └── Fee and other revenue [group]
+│       ├── Insurance commissions, fees and service income [line_item]
+│       │   concept: us-gaap:InsuranceCommissionsAndFees
+│       ├── Banking, advisory, brokerage and underwriting fees [line_item] *
+│       │   concept: us-gaap:InvestmentBankingAdvisoryBrokerageAndUnderwritingFeesAndCommissions
+│       └── Other income [line_item] *
+│           concept: us-gaap:OtherIncome
+├── Insurance benefits and expenses [group]
+│   ├── Reported expense total alternatives [group]
+│   │   ├── Total benefits, losses and expenses [total]
+│   │   │   concept: us-gaap:BenefitsLossesAndExpenses
+│   │   ├── Operating expenses [total] *
+│   │   │   concept: us-gaap:OperatingExpenses
+│   │   └── Costs and expenses [total] *
+│   │       concept: us-gaap:CostsAndExpenses
+│   ├── Policyholder benefits, claims and reinsurance [group]
+│   │   ├── Net policyholder benefits and claims [total]
+│   │   │   concept: us-gaap:PolicyholderBenefitsAndClaimsIncurredNet
+│   │   ├── Gross policyholder benefits and claims [total] *
+│   │   │   concept: us-gaap:PolicyholderBenefitsAndClaimsIncurredGross
+│   │   └── Net reinsurance recovery or expense [line_item] *
+│   │       concept: us-gaap:ReinsuranceCostsAndRecoveriesNet
+│   ├── Future policy benefit expense and remeasurement [group]
+│   │   ├── Future policy benefits period expense [line_item] *
+│   │   │   concept: us-gaap:LiabilityForFuturePolicyBenefitsPeriodExpense
+│   │   └── Future policy benefit remeasurement gain or loss [line_item] *
+│   │       concept: us-gaap:LiabilityForFuturePolicyBenefitRemeasurementGainLoss
+│   ├── Market risk benefit results [group]
+│   │   └── Market risk benefit fair-value gain or loss [line_item] *
+│   │       concept: us-gaap:MarketRiskBenefitChangeInFairValueGainLoss
+│   ├── Policyholder credited interest and dividends [group]
+│   │   ├── Interest credited to policyholder account balances [line_item]
+│   │   │   concept: us-gaap:InterestCreditedToPolicyholdersAccountBalances
+│   │   └── Policyholder dividends [line_item]
+│   │       concept: us-gaap:PolicyholderDividends
+│   ├── Acquisition cost and acquired business amortization [group]
+│   │   ├── DAC amortization expense [line_item]
+│   │   │   concept: us-gaap:DeferredPolicyAcquisitionCostAmortizationExpense
+│   │   ├── DAC and acquired future-profits amortization [total] *
+│   │   │   concept: us-gaap:DeferredPolicyAcquisitionCostsAndPresentValueOfFutureProfitsAmortization1
+│   │   └── VOBA amortization [line_item]
+│   │       concept: us-gaap:AmortizationOfValueOfBusinessAcquiredVOBA
+│   ├── Selling and administrative expenses [group]
+│   │   ├── Administrative expense totals [group]
+│   │   │   ├── Selling, general and administrative expenses [total]
+│   │   │   │   concept: us-gaap:SellingGeneralAndAdministrativeExpense
+│   │   │   ├── General and administrative expenses [total] *
+│   │   │   │   concept: us-gaap:GeneralAndAdministrativeExpense
+│   │   │   └── Other general and administrative expenses [line_item]
+│   │   │       concept: us-gaap:OtherGeneralAndAdministrativeExpense
+│   │   ├── Commission expenses [group]
+│   │   │   ├── Insurance commission expense [line_item]
+│   │   │   │   concept: us-gaap:InsuranceCommissions
+│   │   │   └── Sales commissions and fees [line_item] *
+│   │   │       concept: us-gaap:SalesCommissionsAndFees
+│   │   ├── Personnel expenses [group]
+│   │   │   ├── Labor and related expenses [total]
+│   │   │   │   concept: us-gaap:LaborAndRelatedExpense
+│   │   │   └── Employee benefits and share-based compensation [line_item] *
+│   │   │       concept: us-gaap:EmployeeBenefitsAndShareBasedCompensation
+│   │   └── Other administrative cost disclosures [group]
+│   │       ├── Operating lease expense [line_item] *
+│   │       │   concept: us-gaap:OperatingLeaseExpense
+│   │       └── Professional fees [line_item] *
+│   │           concept: us-gaap:ProfessionalFees
+│   └── Other expense disclosures [group]
+│       ├── Other operating costs and expenses [line_item]
+│       │   concept: us-gaap:OtherCostAndExpenseOperating
+│       └── Other expenses [line_item] *
+│           concept: us-gaap:OtherExpenses
+├── Interest and other nonoperating results [group]
+│   ├── Interest expense presentations [group]
+│   │   ├── Total interest expense [total]
+│   │   │   concept: us-gaap:InterestExpense
+│   │   ├── Operating interest expense [line_item]
+│   │   │   concept: us-gaap:InterestExpenseOperating
+│   │   ├── Nonoperating interest expense [line_item]
+│   │   │   concept: us-gaap:InterestExpenseNonoperating
+│   │   └── Debt interest expense [line_item] *
+│   │       concept: us-gaap:InterestExpenseDebt
+│   ├── Other nonoperating income or expense [line_item]
+│   │   concept: us-gaap:OtherNonoperatingIncomeExpense
+│   └── Gain or loss on disposal within continuing operations [line_item] *
+│       concept: us-gaap:DisposalGroupNotDiscontinuedOperationGainLossOnDisposal
+├── Pretax income presentations [group]
+│   ├── Pretax continuing income before noncontrolling interests [total]
+│   │   concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+│   └── Pretax continuing income before equity-method results [total] *
+│       concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments
+├── Income tax expense and current components [group]
+│   ├── Continuing-operation income tax expense or benefit [total]
+│   │   concept: us-gaap:IncomeTaxExpenseBenefit
+│   └── Current income tax components [group]
+│       ├── Current income tax expense or benefit [line_item]
+│       │   concept: us-gaap:CurrentIncomeTaxExpenseBenefit
+│       └── Current federal or national tax expense or benefit [line_item]
+│           concept: us-gaap:CurrentFederalTaxExpenseBenefit
+├── Continuing and discontinued operation results [group]
+│   ├── Continuing operation results [group]
+│   │   ├── Consolidated continuing-operation income [total]
+│   │   │   concept: us-gaap:IncomeLossFromContinuingOperationsIncludingPortionAttributableToNoncontrollingInterest
+│   │   ├── Parent-attributable continuing-operation income [total]
+│   │   │   concept: us-gaap:IncomeLossFromContinuingOperations
+│   │   └── Noncontrolling interests in continuing-operation income [line_item]
+│   │       concept: us-gaap:IncomeLossFromContinuingOperationsAttributableToNoncontrollingEntity
+│   └── Discontinued operation results [group]
+│       ├── Consolidated discontinued-operation income [total]
+│       │   concept: us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTax
+│       └── Parent-attributable discontinued-operation income [total]
+│           concept: us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity
+├── Net income and attribution [group]
+│   ├── Consolidated net income [total]
+│   │   concept: us-gaap:ProfitLoss
+│   ├── Parent-attributable net income [total]
+│   │   concept: us-gaap:NetIncomeLoss
+│   └── Net income attributable to noncontrolling interests [line_item]
+│       concept: us-gaap:NetIncomeLossAttributableToNoncontrollingInterest
+├── Common shareholder income and adjustments [group]
+│   ├── Preferred dividends and other adjustments [group]
+│   │   ├── Preferred dividends affecting common income [line_item]
+│   │   │   concept: us-gaap:PreferredStockDividendsIncomeStatementImpact
+│   │   └── Preferred dividends and other common-income adjustments [total] *
+│   │       concept: us-gaap:PreferredStockDividendsAndOtherAdjustments
+│   ├── Income available to common shareholders - basic [total]
+│   │   concept: us-gaap:NetIncomeLossAvailableToCommonStockholdersBasic
+│   └── Income available to common shareholders - diluted [total]
+│       concept: us-gaap:NetIncomeLossAvailableToCommonStockholdersDiluted
+├── Earnings per share [group]
+│   ├── Total earnings per share [group]
+│   │   ├── Basic earnings per share [line_item]
+│   │   │   concept: us-gaap:EarningsPerShareBasic
+│   │   └── Diluted earnings per share [line_item]
+│   │       concept: us-gaap:EarningsPerShareDiluted
+│   └── Continuing-operation earnings per share [group]
+│       ├── Basic continuing-operation earnings per share [line_item]
+│       │   concept: us-gaap:IncomeLossFromContinuingOperationsPerBasicShare
+│       └── Diluted continuing-operation earnings per share [line_item]
+│           concept: us-gaap:IncomeLossFromContinuingOperationsPerDilutedShare
+├── Weighted-average shares [group]
+│   ├── Basic weighted-average shares [line_item]
+│   │   concept: us-gaap:WeightedAverageNumberOfSharesOutstandingBasic
+│   └── Diluted weighted-average shares [line_item]
+│       concept: us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding
+└── Supplementary disclosures [group]
+    ├── Written premium disclosures [group]
+    │   ├── Direct premiums written [line_item]
+    │   │   concept: us-gaap:DirectPremiumsWritten
+    │   ├── Ceded premiums written [line_item]
+    │   │   concept: us-gaap:CededPremiumsWritten
+    │   └── Net premiums written [line_item]
+    │       concept: us-gaap:PremiumsWrittenNet
+    ├── Geographic pretax income [group]
+    │   └── Domestic pretax continuing-operation income [line_item]
+    │       concept: us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic
+    ├── Acquisition cost and reserve rollforward disclosures [group]
+    │   ├── DAC disposed or classified as held for sale [line_item] *
+    │   │   concept: us-gaap:DeferredPolicyAcquisitionCostsDisposition
+    │   └── Expected future policy benefits - other change [line_item] *
+    │       concept: us-gaap:LiabilityForFuturePolicyBenefitExpectedFuturePolicyBenefitIncreaseDecreaseForOtherChange
+    └── OCI tax disclosures [group]
+        └── Tax on market risk benefit credit-risk OCI [line_item] *
+            concept: us-gaap:OciMarketRiskBenefitInstrumentSpecificCreditRiskGainLossAfterAdjustmentsTax

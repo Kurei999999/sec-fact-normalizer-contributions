@@ -1,0 +1,3760 @@
+{
+  "schema_version": "1.2.0",
+  "status": "provisional_assignment_table",
+  "sources": {
+    "explicit_assignments": "DONE.md",
+    "sic_inventory_and_company_counts": "data/company_counts_by_sic.json",
+    "industry_reference": [
+      {
+        "url": "https://www.osha.gov/data/sic-manual/major-group-49",
+        "purpose": "Utility industry activity definitions; not proof of accounting equivalence."
+      },
+      {
+        "url": "https://www.bls.gov/cew/classifications/industry/sic-industry-titles.htm",
+        "purpose": "SIC industry titles; financial-statement reuse is a provisional project judgment."
+      }
+    ],
+    "similarity_basis": "Industry descriptions and concepts present in the existing specialist BS/IS/CF files; no issuer-level coverage measurement performed."
+  },
+  "archetypes": {
+    "banks": {
+      "directory": "archetypes/banks",
+      "statements": {
+        "BS": "archetypes/banks/bs.json",
+        "IS": "archetypes/banks/is.json",
+        "CF": "archetypes/banks/cf.json"
+      }
+    },
+    "electric_utilities": {
+      "directory": "archetypes/electric_utilities",
+      "statements": {
+        "BS": "archetypes/electric_utilities/bs.json",
+        "IS": "archetypes/electric_utilities/is.json",
+        "CF": "archetypes/electric_utilities/cf.json"
+      }
+    },
+    "general_corporate": {
+      "directory": "archetypes/general_corporate",
+      "statements": {
+        "BS": "archetypes/general_corporate/bs.json",
+        "IS": "archetypes/general_corporate/is.json",
+        "CF": "archetypes/general_corporate/cf.json"
+      }
+    },
+    "life_insurance": {
+      "directory": "archetypes/life_insurance",
+      "statements": {
+        "BS": "archetypes/life_insurance/bs.json",
+        "IS": "archetypes/life_insurance/is.json",
+        "CF": "archetypes/life_insurance/cf.json"
+      }
+    },
+    "oil_and_gas_extraction": {
+      "directory": "archetypes/oil_and_gas_extraction",
+      "statements": {
+        "BS": "archetypes/oil_and_gas_extraction/bs.json",
+        "IS": "archetypes/oil_and_gas_extraction/is.json",
+        "CF": "archetypes/oil_and_gas_extraction/cf.json"
+      }
+    },
+    "personal_credit_institutions": {
+      "directory": "archetypes/personal_credit_institutions",
+      "statements": {
+        "BS": "archetypes/personal_credit_institutions/bs.json",
+        "IS": "archetypes/personal_credit_institutions/is.json",
+        "CF": "archetypes/personal_credit_institutions/cf.json"
+      }
+    },
+    "reit": {
+      "directory": "archetypes/reit",
+      "statements": {
+        "BS": "archetypes/reit/bs.json",
+        "IS": "archetypes/reit/is.json",
+        "CF": "archetypes/reit/cf.json"
+      }
+    },
+    "savings_institutions": {
+      "directory": "archetypes/savings_institutions",
+      "statements": {
+        "BS": "archetypes/savings_institutions/bs.json",
+        "IS": "archetypes/savings_institutions/is.json",
+        "CF": "archetypes/savings_institutions/cf.json"
+      }
+    }
+  },
+  "defaults": {
+    "unlisted_sic": {
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed"
+    },
+    "missing_sic": {
+      "archetype": "general_corporate",
+      "assignment_status": "unknown_sic_fallback",
+      "validation_status": "not_assessed"
+    }
+  },
+  "assignment_status_definitions": {
+    "explicit": "Explicitly assigned in DONE.md; not a claim that all issuers or all facts have been validated.",
+    "provisional_fallback": "Baseline assignment for initial coverage analysis; industry compatibility has not been established.",
+    "unknown_sic_fallback": "Unknown SIC population; keep separate from known SIC coverage results.",
+    "similarity_candidate": "Assigned provisionally to a specialist profile based on industry activity and shared statement concepts; compatibility is not yet measured and review_note identifies material differences.",
+    "company_override": "An explicit company-level assignment keyed by 10-digit CIK; takes precedence over SIC and fallback without changing source SIC or facts."
+  },
+  "notes": [
+    "SIC codes are four-character strings; preserve leading zeroes.",
+    "Company counts are a snapshot of the source inventory, not verified DB import or mapping coverage.",
+    "This file selects an archetype directory, not a mapping_version_id. Consumers must explicitly select the intended imported definition version.",
+    "No importer or normalized_facts behavior changes merely because this file exists; integration must be implemented separately.",
+    "Known specialist assignments take precedence over fallback. Do not infer utility, insurance, banking or mining equivalence from a nearby SIC code.",
+    "All validation_status values start as not_assessed because per-SIC, per-issuer and per-statement coverage has not been measured by this table.",
+    "Similarity candidates select a closer existing specialist starting point, not a claim of equivalent financial statements or legal/tax status. All three statements currently use the same candidate profile; issuer overrides may be needed.",
+    "Assignment precedence: company_overrides by CIK, then SIC assignment, then the appropriate missing/unlisted SIC fallback. Overrides preserve stored source SIC."
+  ],
+  "assignments": [
+    {
+      "sic": "0000",
+      "description": null,
+      "company_count": 14,
+      "archetype": "general_corporate",
+      "assignment_status": "unknown_sic_fallback",
+      "validation_status": "not_assessed",
+      "reason": "SIC is unknown or unspecified; use the general corporate baseline and report this population separately."
+    },
+    {
+      "sic": "0100",
+      "description": "Agricultural Production-Crops",
+      "company_count": 24,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "0200",
+      "description": "Agricultural Prod-Livestock & Animal Specialties",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "0700",
+      "description": "Agricultural Services",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "0900",
+      "description": "Fishing, Hunting and Trapping",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1000",
+      "description": "Metal Mining",
+      "company_count": 91,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1040",
+      "description": "Gold and Silver Ores",
+      "company_count": 101,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1090",
+      "description": "Miscellaneous Metal Ores",
+      "company_count": 17,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1220",
+      "description": "Silver Ores",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1221",
+      "description": "Bituminous Coal & Lignite Surface Mining",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1311",
+      "description": "Crude Petroleum & Natural Gas",
+      "company_count": 114,
+      "archetype": "oil_and_gas_extraction",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "1381",
+      "description": "Drilling Oil & Gas Wells",
+      "company_count": 12,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1382",
+      "description": "Oil & Gas Field Exploration Services",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1389",
+      "description": "Oil & Gas Field Services, NEC",
+      "company_count": 21,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1400",
+      "description": "Mining & Quarrying of  Nonmetallic Minerals (No Fuels)",
+      "company_count": 37,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1520",
+      "description": "General Bldg Contractors - Residential Bldgs",
+      "company_count": 11,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1531",
+      "description": "Operative Builders",
+      "company_count": 19,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1540",
+      "description": "General Bldg Contractors - Nonresidential Bldgs",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1600",
+      "description": "Heavy Construction Other Than Bldg Const - Contractors",
+      "company_count": 16,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1623",
+      "description": "Water, Sewer, Pipeline, Comm & Power Line Construction",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1700",
+      "description": "Construction - Special Trade Contractors",
+      "company_count": 24,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "1731",
+      "description": "Electrical Work",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2000",
+      "description": "Food and Kindred Products",
+      "company_count": 27,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2011",
+      "description": "Meat Packing Plants",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2013",
+      "description": "Sausages & Other Prepared Meat Products",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2015",
+      "description": "Poultry Slaughtering and Processing",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2020",
+      "description": "Dairy Products",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2024",
+      "description": "Ice Cream & Frozen Desserts",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2030",
+      "description": "Canned, Frozen & Preservd Fruit, Veg & Food Specialties",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2033",
+      "description": "Canned, Fruits, Veg, Preserves, Jams & Jellies",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2040",
+      "description": "Grain Mill Products",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2050",
+      "description": "Bakery Products",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2052",
+      "description": "Cookies & Crackers",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2060",
+      "description": "Sugar & Confectionery Products",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2070",
+      "description": "Fats & Oils",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2080",
+      "description": "Beverages",
+      "company_count": 28,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2082",
+      "description": "Malt Beverages",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2086",
+      "description": "Bottled & Canned Soft Drinks & Carbonated Waters",
+      "company_count": 13,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2090",
+      "description": "Miscellaneous Food Preparations & Kindred Products",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2092",
+      "description": "Prepared Fresh or  Frozen Fish & Seafoods",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2100",
+      "description": "Tobacco Products",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2111",
+      "description": "Cigarettes",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2200",
+      "description": "Textile Mill Products",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2211",
+      "description": "Broadwoven Fabric Mills, Cotton",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2221",
+      "description": "Broadwoven Fabric Mills, Man Made Fiber & Silk",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2273",
+      "description": "Carpets & Rugs",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2300",
+      "description": "Apparel & Other Finishd Prods of  Fabrics & Similar Matl",
+      "company_count": 18,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2320",
+      "description": "Men's & Boys' Furnishgs, Work Clothg, & Allied Garments",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2330",
+      "description": "Women's, Misses':  and Juniors Outerwear",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2390",
+      "description": "Miscellaneous Fabricated Textile Products",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2400",
+      "description": "Lumber & Wood Products (No Furniture)",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2421",
+      "description": "Sawmills & Planting Mills, General",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2430",
+      "description": "Millwood, Veneer, Plywood, & Structural Wood Members",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2451",
+      "description": "Mobile Homes",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2510",
+      "description": "Household Furniture",
+      "company_count": 10,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2511",
+      "description": "Wood Household Furniture, (No Upholstered)",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2520",
+      "description": "Office Furniture",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2522",
+      "description": "Office Furniture (No Wood)",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2531",
+      "description": "Public Bldg & Related Furniture",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2540",
+      "description": "Partitions, Shelvg, Lockers, & of fice & Store Fixtures",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2611",
+      "description": "Pulp Mills",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2621",
+      "description": "Paper Mills",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2631",
+      "description": "Paperboard Mills",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2650",
+      "description": "Paperboard Containers & Boxes",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2670",
+      "description": "Converted Paper & Paperboard Prods (No Contaners/Boxes)",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2673",
+      "description": "Plastics, Foil & Coated Paper Bags",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2711",
+      "description": "Newspapers: Publishing or  Publishing & Printing",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2721",
+      "description": "Periodicals: Publishing or  Publishing & Printing",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2731",
+      "description": "Books: Publishing or  Publishing & Printing",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2741",
+      "description": "Miscellaneous Publishing",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2750",
+      "description": "Commercial Printing",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2761",
+      "description": "Manifold Business Forms",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2780",
+      "description": "Blankbooks, Looseleaf Binders & Bookbindg & Relatd Work",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2800",
+      "description": "Chemicals & Allied Products",
+      "company_count": 20,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2810",
+      "description": "Industrial Inorganic Chemicals",
+      "company_count": 13,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2820",
+      "description": "Plastic Material, Synth Resin/Rubber, Cellulos (No Glass)",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2821",
+      "description": "Plastic Materials, Synth Resins & Nonvulcan Elastomers",
+      "company_count": 12,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2833",
+      "description": "Medicinal Chemicals & Botanical Products",
+      "company_count": 45,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2834",
+      "description": "Pharmaceutical Preparations",
+      "company_count": 581,
+      "archetype": "general_corporate",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "2835",
+      "description": "In Vitro & In Vivo Diagnostic Substances",
+      "company_count": 21,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2836",
+      "description": "Biological Products, (No Diagnostic Substances)",
+      "company_count": 177,
+      "archetype": "general_corporate",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "2840",
+      "description": "Soap, Detergents, Cleang Preparations, Perfumes, Cosmetics",
+      "company_count": 9,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2842",
+      "description": "Specialty Cleaning, Polishing and Sanitation Preparations",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2844",
+      "description": "Perfumes, Cosmetics & Other Toilet Preparations",
+      "company_count": 23,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2851",
+      "description": "Paints, Varnishes, Lacquers, Enamels & Allied Prods",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2860",
+      "description": "Industrial Organic Chemicals",
+      "company_count": 28,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2870",
+      "description": "Agricultural Chemicals",
+      "company_count": 14,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2890",
+      "description": "Miscellaneous Chemical Products",
+      "company_count": 11,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2891",
+      "description": "Adhesives & Sealants",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2911",
+      "description": "Petroleum Refining",
+      "company_count": 19,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "2990",
+      "description": "Miscellaneous Products of  Petroleum & Coal",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3011",
+      "description": "Tires & Inner Tubes",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3021",
+      "description": "Rubber & Plastics Footwear",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3050",
+      "description": "Gaskets, Packg & Sealg Devices & Rubber & Plastics Hose",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3060",
+      "description": "Fabricated Rubber Products, NEC",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3080",
+      "description": "Miscellaneous Plastics Products",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3081",
+      "description": "Unsupported Plastics Film & Sheet",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3086",
+      "description": "Plastics Foam Products",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3089",
+      "description": "Plastics Products, NEC",
+      "company_count": 11,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3100",
+      "description": "Leather & Leather Products",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3140",
+      "description": "Footwear, (No Rubber)",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3211",
+      "description": "Flat Glass",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3221",
+      "description": "Glass Containers",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3231",
+      "description": "Glass Products, Made of  Purchased Glass",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3241",
+      "description": "Cement, Hydraulic",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3260",
+      "description": "Pottery & Related Products",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3272",
+      "description": "Concrete Products, Except Block & Brick",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3281",
+      "description": "Cut Stone & Stone Products",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3290",
+      "description": "Abrasive, Asbestos & Misc Nonmetallic Mineral Prods",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3310",
+      "description": "Steel Works, Blast Furnaces & Rolling & Finishing Mills",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3312",
+      "description": "Steel Works, Blast Furnaces & Rolling Mills (Coke Ovens)",
+      "company_count": 13,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3317",
+      "description": "Steel Pipe & Tubes",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3330",
+      "description": "Primary Smelting & Refining of  Nonferrous Metals",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3334",
+      "description": "Primary Production of  Aluminum",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3341",
+      "description": "Secondary Smelting & Refining of  Nonferrous Metals",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3350",
+      "description": "Rolling Drawing & Extruding of  Nonferrous Metals",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3357",
+      "description": "Drawing & Insulating of  Nonferrous Wire",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3360",
+      "description": "Nonferrous Foundries (Castings)",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3390",
+      "description": "Miscellaneous Primary Metal Products",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3411",
+      "description": "Metal Cans",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3412",
+      "description": "Metal Shipping Barrels, Drums, Kegs & Pails",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3420",
+      "description": "Cutlery, Handtools & General Hardware",
+      "company_count": 9,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3430",
+      "description": "Heating Equip, Except Elec & Warm Air; & Plumbing Fixtures",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3433",
+      "description": "Heating Equipment, Except Electric & Warm Air Furnaces",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3440",
+      "description": "Fabricated Structural Metal Products",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3442",
+      "description": "Metal Doors, Sash, Frames, Moldings & Trim",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3443",
+      "description": "Fabricated Plate Work (Boiler Shops)",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3452",
+      "description": "Bolts, Nuts, Screws, Rivets & Washers",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3460",
+      "description": "Metal Forgings & Stampings",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3470",
+      "description": "Coating, Engraving & Allied Services",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3480",
+      "description": "Ordnance & Accessories, (No Vehicles/Guided Missiles)",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3490",
+      "description": "Miscellaneous Fabricated Metal Products",
+      "company_count": 11,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3510",
+      "description": "Engines & Turbines",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3523",
+      "description": "Farm Machinery & Equipment",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3524",
+      "description": "Lawn & Garden Tractors & Home Lawn & Gardens Equip",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3530",
+      "description": "Construction, Mining & Materials Handling Machinery & Equip",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3531",
+      "description": "Construction Machinery & Equip",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3533",
+      "description": "Oil & Gas Field Machinery & Equipment",
+      "company_count": 20,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3537",
+      "description": "Industrial Trucks, Tractors, Trailors & Stackers",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3540",
+      "description": "Metalworkg Machinery & Equipment",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3541",
+      "description": "Machine Tools, Metal Cutting Types",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3550",
+      "description": "Special Industry Machinery (No Metalworking Machinery)",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3555",
+      "description": "Printing Trades Machinery & Equipment",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3559",
+      "description": "Special Industry Machinery, NEC",
+      "company_count": 16,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3560",
+      "description": "General Industrial Machinery & Equipment",
+      "company_count": 9,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3561",
+      "description": "Pumps & Pumping Equipment",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3562",
+      "description": "Ball & Roller Bearings",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3564",
+      "description": "Industrial & Commercial Fans & Blowers & Air Purifing Equip",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3567",
+      "description": "Industrial Process Furnaces & Ovens",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3569",
+      "description": "General Industrial Machinery & Equipment, NEC",
+      "company_count": 16,
+      "archetype": "general_corporate",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "3570",
+      "description": "Computer & office Equipment",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3571",
+      "description": "Electronic Computers",
+      "company_count": 9,
+      "archetype": "general_corporate",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "3572",
+      "description": "Computer Storage Devices",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3576",
+      "description": "Computer Communications Equipment",
+      "company_count": 17,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3577",
+      "description": "Computer Peripheral Equipment, NEC",
+      "company_count": 18,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3578",
+      "description": "Calculating & Accounting Machines (No Electronic Computers)",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3579",
+      "description": "Office Machines, NEC",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3580",
+      "description": "Refrigeration & Service Industry Machinery",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3585",
+      "description": "Air-Cond & Warm Air Heatg Equip & Comm & Indl Refrig Equip",
+      "company_count": 10,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3590",
+      "description": "Misc Industrial & Commercial Machinery & Equipment",
+      "company_count": 14,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3600",
+      "description": "Electronic & Other Electrical Equipment (No Computer Equip)",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3613",
+      "description": "Switchgear & Switchboard Apparatus",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3620",
+      "description": "Electrical Industrial Apparatus",
+      "company_count": 13,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3621",
+      "description": "Motors & Generators",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3630",
+      "description": "Household Appliances",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3634",
+      "description": "Electric Housewares & Fans",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3640",
+      "description": "Electric Lighting & Wiring Equipment",
+      "company_count": 9,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3651",
+      "description": "Household Audio & Video Equipment",
+      "company_count": 9,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3661",
+      "description": "Telephone & Telegraph Apparatus",
+      "company_count": 10,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3663",
+      "description": "Radio & Tv Broadcasting & Communications Equipment",
+      "company_count": 27,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3669",
+      "description": "Communications Equipment, NEC",
+      "company_count": 17,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3670",
+      "description": "Electronic Components & Accessories",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3672",
+      "description": "Printed Circuit Boards",
+      "company_count": 13,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3674",
+      "description": "Semiconductors & Related Devices",
+      "company_count": 113,
+      "archetype": "general_corporate",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "3677",
+      "description": "Electronic Coils, Transformers & Other Inductors",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3678",
+      "description": "Electronic Connectors",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3679",
+      "description": "Electronic Components, NEC",
+      "company_count": 13,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3690",
+      "description": "Miscellaneous Electrical Machinery, Equipment & Supplies",
+      "company_count": 56,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3711",
+      "description": "Motor Vehicles & Passenger Car Bodies",
+      "company_count": 34,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3713",
+      "description": "Truck & Bus Bodies",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3714",
+      "description": "Motor Vehicle Parts & Accessories",
+      "company_count": 42,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3715",
+      "description": "Truck Trailers",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3716",
+      "description": "Motor Homes",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3720",
+      "description": "Aircraft & Parts",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3721",
+      "description": "Aircraft",
+      "company_count": 19,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3724",
+      "description": "Aircraft Engines & Engine Parts",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3728",
+      "description": "Aircraft Parts & Auxiliary Equipment, NEC",
+      "company_count": 14,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3730",
+      "description": "Ship & Boat Building & Repairing",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3743",
+      "description": "Railroad Equipment",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3751",
+      "description": "Motorcycles, Bicycles & Parts",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3760",
+      "description": "Guided Missiles & Space Vehicles & Parts",
+      "company_count": 12,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3790",
+      "description": "Miscellaneous Transportation Equipment",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3812",
+      "description": "Search, Detection, Navigation, Guidance, Aeronautical Sys",
+      "company_count": 12,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3821",
+      "description": "Laboratory Apparatus & Furniture",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3822",
+      "description": "Auto Controls For Regulating Residential & Comml Environments",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3823",
+      "description": "Industrial Instruments For Measurement, Display, and Control",
+      "company_count": 18,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3824",
+      "description": "Totalizing Fluid Meters & Counting Devices",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3825",
+      "description": "Instruments For Meas & Testing of  Electricity & Elec Signals",
+      "company_count": 11,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3826",
+      "description": "Laboratory Analytical Instruments",
+      "company_count": 25,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3827",
+      "description": "Optical Instruments & Lenses",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3829",
+      "description": "Measuring & Controlling Devices, NEC",
+      "company_count": 11,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3841",
+      "description": "Surgical & Medical Instruments & Apparatus",
+      "company_count": 150,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3842",
+      "description": "Orthopedic, Prosthetic & Surgical Appliances & Supplies",
+      "company_count": 30,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3843",
+      "description": "Dental Equipment & Supplies",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3844",
+      "description": "X-Ray Apparatus & Tubes & Related Irradiation Apparatus",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3845",
+      "description": "Electromedical & Electrotherapeutic Apparatus",
+      "company_count": 33,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3851",
+      "description": "Ophthalmic Goods",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3861",
+      "description": "Photographic Equipment & Supplies",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3873",
+      "description": "Watches, Clocks, Clockwork Operated Devices/Parts",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3910",
+      "description": "Jewelry, Silverware & Plated Ware",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3942",
+      "description": "Dolls & Stuffed Toys",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3944",
+      "description": "Games, Toys & Children's Vehicles (No Dolls & Bicycles)",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3949",
+      "description": "Sporting & Athletic Goods, NEC",
+      "company_count": 16,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "3990",
+      "description": "Miscellaneous Manufacturing Industries",
+      "company_count": 11,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4011",
+      "description": "Railroads, Line-Haul Operating",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4100",
+      "description": "Local & Suburban Transit & Interurban Hwy Passenger Trans",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4210",
+      "description": "Trucking & Courier Services (No Air)",
+      "company_count": 9,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4213",
+      "description": "Trucking (No Local)",
+      "company_count": 13,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4220",
+      "description": "Public Warehousing & Storage",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4400",
+      "description": "Water Transportation",
+      "company_count": 23,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4412",
+      "description": "Deep Sea Foreign Transportation of  Freight",
+      "company_count": 47,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4512",
+      "description": "Air Transportation, Scheduled",
+      "company_count": 19,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4513",
+      "description": "Air Courier Services",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4522",
+      "description": "Air Transportation, Nonscheduled",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4581",
+      "description": "Airports, Flying Fields & Airport Terminal Services",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4610",
+      "description": "Pipe Lines (No Natural Gas)",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4700",
+      "description": "Transportation Services",
+      "company_count": 22,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4731",
+      "description": "Arrangement of  Transportation of  Freight & Cargo",
+      "company_count": 20,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4812",
+      "description": "Radiotelephone Communications",
+      "company_count": 16,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4813",
+      "description": "Telephone Communications (No Radiotelephone)",
+      "company_count": 34,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4822",
+      "description": "Telegraph & Other Message Communications",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4832",
+      "description": "Radio Broadcasting Stations",
+      "company_count": 12,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4833",
+      "description": "Television Broadcasting Stations",
+      "company_count": 12,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4841",
+      "description": "Cable & Other Pay Television Services",
+      "company_count": 15,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4899",
+      "description": "Communications Services, NEC",
+      "company_count": 31,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4900",
+      "description": "Electric, Gas & Sanitary Services",
+      "company_count": 2,
+      "archetype": "electric_utilities",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Electric/gas utility infrastructure, fixed assets and financing make the electric utility skeleton a closer candidate than the general baseline.",
+      "review_note": "This broad industry also includes sanitary operations; inspect issuer business and regulation before accepting utility-specific lines."
+    },
+    {
+      "sic": "4911",
+      "description": "Electric Services",
+      "company_count": 76,
+      "archetype": "electric_utilities",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "4922",
+      "description": "Natural Gas Transmission",
+      "company_count": 18,
+      "archetype": "electric_utilities",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Gas transmission/distribution shares utility plant, construction expenditure and potentially rate-regulatory assets/liabilities with the electric utility profile.",
+      "review_note": "Transmission may be unregulated or organized differently; gas storage, pipeline and rate-regulation concepts need coverage checks. Nuclear-fuel fields are not applicable by default."
+    },
+    {
+      "sic": "4923",
+      "description": "Natural Gas Transmisison & Distribution",
+      "company_count": 7,
+      "archetype": "electric_utilities",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Gas transmission/distribution shares utility plant, construction expenditure and potentially rate-regulatory assets/liabilities with the electric utility profile.",
+      "review_note": "Transmission may be unregulated or organized differently; gas storage, pipeline and rate-regulation concepts need coverage checks. Nuclear-fuel fields are not applicable by default."
+    },
+    {
+      "sic": "4924",
+      "description": "Natural Gas Distribution",
+      "company_count": 15,
+      "archetype": "electric_utilities",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Gas transmission/distribution shares utility plant, construction expenditure and potentially rate-regulatory assets/liabilities with the electric utility profile.",
+      "review_note": "Transmission may be unregulated or organized differently; gas storage, pipeline and rate-regulation concepts need coverage checks. Nuclear-fuel fields are not applicable by default."
+    },
+    {
+      "sic": "4931",
+      "description": "Electric & Other Services Combined",
+      "company_count": 26,
+      "archetype": "electric_utilities",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Combined electric/gas utility operations share plant, regulatory balances, construction financing and operating-cost presentation with the existing utility profile.",
+      "review_note": "Determine each issuer regulated/unregulated mix; electric-only and nuclear-fuel details need not apply."
+    },
+    {
+      "sic": "4932",
+      "description": "Gas & Other Services Combined",
+      "company_count": 5,
+      "archetype": "electric_utilities",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Combined electric/gas utility operations share plant, regulatory balances, construction financing and operating-cost presentation with the existing utility profile.",
+      "review_note": "Determine each issuer regulated/unregulated mix; electric-only and nuclear-fuel details need not apply."
+    },
+    {
+      "sic": "4941",
+      "description": "Water Supply",
+      "company_count": 14,
+      "archetype": "electric_utilities",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Water utilities share long-lived utility plant, construction expenditure and potentially regulated cost recovery with the electric utility profile.",
+      "review_note": "Water-specific plant, customer construction advances and regulatory treatment require review; electric and nuclear-fuel fields are not assumed applicable."
+    },
+    {
+      "sic": "4950",
+      "description": "Sanitary Services",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4953",
+      "description": "Refuse Systems",
+      "company_count": 15,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4955",
+      "description": "Hazardous Waste Management",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "4991",
+      "description": "Cogeneration Services & Small Power Producers",
+      "company_count": 4,
+      "archetype": "electric_utilities",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Electric generation and cogeneration share generation plant, construction expenditure and fuel costs with the existing electric utility profile.",
+      "review_note": "Independent producers may lack rate-regulatory balances and use different power-contract/derivative accounting; validate these differences."
+    },
+    {
+      "sic": "5000",
+      "description": "Wholesale-Durable Goods",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5010",
+      "description": "Wholesale-Motor Vehicles & Motor Vehicle Parts & Supplies",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5013",
+      "description": "Wholesale-Motor Vehicle Supplies & New Parts",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5030",
+      "description": "Wholesale-Lumber & Other Construction Materials",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5031",
+      "description": "Wholesale-Lumber, Plywood, Millwork & Wood Panels",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5040",
+      "description": "Wholesale-Professional & Commercial Equipment & Supplies",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5045",
+      "description": "Wholesale-Computers & Peripheral Equipment & Software",
+      "company_count": 9,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5047",
+      "description": "Wholesale-Medical, Dental & Hospital Equipment & Supplies",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5050",
+      "description": "Wholesale-Metals & Minerals (No Petroleum)",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5051",
+      "description": "Wholesale-Metals Service Centers & of fices",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5063",
+      "description": "Wholesale-Electrical Apparatus & Equipment, Wiring Supplies ",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5064",
+      "description": "Wholesale-Electrical Appliances, Tv & Radio Sets",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5065",
+      "description": "Wholesale-Electronic Parts & Equipment, NEC",
+      "company_count": 10,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5070",
+      "description": "Wholesale-Hardware & Plumbing & Heating Equipment & Supplies",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5072",
+      "description": "Wholesale-Hardware",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5080",
+      "description": "Wholesale-Machinery, Equipment & Supplies",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5084",
+      "description": "Wholesale-Industrial Machinery & Equipment",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5090",
+      "description": "Wholesale-Misc Durable Goods",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5094",
+      "description": "Wholesale-Jewelry, Watches, Precious Stones & Metals",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5099",
+      "description": "Wholesale-Durable Goods, NEC",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5122",
+      "description": "Wholesale-Drugs, Proprietaries & Druggists' Sundries",
+      "company_count": 11,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5130",
+      "description": "Wholesale-Apparel, Piece Goods & Notions",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5140",
+      "description": "Wholesale-Groceries & Related Products",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5141",
+      "description": "Wholesale-Groceries, General Line",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5150",
+      "description": "Wholesale-Farm Product Raw Materials",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5160",
+      "description": "Wholesale-Chemicals & Allied Products",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5171",
+      "description": "Wholesale-Petroleum Bulk Stations & Terminals",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5172",
+      "description": "Wholesale-Petroleum & Petroleum Products (No Bulk Stations)",
+      "company_count": 9,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5180",
+      "description": "Wholesale-Beer, Wine & Distilled Alcoholic Beverages",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5190",
+      "description": "Wholesale-Miscellaneous Nondurable Goods",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5200",
+      "description": "Retail-Building Materials, Hardware, Garden Supply",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5211",
+      "description": "Retail-Lumber & Other Building Materials Dealers",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5311",
+      "description": "Retail-Department Stores",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "5331",
+      "description": "Retail-Variety Stores",
+      "company_count": 10,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5400",
+      "description": "Retail-Food Stores",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5411",
+      "description": "Retail-Grocery Stores",
+      "company_count": 13,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5412",
+      "description": "Retail-Convenience Stores",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5500",
+      "description": "Retail-Auto Dealers & Gasoline Stations",
+      "company_count": 23,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5531",
+      "description": "Retail-Auto & Home Supply Stores",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5600",
+      "description": "Retail-Apparel & Accessory Stores",
+      "company_count": 11,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5621",
+      "description": "Retail-Women's Clothing Stores",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5651",
+      "description": "Retail-Family Clothing Stores",
+      "company_count": 10,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5661",
+      "description": "Retail-Shoe Stores",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5700",
+      "description": "Retail-Home Furniture, Furnishings & Equipment Stores",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5712",
+      "description": "Retail-Furniture Stores",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5731",
+      "description": "Retail-Radio, Tv & Consumer Electronics Stores",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5734",
+      "description": "Retail-Computer & Computer Software Stores",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5810",
+      "description": "Retail-Eating & Drinking Places",
+      "company_count": 11,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5812",
+      "description": "Retail-Eating  Places",
+      "company_count": 49,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5900",
+      "description": "Retail-Miscellaneous Retail",
+      "company_count": 23,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5912",
+      "description": "Retail-Drug Stores and Proprietary Stores",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5940",
+      "description": "Retail-Miscellaneous Shopping Goods Stores",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5944",
+      "description": "Retail-Jewelry Stores",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5945",
+      "description": "Retail-Hobby, Toy & Game Shops",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5960",
+      "description": "Retail-Nonstore Retailers",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "5961",
+      "description": "Retail-Catalog & Mail-Order Houses",
+      "company_count": 32,
+      "archetype": "general_corporate",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "5990",
+      "description": "Retail-Retail Stores, NEC",
+      "company_count": 22,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "6021",
+      "description": "National Commercial Banks",
+      "company_count": 96,
+      "archetype": "banks",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "6022",
+      "description": "State Commercial Banks",
+      "company_count": 188,
+      "archetype": "banks",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "6029",
+      "description": "Commercial Banks, NEC",
+      "company_count": 38,
+      "archetype": "banks",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "6035",
+      "description": "Savings Institution, Federally Chartered",
+      "company_count": 41,
+      "archetype": "savings_institutions",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "6036",
+      "description": "Savings Institutions, Not Federally Chartered",
+      "company_count": 39,
+      "archetype": "savings_institutions",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "6099",
+      "description": "Functions Related To Depository Banking, NEC",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "6111",
+      "description": "Federal & Federally-Sponsored Credit Agencies",
+      "company_count": 3,
+      "archetype": "personal_credit_institutions",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Credit-granting operations share financing receivables, credit-loss allowances, interest income and borrowing-funded balance sheets with the lending profile.",
+      "review_note": "Agency guarantees, business lending and lease portfolios can require new concepts; this is not a deposit-bank assignment."
+    },
+    {
+      "sic": "6141",
+      "description": "Personal Credit Institutions",
+      "company_count": 12,
+      "archetype": "personal_credit_institutions",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "6153",
+      "description": "Short-Term Business Credit Institutions",
+      "company_count": 7,
+      "archetype": "personal_credit_institutions",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Credit-granting operations share financing receivables, credit-loss allowances, interest income and borrowing-funded balance sheets with the lending profile.",
+      "review_note": "Agency guarantees, business lending and lease portfolios can require new concepts; this is not a deposit-bank assignment."
+    },
+    {
+      "sic": "6159",
+      "description": "Miscellaneous Business Credit Institution",
+      "company_count": 5,
+      "archetype": "personal_credit_institutions",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Credit-granting operations share financing receivables, credit-loss allowances, interest income and borrowing-funded balance sheets with the lending profile.",
+      "review_note": "Agency guarantees, business lending and lease portfolios can require new concepts; this is not a deposit-bank assignment."
+    },
+    {
+      "sic": "6162",
+      "description": "Mortgage Bankers & Loan Correspondents",
+      "company_count": 6,
+      "archetype": "personal_credit_institutions",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Mortgage banking can share loan receivables, credit losses, debt funding and loan-sale/servicing income with the lending profile.",
+      "review_note": "Held-for-sale mortgages, mortgage servicing rights and securitization need issuer-level review; fee-only loan correspondents may fit general corporate better."
+    },
+    {
+      "sic": "6163",
+      "description": "Loan Brokers",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "6189",
+      "description": "Asset-Backed Securities",
+      "company_count": 11,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review.",
+      "review_note": "Asset-backed security vehicles require securitization/trust-specific analysis rather than assuming an operating lender profile.",
+      "review_priority": "specialist_profile_assessment"
+    },
+    {
+      "sic": "6199",
+      "description": "Finance Services",
+      "company_count": 169,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review.",
+      "review_note": "Broad financial services can mix lending, payments, investments and brokerage; determine issuer activity before selecting a specialist profile.",
+      "review_priority": "specialist_profile_assessment"
+    },
+    {
+      "sic": "6200",
+      "description": "Security & Commodity Brokers, Dealers, Exchanges & Services",
+      "company_count": 18,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review.",
+      "review_note": "Broker/dealer/exchange activity needs client collateral, trading inventory and clearing concepts; deposit banking is not assumed equivalent.",
+      "review_priority": "specialist_profile_assessment"
+    },
+    {
+      "sic": "6211",
+      "description": "Security Brokers, Dealers & Flotation Companies",
+      "company_count": 34,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review.",
+      "review_note": "Securities brokerage/dealing requires client, trading and clearing accounting; a separate securities profile may be needed.",
+      "review_priority": "specialist_profile_assessment"
+    },
+    {
+      "sic": "6221",
+      "description": "Commodity Contracts Brokers & Dealers",
+      "company_count": 121,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review.",
+      "review_note": "Commodity brokerage requires customer margin, clearing and futures concepts; bank or lender profiles are not assumed equivalent.",
+      "review_priority": "specialist_profile_assessment"
+    },
+    {
+      "sic": "6282",
+      "description": "Investment Advice",
+      "company_count": 52,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "6311",
+      "description": "Life Insurance",
+      "company_count": 23,
+      "archetype": "life_insurance",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "6321",
+      "description": "Accident & Health Insurance",
+      "company_count": 6,
+      "archetype": "life_insurance",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "An underwriting insurer shares premiums, policy benefits/claims, reinsurance and investment balances with the existing insurance profile.",
+      "review_note": "Accident/health claim reserves differ from life-policy and annuity liabilities; reserve and benefit concepts require coverage review."
+    },
+    {
+      "sic": "6324",
+      "description": "Hospital & Medical Service Plans",
+      "company_count": 10,
+      "archetype": "life_insurance",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Health-plan risk-bearing operations share premium revenue and claim/benefit obligations with the existing insurance profile.",
+      "review_note": "Medical cost ratios, provider liabilities and service-only operations differ materially; confirm risk-bearing activity and health-plan coverage before use."
+    },
+    {
+      "sic": "6331",
+      "description": "Fire, Marine & Casualty Insurance",
+      "company_count": 61,
+      "archetype": "life_insurance",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Property/casualty underwriting shares premiums, claims, reinsurance and invested assets with the existing insurance profile.",
+      "review_note": "Unpaid loss/LAE reserves and unearned premiums differ from life-policy liabilities; the life profile is only an insurance baseline and may need a separate P&C profile."
+    },
+    {
+      "sic": "6351",
+      "description": "Surety Insurance",
+      "company_count": 8,
+      "archetype": "life_insurance",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Insurance underwriting shares premium income, claims/recovery obligations and investment balances with the existing insurance profile.",
+      "review_note": "Surety and title risks, reserves and fee income differ from life insurance; verify subtype-specific concepts and do not assume life-policy liabilities apply."
+    },
+    {
+      "sic": "6361",
+      "description": "Title Insurance",
+      "company_count": 4,
+      "archetype": "life_insurance",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Insurance underwriting shares premium income, claims/recovery obligations and investment balances with the existing insurance profile.",
+      "review_note": "Surety and title risks, reserves and fee income differ from life insurance; verify subtype-specific concepts and do not assume life-policy liabilities apply."
+    },
+    {
+      "sic": "6399",
+      "description": "Insurance Carriers, NEC",
+      "company_count": 3,
+      "archetype": "life_insurance",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Insurance-carrier operations are closer to the existing underwriting insurance profile than the general baseline.",
+      "review_note": "The NEC category mixes insurance models; determine issuer products and reserve structure before accepting this candidate."
+    },
+    {
+      "sic": "6411",
+      "description": "Insurance Agents, Brokers & Service",
+      "company_count": 37,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "6500",
+      "description": "Real Estate",
+      "company_count": 54,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "6510",
+      "description": "Real Estate Operators (No Developers) & Lessors",
+      "company_count": 5,
+      "archetype": "reit",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Property ownership/letting shares investment real estate, rental revenue, depreciation and property financing with the REIT profile.",
+      "review_note": "This does not assert REIT legal/tax status. Corporate tax, ownership interests, lease types and any development activities need review."
+    },
+    {
+      "sic": "6512",
+      "description": "Opeators of  Nonresidential Buildings",
+      "company_count": 8,
+      "archetype": "reit",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Property ownership/letting shares investment real estate, rental revenue, depreciation and property financing with the REIT profile.",
+      "review_note": "This does not assert REIT legal/tax status. Corporate tax, ownership interests, lease types and any development activities need review."
+    },
+    {
+      "sic": "6513",
+      "description": "Operators of  Apartment Buildings",
+      "company_count": 3,
+      "archetype": "reit",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Property ownership/letting shares investment real estate, rental revenue, depreciation and property financing with the REIT profile.",
+      "review_note": "This does not assert REIT legal/tax status. Corporate tax, ownership interests, lease types and any development activities need review."
+    },
+    {
+      "sic": "6519",
+      "description": "Lessors of  Real Property, NEC",
+      "company_count": 5,
+      "archetype": "reit",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Property ownership/letting shares investment real estate, rental revenue, depreciation and property financing with the REIT profile.",
+      "review_note": "This does not assert REIT legal/tax status. Corporate tax, ownership interests, lease types and any development activities need review."
+    },
+    {
+      "sic": "6531",
+      "description": "Real Estate Agents & Managers (For Others)",
+      "company_count": 18,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "6552",
+      "description": "Land Subdividers & Developers (No Cemeteries)",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "6770",
+      "description": "Blank Checks",
+      "company_count": 350,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review.",
+      "review_note": "Blank-check entities require trust/redemption/warrant analysis; the general assignment remains a baseline rather than an assessed fit.",
+      "review_priority": "specialist_profile_assessment"
+    },
+    {
+      "sic": "6792",
+      "description": "Oil Royalty Traders",
+      "company_count": 11,
+      "archetype": "oil_and_gas_extraction",
+      "assignment_status": "similarity_candidate",
+      "validation_status": "not_assessed",
+      "reason": "Oil royalty investment activity shares oil/gas property interests and related production-linked economics with the extraction profile.",
+      "review_note": "Royalty holders may not operate wells or bear drilling/retirement obligations; royalty income and property measurement require review."
+    },
+    {
+      "sic": "6794",
+      "description": "Patent Owners & Lessors",
+      "company_count": 13,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "6795",
+      "description": "Mineral Royalty Traders",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "6798",
+      "description": "Real Estate Investment Trusts",
+      "company_count": 200,
+      "archetype": "reit",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "6799",
+      "description": "Investors, NEC",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7000",
+      "description": "Hotels, Rooming Houses, Camps & Other Lodging Places",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7011",
+      "description": "Hotels & Motels",
+      "company_count": 29,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7200",
+      "description": "Services-Personal Services",
+      "company_count": 19,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7310",
+      "description": "Services-Advertising",
+      "company_count": 22,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7311",
+      "description": "Services-Advertising Agencies",
+      "company_count": 13,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7320",
+      "description": "Services-Consumer Credit Reporting, Collection Agencies",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7330",
+      "description": "Services-Mailing, Reproduction, Commercial Art & Photography",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7331",
+      "description": "Services-Direct Mail Advertising Services",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7340",
+      "description": "Services-To Dwellings & Other Buildings",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7350",
+      "description": "Services-Miscellaneous Equipment Rental & Leasing",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7359",
+      "description": "Services-Equipment Rental & Leasing, NEC",
+      "company_count": 12,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7361",
+      "description": "Services-Employment Agencies",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7363",
+      "description": "Services-Help Supply Services",
+      "company_count": 20,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7370",
+      "description": "Services-Computer Programming, Data Processing, Etc.",
+      "company_count": 95,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7371",
+      "description": "Services-Computer Programming Services",
+      "company_count": 59,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7372",
+      "description": "Services-Prepackaged Software",
+      "company_count": 286,
+      "archetype": "general_corporate",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "7373",
+      "description": "Services-Computer Integrated Systems Design",
+      "company_count": 56,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7374",
+      "description": "Services-Computer Processing & Data Preparation",
+      "company_count": 112,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7377",
+      "description": "Services-Computer Rental & Leasing",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7380",
+      "description": "Services-Miscellaneous Business Services",
+      "company_count": 14,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7381",
+      "description": "Services-Detective, Guard & Armored Car Services",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7389",
+      "description": "Services-Business Services, NEC",
+      "company_count": 138,
+      "archetype": "general_corporate",
+      "assignment_status": "explicit",
+      "validation_status": "not_assessed",
+      "reason": "Assigned to this archetype in DONE.md; assignment does not establish accounting validation."
+    },
+    {
+      "sic": "7500",
+      "description": "Services-Automotive Repair, Services & Parking",
+      "company_count": 9,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7510",
+      "description": "Services-Auto Rental & Leasing (No Drivers)",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7600",
+      "description": "Services-Miscellaneous Repair Services",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7812",
+      "description": "Services-Motion Picture & Video Tape Production",
+      "company_count": 11,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7819",
+      "description": "Services-Allied To Motion Picture Production",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7822",
+      "description": "Services-Motion Picture & Video Tape Distribution",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7830",
+      "description": "Services-Motion Picture Theaters",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7841",
+      "description": "Services-Video Tape Rental",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7900",
+      "description": "Services-Amusement & Recreation Services",
+      "company_count": 37,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7948",
+      "description": "Services-Racing, Including Track Operation",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7990",
+      "description": "Services-Miscellaneous Amusement & Recreation",
+      "company_count": 33,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "7997",
+      "description": "Services-Membership Sports & Recreation Clubs",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8000",
+      "description": "Services-Health Services",
+      "company_count": 18,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8011",
+      "description": "Services-Offices & Clinics of  Doctors of  Medicine",
+      "company_count": 12,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8050",
+      "description": "Services-Nursing & Personal Care Facilities",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8051",
+      "description": "Services-Skilled Nursing Care Facilities",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8060",
+      "description": "Services-Hospitals",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8062",
+      "description": "Services-General Medical & Surgical Hospitals, NEC",
+      "company_count": 6,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8071",
+      "description": "Services-Medical Laboratories",
+      "company_count": 31,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8082",
+      "description": "Services-Home Health Care Services",
+      "company_count": 7,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8090",
+      "description": "Services-Misc Health & Allied Services, NEC",
+      "company_count": 15,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8093",
+      "description": "Services-Specialty Outpatient Facilities, NEC",
+      "company_count": 5,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8111",
+      "description": "Services-Legal Services",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8200",
+      "description": "Services-Educational Services",
+      "company_count": 54,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8351",
+      "description": "Services-Child Day Care Services",
+      "company_count": 2,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8700",
+      "description": "Services-Engineering, Accounting, Research, Management",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8711",
+      "description": "Services-Engineering Services",
+      "company_count": 12,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8731",
+      "description": "Services-Commercial Physical & Biological Research",
+      "company_count": 17,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8734",
+      "description": "Services-Testing Laboratories",
+      "company_count": 4,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8741",
+      "description": "Services-Management Services",
+      "company_count": 8,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8742",
+      "description": "Services-Management Consulting Services",
+      "company_count": 60,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8744",
+      "description": "Services-Facilities Support Management Services",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8880",
+      "description": "American Depositary Receipts",
+      "company_count": 51,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "8900",
+      "description": "Services-Services, NEC",
+      "company_count": 1,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    },
+    {
+      "sic": "9995",
+      "description": "Non-Operating Establishments",
+      "company_count": 3,
+      "archetype": "general_corporate",
+      "assignment_status": "provisional_fallback",
+      "validation_status": "not_assessed",
+      "reason": "No explicit assignment in DONE.md; use the general corporate baseline for coverage assessment pending industry review."
+    }
+  ],
+  "company_overrides": [
+    {
+      "cik": "0001163165",
+      "archetype": "oil_and_gas_extraction",
+      "validation_status": "not_assessed",
+      "reason": "Use the extraction archetype prepared for ConocoPhillips rather than the general fallback selected by its stored SIC 2911.",
+      "review_note": "Preserve the source SIC. This override selects a prepared profile; full statement coverage and accounting classification still require review."
+    }
+  ]
+}

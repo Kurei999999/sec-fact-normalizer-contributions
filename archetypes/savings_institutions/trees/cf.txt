@@ -1,0 +1,552 @@
+savings_institutions — CF
+Types: [total], [group], [line_item]; * = review
+
+├── Operating activities [group]
+│   ├── Cash flow from operating activities [total]
+│   │   concept: us-gaap:NetCashProvidedByUsedInOperatingActivities
+│   │   ├── Income starting point alternatives [group]
+│   │   │   ├── Net income (loss) attributable to the reporting entity [total] *
+│   │   │   │   concept: us-gaap:NetIncomeLoss
+│   │   │   └── Consolidated profit (loss) [total] *
+│   │   │       concept: us-gaap:ProfitLoss
+│   │   ├── Noncash and other earnings adjustments [group]
+│   │   │   ├── Depreciation, amortization and accretion [group]
+│   │   │   │   ├── Reported depreciation and amortization aggregates [group]
+│   │   │   │   │   ├── Depreciation, depletion and amortization [total]
+│   │   │   │   │   │   concept: us-gaap:DepreciationDepletionAndAmortization
+│   │   │   │   │   ├── Depreciation, amortization and accretion, net [total]
+│   │   │   │   │   │   concept: us-gaap:DepreciationAmortizationAndAccretionNet
+│   │   │   │   │   ├── Depreciation and amortization [total]
+│   │   │   │   │   │   concept: us-gaap:DepreciationAndAmortization
+│   │   │   │   │   └── Other depreciation and amortization [line_item]
+│   │   │   │   │       concept: us-gaap:OtherDepreciationAndAmortization
+│   │   │   │   ├── Asset depreciation and amortization [group]
+│   │   │   │   │   ├── Depreciation [line_item]
+│   │   │   │   │   │   concept: us-gaap:Depreciation
+│   │   │   │   │   ├── Depreciation nonproduction [line_item]
+│   │   │   │   │   │   concept: us-gaap:DepreciationNonproduction
+│   │   │   │   │   ├── Amortization of intangible assets [line_item]
+│   │   │   │   │   │   concept: us-gaap:AmortizationOfIntangibleAssets
+│   │   │   │   │   └── Operating lease right-of-use asset amortization expense [line_item]
+│   │   │   │   │       concept: us-gaap:OperatingLeaseRightOfUseAssetAmortizationExpense
+│   │   │   │   ├── Investment and loan yield amortization [group]
+│   │   │   │   │   ├── Accretion amortization of discounts and premiums investments [line_item] *
+│   │   │   │   │   │   concept: us-gaap:AccretionAmortizationOfDiscountsAndPremiumsInvestments
+│   │   │   │   │   ├── Amortization of deferred loan origination fees net [line_item] *
+│   │   │   │   │   │   concept: us-gaap:AmortizationOfDeferredLoanOriginationFeesNet
+│   │   │   │   │   └── Qualified affordable housing investment amortization [line_item]
+│   │   │   │   │       concept: us-gaap:AmortizationMethodQualifiedAffordableHousingProjectInvestmentsAmortization
+│   │   │   │   ├── Servicing asset amortization [group]
+│   │   │   │   │   └── Amortization of mortgage servicing rights ms rs [line_item]
+│   │   │   │   │       concept: us-gaap:AmortizationOfMortgageServicingRightsMSRs
+│   │   │   │   └── Financing cost and debt discount amortization [group]
+│   │   │   │       ├── Amortization of financing costs [line_item]
+│   │   │   │       │   concept: us-gaap:AmortizationOfFinancingCosts
+│   │   │   │       └── Amortization of debt discount premium [line_item]
+│   │   │   │           concept: us-gaap:AmortizationOfDebtDiscountPremium
+│   │   │   ├── Credit and other loss provisions [group]
+│   │   │   │   ├── Provision for loan lease and other losses [line_item]
+│   │   │   │   │   concept: us-gaap:ProvisionForLoanLeaseAndOtherLosses
+│   │   │   │   ├── Provision for loan losses expensed [line_item]
+│   │   │   │   │   concept: us-gaap:ProvisionForLoanLossesExpensed
+│   │   │   │   ├── Financing receivable credit loss expense (reversal), excluding accrued interest [line_item]
+│   │   │   │   │   concept: us-gaap:FinancingReceivableExcludingAccruedInterestCreditLossExpenseReversal
+│   │   │   │   ├── Provision for other credit losses [line_item]
+│   │   │   │   │   concept: us-gaap:ProvisionForOtherCreditLosses
+│   │   │   │   ├── Provision for doubtful accounts [line_item] *
+│   │   │   │   │   concept: us-gaap:ProvisionForDoubtfulAccounts
+│   │   │   │   └── Off-Balance-Sheet Credit Loss Expense (Reversal) [line_item] *
+│   │   │   │       concept: us-gaap:OffBalanceSheetCreditLossLiabilityCreditLossExpenseReversal
+│   │   │   ├── Share-based compensation adjustments [group]
+│   │   │   │   ├── Share based compensation [line_item]
+│   │   │   │   │   concept: us-gaap:ShareBasedCompensation
+│   │   │   │   ├── Stock option plan expense [line_item]
+│   │   │   │   │   concept: us-gaap:StockOptionPlanExpense
+│   │   │   │   ├── Employee stock ownership plan ESOP compensation expense [line_item]
+│   │   │   │   │   concept: us-gaap:EmployeeStockOwnershipPlanESOPCompensationExpense
+│   │   │   │   └── Restricted stock expense [line_item]
+│   │   │   │       concept: us-gaap:RestrictedStockExpense
+│   │   │   ├── Deferred tax and share compensation tax adjustments [group]
+│   │   │   │   ├── Deferred income tax expense (benefit) [line_item] *
+│   │   │   │   │   concept: us-gaap:DeferredIncomeTaxExpenseBenefit
+│   │   │   │   ├── Deferred federal income tax expense benefit [line_item] *
+│   │   │   │   │   concept: us-gaap:DeferredFederalIncomeTaxExpenseBenefit
+│   │   │   │   ├── Increase decrease in deferred income taxes [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInDeferredIncomeTaxes
+│   │   │   │   └── Deferred income taxes and tax credits [line_item] *
+│   │   │   │       concept: us-gaap:DeferredIncomeTaxesAndTaxCredits
+│   │   │   ├── Impairment and valuation adjustments [group]
+│   │   │   │   ├── Goodwill impairment loss [line_item] *
+│   │   │   │   │   concept: us-gaap:GoodwillImpairmentLoss
+│   │   │   │   ├── Asset impairment charges [line_item] *
+│   │   │   │   │   concept: us-gaap:AssetImpairmentCharges
+│   │   │   │   ├── Impairment of real estate [line_item] *
+│   │   │   │   │   concept: us-gaap:ImpairmentOfRealEstate
+│   │   │   │   ├── Mortgage servicing rights MSR impairment recovery [line_item] *
+│   │   │   │   │   concept: us-gaap:MortgageServicingRightsMSRImpairmentRecovery
+│   │   │   │   ├── Impairment of long lived assets to be disposed of [line_item] *
+│   │   │   │   │   concept: us-gaap:ImpairmentOfLongLivedAssetsToBeDisposedOf
+│   │   │   │   ├── Real estate owned valuation allowance provision [line_item] *
+│   │   │   │   │   concept: us-gaap:RealEstateOwnedValuationAllowanceProvision1
+│   │   │   │   ├── Finite-Lived Intangible Impairment [line_item] *
+│   │   │   │   │   concept: us-gaap:ImpairmentOfIntangibleAssetsFinitelived
+│   │   │   │   ├── Operating Lease ROU Asset Impairment [line_item] *
+│   │   │   │   │   concept: us-gaap:OperatingLeaseImpairmentLoss
+│   │   │   │   └── Other Real Estate Valuation Adjustments [line_item] *
+│   │   │   │       concept: us-gaap:OtherRealEstateValuationAdjustments
+│   │   │   ├── Investment earnings adjustments [group]
+│   │   │   │   ├── Debt security earnings adjustments [group]
+│   │   │   │   │   ├── Debt securities available-for-sale realized gain loss [line_item] *
+│   │   │   │   │   │   concept: us-gaap:DebtSecuritiesAvailableForSaleRealizedGainLoss
+│   │   │   │   │   ├── Debt securities available-for-sale gain loss [line_item] *
+│   │   │   │   │   │   concept: us-gaap:DebtSecuritiesAvailableForSaleGainLoss
+│   │   │   │   │   └── Debt securities realized gain loss [line_item] *
+│   │   │   │   │       concept: us-gaap:DebtSecuritiesRealizedGainLoss
+│   │   │   │   ├── Equity security earnings adjustments [group]
+│   │   │   │   │   ├── Equity securities FV-NI unrealized gain loss [line_item] *
+│   │   │   │   │   │   concept: us-gaap:EquitySecuritiesFvNiUnrealizedGainLoss
+│   │   │   │   │   └── Equity securities FV-NI realized gain loss [line_item] *
+│   │   │   │   │       concept: us-gaap:EquitySecuritiesFvNiRealizedGainLoss
+│   │   │   │   ├── Combined debt and equity earnings adjustments [group]
+│   │   │   │   │   ├── Debt and equity securities gain loss [line_item] *
+│   │   │   │   │   │   concept: us-gaap:DebtAndEquitySecuritiesGainLoss
+│   │   │   │   │   └── Realized Gain (Loss) on Debt and Equity Securities [line_item] *
+│   │   │   │   │       concept: us-gaap:DebtAndEquitySecuritiesRealizedGainLoss
+│   │   │   │   └── General investment earnings adjustments [group]
+│   │   │   │       ├── Gain loss on sale of investments [line_item] *
+│   │   │   │       │   concept: us-gaap:GainLossOnSaleOfInvestments
+│   │   │   │       ├── Gain (loss) on investments [line_item] *
+│   │   │   │       │   concept: us-gaap:GainLossOnInvestments
+│   │   │   │       └── Unrealized gain loss on investments [line_item] *
+│   │   │   │           concept: us-gaap:UnrealizedGainLossOnInvestments
+│   │   │   ├── Loan sale earnings adjustments [group]
+│   │   │   │   ├── Gain loss on sales of loans net [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnSalesOfLoansNet
+│   │   │   │   ├── Gain loss on sale of loans and leases [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnSaleOfLoansAndLeases
+│   │   │   │   └── Gain loss on sale of notes receivable [line_item] *
+│   │   │   │       concept: us-gaap:GainLossOnSaleOfNotesReceivable
+│   │   │   ├── Asset and business disposal earnings adjustments [group]
+│   │   │   │   ├── Gains losses on sales of other real estate [line_item] *
+│   │   │   │   │   concept: us-gaap:GainsLossesOnSalesOfOtherRealEstate
+│   │   │   │   ├── Gain loss on sale of property plant equipment [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnSaleOfPropertyPlantEquipment
+│   │   │   │   ├── Gain (loss) on PP&E disposal, excluding oil/gas and timber [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnDispositionOfAssets
+│   │   │   │   ├── Gain (loss) on disposal of assets [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnDispositionOfAssets1
+│   │   │   │   ├── Gain loss on sale of other assets [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnSaleOfOtherAssets
+│   │   │   │   ├── Gain loss on sale of business [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnSaleOfBusiness
+│   │   │   │   ├── Gains losses on sales of assets [line_item] *
+│   │   │   │   │   concept: us-gaap:GainsLossesOnSalesOfAssets
+│   │   │   │   ├── Gain loss on sale of properties [line_item] *
+│   │   │   │   │   concept: us-gaap:GainLossOnSaleOfProperties
+│   │   │   │   ├── Gains losses on sales of investment real estate [line_item] *
+│   │   │   │   │   concept: us-gaap:GainsLossesOnSalesOfInvestmentRealEstate
+│   │   │   │   └── Gain (Loss) on Lease Termination [line_item] *
+│   │   │   │       concept: us-gaap:GainLossOnTerminationOfLease
+│   │   │   ├── Derivative, hedge and debt extinguishment adjustments [group]
+│   │   │   │   ├── Gains losses on extinguishment of debt [line_item] *
+│   │   │   │   │   concept: us-gaap:GainsLossesOnExtinguishmentOfDebt
+│   │   │   │   ├── Derivative gain loss on derivative net [line_item] *
+│   │   │   │   │   concept: us-gaap:DerivativeGainLossOnDerivativeNet
+│   │   │   │   ├── Unrealized gain loss on derivatives [line_item] *
+│   │   │   │   │   concept: us-gaap:UnrealizedGainLossOnDerivatives
+│   │   │   │   ├── Nonhedging Derivative Gain (Loss), Net [line_item] *
+│   │   │   │   │   concept: us-gaap:DerivativeInstrumentsNotDesignatedAsHedgingInstrumentsGainLossNet
+│   │   │   │   └── Gain (Loss) on Sale of Derivatives [line_item] *
+│   │   │   │       concept: us-gaap:GainLossOnSaleOfDerivatives
+│   │   │   ├── Pension, insurance and affiliate adjustments [group]
+│   │   │   │   ├── Pension expense adjustments [group]
+│   │   │   │   │   └── Defined benefit plan amortization of prior service cost credit [line_item] *
+│   │   │   │   │       concept: us-gaap:DefinedBenefitPlanAmortizationOfPriorServiceCostCredit
+│   │   │   │   ├── Bank-owned life insurance value changes [group]
+│   │   │   │   │   ├── Life insurance corporate or bank owned change in value [line_item] *
+│   │   │   │   │   │   concept: us-gaap:LifeInsuranceCorporateOrBankOwnedChangeInValue
+│   │   │   │   │   └── Bank-Owned Life Insurance Income [line_item] *
+│   │   │   │   │       concept: us-gaap:BankOwnedLifeInsuranceIncome
+│   │   │   │   └── Equity-method income and distribution adjustments [group]
+│   │   │   │       └── Income loss from equity method investments [line_item] *
+│   │   │   │           concept: us-gaap:IncomeLossFromEquityMethodInvestments
+│   │   │   └── Other Noncash Earnings Adjustments [group]
+│   │   │       └── Noncash Contribution Expense [line_item] *
+│   │   │           concept: us-gaap:NoncashContributionExpense
+│   │   ├── Changes in operating assets and liabilities [group]
+│   │   │   ├── Operating asset changes [group]
+│   │   │   │   ├── Increase decrease in other operating assets [line_item]
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInOtherOperatingAssets
+│   │   │   │   ├── Increase decrease in accrued interest receivable net [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInAccruedInterestReceivableNet
+│   │   │   │   ├── Increase decrease in interest and dividends receivable [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInInterestAndDividendsReceivable
+│   │   │   │   ├── Increase decrease in prepaid deferred expense and other assets [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets
+│   │   │   │   ├── Increase decrease in income taxes receivable [line_item]
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInIncomeTaxesReceivable
+│   │   │   │   ├── Increase decrease in loans held for sale [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInLoansHeldForSale
+│   │   │   │   ├── Increase decrease in mortgage loans held for sale [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInMortgageLoansHeldForSale
+│   │   │   │   ├── Change in Accounts Receivable and Other Operating Assets [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInAccountsReceivableAndOtherOperatingAssets
+│   │   │   │   ├── Change in Insurance Settlements Receivable [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInInsuranceSettlementsReceivable
+│   │   │   │   └── Change in FV-NI Equity Securities [line_item] *
+│   │   │   │       concept: us-gaap:IncreaseDecreaseInEquitySecuritiesFvNi
+│   │   │   ├── Operating liability changes [group]
+│   │   │   │   ├── Increase decrease in other operating liabilities [line_item]
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInOtherOperatingLiabilities
+│   │   │   │   ├── Increase decrease in interest payable net [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInInterestPayableNet
+│   │   │   │   ├── Increase decrease in accrued liabilities and other operating liabilities [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInAccruedLiabilitiesAndOtherOperatingLiabilities
+│   │   │   │   ├── Increase decrease in accounts payable and accrued liabilities [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInAccountsPayableAndAccruedLiabilities
+│   │   │   │   ├── Increase decrease in accrued income taxes payable [line_item]
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInAccruedIncomeTaxesPayable
+│   │   │   │   ├── Increase decrease in operating lease liability [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInOperatingLeaseLiability
+│   │   │   │   ├── Change in Accounts Payable and Other Operating Liabilities [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInAccountsPayableAndOtherOperatingLiabilities
+│   │   │   │   ├── Change in Other Accounts Payable and Accrued Liabilities [line_item] *
+│   │   │   │   │   concept: us-gaap:IncreaseDecreaseInOtherAccountsPayableAndAccruedLiabilities
+│   │   │   │   └── Change in Deferred Loan Fee Income [line_item] *
+│   │   │   │       concept: us-gaap:IncreaseDecreaseInLoansDeferredIncome
+│   │   │   └── Net operating capital changes [group]
+│   │   │       └── Increase decrease in other operating capital net [line_item] *
+│   │   │           concept: us-gaap:IncreaseDecreaseInOtherOperatingCapitalNet
+│   │   ├── Held-for-sale loan cash flows [group]
+│   │   │   ├── Held-for-sale loan origination and purchase payments [group]
+│   │   │   │   ├── Payments for origination of mortgage loans held for sale [line_item] *
+│   │   │   │   │   concept: us-gaap:PaymentsForOriginationOfMortgageLoansHeldForSale
+│   │   │   │   ├── Payments for origination and purchases of loans held for sale [line_item] *
+│   │   │   │   │   concept: us-gaap:PaymentsForOriginationAndPurchasesOfLoansHeldForSale
+│   │   │   │   └── Payments to purchase loans held for sale [line_item] *
+│   │   │   │       concept: us-gaap:PaymentsToPurchaseLoansHeldForSale
+│   │   │   └── Held-for-sale loan sale and collection receipts [group]
+│   │   │       ├── Proceeds from sale of loans held for sale [line_item] *
+│   │   │       │   concept: us-gaap:ProceedsFromSaleOfLoansHeldForSale
+│   │   │       ├── Proceeds from sale of mortgage loans held for sale [line_item] *
+│   │   │       │   concept: us-gaap:ProceedsFromSaleOfMortgageLoansHeldForSale
+│   │   │       └── Proceeds from sale and collection of loans held for sale [line_item] *
+│   │   │           concept: us-gaap:ProceedsFromSaleAndCollectionOfLoansHeldforsale
+│   │   └── Other operating cash flows [group]
+│   │       └── Operating lease payments [line_item] *
+│   │           concept: us-gaap:OperatingLeasePayments
+│   └── Operating cash-flow and reconciliation aggregate alternatives [group]
+│       ├── Operating cash flow — continuing operations [total] *
+│       │   concept: us-gaap:NetCashProvidedByUsedInOperatingActivitiesContinuingOperations
+│       └── Operating Cash Flow — Discontinued Operations [line_item] *
+│           concept: us-gaap:CashProvidedByUsedInOperatingActivitiesDiscontinuedOperations
+├── Cash flow from investing activities [total]
+│   concept: us-gaap:NetCashProvidedByUsedInInvestingActivities
+│   ├── Capital expenditures [group]
+│   │   ├── Payments to acquire property, plant and equipment [line_item]
+│   │   │   concept: us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+│   │   └── Payments to acquire productive assets [line_item] *
+│   │       concept: us-gaap:PaymentsToAcquireProductiveAssets
+│   ├── Investment purchases, sales and maturities [group]
+│   │   ├── AFS debt security cash flows [group]
+│   │   │   ├── Payments to acquire available-for-sale securities debt [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireAvailableForSaleSecuritiesDebt
+│   │   │   ├── Proceeds from sale of available-for-sale securities debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromSaleOfAvailableForSaleSecuritiesDebt
+│   │   │   ├── Proceeds from maturities prepayments and calls of available-for-sale securities [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities
+│   │   │   ├── Proceeds from sale and maturity of available-for-sale securities [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromSaleAndMaturityOfAvailableForSaleSecurities
+│   │   │   ├── Purchases of AFS Mortgage-Backed Securities [line_item] *
+│   │   │   │   concept: us-gaap:PaymentsToAcquireMortgageBackedSecuritiesMBSCategorizedAsAvailableForSale
+│   │   │   └── Sale Proceeds from AFS Mortgage-Backed Securities [line_item] *
+│   │   │       concept: us-gaap:ProceedsFromSaleOfMortgageBackedSecuritiesMBSCategorizedAsAvailableForSale
+│   │   ├── HTM debt security cash flows [group]
+│   │   │   ├── Payments to acquire held-to-maturity securities [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireHeldToMaturitySecurities
+│   │   │   ├── Proceeds from maturities prepayments and calls of held-to-maturity securities [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromMaturitiesPrepaymentsAndCallsOfHeldToMaturitySecurities
+│   │   │   ├── Proceeds from sale of held-to-maturity securities [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromSaleOfHeldToMaturitySecurities
+│   │   │   ├── Proceeds from sale and maturity of held-to-maturity securities [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromSaleAndMaturityOfHeldToMaturitySecurities
+│   │   │   └── Maturity, Prepayment and Call Receipts — HTM MBS [line_item] *
+│   │   │       concept: us-gaap:ProceedsFromMaturitiesPrepaymentsAndCallsOfMortgageBackedSecuritiesMBS
+│   │   ├── FV-NI equity security cash flows [group]
+│   │   │   ├── Payments to acquire equity securities FV-NI [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireEquitySecuritiesFvNi
+│   │   │   └── Proceeds from sale of equity securities FV-NI [line_item]
+│   │   │       concept: us-gaap:ProceedsFromSaleOfEquitySecuritiesFvNi
+│   │   ├── Equity-method investment cash flows [group]
+│   │   │   └── Payments to acquire equity method investments [line_item]
+│   │   │       concept: us-gaap:PaymentsToAcquireEquityMethodInvestments
+│   │   ├── Restricted investment cash flows [group]
+│   │   │   ├── Payments to acquire restricted investments [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireRestrictedInvestments
+│   │   │   ├── Proceeds from sale of restricted investments [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromSaleOfRestrictedInvestments
+│   │   │   └── Purchases of Restricted Certificates of Deposit [line_item] *
+│   │   │       concept: us-gaap:PaymentsToAcquireRestrictedCertificatesOfDeposit
+│   │   ├── FHLB and Federal Reserve stock cash flows [group]
+│   │   │   ├── Payments for proceeds from federal home loan bank stock [line_item]
+│   │   │   │   concept: us-gaap:PaymentsForProceedsFromFederalHomeLoanBankStock
+│   │   │   ├── Payments to acquire federal home loan bank stock [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireFederalHomeLoanBankStock
+│   │   │   ├── Proceeds from sale of federal home loan bank stock [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromSaleOfFederalHomeLoanBankStock
+│   │   │   ├── Payments to acquire federal reserve stock [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireFederalReserveStock
+│   │   │   └── Payments for proceeds from federal reserve bank stock [line_item]
+│   │   │       concept: us-gaap:PaymentsForProceedsFromFederalReserveBankStock
+│   │   ├── Other investment cash flows [group]
+│   │   │   ├── Payments to acquire other investments [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireOtherInvestments
+│   │   │   └── Proceeds from maturities prepayments and calls of other investments [line_item]
+│   │   │       concept: us-gaap:ProceedsFromMaturitiesPrepaymentsAndCallsOfOtherInvestments
+│   │   └── Broad investment cash-flow alternatives [group]
+│   │       ├── Proceeds from sale and maturity of marketable securities [line_item]
+│   │       │   concept: us-gaap:ProceedsFromSaleAndMaturityOfMarketableSecurities
+│   │       ├── Payments to acquire marketable securities [line_item]
+│   │       │   concept: us-gaap:PaymentsToAcquireMarketableSecurities
+│   │       └── Payments to acquire investments [line_item]
+│   │           concept: us-gaap:PaymentsToAcquireInvestments
+│   ├── Loan and lease investment cash flows [group]
+│   │   ├── Net loan and lease cash flows [group]
+│   │   │   ├── Payments for proceeds from loans and leases [line_item]
+│   │   │   │   concept: us-gaap:PaymentsForProceedsFromLoansAndLeases
+│   │   │   ├── Payments for proceeds from loans receivable [line_item] *
+│   │   │   │   concept: us-gaap:PaymentsForProceedsFromLoansReceivable
+│   │   │   ├── Payments for proceeds from other loans and leases [line_item] *
+│   │   │   │   concept: us-gaap:PaymentsForProceedsFromOtherLoansAndLeases
+│   │   │   └── Loan and lease origination and principal collection inflows [line_item] *
+│   │   │       concept: us-gaap:ProceedsFromLoanAndLeaseOriginationsAndPrincipalCollections1
+│   │   ├── Loan and lease purchases [group]
+│   │   │   ├── Payments to acquire loans receivable [line_item] *
+│   │   │   │   concept: us-gaap:PaymentsToAcquireLoansReceivable
+│   │   │   ├── Payments to acquire loans held for investment [line_item]
+│   │   │   │   concept: us-gaap:PaymentsToAcquireLoansHeldForInvestment
+│   │   │   └── Payments to acquire loans and leases held for investment [line_item]
+│   │   │       concept: us-gaap:PaymentsToAcquireLoansAndLeasesHeldForInvestment
+│   │   └── Loan and lease sales [group]
+│   │       ├── Proceeds from sale of loans held for investment [line_item]
+│   │       │   concept: us-gaap:ProceedsFromSaleOfLoansHeldForInvestment
+│   │       ├── Proceeds from sale of loans receivable [line_item] *
+│   │       │   concept: us-gaap:ProceedsFromSaleOfLoansReceivable
+│   │       ├── Proceeds from sale of finance receivables [line_item] *
+│   │       │   concept: us-gaap:ProceedsFromSaleOfFinanceReceivables
+│   │       └── Principal Collections on Investment Loans and Leases [line_item] *
+│   │           concept: us-gaap:ProceedsFromPrincipalRepaymentsOnLoansAndLeasesHeldForInvestment
+│   ├── Bank placements, federal funds sold and resale agreements [group]
+│   │   ├── Proceeds from payments for in interest bearing deposits in banks [line_item] *
+│   │   │   concept: us-gaap:ProceedsFromPaymentsForInInterestBearingDepositsInBanks
+│   │   └── Change in Loans to Other FHLBanks [line_item] *
+│   │       concept: us-gaap:IncreaseDecreaseInLoansToFederalHomeLoanBanks
+│   ├── Business acquisitions and disposals [group]
+│   │   └── Business acquisition cash payments and acquired cash [group]
+│   │       ├── Payments to acquire businesses net of cash acquired [line_item] *
+│   │       │   concept: us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired
+│   │       ├── Payments to acquire businesses gross [line_item] *
+│   │       │   concept: us-gaap:PaymentsToAcquireBusinessesGross
+│   │       └── Cash acquired from acquisition [line_item] *
+│   │           concept: us-gaap:CashAcquiredFromAcquisition
+│   ├── Property and other asset disposal cash flows [group]
+│   │   ├── Productive asset sales and net flows [group]
+│   │   │   ├── Proceeds from sale of property, plant and equipment [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromSaleOfPropertyPlantAndEquipment
+│   │   │   ├── Proceeds from sale of productive assets [line_item] *
+│   │   │   │   concept: us-gaap:ProceedsFromSaleOfProductiveAssets
+│   │   │   └── Payments for proceeds from productive assets [line_item] *
+│   │   │       concept: us-gaap:PaymentsForProceedsFromProductiveAssets
+│   │   └── Real estate and foreclosed asset sale proceeds [group]
+│   │       ├── Proceeds from sale of other real estate [line_item] *
+│   │       │   concept: us-gaap:ProceedsFromSaleOfOtherRealEstate
+│   │       ├── Proceeds from sale of foreclosed assets [line_item] *
+│   │       │   concept: us-gaap:ProceedsFromSaleOfForeclosedAssets
+│   │       └── Proceeds from owned real estate and real estate received in loan settlement [line_item] *
+│   │           concept: us-gaap:ProceedsFromSaleOfWhollyOwnedRealEstateAndRealEstateAcquiredInSettlementOfLoans
+│   └── Other investing cash flows [group]
+│       ├── Life insurance policy cash flows [group]
+│       │   ├── Proceeds from life insurance policies [line_item] *
+│       │   │   concept: us-gaap:ProceedsFromLifeInsurancePolicies
+│       │   ├── Payments to acquire life insurance policies [line_item] *
+│       │   │   concept: us-gaap:PaymentsToAcquireLifeInsurancePolicies
+│       │   └── Payments for proceeds from life insurance policies [line_item] *
+│       │       concept: us-gaap:PaymentsForProceedsFromLifeInsurancePolicies
+│       ├── Investing insurance settlement receipts [group]
+│       │   └── Proceeds from insurance settlement investing activities [line_item] *
+│       │       concept: us-gaap:ProceedsFromInsuranceSettlementInvestingActivities
+│       └── Residual investing cash flows [group]
+│           └── Payments for proceeds from other investing activities [line_item]
+│               concept: us-gaap:PaymentsForProceedsFromOtherInvestingActivities
+├── Cash flow from financing activities [total]
+│   concept: us-gaap:NetCashProvidedByUsedInFinancingActivities
+│   ├── Change in customer deposits [group]
+│   │   ├── Increase decrease in deposits [line_item]
+│   │   │   concept: us-gaap:IncreaseDecreaseInDeposits
+│   │   ├── Increase decrease in time deposits [line_item]
+│   │   │   concept: us-gaap:IncreaseDecreaseInTimeDeposits
+│   │   ├── Net change interest bearing deposits domestic [line_item]
+│   │   │   concept: us-gaap:NetChangeInterestBearingDepositsDomestic
+│   │   └── Net change noninterest bearing deposits domestic [line_item]
+│   │       concept: us-gaap:NetChangeNoninterestBearingDepositsDomestic
+│   ├── Stock issuance and repurchase cash flows [group]
+│   │   ├── Equity issuance cash proceeds [group]
+│   │   │   ├── Proceeds from issuance of common stock [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfCommonStock
+│   │   │   ├── Proceeds from issuance of preferred stock and preference stock [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfPreferredStockAndPreferenceStock
+│   │   │   └── Proceeds from sale of treasury stock [line_item]
+│   │   │       concept: us-gaap:ProceedsFromSaleOfTreasuryStock
+│   │   ├── Employee share plan cash proceeds [group]
+│   │   │   └── Proceeds from stock options exercised [line_item]
+│   │   │       concept: us-gaap:ProceedsFromStockOptionsExercised
+│   │   ├── Equity repurchase cash payments [group]
+│   │   │   ├── Payments for repurchase of common stock [line_item]
+│   │   │   │   concept: us-gaap:PaymentsForRepurchaseOfCommonStock
+│   │   │   └── Repurchases of Other Equity [line_item] *
+│   │   │       concept: us-gaap:PaymentsForRepurchaseOfOtherEquity
+│   │   └── ESOP Funding Candidates [group]
+│   │       └── Loans Originated to ESOP [line_item] *
+│   │           concept: us-gaap:OriginationOfLoansToEmployeeStockOwnershipPlans
+│   ├── Debt issuance and retirement cash flows [group]
+│   │   ├── Net debt proceeds and repayments [group]
+│   │   │   ├── Debt proceeds (repayments), net [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromRepaymentsOfDebt
+│   │   │   ├── Short-term debt proceeds (repayments), net [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromRepaymentsOfShortTermDebt
+│   │   │   ├── Other debt proceeds (repayments), net [line_item] *
+│   │   │   │   concept: us-gaap:ProceedsFromRepaymentsOfOtherDebt
+│   │   │   ├── Long-term debt and capital securities proceeds (repayments), net [line_item] *
+│   │   │   │   concept: us-gaap:ProceedsFromRepaymentsOfLongTermDebtAndCapitalSecurities
+│   │   │   └── Net Proceeds (Repayments) of Other Long-Term Debt [line_item] *
+│   │   │       concept: us-gaap:ProceedsFromRepaymentsOfOtherLongTermDebt
+│   │   ├── Long-term debt proceeds and repayments [group]
+│   │   │   ├── Proceeds from issuance of long term debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfLongTermDebt
+│   │   │   ├── Repayments of long term debt [line_item]
+│   │   │   │   concept: us-gaap:RepaymentsOfLongTermDebt
+│   │   │   ├── Proceeds from issuance of subordinated long term debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromIssuanceOfSubordinatedLongTermDebt
+│   │   │   ├── Repayments of subordinated debt [line_item]
+│   │   │   │   concept: us-gaap:RepaymentsOfSubordinatedDebt
+│   │   │   └── Repayments of other long term debt [line_item]
+│   │   │       concept: us-gaap:RepaymentsOfOtherLongTermDebt
+│   │   ├── Short-term debt proceeds and repayments [group]
+│   │   │   ├── Proceeds from short term debt [line_item]
+│   │   │   │   concept: us-gaap:ProceedsFromShortTermDebt
+│   │   │   └── Repayments of short term debt [line_item]
+│   │   │       concept: us-gaap:RepaymentsOfShortTermDebt
+│   │   ├── FHLB borrowing and advance cash flows [group]
+│   │   │   ├── Proceeds from federal home loan bank borrowings [line_item] *
+│   │   │   │   concept: us-gaap:ProceedsFromFederalHomeLoanBankBorrowings
+│   │   │   ├── Proceeds from federal home loan bank advances [line_item] *
+│   │   │   │   concept: us-gaap:ProceedsFromFederalHomeLoanBankAdvances
+│   │   │   ├── Repayments of federal home loan bank borrowings [line_item] *
+│   │   │   │   concept: us-gaap:RepaymentsOfFederalHomeLoanBankBorrowings
+│   │   │   └── Increase decrease in loans from other federal home loan banks [line_item] *
+│   │   │       concept: us-gaap:IncreaseDecreaseInLoansFromOtherFederalHomeLoanBanks
+│   │   ├── Federal funds purchased and repo funding [group]
+│   │   │   ├── Repurchase agreement proceeds (payments), net [line_item] *
+│   │   │   │   concept: us-gaap:ProceedsFromPaymentsForInSecuritiesSoldUnderAgreementsToRepurchase
+│   │   │   └── Federal funds purchased and repo balances — net change [line_item] *
+│   │   │       concept: us-gaap:IncreaseDecreaseInFederalFundsPurchasedAndSecuritiesSoldUnderAgreementsToRepurchaseNet
+│   │   └── Other and broad debt cash-flow alternatives [group]
+│   │       ├── Proceeds from issuance of debt [line_item]
+│   │       │   concept: us-gaap:ProceedsFromIssuanceOfDebt
+│   │       ├── Repayments of debt [line_item]
+│   │       │   concept: us-gaap:RepaymentsOfDebt
+│   │       └── Repayments of other debt [line_item]
+│   │           concept: us-gaap:RepaymentsOfOtherDebt
+│   ├── Payments of dividends [total]
+│   │   concept: us-gaap:PaymentsOfDividends
+│   │   ├── Payments of dividends common stock [line_item]
+│   │   │   concept: us-gaap:PaymentsOfDividendsCommonStock
+│   │   └── Payments of dividends preferred stock and preference stock [line_item]
+│   │       concept: us-gaap:PaymentsOfDividendsPreferredStockAndPreferenceStock
+│   ├── Finance lease principal payments [group]
+│   │   └── Finance lease principal payments [line_item]
+│   │       concept: us-gaap:FinanceLeasePrincipalPayments
+│   ├── Other financing cash flows [group]
+│   │   ├── Payments related to tax withholding for share based compensation [line_item] *
+│   │   │   concept: us-gaap:PaymentsRelatedToTaxWithholdingForShareBasedCompensation
+│   │   ├── Payments of stock issuance costs [line_item] *
+│   │   │   concept: us-gaap:PaymentsOfStockIssuanceCosts
+│   │   ├── Payments of debt issuance costs [line_item] *
+│   │   │   concept: us-gaap:PaymentsOfDebtIssuanceCosts
+│   │   └── Proceeds from payments for other financing activities [line_item]
+│   │       concept: us-gaap:ProceedsFromPaymentsForOtherFinancingActivities
+│   └── Borrower Tax and Insurance Escrow Changes [group]
+│       └── Change in Borrower Advances for Taxes and Insurance [line_item] *
+│           concept: us-gaap:IncreaseDecreaseInAdvancePaymentsByBorrowersForTaxesAndInsurance
+├── Cash movement and balance reconciliation [group]
+│   ├── Reported changes in cash [group]
+│   │   ├── Change in cash and restricted cash, including FX [line_item] *
+│   │   │   concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect
+│   │   └── Change in cash and restricted cash, excluding FX [line_item] *
+│   │       concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseExcludingExchangeRateEffect
+│   └── Cash and restricted cash balance scopes [group]
+│       ├── Cash, cash equivalents and restricted cash [line_item] *
+│       │   concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+│       └── Cash and restricted cash including disposal groups and discontinued operations [line_item] *
+│           concept: us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations
+└── Supplementary cash-flow and noncash disclosures [group]
+    ├── Supplementary cash payment disclosures [group]
+    │   ├── Interest paid [group]
+    │   │   ├── Interest paid net [line_item] *
+    │   │   │   concept: us-gaap:InterestPaidNet
+    │   │   └── Interest paid [line_item] *
+    │   │       concept: us-gaap:InterestPaid
+    │   └── Income taxes paid and refunds [group]
+    │       ├── Income taxes paid net [line_item] *
+    │       │   concept: us-gaap:IncomeTaxesPaidNet
+    │       ├── Income taxes paid [line_item] *
+    │       │   concept: us-gaap:IncomeTaxesPaid
+    │       ├── Income tax paid federal after refund received [line_item] *
+    │       │   concept: us-gaap:IncomeTaxPaidFederalAfterRefundReceived
+    │       └── Income tax paid state and local after refund received [line_item] *
+    │           concept: us-gaap:IncomeTaxPaidStateAndLocalAfterRefundReceived
+    ├── Noncash lease additions and lease expense disclosures [group]
+    │   ├── Operating ROU assets obtained for lease liabilities [line_item] *
+    │   │   concept: us-gaap:RightOfUseAssetObtainedInExchangeForOperatingLeaseLiability
+    │   ├── Finance ROU assets obtained for lease liabilities [line_item] *
+    │   │   concept: us-gaap:RightOfUseAssetObtainedInExchangeForFinanceLeaseLiability
+    │   └── Capital lease obligations incurred [line_item] *
+    │       concept: us-gaap:CapitalLeaseObligationsIncurred
+    ├── Acquisition consideration and purchase-price allocation [group]
+    │   └── Assets acquired and liabilities assumed [group]
+    │       ├── Acquired identifiable liabilities — acquisition-date balance [line_item] *
+    │       │   concept: us-gaap:BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedLiabilities
+    │       ├── Acquired identifiable assets — acquisition-date balance [line_item] *
+    │       │   concept: us-gaap:BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedAssets
+    │       ├── Acquired net identifiable assets — acquisition-date balance [line_item] *
+    │       │   concept: us-gaap:BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedNet
+    │       └── Noncash or partly noncash acquisition — investments acquired [line_item]
+    │           concept: us-gaap:NoncashOrPartNoncashAcquisitionInvestmentsAcquired1
+    ├── Credit reserve, foreclosure and loan transfer disclosures [group]
+    │   ├── Foreclosures and real estate transfers [group]
+    │   │   ├── Transfer to other real estate [line_item] *
+    │   │   │   concept: us-gaap:TransferToOtherRealEstate
+    │   │   └── Transfer of other real estate [line_item] *
+    │   │       concept: us-gaap:TransferOfOtherRealEstate
+    │   ├── Loan and investment reclassifications [group]
+    │   │   ├── Portfolio loans and leases transferred to held for sale [line_item] *
+    │   │   │   concept: us-gaap:TransferOfPortfolioLoansAndLeasesToHeldForSale1
+    │   │   ├── Held-for-sale loans transferred to portfolio [line_item] *
+    │   │   │   concept: us-gaap:TransferOfLoansHeldForSaleToPortfolioLoans1
+    │   │   ├── Financing receivable reclassification to held for sale [line_item] *
+    │   │   │   concept: us-gaap:FinancingReceivableReclassificationToHeldForSale
+    │   │   └── Transfer of investments [line_item] *
+    │   │       concept: us-gaap:TransferOfInvestments
+    │   └── Servicing Asset Rollforward Details [group]
+    │       └── Other Changes in Amortized-Value Servicing Assets [line_item] *
+    │           concept: us-gaap:ServicingAssetAtAmortizedValueOtherChangesThatAffectBalanceAmount
+    ├── Noncash equity and dividend disclosures [group]
+    │   ├── Fair value of stock issued in noncash financing [line_item] *
+    │   │   concept: us-gaap:StockIssued1
+    │   ├── Dividends payable current and noncurrent [line_item] *
+    │   │   concept: us-gaap:DividendsPayableCurrentAndNoncurrent
+    │   └── Instrument Value Received on Debt Conversion [line_item] *
+    │       concept: us-gaap:DebtConversionConvertedInstrumentAmount1
+    └── OCI security remeasurement disclosures [group]
+        └── Debt securities available-for-sale unrealized gain loss [line_item] *
+            concept: us-gaap:DebtSecuritiesAvailableForSaleUnrealizedGainLoss
