@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Download normalized SEC financial statements as a SQLite database. Explore the mappings and help improve financial fact classification."
+    />
+    <title>Financial Facts — SEC statements, in one database</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="mapping-trees.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="wrap">
+      <a class="brand" href="#"
+        ><span class="brand-mark" aria-hidden="true">FF</span>
+        <span>Financial Facts</span></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#dataset">Dataset</a><a href="#mappings">Mappings</a
+        ><a href="#use">Quick start</a
+        ><a
+          href="https://github.com/Kurei999999/sec-fact-normalizer-contributions"
+          >GitHub ↗</a
+        >
+      </nav>
+    </header>
+    <main id="main">
+      <section class="hero wrap">
+        <div class="eyebrow">FINANCIAL DATA / SEC COMPANYFACTS</div>
+        <h1>Normalized financial statements</h1>
+        <p class="intro">
+          Income statements, balance sheets, and cash flows. Normalized from SEC
+          CompanyFacts into a SQLite database you can work with locally.
+        </p>
+        <div class="actions">
+          <a class="button" href="#download">Download database <span>↓</span></a
+          ><a
+            class="text-link"
+            href="https://github.com/Kurei999999/sec-fact-normalizer-contributions/tree/main/archetypes"
+            >Explore the mappings ↗</a
+          >
+        </div>
+        <div class="format-strip">
+          <span>SQLite</span><span>IS / BS / CF</span
+          ><span>Annual + quarterly</span><span>CIK identifiers</span>
+        </div>
+      </section>
+      <section class="dataset" id="dataset">
+        <div class="wrap dataset-grid">
+          <div>
+            <div class="eyebrow">DATASET OVERVIEW</div>
+            <h2>SEC fundamentals in SQLite</h2>
+            <p>
+              Download a published snapshot, open it with SQLite, and join
+              financial statements with company metadata. No hosted API
+              required.
+            </p>
+            <p class="muted">
+              Coverage varies by company, period, and field. Missing values stay
+              NULL; they are never filled with zero.
+            </p>
+          </div>
+          <div class="download-card" id="download">
+            <div class="card-top">
+              <span class="file-icon">DB</span
+              ><span class="tag">SQLITE SNAPSHOT</span>
+            </div>
+            <h3>Normalized financial statements</h3>
+            <p>Download the compressed SQLite database and decompress it before opening.</p>
+            <dl>
+              <div><dt>File</dt><dd>api_all_periods.sqlite3.gz</dd></div>
+              <div><dt>Uploaded (UTC)</dt><dd>28 Oct 2026</dd></div>
+              <div><dt>Download size</dt><dd>96.96 MB</dd></div>
+            </dl>
+            <a class="button asset" href="https://pub-5ff98667cdf0492596444bf0af58dd08.r2.dev/api_all_periods.sqlite3.gz">Download database ↓</a>
+            <p class="fine">Hosted on Cloudflare R2. This development endpoint is rate-limited. Dataset licensing and commercial contribution terms are still undecided.</p>
+          </div>
+        </div>
+      </section>
+      <section class="wrap contents">
+        <div class="eyebrow">DATABASE SCHEMA</div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Table</th>
+                <th>What you’ll find</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>companies</td>
+                <td>
+                  CIK, ticker, company name, SIC, and available company metadata
+                </td>
+              </tr>
+              <tr>
+                <td>income_statements</td>
+                <td>Revenue, expenses, earnings, and per-share metrics</td>
+              </tr>
+              <tr>
+                <td>balance_sheets</td>
+                <td>Assets, liabilities, equity, and related balances</td>
+              </tr>
+              <tr>
+                <td>cash_flow_statements</td>
+                <td>Operating, investing, and financing cash flows</td>
+              </tr>
+              <tr>
+                <td>dataset_metadata</td>
+                <td>Snapshot and normalization version information</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="wrap mapping-browser" id="mappings">
+        <div class="eyebrow">CLASSIFICATION STRUCTURES</div>
+        <h2>Mapping trees</h2>
+        <p class="muted">
+          Explore the current industry mappings. Trees are generated from the
+          repository’s JSON at deployment. Nesting does not imply that child
+          values should be added together; * marks concepts under review.
+        </p>
+        <div class="tree-controls">
+          <label
+            >Industry<select id="tree-profile" disabled>
+              <option>Loading industries…</option>
+            </select></label
+          ><label
+            >Statement<select id="tree-statement" disabled>
+              <option>Loading statements…</option>
+            </select></label
+          ><a id="tree-download" hidden>Download tree ↓</a>
+        </div>
+        <p id="tree-status" class="muted" role="status" aria-live="polite">
+          Loading mapping trees…
+        </p>
+        <pre
+          class="tree-view"
+          tabindex="0"
+          aria-label="Selected mapping tree"
+        ><code id="tree-content"></code></pre>
+        <noscript
+          ><p>
+            Browse the
+            <a
+              href="https://github.com/Kurei999999/sec-fact-normalizer-contributions/tree/main/archetypes"
+              >mapping files on GitHub</a
+            >.
+          </p></noscript
+        >
+      </section>
+      <section class="wrap quickstart" id="use">
+        <div>
+          <div class="eyebrow">QUERY EXAMPLE</div>
+          <h2>Query financial statements</h2>
+          <ol>
+            <li>Download and decompress a database release.</li>
+            <li>Open the SQLite file in your preferred client.</li>
+            <li>Query by CIK, period, and reporting currency.</li>
+          </ol>
+          <p class="muted">
+            Financial values are stored as decimal text. Cast explicitly when
+            performing numeric calculations. Q1–Q4 and FY identify periods;
+            frequency distinguishes annual and quarter rows.
+          </p>
+        </div>
+        <div class="code-panel">
+          <div class="code-title">
+            <span>Apple · annual revenue</span
+            ><button id="copy" type="button">Copy SQL</button>
+          </div>
+          <pre><code id="sql">SELECT date, fiscalYear, revenue,
+       reportedCurrency
+FROM income_statements
+WHERE cik = '0000320193'
+  AND period = 'FY'
+  AND reportedCurrency = 'USD'
+ORDER BY date DESC
+LIMIT 5;</code></pre>
+          <p id="copy-status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+      <section class="wrap contribute">
+        <div>
+          <div class="eyebrow">MAPPING REVIEW</div>
+          <h2>Contribute to the mappings</h2>
+          <p>
+            Help improve the mappings. Browse an industry’s current structure,
+            inspect unmapped concepts, and suggest a classification with filing
+            evidence. Accounting knowledge is enough to get started.
+          </p>
+        </div>
+        <a
+          class="button secondary"
+          href="https://github.com/Kurei999999/sec-fact-normalizer-contributions/blob/main/CONTRIBUTING.md"
+          >Contribution guide ↗</a
+        >
+      </section>
+      <section class="wrap notes">
+        <h3>Before you use the data</h3>
+        <p>
+          Mappings are provisional and normalization may include candidate
+          selection, calculations, and sign adjustments. Validation does not
+          establish accounting correctness. Historical coverage is uneven. Check
+          material values against the original filings.
+        </p>
+        <p>
+          Public access to this repository does not imply a license to reuse or
+          redistribute the dataset. Dataset licensing and commercial
+          contribution terms are still undecided.
+        </p>
+      </section>
+    </main>
+    <footer class="wrap">
+      <a class="brand" href="#">Financial Facts</a
+      ><span>Financial statements · SQLite · Community-reviewed mappings</span
+      ><a href="https://www.sec.gov/edgar/search/">Find a filing ↗</a>
+    </footer>
+  </body>
+</html>

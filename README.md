@@ -6,6 +6,8 @@ This repository contains **industry archetypes, concept mappings and normalized 
 
 ## Start here
 
+- **Download website:** [website source and publishing instructions](website/README.md).
+
 - **File format:** [canonical JSON structure](docs/file_structure.md).
 - **Understand the structure:** [normalization explained](docs/how_normalization_works.md).
 - **Browse readable maps:** [industry tree index](archetypes/README.md).
