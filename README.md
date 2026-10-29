@@ -1,141 +1,138 @@
-# Financial fact mappings
+# Financial Fact Normaliser
 
-Help turn company-reported SEC financial facts into understandable, consistent financial fields.
+Companies often report similar financial information under different names. This project maps those facts to consistent fields so they’re easier to compare and use.
 
-This repository contains **industry archetypes, concept mappings and normalized field contracts**. You can contribute accounting knowledge without writing code or downloading a financial database.
+## Main goal
 
-## Start here
+We want to normalise as many financial statement facts as possible:
 
-- **Download website:** [website source and publishing instructions](website/README.md).
+- By industry, using Standard Industrial Classification (SIC) codes.
+- By company, where industry mappings need more detail.
 
-- **File format:** [canonical JSON structure](docs/file_structure.md).
-- **Understand the structure:** [normalization explained](docs/how_normalization_works.md).
-- **Browse readable maps:** [industry tree index](archetypes/README.md).
-- **Try a real example:** [Apple revenue](examples/revenue/explanation.md).
-- **Find something to classify:** [simple concept review files](review/README.md).
-- **Make a suggestion:** [contribution guide](CONTRIBUTING.md).
+The aim is to keep as much useful information as possible and make the mappings available for everyone to inspect and improve.
 
-## The whole flow
+## What can you get?
 
-```text
-SEC CompanyFacts       SEC Submissions       SEC ticker list
-       \                     |                     /
-        +--------------------+--------------------+
-                             |
-                    Import/update raw DB
-                             |
-                  Company metadata + raw facts
-                             |
-                  Assign industry archetype
-              company override > SIC > default
-                             |
-                 Map reported concept to node
-                             |
-                  Resolve normalized API field
-              select candidates / calculate / apply signs
-                             |
-                 Discover and validate periods
-             exact periods or compatible YTD subtraction
-                             |
-              Normalized IS / BS / CF SQLite database
-                             |
-                    Audit and versioned release
+A free bulk financial database built using this normaliser, available through the project’s [download website](https://kurei999999.github.io/sec-fact-normalizer-contributions/).
+
+The database improves as the mappings improve. More correctly mapped facts mean better coverage and more reliable data—so contributions directly help everyone using it.
+
+The raw financial data comes from the SEC API. Terms for redistribution, commercial use, personal use and research still need to be finalised.
+
+See the [website documentation](website/README.md) for download and publishing details.
+
+## How does it work?
+
+### `archetypes/`
+
+This is where the industry mappings live. They organise reported facts into income statements, balance sheets and cash flow statements.
+
+Companies are assigned an industry mapping using their SIC code, with company-specific overrides where needed.
+
+[Browse the industry mappings](archetypes/README.md).
+
+### `archetypes/api/`
+
+These mappings define the common fields used in the downloadable database. They connect industry concepts to fields such as `revenue`, `operatingIncome` and `netIncome`.
+
+For example, run this SQL against the downloaded database to get Apple’s latest available annual income statement:
+
+```sql
+SELECT i.*
+FROM income_statements AS i
+JOIN companies AS c ON c.cik = i.cik
+WHERE c.ticker = 'AAPL'
+  AND i.frequency = 'annual'
+  AND i.period = 'FY'
+ORDER BY i.date DESC, i.reportedCurrency
+LIMIT 1;
 ```
 
-Period discovery and fact resolution work together; the diagram explains responsibilities rather than exact function call order.
+Result from the current database snapshot, shown as JSON:
 
-**This contribution repository covers mappings and their structural validation.** It does not include the private raw database, the complete runtime/exporter or generated SQLite datasets. The source pipeline currently uses `update_daily.py`, `register_archetypes`, then `build_api_db.py`. Contributors can propose useful changes here without running that pipeline.
-
-## Research scope versus runtime assignment
-
-`archetypes/<industry>/profile.json` records the original research SICs from [the research scope document](archetypes/archetype_research_scope.md). Use those SICs to generate development concept inventories. `sic_to_archetype.json` serves a different purpose: it routes companies to available mappings for runtime normalization, including provisional fallbacks. Those fallbacks must not expand an archetype's research population.
-
-The review inventories are generated from these source SICs, independently of runtime assignments. See [the review guide](review/README.md) for the exact snapshot scope and limitations.
-
-## Two separate decisions
-
-```text
-Reported concept:
-  us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
-                |
-Industry classification:
-  general_corporate / IS
-  node: revenue_from_contract_with_customer_excluding_assessed_tax
-                |
-Normalized output contract:
-  revenue
+```json
+{
+  "cik": "0000320193",
+  "date": "2025-09-27",
+  "startDate": "2024-09-29",
+  "fiscalYear": "2025",
+  "period": "FY",
+  "frequency": "annual",
+  "reportedCurrency": "USD",
+  "anchorFilingDate": "2025-10-31",
+  "anchorAccession": "0000320193-25-000079",
+  "revenue": "416161000000",
+  "costOfRevenue": "220960000000",
+  "grossProfit": "195201000000",
+  "researchAndDevelopmentExpenses": "34550000000",
+  "generalAndAdministrativeExpenses": "8077000000",
+  "sellingAndMarketingExpenses": "19524000000",
+  "sellingGeneralAndAdministrativeExpenses": "27601000000",
+  "otherExpenses": null,
+  "operatingExpenses": "62151000000",
+  "costAndExpenses": "283111000000",
+  "netInterestIncome": null,
+  "interestIncome": null,
+  "interestExpense": null,
+  "depreciationAndAmortization": "11698000000",
+  "ebitda": null,
+  "ebit": null,
+  "nonOperatingIncomeExcludingInterest": null,
+  "operatingIncome": "133050000000",
+  "totalOtherIncomeExpensesNet": "-321000000",
+  "incomeBeforeTax": "132729000000",
+  "incomeTaxExpense": "20719000000",
+  "netIncomeFromContinuingOperations": null,
+  "netIncomeFromDiscontinuedOperations": null,
+  "otherAdjustmentsToNetIncome": null,
+  "netIncome": "112010000000",
+  "netIncomeDeductions": null,
+  "bottomLineNetIncome": null,
+  "eps": "7.49",
+  "epsDiluted": "7.46",
+  "weightedAverageShsOut": "14948500000",
+  "weightedAverageShsOutDil": "15004697000"
+}
 ```
 
-Classification says what the concept means. The output contract says which candidate should supply a field and whether calculations are allowed. Adding a concept to a tree does not automatically enable it as the selected API value.
+Financial values are stored as decimal strings to preserve precision. Monetary amounts are in the reported currency, EPS is currency per share, and weighted-average share fields are share counts. `null` means no value is available for that field; it does not mean zero.
 
-## Repository layout
+### `trees/`
 
-```text
-archetypes/
-  sic_to_archetype.json     Industry assignments and company overrides
-  <industry>/profile.json  Source SICs used to develop the archetype
-  <industry>/is.json       Income-statement classification
-  <industry>/bs.json       Balance-sheet classification
-  <industry>/cf.json       Cash-flow classification
-  <industry>/trees/*.txt   Generated readable classification trees
-  archetype_research_scope.md  Research SICs for all archetypes
-  api/is.json              Shared output fields and industry source rules
-  api/bs.json
-  api/cf.json
-docs/
-  how_normalization_works.md
-  normalization.txt        Generated overview of fields and source rules
-examples/revenue/          Real input, expected result and explanation
-review/<industry>/  Full and unmapped JSON concept inventories
-tools/                    Standard-library-only contributor utilities
-tests/                    Small offline regression tests
-.github/                  Issue/PR templates and automated checks
-mapping_snapshot.json     Original export hashes for traceability
-```
+Each industry has readable text trees showing how its facts are organised. These let you browse the mapping structure without digging through JSON.
 
-## For non-coders
+Edit the source JSON when proposing changes; the text trees are generated from it.
 
-1. Open an industry’s unmapped JSON list grouped by BS, IS, CF or unclassified statement from the [review index](review/README.md).
-2. Open the original filing and inspect its context.
-3. Compare it with the relevant industry text tree.
-4. Open a **Classification suggestion** issue using the supplied form.
-5. Explain your category, scope and evidence. “Outside primary statements” and “unsure” are valid answers.
+### `review/`
 
-A maintainer reviews suggestions before changing mappings or rebuilding a release. No public suggestion writes to a financial database automatically.
+This directory contains the reported concepts found in the data, including those already mapped and those still waiting for review.
 
-## For contributors who edit JSON
+You can see their descriptions, how many companies use them and evidence of where they appear in financial statements.
 
-Python 3.12+ is required. Basic mapping validation uses the standard library; install `requirements.txt` for the statement-review generator and full test suite.
+[Find facts to review](review/README.md).
 
-```bash
-python -m pip install -r requirements.txt
-python tools/validate_mappings.py
-python tools/format_mappings.py
-python tools/run_example.py
-python -m unittest discover -s tests
-```
+## Want to contribute?
 
-After changing mappings, regenerate their readable views:
+You don’t need to write code to help.
 
-```bash
-python tools/generate_trees.py
-```
+### If you code
 
-Edit JSON first; `.txt` trees are generated views. See [CONTRIBUTING.md](CONTRIBUTING.md) for review requirements.
+You can add missing mappings, fix existing ones or improve the tools.
 
-## Scope and limitations
+See the [contribution guide](CONTRIBUTING.md) for setup and validation instructions, and the [file format documentation](docs/file_structure.md) for the mapping structure.
 
-- Eight profiles: banks, electric utilities, general corporate, life insurance, oil/gas extraction, personal credit institutions, REITs and savings institutions.
-- These are provisional accounting mappings. Passing validation does not prove semantic correctness.
-- Do not treat a parent node as an instruction to sum its children. Some children are alternative totals.
-- Unmapped concepts may be disclosures that should remain outside primary financial statements.
-- Missing values remain NULL; absence is not zero. Never apply absolute value to all cash-flow facts.
-- Inventories include all imported concepts for each profile's research SICs, without frequency thresholds. They describe the imported raw snapshot, not complete SEC coverage. See `review/statement_review_summary.json` for population counts.
-- `mapping_snapshot.json` records the original exported baseline. Hash differences after edits are expected; it is not an automatically enforced lockfile.
-- Contracts include design/review policies. The downstream exporter currently produces candidate previews using period-filing selection and additional runtime quality rules; this small repository does not reproduce all runtime behavior.
+### If you don’t code
 
-Historical references such as `DONE.md` or `data/company_counts_by_sic.json` in assignment metadata describe upstream research inputs and are not required to validate this repository.
+Browse the [unmapped facts](review/README.md) and open a **Classification suggestion** issue if you recognise a concept or spot something that looks wrong.
 
-## Publication status
+Include the concept name, your suggested classification and a link to a company filing if possible. You don’t need to have the full answer—questions and examples help too.
 
-No project license or commercial contribution agreement has been selected. The owner should choose and document these before inviting public contributions. This repository does not grant a new open-source license by implication.
+## A work in progress
+
+The mappings still need review, and coverage is incomplete. Some facts belong in disclosures rather than the main financial statements, so not every unmapped fact needs to be added.
+
+The review lists reflect the data imported so far, rather than everything available from the SEC.
+
+This repository contains mappings and contributor tools. The full database generation pipeline and database files are maintained separately.
+
+A project licence and contribution terms have not yet been selected. This repository does not grant an open-source licence by implication.
